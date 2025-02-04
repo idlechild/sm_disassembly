@@ -7674,7 +7674,7 @@ InstList_RobotNoPower_LeaningLeft:
     dw $7FFF,Spritemap_Robot_18                                          ;A8C6D9;
     dw Instruction_Common_Sleep                                          ;A8C6DD;
 
-InstList_RobotNoPower_LeaningRIght:
+InstList_RobotNoPower_LeaningRight:
     dw $7FFF,Spritemap_Robot_1A                                          ;A8C6DF;
     dw Instruction_CommonA8_Sleep                                        ;A8C6E3;
 
@@ -8162,7 +8162,7 @@ InitAI_RobotNoPower:
 ; Instruction list pointers. Indexed by [enemy parameter 1] * 2
     dw InstList_RobotNoPower_Neutral                                     ;A8CC30;
     dw InstList_RobotNoPower_LeaningLeft                                 ;A8CC32;
-    dw InstList_RobotNoPower_LeaningRIght                                ;A8CC34;
+    dw InstList_RobotNoPower_LeaningRight                                ;A8CC34;
 
 MainAI_Robot:
     LDX.W $0E54                                                          ;A8CC36;

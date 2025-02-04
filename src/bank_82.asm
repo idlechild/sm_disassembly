@@ -941,7 +941,7 @@ DemoRoomData:
 ;       |      _________________________________ Screen X position
 ;       |     |      ___________________________ Screen Y position
 ;       |     |     |      _____________________ Samus Y offset from top of screen
-;       |     |     |     |      _______________ Samus X offset from centre of screen
+;       |     |     |     |      _______________ Samus X offset from center of screen
 ;       |     |     |     |     |      _________ Length of demo
 ;       |     |     |     |     |     |
 ;        _______________________________________ Pointer to code
@@ -3122,7 +3122,7 @@ AreaMapPointers:
 
 
 ;;; $965F: Area label tilemaps ;;;
-AreaLabelTilemaps
+AreaLabelTilemaps:
   .pointers:
     dw AreaLabelTilemaps_crateria                                        ;82965F;
     dw AreaLabelTilemaps_brinstar                                        ;829661;
@@ -3648,28 +3648,28 @@ MapData:
 ;;; $9E27: Set up map scrolling for pause menu ;;;
 SetupMapScrollingForPauseMenu:
 ;; Parameters:
-;;     A: Always 80h. Y position to show centre of centred map scroll
+;;     A: Always 80h. Y position to show center of centered map scroll
 
 ; M = midpoint([map min X scroll], [map max X scroll])
 ; P = ([room X co-ordinate] + [Samus X position] / 100h) * 8
 
 ; If M - 60h < P <= M + 60h:
-;     Ideal case, centred map scroll shows room position
+;     Ideal case, centered map scroll shows room position
 ;     X = M - 80h
 
 ; If P > M + 60h:
-;     Room is too far right to centre map around, display room with 20h pixel margin from the right
+;     Room is too far right to center map around, display room with 20h pixel margin from the right
 ;     X = P - E0h
 
 ; If P <= M - 60h:
-;     Room is too far left to centre map around, display room with 20h pixel margin from the left
+;     Room is too far left to center map around, display room with 20h pixel margin from the left
 ;     X = P - 20h
 
 ; M = midpoint([map min Y scroll], [map max Y scroll])
 ; P = ([room Y co-ordinate] + [Samus Y position] / 100h) * 8
 
 ; If M - 38h < P:
-;     Ideal case, centred map scroll shows room position
+;     Ideal case, centered map scroll shows room position
 ;     Y = M - 70h
 
 ; If P <= M - 38h:
@@ -9018,7 +9018,7 @@ MenuSpritemap_Pointers:
     dw MenuSpritemap_1A_1F_EndOfEquipmentScreenReserveHealthBar          ;82C59D;
     dw MenuSpritemap_1B_FullEquipmentScreenReserveTank                   ;82C59F;
     dw MenuSpritemap_1C                                                  ;82C5A1;
-    dw MenuSpritemap_1E                                                  ;82C5A3;
+    dw MenuSpritemap_1D_FullEquipmentScreenReserveHealthBar              ;82C5A3;
     dw MenuSpritemap_1E                                                  ;82C5A5;
     dw MenuSpritemap_1A_1F_EndOfEquipmentScreenReserveHealthBar          ;82C5A7;
     dw MenuSpritemap_20_EmptyEquipmentScreenReserveTank                  ;82C5A9;

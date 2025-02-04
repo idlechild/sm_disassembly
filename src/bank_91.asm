@@ -2567,7 +2567,7 @@ TransitionTable:
     dw TransitionTable_16_4E_52_6A_6C_FacingLeft_NormalJump              ;919F0E;
     dw TransitionTable_17_FacingRight_NormalJump_AimingDown              ;919F10;
     dw TransitionTable_18_FacingLeft_NormalJump_AimingDown               ;919F12;
-    dw TransitionTable_19_FacingRIght_SpinJump                           ;919F14;
+    dw TransitionTable_19_FacingRight_SpinJump                           ;919F14;
     dw TransitionTable_1A_FacingLeft_SpinJump                            ;919F16;
     dw TransitionTable_1B_FacingRight_SpaceJump                          ;919F18;
     dw TransitionTable_1C_FacingLeft_SpaceJump                           ;919F1A;
@@ -3020,7 +3020,7 @@ TransitionTable_50_FacingRight_DamageBoost:                              ;91A40A
     dw $004D
     dw $FFFF
 
-TransitionTable_19_FacingRIght_SpinJump:                                 ;91A41E;
+TransitionTable_19_FacingRight_SpinJump:                                 ;91A41E;
 ; 19: Facing right - spin jump
     dw $0040,$0000,$0013
     dw $0040,$0100,$0013
@@ -7657,12 +7657,12 @@ Calc_Xray_HDMADataTable_OnScreen_AimedUpwards_Up:
 
 +   SEP #$20                                                             ;91C7BF;
 
-  .loopRIght:
+  .loopRight:
     LDA.B #$FF                                                           ;91C7C1;
     STA.B [$00],Y                                                        ;91C7C3;
     DEY                                                                  ;91C7C5;
     DEY                                                                  ;91C7C6;
-    BPL .loopRIght                                                       ;91C7C7;
+    BPL .loopRight                                                       ;91C7C7;
 
   .return:
     PLP                                                                  ;91C7C9;

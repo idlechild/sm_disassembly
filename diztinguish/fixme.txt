@@ -1,2 +1,3 @@
 
 $B392AD Should be formatted as a spritemap
+$84A56F Should be 8bit

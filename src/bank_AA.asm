@@ -8748,9 +8748,9 @@ InitAI_Shaktool:
 ShaktoolPieceData:
 ;                        _______________________________________ Initially right saw hand (primary piece)
 ;                       |      _________________________________ Initially rightmost arm piece
-;                       |     |      ___________________________ Initially centre right arm piece
+;                       |     |      ___________________________ Initially center right arm piece
 ;                       |     |     |      _____________________ Head
-;                       |     |     |     |      _______________ Initially centre left arm piece
+;                       |     |     |     |      _______________ Initially center left arm piece
 ;                       |     |     |     |     |      _________ Initially leftmost arm piece
 ;                       |     |     |     |     |     |      ___ Initially left saw hand (final piece)
 ;                       |     |     |     |     |     |     |
@@ -8763,9 +8763,9 @@ ShaktoolPieceData:
   .initialInstListPointer:
     dw InstList_Shaktool_SawHand_PrimaryPiece                            ;AADEBF; Initially right saw hand (primary piece)
     dw InstList_Shaktool_ArmPiece_Normal                                 ;AADEC1; Initially rightmost arm piece
-    dw InstList_Shaktool_ArmPiece_Normal                                 ;AADEC3; Initially centre right arm piece
+    dw InstList_Shaktool_ArmPiece_Normal                                 ;AADEC3; Initially center right arm piece
     dw InstList_Shaktool_Head_AimingDown                                 ;AADEC5; Head
-    dw InstList_Shaktool_ArmPiece_Normal                                 ;AADEC7; Initially centre left arm piece
+    dw InstList_Shaktool_ArmPiece_Normal                                 ;AADEC7; Initially center left arm piece
     dw InstList_Shaktool_ArmPiece_Normal                                 ;AADEC9; Initially leftmost arm piece
     dw InstList_Shaktool_SawHand_PrimaryPiece                            ;AADECB; Initially left saw hand (final piece)
   .layerControl:
@@ -8809,17 +8809,17 @@ endif ; !FEATURE_KEEP_UNREFERENCED
   .headBobInstListPointer:
     dw InstList_Shaktool_SawHand_HeadBob_PrimaryPiece                    ;AADF13; Initially right saw hand (primary piece)
     dw InstList_Shaktool_ArmPiece_HeadBob_Back                           ;AADF15; Initially rightmost arm piece
-    dw InstList_Shaktool_ArmPiece_HeadBob_Front                          ;AADF17; Initially centre right arm piece
+    dw InstList_Shaktool_ArmPiece_HeadBob_Front                          ;AADF17; Initially center right arm piece
     dw InstList_Shaktool_Head_HeadBob                                    ;AADF19; Head
-    dw InstList_Shaktool_ArmPiece_HeadBob_Front                          ;AADF1B; Initially centre left arm piece
+    dw InstList_Shaktool_ArmPiece_HeadBob_Front                          ;AADF1B; Initially center left arm piece
     dw InstList_Shaktool_ArmPiece_HeadBob_Back                           ;AADF1D; Initially leftmost arm piece
     dw InstList_Shaktool_SawHand_HeadBob_FinalPiece                      ;AADF1F; Initially left saw hand (final piece)
   .unusedAttackInstListPointer:
     dw UNUSED_InstList_Shaktool_SawHand_Attack_PrimaryPiece_AAD9EA       ;AADF21; Initially right saw hand (primary piece)
     dw UNUSED_InstList_Shaktool_ArmPiece_Attack_Back_AADA2E              ;AADF23; Initially rightmost arm piece
-    dw UNUSED_InstList_Shaktool_ArmPiece_Attack_Front_AADA42             ;AADF25; Initially centre right arm piece
+    dw UNUSED_InstList_Shaktool_ArmPiece_Attack_Front_AADA42             ;AADF25; Initially center right arm piece
     dw UNUSED_InstList_Shaktool_Head_Attack_AADA7A                       ;AADF27; Head
-    dw UNUSED_InstList_Shaktool_ArmPiece_Attack_Front_AADA42             ;AADF29; Initially centre left arm piece
+    dw UNUSED_InstList_Shaktool_ArmPiece_Attack_Front_AADA42             ;AADF29; Initially center left arm piece
     dw UNUSED_InstList_Shaktool_ArmPiece_Attack_Back_AADA2E              ;AADF2B; Initially leftmost arm piece
     dw UNUSED_InstList_Shaktool_SawHand_Attack_FinalPiece_AAD9F2         ;AADF2D; Initially left saw hand (final piece)
 

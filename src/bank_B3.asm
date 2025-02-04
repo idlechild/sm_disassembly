@@ -2220,7 +2220,7 @@ InstList_Botwoon_Hidden_AimingUpRight:
     dw $0001,Spritemaps_Botwoon_MouthClosed_Priority0_AimingUpRight      ;B3945F;
     dw Instruction_Common_Sleep                                          ;B39463;
 
-InstList_Botwoon_Hidden_AimingUp_FacingRIght:
+InstList_Botwoon_Hidden_AimingUp_FacingRight:
     dw $0001,Spritemaps_Botwoon_MouthClosed_Priority0_AimUp_FacingRight  ;B39465;
     dw Instruction_Common_Sleep                                          ;B39469;
 

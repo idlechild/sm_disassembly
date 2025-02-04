@@ -1192,8 +1192,8 @@ AddSpritemapToOAM_Common:
 ;     ...          ; Entry 1...
 ; Where:
 ;     n = number of entries
-;     x = X offset of sprite from centre
-;     y = Y offset of sprite from centre
+;     x = X offset of sprite from center
+;     y = Y offset of sprite from center
 ;     a = attributes
 ;     t = tile number
 
@@ -1201,8 +1201,8 @@ AddSpritemapToOAM_Common:
 ;     s000000xxxxxxxxx yyyyyyyy YXppPPPttttttttt
 ; Where:
 ;     s = size bit
-;     x = X offset of sprite from centre
-;     y = Y offset of sprite from centre
+;     x = X offset of sprite from center
+;     y = Y offset of sprite from center
 ;     Y = Y flip
 ;     X = X flip
 ;     P = palette

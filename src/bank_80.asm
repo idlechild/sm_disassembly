@@ -8401,7 +8401,7 @@ LoadStationListPointers:
 ;       |      ___________________ Screen X position
 ;       |     |      _____________ Screen Y position
 ;       |     |     |      _______ Samus Y offset (relative to screen top)
-;       |     |     |     |      _ Samus X offset (relative to screen centre)
+;       |     |     |     |      _ Samus X offset (relative to screen center)
 ;       |     |     |     |     |
 LoadStations_Crateria:
 ; 0: Landing site (from Crateria mainstreet)

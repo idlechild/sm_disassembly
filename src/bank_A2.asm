@@ -1495,7 +1495,7 @@ Function_MamaTurtle_Asleep:
 
 
 SleepingMamaTurtleShellShape:
-; Y pixel offsets from centre. Indexed by X distance from center
+; Y pixel offsets from center. Indexed by X distance from center
     dw $FFF0,$FFF0,$FFF0,$FFF0,$FFF1,$FFF1,$FFF1,$FFF1                   ;A28E80;
     dw $FFF1,$FFF2,$FFF3,$FFF3,$FFF4,$FFF5,$FFF6,$FFF7                   ;A28E90;
     dw $FFF8,$FFF9,$FFFA,$FFFB,$FFFC,$FFFC,$0000,$0000                   ;A28EA0;

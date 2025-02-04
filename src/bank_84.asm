@@ -2,7 +2,12 @@
 org $848000
 
 
+;;; $8000: Golden Torizo health-based palette handling ;;;
 GoldenTorizo_HealthBasedPalette_Handling:
+;; Parameter:
+;;     A: Health. Assumed to be less than 8000h
+
+; This is a great way to start the PLM bank
     PHX                                                                  ;848000;
     PHY                                                                  ;848001;
     PHB                                                                  ;848002;
@@ -35,8 +40,8 @@ GoldenTorizo_HealthBasedPalette_Handling:
     PLX                                                                  ;848030;
     RTL                                                                  ;848031;
 
-
-  .palette1:                                                               ;848032;
+  .palette1:                                                             ;848032;
+; Golden Torizo palette 1
     dw $1000,$56BA,$41B2,$1447,$0403,$4E15,$3570,$24CB,$1868,$6F7F,$51F8,$410E,$031F,$01DA,$00F5,$0C63 ; 0..7FFh
     dw $1000,$56DB,$39D3,$1047,$0403,$4636,$2D91,$20EC,$1489,$6F9B,$5215,$3D2C,$133B,$0DF6,$0CF2,$0C63 ; 800h..FFFh
     dw $1000,$52FB,$31F4,$1067,$0402,$3E76,$25B2,$192D,$10A9,$6F96,$5251,$396A,$2756,$1A13,$190F,$0863 ; 1000h..17FFh
@@ -46,7 +51,8 @@ GoldenTorizo_HealthBasedPalette_Handling:
     dw $1000,$4B9D,$0E98,$04A8,$0000,$1F19,$0A55,$05D1,$052C,$73C4,$4F03,$2E02,$6FC4,$4E84,$4D23,$0043 ; 3000h..37FFh
     dw $0000,$4BBE,$06B9,$00A8,$0000,$173A,$0276,$01F2,$014D,$73E0,$4F20,$2A20,$7FE0,$5AA0,$5920,$0043 ; 3800h+
 
-  .palette2:                                                               ;848132;
+  .palette2:                                                             ;848132;
+; Golden Torizo palette 2
     dw $1000,$4215,$2D0D,$0002,$0000,$3970,$20CB,$0C26,$0403,$463A,$28B3,$1809,$6F7F,$51FD,$4113,$0C63 ; 0..7FFh
     dw $1000,$4236,$252E,$0002,$0000,$3191,$1CEC,$0C47,$0424,$4656,$28D0,$1428,$6F7B,$51F9,$40F0,$0C63 ; 800h..FFFh
     dw $1000,$3E56,$214F,$0002,$0000,$29D1,$190D,$0888,$0424,$4693,$290E,$1046,$6F76,$4DF5,$40EE,$0842 ; 1000h..17FFh
@@ -56,7 +62,14 @@ GoldenTorizo_HealthBasedPalette_Handling:
     dw $1000,$36F8,$09F3,$0003,$0000,$0A74,$05B0,$012C,$0087,$4B24,$25C3,$04C1,$6B44,$4604,$44A3,$0000 ; 3000h..37FFh
     dw $1000,$3719,$0214,$0003,$0000,$0295,$01D1,$014D,$00A8,$4B40,$25E0,$00E0,$6B40,$4600,$4480,$0000 ; 3800h+
 
+
+;;; $8232: Load room PLM GFX ;;;
 Load_Room_PLM_Graphics:
+; Called as part of unpausing
+; The call to $8764 *should* be done with the PLM index in X,
+; which is where the PLM's $7E:DF0C variable is written
+; In the case of unpausing, this variable doesn't need to be written again,
+; but this does mean that the PLM with indexes 0/2/4/6 get their $7E:DF0C variable clobbered
     PHP                                                                  ;848232;
     PHB                                                                  ;848233;
     REP #$30                                                             ;848234;
@@ -79,13 +92,16 @@ Load_Room_PLM_Graphics:
     RTL                                                                  ;84824F;
 
 
+;;; $8250: Clear sounds when going through door ;;;
 Clear_Sounds_When_Going_Through_Door:
+; Called at start of door transition
     LDA.W #$001D                                                         ;848250;
     JSL.L Run_Samus_Command                                              ;848253;
     RTL                                                                  ;848257;
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $8258: Unused. Clear spin jump sound when going through door ;;;
 UNUSED_Clear_SpinJumpSound_GoingThroughDoor_848258:
     LDA.W $0A1E                                                          ;848258;
     AND.W #$FF00                                                         ;84825B;
@@ -103,13 +119,16 @@ UNUSED_Clear_SpinJumpSound_GoingThroughDoor_848258:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $8270: Play spin jump sound if spin jumping ;;;
 Play_SpinJumpSound_if_SpinJumping:
+; Called at end of door transition
     LDA.W #$001C                                                         ;848270;
     JSL.L Run_Samus_Command                                              ;848273;
     RTL                                                                  ;848277;
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $8278: Unused. Play resumed spin jump sound ;;;
 UNUSED_Play_Resumed_SpinJumpSound_848278:
     LDA.W $0A1E                                                          ;848278;
     AND.W #$FF00                                                         ;84827B;
@@ -127,7 +146,10 @@ UNUSED_Play_Resumed_SpinJumpSound_848278:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $8290: Calculate PLM block co-ordinates ;;;
 Calculate_PLM_Block_Coordinates:
+;; Parameters:
+;;     X: PLM index
     LDA.W $1C87,X                                                        ;848290;
     LSR A                                                                ;848293;
     STA.W $4204                                                          ;848294;
@@ -148,7 +170,12 @@ Calculate_PLM_Block_Coordinates:
     RTL                                                                  ;8482B3;
 
 
+;;; $82B4: Write level data block type and BTS ;;;
 Write_Level_Data_Block_Type_and_BTS:
+;; Parameter:
+;;     A low: BTS
+;;     A high: Block type in high nybble (like level data)
+;;     X: PLM block index
     PHX                                                                  ;8482B4;
     STA.B $12                                                            ;8482B5;
     SEP #$20                                                             ;8482B7;
@@ -168,7 +195,13 @@ Write_Level_Data_Block_Type_and_BTS:
     RTS                                                                  ;8482D5;
 
 
+;;; $82D6: Write row of level data block and BTS ;;;
 Write_Row_of_Level_Data_Block_and_BTS:
+;; Parameters:
+;;     X: PLM index
+;;     [[S] + 1] + 1: Level data block
+;;     [[S] + 1] + 3: BTS
+;;     [[S] + 1] + 5: Number of blocks
     PHX                                                                  ;8482D6;
     PHY                                                                  ;8482D7;
     LDY.W #$0001                                                         ;8482D8;
@@ -215,7 +248,14 @@ Write_Row_of_Level_Data_Block_and_BTS:
     RTS                                                                  ;848319;
 
 
+;;; $831A: Load item x-ray blocks (also load room special x-ray blocks) ;;;
 Load_Item_and_Room_Special_Xray_Blocks:
+; Note that any new PLMs created in the free space in this bank will be considered to be an "item PLM",
+; meaning the PLM argument specified in the PLM populations will be used as a unique ID in the picked up items table ($7E:D870)
+; and won't show an x-ray block if they've been "picked up".
+
+; Note that these same PLMs are expected to have $7E:DF0C,x set to a 'PLM item GFX index',
+; which is an index (2k for k in 0..7) to the table of draw instruction pointers responsible for drawing the x-ray tile
     PHP                                                                  ;84831A;
     PHB                                                                  ;84831B;
     REP #$30                                                             ;84831C;
@@ -278,7 +318,6 @@ Load_Item_and_Room_Special_Xray_Blocks:
     TAX                                                                  ;848394;
     JMP.W .loopRoomVar                                                   ;848395;
 
-
   .return:
     PLY                                                                  ;848398;
     PLX                                                                  ;848399;
@@ -286,8 +325,8 @@ Load_Item_and_Room_Special_Xray_Blocks:
     PLP                                                                  ;84839B;
     RTL                                                                  ;84839C;
 
-
   .InstructionPointers:
+; Pointers to x-ray block drawing instructions
     dw DrawInst_DrawItemFrame0_0                                         ;84839D;
     dw DrawInst_DrawItemFrame0_1                                         ;84839F;
     dw DrawInst_DrawItemFrame0_2                                         ;8483A1;
@@ -297,6 +336,8 @@ Load_Item_and_Room_Special_Xray_Blocks:
     dw DrawInst_SuperMissileTank_1                                       ;8483A9;
     dw DrawInst_PowerBombTank_0                                          ;8483AB;
 
+
+;;; $83AD: Enable PLMs ;;;
 Enable_PLMs:
     PHP                                                                  ;8483AD;
     REP #$20                                                             ;8483AE;
@@ -306,6 +347,7 @@ Enable_PLMs:
     RTL                                                                  ;8483B7;
 
 
+;;; $83B8: Disable PLMs ;;;
 Disable_PLMs:
     PHP                                                                  ;8483B8;
     REP #$20                                                             ;8483B9;
@@ -315,6 +357,7 @@ Disable_PLMs:
     RTL                                                                  ;8483C2;
 
 
+;;; $83C3: Clear PLMs ;;;
 Clear_PLMs:
     PHP                                                                  ;8483C3;
     REP #$30                                                             ;8483C4;
@@ -332,7 +375,16 @@ Clear_PLMs:
     RTL                                                                  ;8483D6;
 
 
+;;; $83D7: Spawn hard-coded PLM ;;;
 Spawn_Hardcoded_PLM:
+;; Parameters:
+;;     [[S] + 1] + 1: X position
+;;     [[S] + 1] + 2: Y position
+;;     [[S] + 1] + 3: PLM ID
+;; Returns:
+;;     Carry: set if PLM could not be spawned
+
+; Must be called from lorom bank
     PHB                                                                  ;8483D7;
     PHY                                                                  ;8483D8;
     PHX                                                                  ;8483D9;
@@ -355,7 +407,6 @@ Spawn_Hardcoded_PLM:
     PLB                                                                  ;8483F2;
     SEC                                                                  ;8483F3;
     RTL                                                                  ;8483F4;
-
 
   .found:
     SEP #$20                                                             ;8483F5;
@@ -417,7 +468,16 @@ RTS_848469:
     RTS                                                                  ;848469;
 
 
+;;; $846A: Spawn room PLM ;;;
 Spawn_Room_PLM:
+;; Parameters:
+;;     X: Pointer to room PLM entry
+;;         [X]: PLM ID
+;;         [X] + 2: PLM X block
+;;         [X] + 3: PLM Y block
+;;         [X] + 4: PLM room argument
+;; Returns:
+;;     Carry: set if PLM could not be spawned
     PHP                                                                  ;84846A;
     PHB                                                                  ;84846B;
     PHY                                                                  ;84846C;
@@ -438,7 +498,6 @@ Spawn_Room_PLM:
     PLP                                                                  ;84847F;
     SEC                                                                  ;848480;
     RTL                                                                  ;848481;
-
 
   .found:
     SEP #$20                                                             ;848482;
@@ -486,7 +545,11 @@ RTS_8484E6:
     RTS                                                                  ;8484E6;
 
 
-Spawn_PLM_to_CurrentBlockIndex:
+;;; $84E7: Spawn PLM (to current block index) ;;;
+Spawn_PLM_to_CurrentBlockIndex:;; Parameter:
+;;     A: PLM ID
+;; Returns:
+;;     Carry: If PLM is not spawned, carry is unchanged. Otherwise set according to PLM setup, or clear if PLM setup doesn't change the carry (thanks to the lucky ASL at $8500)
     PHB                                                                  ;8484E7;
     PHY                                                                  ;8484E8;
     PHX                                                                  ;8484E9;
@@ -505,7 +568,6 @@ Spawn_PLM_to_CurrentBlockIndex:
     PLY                                                                  ;8484FA;
     PLB                                                                  ;8484FB;
     RTL                                                                  ;8484FC;
-
 
   .found:
     LDA.W $0DC4                                                          ;8484FD;
@@ -540,7 +602,11 @@ RTS_84853D:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $853E: Unused. Spawn enemy PLM ;;;
 UNUSED_Spawn_Enemy_PLM_84853E:
+;; Parameters:
+;;     A: PLM ID
+;;     X: Enemy index
     PHB                                                                  ;84853E;
     PHY                                                                  ;84853F;
     PHX                                                                  ;848540;
@@ -561,7 +627,6 @@ UNUSED_Spawn_Enemy_PLM_84853E:
     PLY                                                                  ;848553;
     PLB                                                                  ;848554;
     RTL                                                                  ;848555;
-
 
   .found:
     LDA.W $0F7E,Y                                                        ;848556;
@@ -613,6 +678,7 @@ RTS_8485B3:
     RTS                                                                  ;8485B3;
 
 
+;;; $85B4: PLM handler ;;;
 PLM_Handler:
     PHP                                                                  ;8485B4;
     PHB                                                                  ;8485B5;
@@ -642,7 +708,13 @@ PLM_Handler:
     RTL                                                                  ;8485D9;
 
 
+;;; $85DA: Process PLM ;;;
 Process_PLM:
+;; Parameter:
+;;     X: PLM index
+
+; Some instructions (e.g. sleep) pop the return address pushed to the stack by $85F7 to return out of *this* routine
+; (marked "terminate processing PLM")
     JSR.W ($1CD7,X)                                                      ;8485DA;
     LDX.W $1C27                                                          ;8485DD;
     LDA.L $7EDE1C,X                                                      ;8485E0;
@@ -659,7 +731,6 @@ Process_PLM:
     INY                                                                  ;8485F6;
     PEA.W .loop-1                                                        ;8485F7;
     JMP.W ($0012)                                                        ;8485FA; Execute ASM Instruction
-
 
   .nonZeroTimer:
     STA.L $7EDE1C,X                                                      ;8485FD;
@@ -678,7 +749,10 @@ Process_PLM:
     RTS                                                                  ;84861D;
 
 
+;;; $861E: Process PLM draw instruction ;;;
 Process_PLM_Draw_Instruction:
+;; Parameter:
+;;     X: PLM index
     LDA.L $7EDE6C,X                                                      ;84861E;
     TAY                                                                  ;848622;
     LDA.W $1C87,X                                                        ;848623;
@@ -704,7 +778,6 @@ Process_PLM_Draw_Instruction:
     BNE .loopRow                                                         ;848642;
     JMP.W .next                                                          ;848644;
 
-
   .column:
     AND.W #$00FF                                                         ;848647;
     STA.B $16                                                            ;84864A;
@@ -729,14 +802,12 @@ Process_PLM_Draw_Instruction:
     BNE +                                                                ;848667;
     RTS                                                                  ;848669;
 
-
 +   DEY                                                                  ;84866A;
     LDA.W $0000,Y                                                        ;84866B;
     XBA                                                                  ;84866E;
     BPL .positive                                                        ;84866F;
     ORA.W #$FF00                                                         ;848671;
     BRA +                                                                ;848674;
-
 
   .positive:
     AND.W #$00FF                                                         ;848676;
@@ -760,7 +831,6 @@ Process_PLM_Draw_Instruction:
     BNE -                                                                ;848695;
     BRA .setX                                                            ;848697;
 
-
 +   AND.W #$00FF                                                         ;848699;
     BEQ .setX                                                            ;84869C;
     TAX                                                                  ;84869E;
@@ -782,7 +852,11 @@ Process_PLM_Draw_Instruction:
     JMP.W .loopDrawEntry                                                 ;8486B1;
 
 
+;;; $86B4: Instruction - sleep ;;;
 Instruction_PLM_Sleep:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to after this instruction
     DEY                                                                  ;8486B4;
     DEY                                                                  ;8486B5;
     TYA                                                                  ;8486B6;
@@ -791,13 +865,22 @@ Instruction_PLM_Sleep:
     RTS                                                                  ;8486BB;
 
 
+;;; $86BC: Instruction - delete ;;;
 Instruction_PLM_Delete:
+;; Parameters:
+;;     X: PLM index
     STZ.W $1C37,X                                                        ;8486BC;
     PLA                                                                  ;8486BF;
     RTS                                                                  ;8486C0;
 
 
+;;; $86C1: Instruction - pre-instruction = [[Y]] ;;;
 Instruction_PLM_PreInstruction_inY:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;8486C1;
     STA.W $1CD7,X                                                        ;8486C4;
     INY                                                                  ;8486C7;
@@ -805,22 +888,31 @@ Instruction_PLM_PreInstruction_inY:
     RTS                                                                  ;8486C9;
 
 
+;;; $86CA: Instruction - clear pre-instruction ;;;
 Instruction_PLM_ClearPreInstruction:
+;; Parameters:
+;;     X: PLM index
     LDA.W #RTS_8486D0                                                    ;8486CA;
-    STA.W $1CD7,X                                                        ;8486CD;
+    STA.W $1CD7,X                                                        ;8486CD; fallthrough to RTS_8486D0
+
 
 RTS_8486D0:
     RTS                                                                  ;8486D0;
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $86D1: Unused. Instruction - call function [[Y]] ;;;
 UNUSED_Instruction_PLM_CallFuctionInY_8486D1:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;8486D1;
     STA.B $12                                                            ;8486D4;
     LDA.W $0001,Y                                                        ;8486D6;
     STA.B $13                                                            ;8486D9;
     PHY                                                                  ;8486DB;
-    JSL.L UNUSED_Instruction_PLM_CallFuctionInY_withA_8486E8             ;8486DC;
+    JSL.L .externalFunction                                              ;8486DC;
     PLY                                                                  ;8486E0;
     LDX.W $1C27                                                          ;8486E1;
     INY                                                                  ;8486E4;
@@ -828,10 +920,16 @@ UNUSED_Instruction_PLM_CallFuctionInY_8486D1:
     INY                                                                  ;8486E6;
     RTS                                                                  ;8486E7;
 
-
-UNUSED_Instruction_PLM_CallFuctionInY_withA_8486E8:
+  .externalFunction
     JML.W [$0012]                                                        ;8486E8;
 
+
+;;; $86EB: Unused. Instruction - call function [[Y]] with A = [[Y] + 3] ;;;
+UNUSED_Instruction_PLM_CallFuctionInY_withA_8486EB:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;8486EB;
     STA.B $12                                                            ;8486EE;
     LDA.W $0001,Y                                                        ;8486F0;
@@ -847,13 +945,17 @@ UNUSED_Instruction_PLM_CallFuctionInY_withA_8486E8:
     TAY                                                                  ;848706;
     RTS                                                                  ;848707;
 
-
   .externalFunction:
     JML.W [$0012]                                                        ;848708;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $870B: Instruction - call function [[Y]] ;;;
 Instruction_PLM_CallFunctionInY:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;84870B;
     STA.B $12                                                            ;84870E;
     LDA.W $0001,Y                                                        ;848710;
@@ -868,19 +970,28 @@ Instruction_PLM_CallFunctionInY:
     INY                                                                  ;84871F;
     RTS                                                                  ;848720;
 
-
   .externalFunction:
     JML.W [$0012]                                                        ;848721;
 
 
+;;; $8724: Instruction - go to [[Y]] ;;;
 Instruction_PLM_GotoY:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;848724;
     TAY                                                                  ;848727;
     RTS                                                                  ;848728;
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $8729: Unused. Instruction - go to [Y] + ±[[Y]] ;;;
 UNUSED_Instruction_PLM_GotoY_PlusMinusY_848729:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     STY.B $12                                                            ;848729;
     DEY                                                                  ;84872B;
     LDA.W $0000,Y                                                        ;84872C;
@@ -888,7 +999,6 @@ UNUSED_Instruction_PLM_GotoY_PlusMinusY_848729:
     BMI .negative                                                        ;848730;
     AND.W #$00FF                                                         ;848732;
     BRA +                                                                ;848735;
-
 
   .negative:
     ORA.W #$FF00                                                         ;848737;
@@ -900,7 +1010,13 @@ UNUSED_Instruction_PLM_GotoY_PlusMinusY_848729:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $873F: Instruction - decrement timer and go to [[Y]] if non-zero ;;;
 Instruction_PLM_DecrementTimer_GotoYIfNonZero:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     DEC.W $1D77,X                                                        ;84873F;
     BNE Instruction_PLM_GotoY                                            ;848742;
     INY                                                                  ;848744;
@@ -909,7 +1025,13 @@ Instruction_PLM_DecrementTimer_GotoYIfNonZero:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $8747: Unused. Instruction - decrement timer and go to [Y] + ±[[Y]] if non-zero ;;;
 UNUSED_Instruction_PLM_DecrementTimer_GotoYIfNonZero_848747:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     DEC.W $1D77,X                                                        ;848747;
     BNE UNUSED_Instruction_PLM_GotoY_PlusMinusY_848729                   ;84874A;
     INY                                                                  ;84874C;
@@ -917,7 +1039,13 @@ UNUSED_Instruction_PLM_DecrementTimer_GotoYIfNonZero_848747:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $874E: Instruction - timer = [[Y]] (8-bit) ;;;
 Instruction_PLM_TimerEqualsY_8Bit:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     SEP #$20                                                             ;84874E;
     LDA.W $0000,Y                                                        ;848750;
     STA.W $1D77,X                                                        ;848753;
@@ -927,7 +1055,13 @@ Instruction_PLM_TimerEqualsY_8Bit:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $875A: Unused. Instruction - timer = [[Y]] (16-bit) ;;;
 UNUSED_Instruction_PLM_TimerEqualsY_16Bit_84875A:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;84875A;
     STA.W $1D77,X                                                        ;84875D;
     INY                                                                  ;848760;
@@ -936,11 +1070,27 @@ UNUSED_Instruction_PLM_TimerEqualsY_16Bit_84875A:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $8763: RTS ;;;
 RTS_848763:
     RTS                                                                  ;848763;
 
 
+;;; $8764: Instruction - load item PLM GFX ;;;
 Instruction_PLM_LoadItemPLMGFX:
+;; Parameter
+;;     X: PLM index
+;;     Y: Pointer to instruction arguments
+;;         [Y]: Pointer to GFX of two blocks (each composed of 4 tiles in the following order)
+;;         [Y] + 2: Palette index - block 1 - top-left
+;;         [Y] + 3: Palette index - block 1 - top-right
+;;         [Y] + 4: Palette index - block 1 - bottom-left
+;;         [Y] + 5: Palette index - block 1 - bottom-right
+;;         [Y] + 6: Palette index - block 2 - top-left
+;;         [Y] + 7: Palette index - block 2 - top-right
+;;         [Y] + 8: Palette index - block 2 - bottom-left
+;;         [Y] + 9: Palette index - block 2 - bottom-right
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $1C2D                                                          ;848764;
     STA.L $7EDF0C,X                                                      ;848767;
     TAX                                                                  ;84876B;
@@ -1003,7 +1153,12 @@ Instruction_PLM_LoadItemPLMGFX:
     dw $03E0,$03E8,$03F0,$03F8                                           ;8487DD;
 
 
+;;; $87E5: Instruction - transfer [[Y]] bytes from [[Y] + 2] to VRAM [[Y] + 5] ;;;
 Instruction_PLM_TransferBytesToVRAM:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDX.W $0330                                                          ;8487E5;
     LDA.W $0000,Y                                                        ;8487E8;
     STA.B $D0,X                                                          ;8487EB;
@@ -1025,7 +1180,12 @@ Instruction_PLM_TransferBytesToVRAM:
     RTS                                                                  ;84880D;
 
 
+;;; $880E: Instruction - go to [[Y] + 1] if any of the boss bits [[Y]] are set ;;;
 Instruction_PLM_GotoY_ifBossBitsSet:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;84880E;
     INY                                                                  ;848811;
     AND.W #$00FF                                                         ;848812;
@@ -1033,14 +1193,18 @@ Instruction_PLM_GotoY_ifBossBitsSet:
     BCC +                                                                ;848819;
     JMP.W Instruction_PLM_GotoY                                          ;84881B;
 
-
 +   INY                                                                  ;84881E;
     INY                                                                  ;84881F;
     RTS                                                                  ;848820;
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $8821: Unused. Instruction - set the boss bits [[Y]] ;;;
 UNUSED_Instruction_PLM_SetBossBits_848821:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;848821;
     AND.W #$00FF                                                         ;848824;
     JSL.L SetBossBitsInAForCurrentArea                                   ;848827;
@@ -1049,7 +1213,12 @@ UNUSED_Instruction_PLM_SetBossBits_848821:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $882D: Instruction - go to [[Y] + 2] if the event [[Y]] is set ;;;
 Instruction_PLM_GotoY_ifEventIsSet:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;84882D;
     INY                                                                  ;848830;
     INY                                                                  ;848831;
@@ -1057,14 +1226,18 @@ Instruction_PLM_GotoY_ifEventIsSet:
     BCC .return                                                          ;848836;
     JMP.W Instruction_PLM_GotoY                                          ;848838;
 
-
   .return:
     INY                                                                  ;84883B;
     INY                                                                  ;84883C;
     RTS                                                                  ;84883D;
 
 
+;;; $883E: Instruction - set the event [[Y]] ;;;
 Instruction_PLM_SetTheEvent:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;84883E;
     JSL.L MarkEvent_inA                                                  ;848841;
     INY                                                                  ;848845;
@@ -1072,7 +1245,16 @@ Instruction_PLM_SetTheEvent:
     RTS                                                                  ;848847;
 
 
+;;; $8848: Instruction - go to [[Y]] if room argument chozo block destroyed ;;;
 Instruction_PLM_GotoY_ifRoomArg_ChozoBlockDestroyed:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
+
+; Negative room argument => chozo block is not destroyed
+; Used by unused chozo block PLMs $D700/D708
     PHX                                                                  ;848848;
     LDA.W $1DC7,X                                                        ;848849;
     BMI .pullX                                                           ;84884C;
@@ -1083,19 +1265,23 @@ Instruction_PLM_GotoY_ifRoomArg_ChozoBlockDestroyed:
     BEQ .return                                                          ;84885A;
     JMP.W Instruction_PLM_GotoY                                          ;84885C;
 
-
   .return:
     INY                                                                  ;84885F;
     INY                                                                  ;848860;
     RTS                                                                  ;848861;
-
 
   .pullX:
     PLX                                                                  ;848862;
     BRA .return                                                          ;848863;
 
 
+;;; $8865: Instruction - set room argument chozo block destroyed ;;;
 Instruction_PLM_SetRoomArg_ChozoBlockDestroyed:
+;; Parameters:
+;;     X: PLM index
+
+; Negative room argument => chozo block destroyed flag isn't set
+; Used by unused chozo block PLMs $D700/D708
     PHX                                                                  ;848865;
     LDA.W $1DC7,X                                                        ;848866;
     BMI .return                                                          ;848869;
@@ -1109,7 +1295,15 @@ Instruction_PLM_SetRoomArg_ChozoBlockDestroyed:
     RTS                                                                  ;84887B;
 
 
+;;; $887C: Instruction - go to [[Y]] if the room argument item is collected ;;;
 Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
+
+; Negative room argument => item is not collected
     PHX                                                                  ;84887C;
     LDA.W $1DC7,X                                                        ;84887D;
     BMI .pullX                                                           ;848880;
@@ -1120,19 +1314,22 @@ Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected:
     BEQ .return                                                          ;84888E;
     JMP.W Instruction_PLM_GotoY                                          ;848890;
 
-
   .return:
     INY                                                                  ;848893;
     INY                                                                  ;848894;
     RTS                                                                  ;848895;
-
 
   .pullX:
     PLX                                                                  ;848896;
     BRA .return                                                          ;848897;
 
 
+;;; $8899: Instruction - set the room argument item collected ;;;
 Instruction_PLM_SetRoomArg_ItemCollected:
+;; Parameters:
+;;     X: PLM index
+
+; Negative room argument => item collected is not set
     PHX                                                                  ;848899;
     LDA.W $1DC7,X                                                        ;84889A;
     BMI .return                                                          ;84889D;
@@ -1146,7 +1343,12 @@ Instruction_PLM_SetRoomArg_ItemCollected:
     RTS                                                                  ;8488AF;
 
 
+;;; $88B0: Instruction - pick up beam [[Y]] and display message box [[Y] + 2] ;;;
 Instruction_PLM_PickUpBeam_DisplayMessageBox:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;8488B0;
     ORA.W $09A8                                                          ;8488B3;
     STA.W $09A8                                                          ;8488B6;
@@ -1177,7 +1379,12 @@ Instruction_PLM_PickUpBeam_DisplayMessageBox:
     RTS                                                                  ;8488F2;
 
 
+;;; $88F3: Instruction - pick up equipment [[Y]] and display message box [[Y] + 2] ;;;
 Instruction_PLM_PickUpEquipment_DisplayMessageBox:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $09A2                                                          ;8488F3;
     ORA.W $0000,Y                                                        ;8488F6;
     STA.W $09A2                                                          ;8488F9;
@@ -1195,7 +1402,12 @@ Instruction_PLM_PickUpEquipment_DisplayMessageBox:
     RTS                                                                  ;848919;
 
 
+;;; $891A: Instruction - pick up equipment [[Y]], add grapple to HUD and display grapple message box ;;;
 Inst_PLM_PickUpEquipment_AddGrappleHUD_DisplayMessageBox:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $09A2                                                          ;84891A;
     ORA.W $0000,Y                                                        ;84891D;
     STA.W $09A2                                                          ;848920;
@@ -1212,7 +1424,12 @@ Inst_PLM_PickUpEquipment_AddGrappleHUD_DisplayMessageBox:
     RTS                                                                  ;848940;
 
 
+;;; $8941: Instruction - pick up equipment [[Y]], add x-ray to HUD and display x-ray message box ;;;
 Inst_PLM_PickUpEquipment_AddXrayToHUD_DisplayMessageBox:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $09A2                                                          ;848941;
     ORA.W $0000,Y                                                        ;848944;
     STA.W $09A2                                                          ;848947;
@@ -1229,7 +1446,12 @@ Inst_PLM_PickUpEquipment_AddXrayToHUD_DisplayMessageBox:
     RTS                                                                  ;848967;
 
 
+;;; $8968: Instruction - collect [[Y]] health energy tank ;;;
 Instruction_PLM_CollectHealth_EnergyTank:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $09C4                                                          ;848968;
     CLC                                                                  ;84896B;
     ADC.W $0000,Y                                                        ;84896C;
@@ -1244,7 +1466,12 @@ Instruction_PLM_CollectHealth_EnergyTank:
     RTS                                                                  ;848985;
 
 
+;;; $8986: Instruction - collect [[Y]] health reserve tank ;;;
 Instruction_PLM_CollectHealth_ReserveTank:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $09D4                                                          ;848986;
     CLC                                                                  ;848989;
     ADC.W $0000,Y                                                        ;84898A;
@@ -1263,7 +1490,12 @@ Instruction_PLM_CollectHealth_ReserveTank:
     RTS                                                                  ;8489A8;
 
 
+;;; $89A9: Instruction - collect [[Y]] ammo missile tank ;;;
 Instruction_PLM_CollectAmmo_MissileTank:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $09C8                                                          ;8489A9;
     CLC                                                                  ;8489AC;
     ADC.W $0000,Y                                                        ;8489AD;
@@ -1282,7 +1514,12 @@ Instruction_PLM_CollectAmmo_MissileTank:
     RTS                                                                  ;8489D1;
 
 
+;;; $89D2: Instruction - collect [[Y]] ammo super missile tank ;;;
 Instruction_PLM_CollectAmmo_SuperMissileTank:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $09CC                                                          ;8489D2;
     CLC                                                                  ;8489D5;
     ADC.W $0000,Y                                                        ;8489D6;
@@ -1301,7 +1538,12 @@ Instruction_PLM_CollectAmmo_SuperMissileTank:
     RTS                                                                  ;8489FA;
 
 
+;;; $89FB: Instruction - collect [[Y]] ammo power bomb tank ;;;
 Instruction_PLM_CollectAmmo_PowerBombTank:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $09D0                                                          ;8489FB;
     CLC                                                                  ;8489FE;
     ADC.W $0000,Y                                                        ;8489FF;
@@ -1320,7 +1562,13 @@ Instruction_PLM_CollectAmmo_PowerBombTank:
     RTS                                                                  ;848A23;
 
 
+;;; $8A24: Instruction - link instruction = [[Y]] ;;;
 Instruction_PLM_LinkInstruction_Y:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;848A24;
     STA.L $7EDEBC,X                                                      ;848A27;
     INY                                                                  ;848A2B;
@@ -1328,7 +1576,13 @@ Instruction_PLM_LinkInstruction_Y:
     RTS                                                                  ;848A2D;
 
 
+;;; $8A2E: Instruction - call [[Y]] ;;;
 Instruction_PLM_Call_Y:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     TYA                                                                  ;848A2E;
     INC A                                                                ;848A2F;
     INC A                                                                ;848A30;
@@ -1338,14 +1592,22 @@ Instruction_PLM_Call_Y:
     RTS                                                                  ;848A39;
 
 
+;;; $8A3A: Instruction - return ;;;
 Instruction_PLM_Return:
+;; Parameters:
+;;     X: PLM index
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.L $7EDEBC,X                                                      ;848A3A;
     TAY                                                                  ;848A3E;
     RTS                                                                  ;848A3F;
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $8A40: Unused. Instruction - wait until enemy 0 is dead ;;;
 UNUSED_Instruction_PLM_WaitUntil_Enemy0_IsDead_848A40:
+;; Parameters:
+;;     X: PLM index
     LDA.W $0F86                                                          ;848A40;
     AND.W #$0200                                                         ;848A43;
     BNE .return                                                          ;848A46;
@@ -1360,7 +1622,10 @@ UNUSED_Instruction_PLM_WaitUntil_Enemy0_IsDead_848A40:
     RTS                                                                  ;848A58;
 
 
+;;; $8A59: Unused. Instruction - wait until enemy 1 is dead ;;;
 UNUSED_Instruction_PLM_WaitUntil_Enemy0_IsDead_848A59:
+;; Parameters:
+;;     X: PLM index
     LDA.W $0FC6                                                          ;848A59;
     AND.W #$0200                                                         ;848A5C;
     BNE .return                                                          ;848A5F;
@@ -1376,7 +1641,15 @@ UNUSED_Instruction_PLM_WaitUntil_Enemy0_IsDead_848A59:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $8A72: Instruction - go to [[Y]] if the room argument door is set ;;;
 Instruction_PLM_GotoY_ifRoomArg_DoorIsSet:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
+
+; Negative room argument => door is not set
     PHX                                                                  ;848A72;
     LDA.W $1DC7,X                                                        ;848A73;
     BMI .pullX                                                           ;848A76;
@@ -1389,19 +1662,23 @@ Instruction_PLM_GotoY_ifRoomArg_DoorIsSet:
     TAY                                                                  ;848A89;
     RTS                                                                  ;848A8A;
 
-
   .return:
     INY                                                                  ;848A8B;
     INY                                                                  ;848A8C;
     RTS                                                                  ;848A8D;
-
 
   .pullX:
     PLX                                                                  ;848A8E;
     BRA .return                                                          ;848A8F;
 
 
+;;; $8A91: Instruction - increment door hit counter; set room argument door and go to [[Y] + 1] if [door hit counter] >= [[Y]] ;;;
 Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.L $7EDF0C,X                                                      ;848A91;
     INC A                                                                ;848A95;
     STA.L $7EDF0C,X                                                      ;848A96;
@@ -1435,7 +1712,15 @@ Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY:
     JMP.W Instruction_PLM_GotoY                                          ;848ACA;
 
 
+;;; $8ACD: Instruction - increment room argument; room argument = FFFFh and go to [[Y] + 1] if [room argument] >= [[Y]] ;;;
 Instruction_PLM_IncRoomArg_RoomArgFFFF_GotoY:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
+
+; Used by Draygon turrets
     SEP #$20                                                             ;848ACD;
     LDA.W $1DC7,X                                                        ;848ACF;
     INC A                                                                ;848AD2;
@@ -1450,7 +1735,6 @@ Instruction_PLM_IncRoomArg_RoomArgFFFF_GotoY:
   .return:
     RTS                                                                  ;848AE0;
 
-
   .FFFF:
     LDA.W #$FFFF                                                         ;848AE1;
     STA.W $1DC7,X                                                        ;848AE4;
@@ -1460,7 +1744,13 @@ Instruction_PLM_IncRoomArg_RoomArgFFFF_GotoY:
     JMP.W Instruction_PLM_GotoY                                          ;848AEE;
 
 
+;;; $8AF1: Instruction - PLM BTS = [[Y]] ;;;
 Instruction_PLM_PLMBTS_Y:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     PHX                                                                  ;848AF1;
     LDA.W $1C87,X                                                        ;848AF2;
     LSR A                                                                ;848AF5;
@@ -1474,7 +1764,12 @@ Instruction_PLM_PLMBTS_Y:
     RTS                                                                  ;848B04;
 
 
+;;; $8B05: Instruction - draw PLM block ;;;
 Instruction_PLM_DrawPLMBlock_Clone:
+;; Parameters:
+;;     X: PLM index
+
+; Clone of Instruction_PLM_DrawPLMBlock
     REP #$20                                                             ;848B05;
     PHX                                                                  ;848B07;
     PHY                                                                  ;848B08;
@@ -1482,19 +1777,26 @@ Instruction_PLM_DrawPLMBlock_Clone:
     LDX.W $1C87,Y                                                        ;848B0A;
     LDA.W $1E17,Y                                                        ;848B0D;
     STA.L $7F0002,X                                                      ;848B10;
-    JMP.W Instruction_PLM_DrawPLMBlock_draw                              ;848B14;
+    JMP.W Instruction_PLM_DrawPLMBlock_Common                            ;848B14;
 
 
+;;; $8B17: Instruction - draw PLM block ;;;
 Instruction_PLM_DrawPLMBlock:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to after this instruction
+
+; This works by creating a draw instruction in RAM and calling the PLM handler's drawing routine manually
     REP #$20                                                             ;848B17;
     PHX                                                                  ;848B19;
     PHY                                                                  ;848B1A;
     TXY                                                                  ;848B1B;
     LDX.W $1C87,Y                                                        ;848B1C;
     LDA.W $1E17,Y                                                        ;848B1F;
-    STA.L $7F0002,X                                                      ;848B22;
+    STA.L $7F0002,X                                                      ;848B22; fallthrough to Instruction_PLM_DrawPLMBlock_Common
 
-Instruction_PLM_DrawPLMBlock_draw:
+
+Instruction_PLM_DrawPLMBlock_Common:
     STA.W $1E69                                                          ;848B26;
     LDA.W #$0001                                                         ;848B29;
     STA.W $1E67                                                          ;848B2C;
@@ -1515,7 +1817,10 @@ Instruction_PLM_DrawPLMBlock_draw:
     RTS                                                                  ;848B54;
 
 
+;;; $8B55: Instruction - process air scroll update ;;;
 Instruction_PLM_ProcessAirScrollUpdate:
+;; Parameters:
+;;     X: PLM index
     PHB                                                                  ;848B55;
     PHX                                                                  ;848B56;
     PHY                                                                  ;848B57;
@@ -1537,7 +1842,6 @@ Instruction_PLM_ProcessAirScrollUpdate:
     INY                                                                  ;848B76;
     BRA .loop                                                            ;848B77;
 
-
   .specialAir:
     REP #$20                                                             ;848B79;
     PLY                                                                  ;848B7B;
@@ -1554,7 +1858,10 @@ Instruction_PLM_ProcessAirScrollUpdate:
     RTS                                                                  ;848B92;
 
 
+;;; $8B93: Instruction - process solid scroll update ;;;
 Instruction_PLM_ProcessSolidScrollUpdate:
+;; Parameters:
+;;     X: PLM index
     PHB                                                                  ;848B93;
     PHX                                                                  ;848B94;
     PHY                                                                  ;848B95;
@@ -1576,7 +1883,6 @@ Instruction_PLM_ProcessSolidScrollUpdate:
     INY                                                                  ;848BB4;
     BRA .loop                                                            ;848BB5;
 
-
   .specialBlock:
     REP #$20                                                             ;848BB7;
     PLY                                                                  ;848BB9;
@@ -1594,7 +1900,12 @@ Instruction_PLM_ProcessSolidScrollUpdate:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $8BD1: Unused. Instruction - queue music track [[Y]] ;;;
 UNUSED_Instruction_PLM_QueueMusicTrack_Y_848BD1:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;848BD1;
     AND.W #$00FF                                                         ;848BD4;
     JSL.L QueueMusicDataOrTrack_8FrameDelay                              ;848BD7;
@@ -1603,7 +1914,12 @@ UNUSED_Instruction_PLM_QueueMusicTrack_Y_848BD1:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $8BDD: Instruction - clear music queue and queue music track [[Y]] ;;;
 Instruction_PLM_ClearMusicQueue_QueueMusicTrack:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     PHX                                                                  ;848BDD;
     LDX.W #$000E                                                         ;848BDE;
 
@@ -1626,21 +1942,36 @@ Instruction_PLM_ClearMusicQueue_QueueMusicTrack:
     RTS                                                                  ;848C06;
 
 
+;;; $8C07: Instruction - queue sound [[Y]], sound library 1, max queued sounds allowed = 6 ;;;
 Instruction_PLM_QueueSound_Y_Lib1_Max6:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;848C07;
     JSL.L QueueSound_Lib1_Max6                                           ;848C0A;
     INY                                                                  ;848C0E;
     RTS                                                                  ;848C0F;
 
 
+;;; $8C10: Instruction - queue sound [[Y]], sound library 2, max queued sounds allowed = 6 ;;;
 Instruction_PLM_QueueSound_Y_Lib2_Max6:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;848C10;
     JSL.L QueueSound_Lib2_Max6                                           ;848C13;
     INY                                                                  ;848C17;
     RTS                                                                  ;848C18;
 
 
+;;; $8C19: Instruction - queue sound [[Y]], sound library 3, max queued sounds allowed = 6 ;;;
 Instruction_PLM_QueueSound_Y_Lib3_Max6:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;848C19;
     JSL.L QueueSound_Lib3_Max6                                           ;848C1C;
     INY                                                                  ;848C20;
@@ -1648,28 +1979,48 @@ Instruction_PLM_QueueSound_Y_Lib3_Max6:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $8C22: Unused. Instruction - queue sound [[Y]], sound library 1, max queued sounds allowed = 15 ;;;
 UNUSED_Instruction_PLM_QueueSound_Y_Lib1_Max15_848C22:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;848C22;
     JSL.L QueueSound                                                     ;848C25;
     INY                                                                  ;848C29;
     RTS                                                                  ;848C2A;
 
 
+;;; $8C2B: Unused. Instruction - queue sound [[Y]], sound library 2, max queued sounds allowed = 15 ;;;
 UNUSED_Instruction_PLM_QueueSound_Y_Lib2_Max15_848C2B:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;848C2B;
     JSL.L QueueSound_Lib2_Max15                                          ;848C2E;
     INY                                                                  ;848C32;
     RTS                                                                  ;848C33;
 
 
+;;; $8C34: Unused. Instruction - queue sound [[Y]], sound library 3, max queued sounds allowed = 15 ;;;
 UNUSED_Instruction_PLM_QueueSound_Y_Lib3_Max15_848C34:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;848C34;
     JSL.L QueueSound_Lib3_Max15                                          ;848C37;
     INY                                                                  ;848C3B;
     RTS                                                                  ;848C3C;
 
 
+;;; $8C3D: Unused. Instruction - queue sound [[Y]], sound library 1, max queued sounds allowed = 3 ;;;
 UNUSED_Instruction_PLM_QueueSound_Y_Lib1_Max3_848C3D:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;848C3D;
     JSL.L QueueSound_Lib1_Max3                                           ;848C40;
     INY                                                                  ;848C44;
@@ -1677,7 +2028,12 @@ UNUSED_Instruction_PLM_QueueSound_Y_Lib1_Max3_848C3D:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $8C46: Instruction - queue sound [[Y]], sound library 2, max queued sounds allowed = 3 ;;;
 Instruction_PLM_QueueSound_Y_Lib2_Max3:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;848C46;
     JSL.L QueueSound_Lib2_Max3                                           ;848C49;
     INY                                                                  ;848C4D;
@@ -1685,35 +2041,60 @@ Instruction_PLM_QueueSound_Y_Lib2_Max3:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $8C4F: Unused. Instruction - queue sound [[Y]], sound library 3, max queued sounds allowed = 3 ;;;
 UNUSED_Instruction_PLM_QueueSound_Y_Lib3_Max3_848C4F:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;848C4F;
     JSL.L QueueSound_Lib3_Max3                                           ;848C52;
     INY                                                                  ;848C56;
     RTS                                                                  ;848C57;
 
 
+;;; $8C58: Unused. Instruction - queue sound [[Y]], sound library 1, max queued sounds allowed = 9 ;;;
 UNUSED_Instruction_PLM_QueueSound_Y_Lib1_Max9_848C58:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;848C58;
     JSL.L QueueSound_Lib1_Max9                                           ;848C5B;
     INY                                                                  ;848C5F;
     RTS                                                                  ;848C60;
 
 
+;;; $8C61: Unused. Instruction - queue sound [[Y]], sound library 2, max queued sounds allowed = 9 ;;;
 UNUSED_Instruction_PLM_QueueSound_Y_Lib2_Max9_848C61:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;848C61;
     JSL.L QueueSound_Lib2_Max9                                           ;848C64;
     INY                                                                  ;848C68;
     RTS                                                                  ;848C69;
 
 
+;;; $8C6A: Unused. Instruction - queue sound [[Y]], sound library 3, max queued sounds allowed = 9 ;;;
 UNUSED_Instruction_PLM_QueueSound_Y_Lib3_Max9_848C6A:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;848C6A;
     JSL.L QueueSound_Lib3_Max9                                           ;848C6D;
     INY                                                                  ;848C71;
     RTS                                                                  ;848C72;
 
 
+;;; $8C73: Unused. Instruction - queue sound [[Y]], sound library 1, max queued sounds allowed = 1 ;;;
 UNUSED_Instruction_PLM_QueueSound_Y_Lib1_Max1_848C73:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;848C73;
     JSL.L QueueSound_Lib1_Max1                                           ;848C76;
     INY                                                                  ;848C7A;
@@ -1721,7 +2102,12 @@ UNUSED_Instruction_PLM_QueueSound_Y_Lib1_Max1_848C73:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $8C7C: Instruction - queue sound [[Y]], sound library 2, max queued sounds allowed = 1 ;;;
 Instruction_PLM_QueueSound_Y_Lib2_Max1:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;848C7C;
     JSL.L QueueSound_Lib2_Max1                                           ;848C7F;
     INY                                                                  ;848C83;
@@ -1729,7 +2115,12 @@ Instruction_PLM_QueueSound_Y_Lib2_Max1:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $8C85: Unused. Instruction - queue sound [[Y]], sound library 3, max queued sounds allow = 1 ;;;
 UNUSED_Instruction_PLM_QueueSound_Y_Lib3_Max1_848C85:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;848C85;
     JSL.L QueueSound_Lib3_Max1                                           ;848C88;
     INY                                                                  ;848C8C;
@@ -1737,10 +2128,12 @@ UNUSED_Instruction_PLM_QueueSound_Y_Lib3_Max1_848C85:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $8C8E: RTS ;;;
 RTS_848C8E:
     RTS                                                                  ;848C8E;
 
 
+;;; $8C8F: Instruction - activate map station ;;;
 Instruction_PLM_Activate_MapStation:
     PHX                                                                  ;848C8F;
     PHY                                                                  ;848C90;
@@ -1757,6 +2150,7 @@ Instruction_PLM_Activate_MapStation:
     RTS                                                                  ;848CAE;
 
 
+;;; $8CAF: Instruction - activate energy station ;;;
 Instruction_PLM_Activate_EnergyStation:
     PHX                                                                  ;848CAF;
     PHY                                                                  ;848CB0;
@@ -1776,6 +2170,7 @@ Instruction_PLM_Activate_EnergyStation:
     RTS                                                                  ;848CCF;
 
 
+;;; $8CD0: Instruction - activate missile station ;;;
 Instruction_PLM_Activate_MissileStation:
     PHX                                                                  ;848CD0;
     PHY                                                                  ;848CD1;
@@ -1795,7 +2190,12 @@ Instruction_PLM_Activate_MissileStation:
     RTS                                                                  ;848CF0;
 
 
+;;; $8CF1: Instruction - go to [[Y]] if [save confirmation selection] = no, otherwise activate save station ;;;
 Instruction_PLM_GotoY_or_ActivateSaveStation:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     PHX                                                                  ;848CF1;
     PHY                                                                  ;848CF2;
     LDA.W #$0017                                                         ;848CF3;
@@ -1823,7 +2223,6 @@ Instruction_PLM_GotoY_or_ActivateSaveStation:
     INY                                                                  ;848D30;
     RTS                                                                  ;848D31;
 
-
   .gotoY:
     PLY                                                                  ;848D32;
     PLX                                                                  ;848D33;
@@ -1833,6 +2232,7 @@ Instruction_PLM_GotoY_or_ActivateSaveStation:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $8D39: Unused. Instruction - resume music in 6 seconds ;;;
 UNUSED_Instruction_PLM_ResumeMusicIn6Seconds_848D39:
     LDA.W #$0168                                                         ;848D39;
     JSL.L Play_Room_Music_Track_After_A_Frames                           ;848D3C;
@@ -1840,7 +2240,13 @@ UNUSED_Instruction_PLM_ResumeMusicIn6Seconds_848D39:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $8D41: Instruction - go to [[Y] + 2] if Samus is within [[Y]] columns and [[Y] + 1] rows of PLM ;;;
 Instruction_PLM_GotoY_ifSamusIsWithin_YColumnsRowsOfPLM:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     JSL.L Calculate_PLM_Block_Coordinates                                ;848D41;
     LDA.W $0AF6                                                          ;848D45;
     LSR A                                                                ;848D48;
@@ -1881,7 +2287,6 @@ Instruction_PLM_GotoY_ifSamusIsWithin_YColumnsRowsOfPLM:
     TAY                                                                  ;848D80;
     RTS                                                                  ;848D81;
 
-
   .tooFar:
     TYA                                                                  ;848D82;
     CLC                                                                  ;848D83;
@@ -1891,7 +2296,10 @@ Instruction_PLM_GotoY_ifSamusIsWithin_YColumnsRowsOfPLM:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $8D89: Unused. Instruction - move PLM down one block ;;;
 UNUSED_Instruction_PLM_MovePLMDown1Block_848D89:
+;; Parameters:
+;;     X: PLM index
     LDA.W $1C87,X                                                        ;848D89;
     CLC                                                                  ;848D8C;
     ADC.W $07A5                                                          ;848D8D;
@@ -1901,37 +2309,49 @@ UNUSED_Instruction_PLM_MovePLMDown1Block_848D89:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $8D97: RTS ;;;
 RTS_848D97:
     RTS                                                                  ;848D97;
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $8D98: Unused. Default PLM instruction list ;;;
 UNUSED_InstList_PLM_DefaultPLM_848D98:
     dw $1000,InstList_PLM_DefaultPLMDrawInstruction                      ;848D98;
     dw Instruction_PLM_GotoY                                             ;848D9C;
     dw UNUSED_InstList_PLM_DefaultPLM_848D98                             ;848D9E;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $8DA0: Default PLM draw instruction ;;;
 InstList_PLM_DefaultPLMDrawInstruction:
 ; Note that this is an invalid draw instruction
 ; Used by instruction list $8D98: Unused. Default PLM instruction list
-    dw $0180,$0000,$0000                                                 ;848DA0;
+    dw $0180,$0000                                                       ;848DA0;
+    dw $0000                                                             ;848DA4;
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $8DA6: Unused. Draw PLM with custom draw instruction pointer and tilemap base addresses ;;;
 UNUSED_DrawPLM_Custom_DrawInstPointer_TilemapBaseAddr_848DA6:
     JSR.W DrawPLM                                                        ;848DA6;
     RTL                                                                  ;848DA9;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $8DAA: Draw PLM ;;;
 DrawPLM_HardCoded:
+;; Parameter:
+;;     X: PLM index
+
+; Devs opted to pre-subtract 20h when setting $0C, rather than take ANDing [$18] with Fh before summing at $8E8C
     REP #$30                                                             ;848DAA;
     LDA.W #$5000                                                         ;848DAC;
     STA.B $09                                                            ;848DAF;
     LDA.W #$53E0                                                         ;848DB1;
     STA.B $0C                                                            ;848DB4;
     LDA.L $7EDE6C,X                                                      ;848DB6;
-    TAY                                                                  ;848DBA;
+    TAY                                                                  ;848DBA; fallthrough to DrawPLM
+
 
 DrawPLM:
     LDA.W $1C29                                                          ;848DBB;
@@ -1952,11 +2372,9 @@ DrawPLM:
     BPL +                                                                ;848DD4;
     RTS                                                                  ;848DD6;
 
-
 +   LDA.W $0000,Y                                                        ;848DD7;
     BPL .horizontal                                                      ;848DDA;
     JMP.W .vertical                                                      ;848DDC;
-
 
   .horizontal:
     AND.W #$7FFF                                                         ;848DDF;
@@ -2007,7 +2425,6 @@ DrawPLM:
   .return8E2F:
     RTS                                                                  ;848E2F;
 
-
 +   LDA.B $18                                                            ;848E30;
     CLC                                                                  ;848E32;
     ADC.B $14                                                            ;848E33;
@@ -2032,7 +2449,6 @@ DrawPLM:
 
   .return8E50:
     RTS                                                                  ;848E50;
-
 
 +   LDA.W #$0200                                                         ;848E51;
     SEC                                                                  ;848E54;
@@ -2064,7 +2480,6 @@ DrawPLM:
     PHA                                                                  ;848E89;
     BRA +                                                                ;848E8A;
 
-
   .greaterThan10h:
     ASL A                                                                ;848E8C;
     CLC                                                                  ;848E8D;
@@ -2092,7 +2507,6 @@ DrawPLM:
     AND.W #$FFE0                                                         ;848EB2;
     BNE +                                                                ;848EB5;
     JMP.W .horizOneScreen                                                ;848EB7;
-
 
 +   CPX.W #$00E4                                                         ;848EBA;
     BPL .return8F2C                                                      ;848EBD;
@@ -2154,12 +2568,10 @@ DrawPLM:
     STA.W $0330                                                          ;848F27;
     BRA .horizAddToVRAMWriteTableEnd                                     ;848F2A;
 
-
   .return8F2C:
     PLA                                                                  ;848F2C;
     PLX                                                                  ;848F2D;
     RTS                                                                  ;848F2E;
-
 
   .horizOneScreen:
     PLA                                                                  ;848F2F;
@@ -2208,7 +2620,6 @@ DrawPLM:
     STA.B [$06],Y                                                        ;848F7D;
     BRA .horizNextBlock                                                  ;848F7F;
 
-
   .horizCopyBlockWithFlip:
     CMP.W #$0400                                                         ;848F81;
     BNE .horizCopyBlockWithVertFlip                                      ;848F84;
@@ -2242,11 +2653,9 @@ DrawPLM:
     BNE .loopHorizBlock                                                  ;848FC3;
     JMP.W .nextDrawEntry                                                 ;848FC5;
 
-
   .return8FC8:
     PLX                                                                  ;848FC8;
     RTS                                                                  ;848FC9;
-
 
   .horizCopyBlockWithVertFlip:
     CMP.W #$0800                                                         ;848FCA;
@@ -2267,7 +2676,6 @@ DrawPLM:
     STA.B [$06],Y                                                        ;848FF3;
     BRA .horizNextBlock                                                  ;848FF5;
 
-
   .horizCopyBlockWithBothFlips:
     LDA.L $7EA006,X                                                      ;848FF7;
     EOR.W #$C000                                                         ;848FFB;
@@ -2284,7 +2692,6 @@ DrawPLM:
     EOR.W #$C000                                                         ;849018;
     STA.B [$06],Y                                                        ;84901B;
     BRA .horizNextBlock                                                  ;84901D;
-
 
   .vertical:
     AND.W #$7FFF                                                         ;84901F;
@@ -2306,7 +2713,6 @@ DrawPLM:
 
   .return903B:
     RTS                                                                  ;84903B;
-
 
 +   LDA.B $1E                                                            ;84903C;
     STA.B $18                                                            ;84903E;
@@ -2335,7 +2741,6 @@ DrawPLM:
     BNE +                                                                ;849065;
     RTS                                                                  ;849067;
 
-
   .drawBlockGreaterThanScreenBlock:
     LDA.B $20                                                            ;849068;
     STA.B $1A                                                            ;84906A;
@@ -2362,7 +2767,6 @@ DrawPLM:
   .return908C:
     PLX                                                                  ;84908C;
     RTS                                                                  ;84908D;
-
 
 +   LDA.W #$0200                                                         ;84908E;
     SEC                                                                  ;849091;
@@ -2416,7 +2820,6 @@ DrawPLM:
     STA.B [$06],Y                                                        ;8490EB;
     JMP.W .vertNextBlock                                                 ;8490ED;
 
-
   .vertCopyBlockWithFlip:
     CMP.W #$0400                                                         ;8490F0;
     BNE .vertCopyBlockWithVertFlip                                       ;8490F3;
@@ -2436,7 +2839,6 @@ DrawPLM:
     STA.B [$06],Y                                                        ;849119;
     BRA .vertNextBlock                                                   ;84911B;
 
-
   .vertCopyBlockWithVertFlip:
     CMP.W #$0800                                                         ;84911D;
     BNE .vertCopyBlockWithBothFlips                                      ;849120;
@@ -2455,7 +2857,6 @@ DrawPLM:
     EOR.W #$8000                                                         ;849143;
     STA.B [$06],Y                                                        ;849146;
     BRA .vertNextBlock                                                   ;849148;
-
 
   .vertCopyBlockWithBothFlips:
     LDA.L $7EA006,X                                                      ;84914A;
@@ -2488,11 +2889,9 @@ DrawPLM:
     BEQ .nextDrawEntry                                                   ;849187;
     JMP.W .loopVertBlock                                                 ;849189;
 
-
   .return918C:
     PLX                                                                  ;84918C;
     RTS                                                                  ;84918D;
-
 
   .nextDrawEntry:
     PLX                                                                  ;84918E;
@@ -2508,7 +2907,6 @@ DrawPLM:
     BNE +                                                                ;84919D;
     RTS                                                                  ;84919F;
 
-
 +   AND.W #$00FF                                                         ;8491A0;
     BIT.W #$0080                                                         ;8491A3;
     BNE +                                                                ;8491A6;
@@ -2516,7 +2914,6 @@ DrawPLM:
     ADC.W $1C29                                                          ;8491A9;
     STA.B $1E                                                            ;8491AC;
     BRA .incY                                                            ;8491AE;
-
 
 +   ORA.W #$FF00                                                         ;8491B0;
     CLC                                                                  ;8491B3;
@@ -2535,7 +2932,6 @@ DrawPLM:
     INY                                                                  ;8491CB;
     JMP.W .loopDrawEntry                                                 ;8491CC;
 
-
   .setHighByte:
     ORA.W #$FF00                                                         ;8491CF;
     CLC                                                                  ;8491D2;
@@ -2545,6 +2941,7 @@ DrawPLM:
     JMP.W .loopDrawEntry                                                 ;8491D9;
 
 
+;;; $91DC: Calculate PLM draw tilemap VRAM destination ;;;
 Calculate_PLMDrawTilemap_VRAMDestination:
     LDA.B $1A                                                            ;8491DC;
     AND.W #$000F                                                         ;8491DE;
@@ -2568,7 +2965,6 @@ Calculate_PLMDrawTilemap_VRAMDestination:
     PHA                                                                  ;849206;
     BRA .fallthrough                                                     ;849207;
 
-
   .greaterThanF:
     ASL A                                                                ;849209;
     CLC                                                                  ;84920A;
@@ -2586,7 +2982,12 @@ Calculate_PLMDrawTilemap_VRAMDestination:
   .fallthrough:
     PLA                                                                  ;84921F;
 
+
+;;; $9220: Partially set up VRAM write table entries for single-screen PLM draw tilemap ;;;
 PartiallySetupVRAMWriteTableEntries_SingleScrnPLMDrawTilemap:
+;; Parameter:
+;;     A: PLM draw tilemap VRAM destination
+;;     X: VRAM write table stack pointer
     ORA.B $1C                                                            ;849220;
     STA.B $D5,X                                                          ;849222;
     LDA.B $14                                                            ;849224;
@@ -2615,53 +3016,70 @@ PartiallySetupVRAMWriteTableEntries_SingleScrnPLMDrawTilemap:
 
 if !FEATURE_KEEP_UNREFERENCED
 DrawInst_UnusedBlueBrinstarFaceBlock:
+; Used by instruction list $D0EC: PLM $D0F2 (unused. Blue Brinstar face-block)
     dw $0001,$817E                                                       ;84924D;
     dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
 DrawInst_CrateriaMainStreetEscape:
+; Used by instruction list $BB19: PLM $BB30 (clear Crateria mainstreet escape passage if critters escaped)
     dw $0002,$00FF,$00FF                                                 ;849253;
     dw $0000
 
+
 DrawInst_CrittersEscapeBlock_0:
+; Used by instruction list $B9A2: PLM $B9C1 (shot/bombed/grappled reaction, shootable, BTS 4Fh. Critters escape block)
     dw $8003,$8053,$8053,$8053                                           ;84925B;
     dw $0000
 
 DrawInst_CrittersEscapeBlock_1:
+; Used by instruction list $B9A2: PLM $B9C1 (shot/bombed/grappled reaction, shootable, BTS 4Fh. Critters escape block)
     dw $8003,$8054,$8054,$8054                                           ;849265;
     dw $0000
 
 DrawInst_CrittersEscapeBlock_2:
+; Used by instruction list $B9A2: PLM $B9C1 (shot/bombed/grappled reaction, shootable, BTS 4Fh. Critters escape block)
     dw $8003,$8055,$8055,$8055                                           ;84926F;
     dw $0000
 
 DrawInst_CrittersEscapeBlock_3:
+; Used by instruction list $B9A2: PLM $B9C1 (shot/bombed/grappled reaction, shootable, BTS 4Fh. Critters escape block)
     dw $8003,$80FF,$80FF,$80FF                                           ;849279;
     dw $0000
 
+
 DrawInst_OldTourianEscapeShaftBlocks:
+; Used by instruction list $B919: PLM $B964 (make old Tourian escape shaft fake wall explode)
     dw $8003,$00FF,$00FF,$00FF                                           ;849283;
     db $01,$00                                                           ;84928B;
     dw $8003,$00FF,$00FF,$00FF                                           ;84928D;
     dw $0000
 
+
 DrawInst_CrumbleAccessToTourianElevator_0:
+; Used by instruction list $AAE5: PLM $B773 (crumble access to Tourian elevator)
     dw $0004,$00FF,$00FF,$00FF,$00FF                                     ;849297;
     dw $0000
 
 DrawInst_CrumbleAccessToTourianElevator_1:
+; Used by instruction list $AAE5: PLM $B773 (crumble access to Tourian elevator)
     dw $0004,$0053,$0053,$0053,$0053                                     ;8492A3;
     dw $0000
 
 DrawInst_CrumbleAccessToTourianElevator_2:
+; Used by instruction list $AAE5: PLM $B773 (crumble access to Tourian elevator)
     dw $0004,$0054,$0054,$0054,$0054                                     ;8492AF;
     dw $0000
 
 DrawInst_CrumbleAccessToTourianElevator_3:
+; Used by instruction list $AAE5: PLM $B773 (crumble access to Tourian elevator)
     dw $0004,$0055,$0055,$0055,$0055                                     ;8492BB;
     dw $0000
 
+
 DrawInst_ClearAccessToTourianElevator:
+; Used by instruction list $AB0C: PLM $B777 (clear access to Tourian elevator)
     dw $0004,$00FF,$00FF,$00FF,$00FF                                     ;8492C7;
     db $00,$01                                                           ;8492D1;
     dw $0004,$00FF,$00FF,$00FF,$00FF                                     ;8492D3;
@@ -2675,10 +3093,13 @@ DrawInst_ClearAccessToTourianElevator:
     dw $0004,$00FF,$00FF,$00FF,$00FF                                     ;849303;
     dw $0000
 
+
 DrawInst_ClearBotwoonWall:
+; Used by instruction list $AB67: PLM $B797 (clear Botwoon wall)
     dw $8009,$00FF,$00FF,$00FF,$00FF,$00FF,$00FF,$00FF                   ;84930F;
     dw $00FF,$00FF
     dw $0000                                                 ;84931F;
+
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_849325:
@@ -2697,29 +3118,54 @@ UNUSED_DrawInst_849351:
     dw $0000                                                 ;849361;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
 DrawInst_CrumbleKraidCeiling_CrumbleKraidSpikes_Elevatube:
+; Used by instruction lists:
+;     $AB6D: PLM $B7A3 (crumble Kraid ceiling block into background 1)
+;     $AB7F: PLM $B7AB (crumble Kraid ceiling block into background 2)
+;     $AB91: PLM $B7B3 (crumble Kraid ceiling block into background 3)
+;     $ABA9: PLM $B7BF (crumble Kraid spike blocks)
+;     $B8F0: PLM $B8F9 (Maridia elevatube)
     dw $0001,$8180
     dw $0000                                                 ;849367;
 
+
 DrawInst_CrumbleKraidCeiling_CrumbleKraidSpikes_0:
+; Used by instruction lists:
+;     $AB6D: PLM $B7A3 (crumble Kraid ceiling block into background 1)
+;     $AB7F: PLM $B7AB (crumble Kraid ceiling block into background 2)
+;     $AB91: PLM $B7B3 (crumble Kraid ceiling block into background 3)
+;     $ABA9: PLM $B7BF (crumble Kraid spike blocks)
     dw $0001,$8181
     dw $0000                                                 ;84936D;
 
 DrawInst_CrumbleKraidCeiling_CrumbleKraidSpikes_1:
+; Used by instruction lists:
+;     $AB6D: PLM $B7A3 (crumble Kraid ceiling block into background 1)
+;     $AB7F: PLM $B7AB (crumble Kraid ceiling block into background 2)
+;     $AB91: PLM $B7B3 (crumble Kraid ceiling block into background 3)
+;     $ABA9: PLM $B7BF (crumble Kraid spike blocks)
     dw $0001,$0182
     dw $0000                                                 ;849373;
 
+
 UNUSED_DrawInst_SetKraidCeilingBlockToBackground1_849379:
+; Used by instruction list $AB79: PLM $B79F (unused. Set Kraid ceiling block to background 1)
     dw $0001,$013C
     dw $0000                                                 ;849379;
 
+
 DrawInst_SetKraidCeilingBlockToBackground2:
+; Used by instruction list $AB8B: PLM $B7A7 (set Kraid ceiling block to background 2)
     dw $0001,$0131
     dw $0000                                                 ;84937F;
 
+
 DrawInst_SetKraidCeilingBlockToBackground3:
+; Used by instruction list $AB9D: PLM $B7AF (set Kraid ceiling block to background 3)
     dw $0001,$0130
     dw $0000                                                 ;849385;
+
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_84938B:
@@ -2727,106 +3173,150 @@ UNUSED_DrawInst_84938B:
     dw $0000                                                 ;84938B;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
 DrawInst_CrumbleKraidSpikeBlocks_0:
+; Used by instruction list $ABA9: PLM $B7BF (crumble Kraid spike blocks)
     dw $0001,$0111
     dw $0000                                                 ;849391;
 
 DrawInst_CrumbleKraidSpikeBlocks_1:
+; Used by instruction list $ABA9: PLM $B7BF (crumble Kraid spike blocks)
     dw $0001,$0110
     dw $0000                                                 ;849397;
 
+
 DrawInst_ClearKraidCeiling:
+; Used by instruction list $ABA3: PLM $B7B7 (clear Kraid ceiling)
     dw $000F,$013C,$0131,$0130,$0131,$0130,$0131,$0130                   ;84939D;
     dw $0131,$0130,$0131,$0130,$0131,$0130,$0131,$0130                   ;8493AD;
     dw $0000                                                             ;8493BD;
 
+
 DrawInst_ClearKraidSpikeBlocks:
+; Used by instruction list $ABDD: PLM $B7BB (clear Kraid spike blocks)
     dw $0016,$0111,$0110,$0111,$0110,$0111,$0110,$0111                   ;8493BF;
     dw $0110,$0111,$0110,$0111,$0110,$0111,$0110,$0111                   ;8493CF;
     dw $0110,$0111,$0110,$0111,$0110,$0111,$0110                         ;8493DF;
     dw $0000
 
+
 DrawInst_DrawPhantoonsDoorDuringBossFight:
+; Used by instruction list $B77B: PLM $B781 (draw Phantoon's door during boss fight)
     dw $8004,$95C1,$95E1,$9DE1,$9DC1                                     ;8493EF;
     db $01,$00                                                           ;8493F9;
     dw $8004,$C5C0,$D5E0,$DDE0,$DDC0                                     ;8493FB;
     dw $0000
 
+
 DrawInst_RestorePhantoonsDoorDuringBossFight:
+; Used by instruction list $B785: PLM $B78B (restore Phantoon's door after boss fight)
     dw $8004,$9440,$9460,$9C60,$9C40                                     ;849407;
     dw $0000
 
+
 DrawInst_ClearSporeSpawnCeiling:
+; Used by instruction list $AB21: PLM $B793 (clear Spore Spawn ceiling)
     dw $0002,$00FF,$00FF                                                 ;849413;
     db $00,$01                                                           ;849419;
     dw $0002,$00FF,$00FF                                                 ;84941B;
     dw $0000
 
+
 DrawInst_CrumbleSporeSpawnCeiling_0:
+; Used by instruction list $AB12: PLM $B78F (crumble Spore Spawn ceiling)
     dw $0002,$0053,$0053                                                 ;849423;
     db $00,$01                                                           ;849429;
     dw $0002,$0053,$0053                                                 ;84942B;
     dw $0000
 
 DrawInst_CrumbleSporeSpawnCeiling_1:
+; Used by instruction list $AB12: PLM $B78F (crumble Spore Spawn ceiling)
     dw $0002,$0054,$0054                                                 ;849433;
     db $00,$01                                                           ;849439;
     dw $0002,$0054,$0054                                                 ;84943B;
     dw $0000
 
 DrawInst_CrumbleSporeSpawnCeiling_2:
+; Used by instruction list $AB12: PLM $B78F (crumble Spore Spawn ceiling)
     dw $0002,$0055,$0055                                                 ;849443;
     db $00,$01                                                           ;849449;
     dw $0002,$0055,$0055                                                 ;84944B;
     dw $0000
 
+
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_849453:
+; Matches the level data of a zebetite
+; Used by instruction list $ABE3: PLM $B65F (unused)
     dw $8002,$00FF,$12FB                                                 ;849453;
     db $00,$FE                                                           ;849459;
     dw $8002,$1AFB,$00FF                                                 ;84945B;
     dw $0000
 
 UNUSED_DrawInst_849463:
+; Solid version of $9453
+; Used by instruction list $ABE9: PLM $B663 (unused)
     dw $8002,$80FF,$82FB                                                 ;849463;
     db $00,$FE                                                           ;849469;
     dw $8002,$8AFB,$80FF                                                 ;84946B;
     dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
 DrawInst_EscapeRoom1Gate_0:
+; Escape gate - open
+; Used by instruction lists:
+;     $ABEF: PLM $B667 (unused)
+;     $BB3A: Unused
+;     $BB44: Door $C8CA / PLM $C8D0 (gate that closes during escape in room after Mother Brain)
     dw $8004,$80FF,$80FF,$80FF,$80FF                                     ;849473;
     dw $0000
 
 DrawInst_EscapeRoom1Gate_1:
+; Escape gate - half closed
+; Used by instruction lists:
+;     $BB3A: Unused
+;     $BB44: Door $C8CA / PLM $C8D0 (gate that closes during escape in room after Mother Brain)
     dw $8004,$830F,$80FF,$80FF,$830F                                     ;84947F;
     dw $0000
 
 DrawInst_EscapeRoom1Gate_2:
+; Escape gate - closed
+; Used by instruction lists:
+;     $ABEF: PLM $B667 (unused)
+;     $BB34: Door $C8CA (gate that closes during escape in room after Mother Brain)
+;     $BB44: Door $C8CA / PLM $C8D0 (gate that closes during escape in room after Mother Brain)
     dw $8004,$830F,$8AE8,$82E8,$830F                                     ;84948B;
     dw $0000
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_849497:
+; Used by instruction list $ABF9: PLM $B66B (unused. Blank air)
     dw $0001,$00FF                                                       ;849497;
     dw $0000
 
 UNUSED_DrawInst_84949D:
+; Used by instruction list $ABFF: PLM $B66F (unused. Blank solid)
     dw $0001,$80FF                                                       ;84949D;
     dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
 DrawInst_FillMotherBrainsWall:
+; Used by instruction list $AC05: PLM $B673 (fill Mother Brain's wall)
     dw $8002,$8340,$830F                                                 ;8494A3;
     db $00,$FF                                                           ;8494A9;
     dw $8001,$8B0F                                                       ;8494AB;
     dw $0000
 
+
 DrawInst_MotherBrainsRoomEscapeDoor:
+; Used by instruction list $AC0B: PLM $B677 (Mother Brain's room escape door)
     dw $8004,$9222,$D1AF,$D1D0,$D220                                     ;8494B1;
     db $01,$00                                                           ;8494BB;
     dw $8004,$0223,$01EB,$01D0,$0221                                     ;8494BD;
     dw $0000
+
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_8494C9:
@@ -2840,129 +3330,158 @@ UNUSED_DrawInst_8494E7:
     dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
 DrawInst_MotherBrainsBackgroundRow2:
+; Used by instruction list $AC11: PLM $B67B (Mother Brain's background row 2)
     dw $000D,$1241,$1242,$12FC,$12FC,$12FC,$1243,$1244                   ;849505;
     dw $12FC,$1245,$1642,$1241,$1241,$1246                               ;849515;
     dw $0000
 
 DrawInst_MotherBrainsBackgroundRow3:
+; Used by instruction list $AC17: PLM $B67F (Mother Brain's background row 3)
     dw $000D,$09EF,$01B2,$01E5,$01E5,$01E6,$01E5,$01E5                   ;849523;
     dw $01E5,$01E5,$05B2,$09EF,$09EF,$01B2                               ;849533;
     dw $0000
 
 DrawInst_MotherBrainsBackgroundRow4:
+; Used by instruction list $AC1D: PLM $B683 (Mother Brain's background row 4)
     dw $000D,$01B1,$01D2,$01C6,$01C7,$00FF,$0206,$0207                   ;849541;
     dw $00FF,$01A6,$09CA,$060C,$05B1,$0A09                               ;849551;
     dw $0000
 
 DrawInst_MotherBrainsBackgroundRow5:
+; Used by instruction list $AC23: PLM $B687 (Mother Brain's background row 5)
     dw $000D,$01D1,$01F2,$01A4,$01E7,$01A4,$0226,$0227                   ;84955F;
     dw $01A5,$01A4,$020D,$0E09,$01B1,$01AB                               ;84956F;
     dw $0000
 
 DrawInst_MotherBrainsBackgroundRow6:
+; Used by instruction list $AC29: PLM $B68B (Mother Brain's background row 6)
     dw $000D,$01B1,$0212,$01C4,$01C9,$01C4,$0206,$0207                   ;84957D;
     dw $01C5,$01C4,$0628,$01AC,$01EC,$01EC                               ;84958D;
     dw $0000
 
 DrawInst_MotherBrainsBackgroundRow7:
+; Used by instruction list $AC2F: PLM $B68F (Mother Brain's background row 7)
     dw $000D,$01B1,$0A0C,$05CA,$0DC7,$01AA,$01A8,$01A8                   ;84959B;
     dw $01A8,$01A8,$0628,$01AB,$01CD,$01CD                               ;8495AB;
     dw $0000
 
 DrawInst_MotherBrainsBackgroundRow8:
+; Used by instruction list $AC35: PLM $B693 (Mother Brain's background row 8)
     dw $000D,$01D1,$01D0,$05EA,$00FF,$00FF,$0206,$0207                   ;8495B9;
     dw $00FF,$01A7,$0A0D,$0609,$01EB,$01D0                               ;8495C9;
     dw $0000
 
 DrawInst_MotherBrainsBackgroundRow9:
+; Used by instruction list $AC3B: PLM $B697 (Mother Brain's background row 9)
     dw $000D,$01EB,$01EB,$05EA,$00FF,$00FF,$0206,$0207                   ;8495D7;
     dw $00FF,$01A6,$00FF,$0A2C,$0609,$01AE                               ;8495E7;
     dw $0000
 
 DrawInst_MotherBrainsBackgroundRowA:
+; Used by instruction list $AC41: PLM $B69B (Mother Brain's background row Ah)
     dw $000D,$01EC,$01AF,$05EA,$05C7,$05C6,$0206,$0207                   ;8495F5;
     dw $01A8,$01A6,$01A8,$01A8,$05D2,$01AE                               ;849605;
     dw $0000
 
 DrawInst_MotherBrainsBackgroundRowB:
+; Used by instruction list $AC47: PLM $B69F (Mother Brain's background row Bh)
     dw $000D,$01AC,$01AF,$01B2,$05E7,$01E5,$0226,$0227                   ;849613;
     dw $01E5,$01A6,$01E6,$01E5,$05B2,$01CD                               ;849623;
     dw $0000
 
 DrawInst_MotherBrainsBackgroundRowC:
+; Used by instruction list $AC4D: PLM $B6A3 (Mother Brain's background row Ch)
     dw $000D,$060C,$01EF,$01B2,$01E5,$01E6,$01E5,$01E5                   ;849631;
     dw $01E6,$01E5,$01E5,$01E5,$05B2,$01EF                               ;849641;
     dw $0000
 
 DrawInst_MotherBrainsBackgroundRowD:
+; Used by instruction list $AC53: PLM $B6A7 (Mother Brain's background row Dh)
     dw $000D,$1248,$1249,$124A,$124B,$1339,$124C,$124D                   ;84964F;
     dw $1339,$124E,$1339,$1339,$124F,$1249                               ;84965F;
     dw $0000
 
+
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_94966D:
+; Used by instruction list $AC59: PLM $B6AB (unused. Mother Brain's background row Eh)
     dw $000D,$8319,$8319,$8319,$8319,$8319,$8319,$8319                   ;84966D;
     dw $8319,$8319,$8319,$8319,$8319,$8319                               ;84967D;
     dw $0000
 
 UNUSED_DrawInst_94968B:
+; Used by instruction list $AC5F: PLM $B6AF (unused. Mother Brain's background row Fh)
     dw $000D,$8044,$8044,$8044,$8044,$8044,$8044,$8044                   ;84968B;
     dw $8044,$8044,$8044,$8044,$8044,$8044                               ;84969B;
     dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
 DrawInst_ClearCeilingBlockInMotherBrainsRoom:
+; Used by instruction list $AC65: PLM $B6B3 (clear ceiling block in Mother Brain's room)
     dw $8002,$12FC,$00FF                                                 ;8496A9;
     dw $0000
 
 DrawInst_ClearCeilingTubeInMotherBrainsRoom:
+; Used by instruction list $AC6B: PLM $B6B7 (clear ceiling tube in Mother Brain's room)
     dw $8005,$12FC,$00FF,$00FF,$00FF,$00FF                               ;8496B1;
     dw $0000
 
 DrawInst_ClearMotherBrainsBottomMiddleSideTube:
+; Used by instruction list $AC71: PLM $B6BB (clear Mother Brain's bottom-middle-side tube)
     dw $8004,$00FF,$00FF,$00FF,$1339                                     ;8496BF;
     dw $0000
 
 DrawInst_ClearMotherBrainsBottomMiddleTubes:
+; Used by instruction list $AC77: PLM $B6BF (clear Mother Brain's bottom-middle tubes)
     dw $8007,$00FF,$00FF,$00FF,$00FF,$00FF,$00FF,$1339                   ;8496CB;
     db $01,$00                                                           ;8496DB;
     dw $8007,$00FF,$00FF,$00FF,$00FF,$00FF,$00FF,$1339                   ;8496DD;
     dw $0000                                                             ;8496ED;
 
 DrawInst_ClearMotherBrainsBottomLeftTube:
+; Used by instruction list $AC7D: PLM $B6C3 (clear Mother Brain's bottom-left tube)
     dw $8005,$00FF,$00FF,$00FF,$00FF,$1339                               ;8496EF;
     db $01,$00                                                           ;8496FB;
     dw $0001,$00FF                                                       ;8496FD;
     dw $0000
 
 DrawInst_ClearMotherBrainsBottomRightTube:
+; Used by instruction list $AC83: PLM $B6C7 (clear Mother Brain's bottom-right tube)
     dw $8005,$00FF,$00FF,$00FF,$00FF,$1339                               ;849703;
     db $FF,$00                                                           ;84970F;
     dw $0001,$00FF                                                       ;849711;
     dw $0000
 
+
 DrawInst_MotherBrainsGlass_0:
+; Used by instruction list $D202: PLM $D6DE (Mother Brain's glass)
     dw $0001,$C6C0                                                       ;849717;
     dw $0000
 
 DrawInst_MotherBrainsGlass_1:
+; Used by instruction list $D202: PLM $D6DE (Mother Brain's glass)
     dw $8004,$C2C7,$D2C9,$DAC9,$5AC7                                     ;84971D;
     db $FF,$01                                                           ;849727;
     dw $8002,$D2C8,$DAC8                                                 ;849729;
     dw $0000
 
 DrawInst_MotherBrainsGlass_2:
+; Used by instruction list $D202: PLM $D6DE (Mother Brain's glass)
     dw $8004,$C2C7,$D2CB,$DACB,$5AC7                                     ;849731;
     db $FF,$01                                                           ;84973B;
     dw $8002,$D2CA,$DACA                                                 ;84973D;
     dw $0000
 
 DrawInst_MotherBrainsGlass_3:
+; Used by instruction list $D202: PLM $D6DE (Mother Brain's glass)
     dw $8003,$C2C7,$02CC,$0ACC                                           ;849745;
     dw $0000
 
 DrawInst_MotherBrainsGlass_4:
+; Used by instruction list $D202: PLM $D6DE (Mother Brain's glass)
     dw $0001,$C2C7                                                       ;84974F;
     db $FD,$00                                                           ;849753;
     dw $8004,$82CD,$86C9,$8EC9,$8ACD                                     ;849755;
@@ -2971,6 +3490,7 @@ DrawInst_MotherBrainsGlass_4:
     dw $0000
 
 DrawInst_MotherBrainsGlass_5:
+; Used by instruction list $D202: PLM $D6DE (Mother Brain's glass)
     dw $0001,$C2C7                                                       ;849769;
     db $FD,$01                                                           ;84976D;
     dw $8003,$86CB,$8ECB,$8ACD                                           ;84976F;
@@ -2979,12 +3499,14 @@ DrawInst_MotherBrainsGlass_5:
     dw $0000
 
 DrawInst_MotherBrainsGlass_6:
+; Used by instruction list $D202: PLM $D6DE (Mother Brain's glass)
     dw $0001,$C2C7                                                       ;849781;
     db $FD,$01                                                           ;849785;
     dw $8002,$06CC,$0ECC                                                 ;849787;
     dw $0000
 
 DrawInst_MotherBrainsGlass_7:
+; Used by instruction list $D202: PLM $D6DE (Mother Brain's glass)
     dw $8004,$C2CE,$02CF,$0ACF,$5ACE                                     ;84978F;
     db $FD,$00                                                           ;849799;
     dw $8004,$86CE,$06CF,$0ECF,$8ECE                                     ;84979B;
@@ -2995,6 +3517,7 @@ DrawInst_MotherBrainsGlass_7:
     dw $0000
 
 DrawInst_MotherBrainsGlass_8:
+; Used by instruction list $D202: PLM $D6DE (Mother Brain's glass)
     dw $8004,$C2CE,$00FF,$00FF,$5ACE                                     ;8497B7;
     db $FD,$00                                                           ;8497C1;
     dw $8004,$86CE,$00FF,$00FF,$8ECE                                     ;8497C3;
@@ -3005,6 +3528,9 @@ DrawInst_MotherBrainsGlass_8:
     dw $0000
 
 DrawInst_MotherBrainsGlass_9:
+; Used by instruction lists:
+;     $D202: PLM $D6DE (Mother Brain's glass)
+;     $D2F3: PLM $D6E6 (unused. Mother Brain's glass, no glass state)
     dw $8004,$00FF,$00FF,$00FF,$00FF                                     ;8497E7;
     db $FD,$00                                                           ;8497F1;
     dw $8004,$00FF,$00FF,$00FF,$00FF                                     ;8497F3;
@@ -3014,11 +3540,14 @@ DrawInst_MotherBrainsGlass_9:
     dw $8004,$06D2,$06D3,$0ED3,$06D4                                     ;84980B;
     dw $0000
 
+
 UNUSED_DrawInst_849817:
+; Used by instruction list $D2ED: PLM $D6E2 (unused. Mother Brain's glass, area boss dead state)
     dw $8004,$00FF,$00FF,$00FF,$00FF,$00FD,$8004,$00FF                   ;849817;
     dw $00FF,$00FF,$00FF,$00FE,$8004,$00FF,$00FF,$00FF                   ;849827;
     dw $00FF,$00FF,$8004,$00FF,$00FF,$00FF,$00FF                         ;849837;
     dw $0000
+
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_849847:
@@ -3028,7 +3557,9 @@ UNUSED_DrawInst_849847:
     dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
 DrawInst_BombTorizosCrumblingChozo_0:
+; Used by instruction list $D368: PLM $D6EA (Bomb Torizo's crumbling chozo)
     dw $0002,$8065,$8066                                                 ;849877;
     db $FF,$00                                                           ;84987D;
     dw $0001,$8064                                                       ;84987F;
@@ -3038,31 +3569,39 @@ DrawInst_BombTorizosCrumblingChozo_0:
     dw $0003,$8047,$8048,$8049                                           ;84988D;
     dw $0000
 
+
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_849897:
     dw $0001,$0001,$0000                                                 ;849897;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
 DrawInst_BombTorizosCrumblingChozo_1:
+; Used by instruction list $D368: PLM $D6EA (Bomb Torizo's crumbling chozo)
     dw $0002,$00FF,$00FF,$00FE,$0002,$00FF,$00FF,$01FE                   ;84989D;
     dw $0004,$00FF,$00FF,$00FF,$00FF,$FEFE,$0004,$00FF                   ;8498AD;
     dw $00FF,$00FF,$00FF,$FFFE,$0004,$00FF,$00FF,$00FF                   ;8498BD;
     dw $00FF                                                             ;8498CD;
     dw $0000
 
+
 DrawInst_NoobTube_0:
+; Used by instruction list $D4D4: PLM $D70C (n00b tube)
     dw $0001,$C540                                                       ;8498D1;
     dw $0000
 
 DrawInst_NoobTube_1:
+; Used by instruction list $D4D4: PLM $D70C (n00b tube)
     dw $0001,$8540                                                       ;8498D7;
     dw $0000
 
 DrawInst_NoobTube_2:
+; Used by instruction list $D4D4: PLM $D70C (n00b tube)
     dw $0001,$8141                                                       ;8498DD;
     dw $0000
 
 DrawInst_NoobTube_3:
+; Used by instruction list $D4D4: PLM $D70C (n00b tube)
     dw $000C,$8141,$00FF,$00FF,$00FF,$00FF,$00FF,$00FF                   ;8498E3;
     dw $00FF,$00FF,$00FF,$00FF,$8541                                     ;8498F3;
     db $00,$01                                                           ;8498FD;
@@ -3077,6 +3616,7 @@ DrawInst_NoobTube_3:
     dw $0000
 
 DrawInst_NoobTube_4:
+; Used by instruction list $D4D4: PLM $D70C (n00b tube)
     dw $0001,$0141                                                       ;849953;
     db $00,$04                                                           ;849957;
     dw $000C,$0B22,$00FF,$00FF,$00FF,$00FF,$00FF,$00FF                   ;849959;
@@ -3087,6 +3627,7 @@ DrawInst_NoobTube_4:
     dw $0000
 
 DrawInst_NoobTube_5:
+; Used by instruction list $D4D4: PLM $D70C (n00b tube)
     dw $000C,$8141,$00FF,$00FF,$00FF,$00FF,$00FF,$00FF                   ;849991;
     dw $00FF,$00FF,$00FF,$00FF,$8541                                     ;8499A1;
     db $00,$01                                                           ;8499AB;
@@ -3098,6 +3639,7 @@ DrawInst_NoobTube_5:
     dw $0000
 
 DrawInst_NoobTube_6:
+; Used by instruction list $D4D4: PLM $D70C (n00b tube)
     dw $0001,$0141                                                       ;8499E5;
     db $00,$03                                                           ;8499E9;
     dw $000C,$0B23,$00FF,$00FF,$00FF,$00FF,$00FF,$00FF                   ;8499EB;
@@ -3110,7 +3652,9 @@ DrawInst_NoobTube_6:
     dw $00FF,$00FF,$00FF,$854F,$854E                                     ;849A33;
     dw $0000
 
+
 DrawInst_SaveStation_0:
+; Used by instruction list $AFE8: PLM $B76F (save station)
     dw $0002,$B859,$8C59                                                 ;849A3F;
     db $00,$FF                                                           ;849A45;
     dw $0002,$005B,$045B                                                 ;849A47;
@@ -3125,6 +3669,7 @@ DrawInst_SaveStation_0:
     dw $0000
 
 DrawInst_SaveStation_1:
+; Used by instruction list $AFE8: PLM $B76F (save station)
     dw $0002,$8859,$8C59                                                 ;849A6F;
     db $00,$FF                                                           ;849A75;
     dw $0002,$005B,$045B                                                 ;849A77;
@@ -3139,6 +3684,7 @@ DrawInst_SaveStation_1:
     dw $0000
 
 DrawInst_SaveStation_2:
+; Used by instruction list $AFE8: PLM $B76F (save station)
     dw $0002,$885A,$8C5A                                                 ;849A9F;
     db $00,$FF                                                           ;849AA5;
     dw $0002,$005C,$045C                                                 ;849AA7;
@@ -3152,62 +3698,76 @@ DrawInst_SaveStation_2:
     dw $0002,$805A,$845A                                                 ;849AC7;
     dw $0000
 
+
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_Draw13BlankAirTiles_849ACF:
+; Used by instruction list $B03E: PLM $B75B (unused. Draw 13 blank air tiles)
     dw $000D,$00FF,$00FF,$00FF,$00FF,$00FF,$00FF,$00FF                   ;849ACF;
     dw $00FF,$00FF,$00FF,$00FF,$00FF,$00FF                               ;849ADF;
     dw $0000
 
 UNUSED_DrawInst_Draw13BlankSolidTiles_849AED:
+; Used by instruction list $B044: PLM $B75F (unused. Draw 13 blank solid tiles)
     dw $000D,$80FF,$80FF,$80FF,$80FF,$80FF,$80FF,$80FF                   ;849AED;
     dw $80FF,$80FF,$80FF,$80FF,$80FF,$80FF                               ;849AFD;
     dw $0000
 
+
 UNUSED_DrawInst_LowerNorfair2x2ChozoShotBlock_849B0B:
+; Used by instruction list $D490: PLM $D708 (unused. Lower Norfair 2x2 chozo shot block)
     dw $0002,$C64A,$524A                                                 ;849B0B;
     db $00,$01                                                           ;849B11;
     dw $0002,$D66A,$D26A                                                 ;849B13;
     dw $0000
 
 UNUSED_DrawInst_LowerNorfair2x2ChozoShotBlock_849B1B:
+; Used by instruction list $D490: PLM $D708 (unused. Lower Norfair 2x2 chozo shot block)
     dw $0002,$8053,$8053                                                 ;849B1B;
     db $00,$01                                                           ;849B21;
     dw $0002,$8053,$8053                                                 ;849B23;
     dw $0000
 
 UNUSED_DrawInst_LowerNorfair2x2ChozoShotBlock_849B2B:
+; Used by instruction list $D490: PLM $D708 (unused. Lower Norfair 2x2 chozo shot block)
     dw $0002,$8054,$8054                                                 ;849B2B;
     db $00,$01                                                           ;849B31;
     dw $0002,$8054,$8054                                                 ;849B33;
     dw $0000
 
 UNUSED_DrawInst_LowerNorfair2x2ChozoShotBlock_849B3B:
+; Used by instruction list $D490: PLM $D708 (unused. Lower Norfair 2x2 chozo shot block)
     dw $0002,$0055,$0055                                                 ;849B3B;
     db $00,$01                                                           ;849B41;
     dw $0002,$0055,$0055                                                 ;849B43;
     dw $0000
 
 UNUSED_DrawInst_LowerNorfair2x2ChozoShotBlock_849B4B:
+; Used by instruction list $D490: PLM $D708 (unused. Lower Norfair 2x2 chozo shot block)
     dw $0002,$00FF,$00FF                                                 ;849B4B;
     db $00,$01                                                           ;849B51;
     dw $0002,$00FF,$00FF                                                 ;849B53;
     dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
 DrawInst_ClearCrocomiresBridge:
+; Used by instruction list $AFCA: PLM $B747 (clear Crocomire's bridge)
     dw $000A,$0080,$0080,$0080,$0080,$0080,$0080,$0080                   ;849B5B;
     dw $0080,$0080,$0080                                                 ;849B6B;
     dw $0000
 
 DrawInst_CrumbleABlockOfCrocomiresBridge:
+; Used by instruction list $AFD0: PLM $B74B (crumble a block of Crocomire's bridge)
     dw $0001,$810B                                                       ;849B73;
     dw $0000
 
 DrawInst_ClearABlockOfCrocomiresBridge:
+; Used by instruction list $AFD6: PLM $B74F (clear a block of Crocomire's bridge)
     dw $0001,$0080                                                       ;849B79;
     dw $0000
 
 DrawInst_ClearCrocomireInvisibleWall_0:
+; Used by instruction list $AFDC: PLM $B753 (clear Crocomire invisible wall)
     dw $8008,$0080,$0107,$0127,$0107,$0127,$0147,$0080                   ;849B7F;
     dw $0080                                                             ;849B8F;
     db $01,$00                                                           ;849B91;
@@ -3219,6 +3779,7 @@ DrawInst_ClearCrocomireInvisibleWall_0:
     dw $0000
 
 DrawInst_ClearCrocomireInvisibleWall_1:
+; Used by instruction list $AFE2: PLM $B757 (create Crocomire invisible wall)
     dw $8008,$8080,$8107,$8127,$8107,$8127,$8147,$8080                   ;849BBB;
     dw $8080                                                             ;849BCB;
     db $01,$00                                                           ;849BCD;
@@ -3229,104 +3790,135 @@ DrawInst_ClearCrocomireInvisibleWall_1:
     dw $8080                                                             ;849BF3;
     dw $0000
 
+
 DrawInst_EyeDoorEyeFacingLeft_0:
+; Used by instruction list $D81E: PLM $DB56 (eye door eye, facing left)
     dw $8004,$84AA,$84CC,$8CCC,$8CAA                                     ;849BF7;
     dw $0000
 
 DrawInst_EyeDoorEyeFacingLeft_1:
+; Used by instruction list $D81E: PLM $DB56 (eye door eye, facing left)
     dw $8002,$84CC,$8CCC                                                 ;849C03;
     dw $0000
 
 DrawInst_EyeDoorEyeFacingLeft_2:
+; Used by instruction list $D81E: PLM $DB56 (eye door eye, facing left)
     dw $8002,$84CB,$8CCB                                                 ;849C0B;
     dw $0000
 
 DrawInst_EyeDoorEyeFacingLeft_3:
+; Used by instruction list $D81E: PLM $DB56 (eye door eye, facing left)
     dw $8002,$C4CA,$DCCA                                                 ;849C13;
     dw $0000
 
 DrawInst_EyeDoorEyeFacingLeft_4:
+; Used by instruction list $D81E: PLM $DB56 (eye door eye, facing left)
     dw $8002,$84CD,$8CCD                                                 ;849C1B;
     dw $0000
 
 DrawInst_EyeDoorEyeFacingLeft_5:
+; Used by instruction list $D81E: PLM $DB56 (eye door eye, facing left)
     dw $8002,$84CA,$8CCA                                                 ;849C23;
     dw $0000
 
+
 DrawInst_EyeDoorFacingLeft_0:
+; Used by instruction list $D8E9: Door $DB5A (eye door, facing left)
     dw $0001,$A4AA                                                       ;849C2B;
     dw $0000
 
 DrawInst_EyeDoorFacingLeft_1:
+; Used by instruction list $D8E9: Door $DB5A (eye door, facing left)
     dw $0001,$A4AB                                                       ;849C31;
     dw $0000
 
 DrawInst_EyeDoorFacingLeft_2:
+; Used by instruction list $D8E9: Door $DB5A (eye door, facing left)
     dw $0001,$A4AC                                                       ;849C37;
     dw $0000
 
+
 DrawInst_EyeDoorBottomFacingLeft_0:
+; Used by instruction list $D91F: PLM $DB60 (eye door bottom, facing left)
     dw $0001,$ACAA                                                       ;849C3D;
     dw $0000
 
 DrawInst_EyeDoorBottomFacingLeft_1:
+; Used by instruction list $D91F: PLM $DB60 (eye door bottom, facing left)
     dw $0001,$ACAB                                                       ;849C43;
     dw $0000
 
 DrawInst_EyeDoorBottomFacingLeft_2:
+; Used by instruction list $D91F: PLM $DB60 (eye door bottom, facing left)
     dw $0001,$ACAC                                                       ;849C49;
     dw $0000
 
+
 DrawInst_EyeDoorEyeFacingRight_0:
+; Used by instruction list $D955: PLM $DB48 (eye door eye, facing right)
     dw $8004,$80AA,$80CC,$88CC,$88AA                                     ;849C4F;
     dw $0000
 
 DrawInst_EyeDoorEyeFacingRight_1:
+; Used by instruction list $D955: PLM $DB48 (eye door eye, facing right)
     dw $8002,$80CC,$88CC                                                 ;849C5B;
     dw $0000
 
 DrawInst_EyeDoorEyeFacingRight_2:
+; Used by instruction list $D955: PLM $DB48 (eye door eye, facing right)
     dw $8002,$80CB,$88CB                                                 ;849C63;
     dw $0000
 
 DrawInst_EyeDoorEyeFacingRight_3:
+; Used by instruction list $D955: PLM $DB48 (eye door eye, facing right)
     dw $8002,$C0CA,$D8CA                                                 ;849C6B;
     dw $0000
 
 DrawInst_EyeDoorEyeFacingRight_4:
+; Used by instruction list $D955: PLM $DB48 (eye door eye, facing right)
     dw $8002,$80CD,$88CD                                                 ;849C73;
     dw $0000
 
 DrawInst_EyeDoorEyeFacingRight_5:
+; Used by instruction list $D955: PLM $DB48 (eye door eye, facing right)
     dw $8002,$80CA,$88CA                                                 ;849C7B;
     dw $0000
 
+
 DrawInst_EyeDoorFacingRight_0:
+; Used by instruction list $DA20: Door $DB4C (eye door, facing right)
     dw $0001,$A0AA                                                       ;849C83;
     dw $0000
 
 DrawInst_EyeDoorFacingRight_1:
+; Used by instruction list $DA20: Door $DB4C (eye door, facing right)
     dw $0001,$A0AB                                                       ;849C89;
     dw $0000
 
 DrawInst_EyeDoorFacingRight_2:
+; Used by instruction list $DA20: Door $DB4C (eye door, facing right)
     dw $0001,$A0AC                                                       ;849C8F;
     dw $0000
 
 DrawInst_EyeDoorBottomFacingRight_0:
+; Used by instruction list $DA56: PLM $DB52 (eye door bottom, facing right)
     dw $0001,$A8AA                                                       ;849C95;
     dw $0000
 
 DrawInst_EyeDoorBottomFacingRight_1:
+; Used by instruction list $DA56: PLM $DB52 (eye door bottom, facing right)
     dw $0001,$A8AB                                                       ;849C9B;
     dw $0000
 
 DrawInst_EyeDoorBottomFacingRight_2:
+; Used by instruction list $DA56: PLM $DB52 (eye door bottom, facing right)
     dw $0001,$A8AC                                                       ;849CA1;
     dw $0000
 
+
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_AlternateLowerNorfairChozoHand_849CA7:
+; Used by instruction list $D44E: PLM $D704 (unused. Alternate Lower Norfair chozo hand)
     dw $0001,$C0FF                                                       ;849CA7;
     dw $0000
 
@@ -3343,11 +3935,13 @@ UNUSED_DrawInst_849CB9:
     dw $0000
 
 UNUSED_DrawInst_AlternateLowerNorfairChozoHand_849CBF:
+; Used by instruction list $D44E: PLM $D704 (unused. Alternate Lower Norfair chozo hand)
     dw $0001,$00FF                                                       ;849CBF;
     dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 DrawInst_ClearSlopeAccessForWreckedShipChozo:
+; Used by instruction list $D3CF: PLM $D6F8 (clear slope access for Wrecked Ship chozo)
     dw $000E,$012B,$012B,$012B,$012B,$012B,$012B,$012B                   ;849CC5;
     dw $012B,$012B,$012B,$012B,$012B,$012B,$112B                         ;849CD5;
     db $00,$05                                                           ;849CE3;
@@ -3362,6 +3956,7 @@ DrawInst_ClearSlopeAccessForWreckedShipChozo:
     dw $0000
 
 DrawInst_BlockSlopeAccessForWreckedShipChozo:
+; Used by instruction list $D3EC: PLM $D6FC (block slope access for Wrecked Ship chozo)
     dw $000E,$A12B,$A12B,$A12B,$A12B,$A12B,$A12B,$A12B                   ;849D0F;
     dw $A12B,$A12B,$A12B,$A12B,$A12B,$A12B,$812B                         ;849D1F;
     db $00,$05                                                           ;849D2D;
@@ -3375,8 +3970,10 @@ DrawInst_BlockSlopeAccessForWreckedShipChozo:
     dw $0001,$81BB                                                       ;849D53;
     dw $0000
 
+
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_0_849D59:
+; Used by instruction list $D426: PLM $D700 (unused. Wrecked Ship 3x4 chozo bomb block)
     dw $8004,$C171,$D171,$D171,$D171                                     ;849D59;
     db $FF,$00                                                           ;849D63;
     dw $8004,$8102,$8102,$8102,$8102                                     ;849D65;
@@ -3385,6 +3982,7 @@ UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_0_849D59:
     dw $0000
 
 UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_1_849D7D:
+; Used by instruction list $D426: PLM $D700 (unused. Wrecked Ship 3x4 chozo bomb block)
     dw $8004,$8053,$8053,$8053,$8053                                     ;849D7D;
     db $FF,$00                                                           ;849D87;
     dw $8004,$8053,$8053,$8053,$8053                                     ;849D89;
@@ -3393,6 +3991,7 @@ UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_1_849D7D:
     dw $0000
 
 UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_2_849DA1:
+; Used by instruction list $D426: PLM $D700 (unused. Wrecked Ship 3x4 chozo bomb block)
     dw $8004,$0054,$0054,$0054,$0054                                     ;849DA1;
     db $FF,$00                                                           ;849DAB;
     dw $8004,$0054,$0054,$0054,$0054                                     ;849DAD;
@@ -3401,6 +4000,7 @@ UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_2_849DA1:
     dw $0000
 
 UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_3_849DC5:
+; Used by instruction list $D426: PLM $D700 (unused. Wrecked Ship 3x4 chozo bomb block)
     dw $8004,$8055,$8055,$8055,$8055                                     ;849DC5;
     db $FF,$00                                                           ;849DCF;
     dw $8004,$8055,$8055,$8055,$8055                                     ;849DD1;
@@ -3409,6 +4009,7 @@ UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_3_849DC5:
     dw $0000
 
 UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_4_849DE9:
+; Used by instruction list $D426: PLM $D700 (unused. Wrecked Ship 3x4 chozo bomb block)
     dw $8004,$00FF,$00FF,$00FF,$00FF                                     ;849DE9;
     db $FF,$00                                                           ;849DF3;
     dw $8004,$D0FF,$D0FF,$D0FF,$30FF                                     ;849DF5;
@@ -3417,7 +4018,9 @@ UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_4_849DE9:
     dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
 DrawInst_BrinstarFloorPlant_0:
+; Used by instruction list $ACB8: PLM $B6CB (inside reaction, special air, BTS Brinstar 80h. Floor plant)
     dw $0002,$35A1,$85A0                                                 ;849E0D;
     db $FE,$00                                                           ;849E13;
     dw $0002,$81A0,$51A1                                                 ;849E15;
@@ -3436,6 +4039,7 @@ UNUSED_DrawInst_849E29:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 DrawInst_BrinstarFloorPlant_1:
+; Used by instruction list $ACB8: PLM $B6CB (inside reaction, special air, BTS Brinstar 80h. Floor plant)
     dw $0002,$05A3,$85A2                                                 ;849E45;
     db $FE,$00                                                           ;849E4B;
     dw $0002,$81A2,$01A3                                                 ;849E4D;
@@ -3444,6 +4048,7 @@ DrawInst_BrinstarFloorPlant_1:
     dw $0000
 
 DrawInst_BrinstarFloorPlant_2:
+; Used by instruction list $ACB8: PLM $B6CB (inside reaction, special air, BTS Brinstar 80h. Floor plant)
     dw $0002,$05A5,$85A4                                                 ;849E61;
     db $FE,$00                                                           ;849E67;
     dw $0002,$81A4,$01A5                                                 ;849E69;
@@ -3452,6 +4057,7 @@ DrawInst_BrinstarFloorPlant_2:
     dw $0000
 
 DrawInst_BrinstarFloorPlant_3:
+; Used by instruction list $ACB8: PLM $B6CB (inside reaction, special air, BTS Brinstar 80h. Floor plant)
     dw $0002,$05A7,$85A6                                                 ;849E7D;
     db $FE,$00                                                           ;849E83;
     dw $0002,$81A6,$01A7                                                 ;849E85;
@@ -3459,7 +4065,9 @@ DrawInst_BrinstarFloorPlant_3:
     dw $0004,$2186,$2187,$2587,$2586                                     ;849E8D;
     dw $0000
 
+
 DrawInst_BrinstarCeilingPlant_0:
+; Used by instruction list $ACF8: PLM $B6CF (inside reaction, special air, BTS Brinstar 81h. Ceiling plant)
     dw $0002,$3DA1,$8DA0                                                 ;849E99;
     db $FE,$00                                                           ;849E9F;
     dw $0002,$89A0,$59A1                                                 ;849EA1;
@@ -3478,6 +4086,7 @@ UNUSED_DrawInst_849EB5:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 DrawInst_BrinstarCeilingPlant_1:
+; Used by instruction list $ACF8: PLM $B6CF (inside reaction, special air, BTS Brinstar 81h. Ceiling plant)
     dw $0002,$0DA3,$8DA2                                                 ;849ED1;
     db $FE,$00                                                           ;849ED7;
     dw $0002,$89A2,$09A3                                                 ;849ED9;
@@ -3486,6 +4095,7 @@ DrawInst_BrinstarCeilingPlant_1:
     dw $0000
 
 DrawInst_BrinstarCeilingPlant_2:
+; Used by instruction list $ACF8: PLM $B6CF (inside reaction, special air, BTS Brinstar 81h. Ceiling plant)
     dw $0002,$0DA5,$8DA4                                                 ;849EED;
     db $FE,$00                                                           ;849EF3;
     dw $0002,$89A4,$09A5                                                 ;849EF5;
@@ -3494,6 +4104,7 @@ DrawInst_BrinstarCeilingPlant_2:
     dw $0000
 
 DrawInst_BrinstarCeilingPlant_3:
+; Used by instruction list $ACF8: PLM $B6CF (inside reaction, special air, BTS Brinstar 81h. Ceiling plant)
     dw $0002,$0DA7,$8DA6                                                 ;849F09;
     db $FE,$00                                                           ;849F0F;
     dw $0002,$89A6,$09A7                                                 ;849F11;
@@ -3501,115 +4112,152 @@ DrawInst_BrinstarCeilingPlant_3:
     dw $0004,$2986,$2987,$2D87,$2D86                                     ;849F19;
     dw $0000
 
+
 DrawInst_MapStation_0:
+; Used by instruction list $AD62: PLM $B6D3 (map station)
     dw $0001,$810C                                                       ;849F25;
     db $FF,$00                                                           ;849F29;
     dw $0001,$810B                                                       ;849F2B;
     dw $0000
 
 DrawInst_MapStation_1:
+; Used by instruction list $AD62: PLM $B6D3 (map station)
     dw $0001,$812C                                                       ;849F31;
     db $FF,$00                                                           ;849F35;
     dw $0001,$812B                                                       ;849F37;
     dw $0000
 
 DrawInst_MapStation_2:
+; Used by instruction list $AD62: PLM $B6D3 (map station)
     dw $0001,$814C                                                       ;849F3D;
     db $FF,$00                                                           ;849F41;
     dw $0001,$814B                                                       ;849F43;
     dw $0000
 
+
 DrawInst_MapStationRightAccess_0:
+; Used by instruction list $AD86: PLM $B6D7 (collision reaction, special, BTS 47h. Map station right access)
     dw $0001,$8128                                                       ;849F49;
     db $FD,$00                                                           ;849F4D;
     dw $0001,$8528                                                       ;849F4F;
     dw $0000
 
 DrawInst_MapStationRightAccess_1:
+; Used by instruction list $AD86: PLM $B6D7 (collision reaction, special, BTS 47h. Map station right access)
     dw $0001,$8129                                                       ;849F55;
     dw $0000
 
+
 DrawInst_MapStationLeftAccess_0:
+; Used by instruction list $ADA4: PLM $B6DB (collision reaction, special, BTS 48h. Map station left access)
     dw $0001,$8528                                                       ;849F5B;
     db $03,$00                                                           ;849F5F;
     dw $0001,$8128                                                       ;849F61;
     dw $0000
 
 DrawInst_MapStationLeftAccess_1:
+; Used by instruction list $ADA4: PLM $B6DB (collision reaction, special, BTS 48h. Map station left access)
     dw $0001,$8529                                                       ;849F67;
     dw $0000
 
+
 DrawInst_EnergyStation_0:
+; Used by instruction list $ADC2: PLM $B6DF (energy station)
     dw $0001,$80C4                                                       ;849F6D;
     db $00,$FF                                                           ;849F71;
     dw $0001,$10A4                                                       ;849F73;
     dw $0000
 
 DrawInst_EnergyStation_1:
+; Used by instruction list $ADC2: PLM $B6DF (energy station)
     dw $0001,$80C5                                                       ;849F79;
     db $00,$FF                                                           ;849F7D;
     dw $0001,$10A5                                                       ;849F7F;
     dw $0000
 
 DrawInst_EnergyStation_2:
+; Used by instruction list $ADC2: PLM $B6DF (energy station)
     dw $0001,$80C6                                                       ;849F85;
     db $00,$FF                                                           ;849F89;
     dw $0001,$10A6                                                       ;849F8B;
     dw $0000
 
+
 DrawInst_MissileStation_0:
+; Used by instruction list $AE4C: PLM $B6EB (missile station)
     dw $0001,$80C7                                                       ;849F91;
     db $00,$FF                                                           ;849F95;
     dw $0001,$10A7                                                       ;849F97;
     dw $0000
 
 DrawInst_MissileStation_1:
+; Used by instruction list $AE4C: PLM $B6EB (missile station)
     dw $0001,$80C8                                                       ;849F9D;
     db $00,$FF                                                           ;849FA1;
     dw $0001,$10A8                                                       ;849FA3;
     dw $0000
 
 DrawInst_MissileStation_2:
+; Used by instruction list $AE4C: PLM $B6EB (missile station)
     dw $0001,$80C9                                                       ;849FA9;
     db $00,$FF                                                           ;849FAD;
     dw $0001,$10A9                                                       ;849FAF;
     dw $0000
 
+
 DrawInst_EnergyMissileStationRightAccess_0:
+; Used by instruction lists:
+;     $ADF1: PLM $B6E3 (collision reaction, special, BTS 49h. Energy station right access)
+;     $AE7B: PLM $B6EF (collision reaction, special, BTS 4Bh. Missile station right access)
     dw $0001,$B4C3                                                       ;849FB5;
     dw $0000
 
 DrawInst_EnergyMissileStationRightAccess_1:
+; Used by instruction lists:
+;     $ADF1: PLM $B6E3 (collision reaction, special, BTS 49h. Energy station right access)
+;     $AE7B: PLM $B6EF (collision reaction, special, BTS 4Bh. Missile station right access)
     dw $0001,$84C1                                                       ;849FBB;
     dw $0000
 
+
 DrawInst_EnergyMissileStationLeftAccess_0:
+; Used by instruction lists:
+;     $AE13: PLM $B6E7 (collision reaction, special, BTS 4Ah. Energy station left access)
+;     $AE9D: PLM $B6F3 (collision reaction, special, BTS 4Ch. Missile station left access)
     dw $0001,$B0C3                                                       ;849FC1;
     dw $0000
 
 DrawInst_EnergyMissileStationLeftAccess_1:
+; Used by instruction lists:
+;     $AE13: PLM $B6E7 (collision reaction, special, BTS 4Ah. Energy station left access)
+;     $AE9D: PLM $B6F3 (collision reaction, special, BTS 4Ch. Missile station left access)
     dw $0001,$80C1                                                       ;849FC7;
     dw $0000
 
+
 DrawInst_DraygonCannonShieldRight_0:
+; Used by instruction list $DCDE: PLM $DF59 (Draygon cannon, with shield, facing right)
     dw $0002,$C514,$0513                                                 ;849FCD;
     db $00,$01                                                           ;849FD3;
     dw $0002,$D534,$0533                                                 ;849FD5;
     dw $0000
 
 DrawInst_DraygonCannonShieldRight_1:
+; Used by instruction list $DCDE: PLM $DF59 (Draygon cannon, with shield, facing right)
     dw $0002,$C516,$0515                                                 ;849FDD;
     db $00,$01                                                           ;849FE3;
     dw $0002,$D536,$0535                                                 ;849FE5;
     dw $0000
 
 UNUSED_DrawInst_DraygonCannonShieldDownRight_0_849FED:
+; Used by instruction list $DD27: PLM $DF5D (unused. Draygon cannon, with shield, facing down-right)
     dw $0002,$C510,$550F                                                 ;849FED;
     db $00,$01                                                           ;849FF3;
     dw $0002,$D530,$D52F                                                 ;849FF5;
     dw $0000
 
 UNUSED_DrawInst_DraygonCannonShieldDownRight_1_849FFD:
+; Used by instruction list $DD27: PLM $DF5D (unused. Draygon cannon, with shield, facing down-right)
     dw $0002,$C512,$5511                                                 ;849FFD;
     db $00,$01                                                           ;84A003;
     dw $0002,$D532,$D531                                                 ;84A005;
@@ -3617,93 +4265,112 @@ UNUSED_DrawInst_DraygonCannonShieldDownRight_1_849FFD:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_DraygonCannonShieldUpRight_0_84A00D:
+; Used by instruction list $DD70: PLM $DF61 (unused. Draygon cannon, with shield, facing up-right)
     dw $0002,$CD30,$5D2F                                                 ;84A00D;
     db $00,$01                                                           ;84A013;
     dw $0002,$DD10,$DD0F                                                 ;84A015;
     dw $0000
 
 UNUSED_DrawInst_DraygonCannonShieldUpRight_1_84A01D:
+; Used by instruction list $DD70: PLM $DF61 (unused. Draygon cannon, with shield, facing up-right)
     dw $0002,$CD32,$5D31                                                 ;84A01D;
     db $00,$01                                                           ;84A023;
     dw $0002,$DD12,$DD11                                                 ;84A025;
     dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
 DrawInst_DraygonCannonRight_0:
+; Used by instruction list $DD11: PLM $DF65 (Draygon cannon, facing right)
     dw $0002,$A580,$00FF                                                 ;84A02D;
     db $00,$01                                                           ;84A033;
     dw $0002,$A5A0,$00FF                                                 ;84A035;
     dw $0000
 
 DrawInst_DraygonCannonRight_1:
+; Used by instruction list $DD11: PLM $DF65 (Draygon cannon, facing right)
     dw $0002,$A581,$00FF                                                 ;84A03D;
     db $00,$01                                                           ;84A043;
     dw $0002,$A5A1,$00FF                                                 ;84A045;
     dw $0000
 
 DrawInst_DraygonCannonRight_2:
+; Used by instruction list $DD11: PLM $DF65 (Draygon cannon, facing right)
     dw $0002,$A582,$00FF                                                 ;84A04D;
     db $00,$01                                                           ;84A053;
     dw $0002,$A5A2,$00FF                                                 ;84A055;
     dw $0000
 
 DrawInst_DraygonCannonRight_3:
+; Used by instruction list $DD11: PLM $DF65 (Draygon cannon, facing right)
     dw $0002,$A583,$00FF                                                 ;84A05D;
     db $00,$01                                                           ;84A063;
     dw $0002,$A5A3,$00FF                                                 ;84A065;
     dw $0000
 
+
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_DraygonCannonDownRight_0_84A06D:
+; Used by instruction list $DD5A: PLM $DF69 (unused. Draygon cannon, facing down-right)
     dw $0002,$A5A5,$A5A4                                                 ;84A06D;
     db $00,$01                                                           ;84A073;
     dw $0002,$A5C5,$05C4                                                 ;84A075;
     dw $0000
 
 UNUSED_DrawInst_DraygonCannonDownRight_1_84A07D:
+; Used by instruction list $DD5A: PLM $DF69 (unused. Draygon cannon, facing down-right)
     dw $0002,$A5A7,$A5A6                                                 ;84A07D;
     db $00,$01                                                           ;84A083;
     dw $0002,$A5C7,$05C6                                                 ;84A085;
     dw $0000
 
 UNUSED_DrawInst_DraygonCannonDownRight_2_84A08D:
+; Used by instruction list $DD5A: PLM $DF69 (unused. Draygon cannon, facing down-right)
     dw $0002,$A5A9,$A5A8                                                 ;84A08D;
     db $00,$01                                                           ;84A093;
     dw $0002,$A5C9,$05C8                                                 ;84A095;
     dw $0000
 
 UNUSED_DrawInst_DraygonCannonDownRight_3_84A09D:
+; Used by instruction list $DD5A: PLM $DF69 (unused. Draygon cannon, facing down-right)
     dw $0002,$A5AB,$A5AA                                                 ;84A09D;
     db $00,$01                                                           ;84A0A3;
     dw $0002,$A5CB,$05CA                                                 ;84A0A5;
     dw $0000
 
+
 UNUSED_DrawInst_DraygonCannonUpRight_0_84A0AD:
+; Used by instruction list $DDA3: PLM $DF6D (unused. Draygon cannon, facing up-right)
     dw $0002,$ADC5,$0DC4                                                 ;84A0AD;
     db $00,$01                                                           ;84A0B3;
     dw $0002,$ADA5,$ADA4                                                 ;84A0B5;
     dw $0000
 
 UNUSED_DrawInst_DraygonCannonUpRight_1_84A0BD:
+; Used by instruction list $DDA3: PLM $DF6D (unused. Draygon cannon, facing up-right)
     dw $0002,$ADC7,$0DC6                                                 ;84A0BD;
     db $00,$01                                                           ;84A0C3;
     dw $0002,$ADA7,$ADA6                                                 ;84A0C5;
     dw $0000
 
 UNUSED_DrawInst_DraygonCannonUpRight_2_84A0CD:
+; Used by instruction list $DDA3: PLM $DF6D (unused. Draygon cannon, facing up-right)
     dw $0002,$ADC9,$0DC8                                                 ;84A0CD;
     db $00,$01                                                           ;84A0D3;
     dw $0002,$ADA9,$ADA8                                                 ;84A0D5;
     dw $0000
 
 UNUSED_DrawInst_DraygonCannonUpRight_3_84A0DD:
+; Used by instruction list $DDA3: PLM $DF6D (unused. Draygon cannon, facing up-right)
     dw $0002,$ADCB,$0DCA                                                 ;84A0DD;
     db $00,$01                                                           ;84A0E3;
     dw $0002,$ADAB,$ADAA                                                 ;84A0E5;
     dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
 DrawInst_DraygonCannonShieldLeft_0:
+; Used by instruction list $DDB9: PLM $DF71 (Draygon cannon, with shield, facing left)
     dw $0001,$C114                                                       ;84A0ED;
     db $FF,$00                                                           ;84A0F1;
     dw $0001,$0113                                                       ;84A0F3;
@@ -3712,6 +4379,7 @@ DrawInst_DraygonCannonShieldLeft_0:
     dw $0000
 
 DrawInst_DraygonCannonShieldLeft_1:
+; Used by instruction list $DDB9: PLM $DF71 (Draygon cannon, with shield, facing left)
     dw $0001,$C116                                                       ;84A101;
     db $FF,$00                                                           ;84A105;
     dw $0001,$0115                                                       ;84A107;
@@ -3721,6 +4389,7 @@ DrawInst_DraygonCannonShieldLeft_1:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_DraygonCannonShieldDownLeft_0_84A115:
+; Used by instruction list $DE02: PLM $DF75 (unused. Draygon cannon, with shield, facing down-left)
     dw $0001,$C110                                                       ;84A115;
     db $FF,$00                                                           ;84A119;
     dw $0001,$510F                                                       ;84A11B;
@@ -3729,6 +4398,7 @@ UNUSED_DrawInst_DraygonCannonShieldDownLeft_0_84A115:
     dw $0000
 
 UNUSED_DrawInst_DraygonCannonShieldDownLeft_1_84A129:
+; Used by instruction list $DE02: PLM $DF75 (unused. Draygon cannon, with shield, facing down-left)
     dw $0001,$C112                                                       ;84A129;
     db $FF,$00                                                           ;84A12D;
     dw $0001,$5111                                                       ;84A12F;
@@ -3737,6 +4407,7 @@ UNUSED_DrawInst_DraygonCannonShieldDownLeft_1_84A129:
     dw $0000
 
 UNUSED_DrawInst_DraygonCannonShieldUpLeft_0_84A13D:
+; Used by instruction list $DE4B: PLM $DF79 (unused. Draygon cannon, with shield, facing up-left)
     dw $0001,$C930                                                       ;84A13D;
     db $FF,$00                                                           ;84A141;
     dw $0001,$592F                                                       ;84A143;
@@ -3745,6 +4416,7 @@ UNUSED_DrawInst_DraygonCannonShieldUpLeft_0_84A13D:
     dw $0000
 
 UNUSED_DrawInst_DraygonCannonShieldUpLeft_1_84A151:
+; Used by instruction list $DE4B: PLM $DF79 (unused. Draygon cannon, with shield, facing up-left)
     dw $0001,$C932                                                       ;84A151;
     db $FF,$00                                                           ;84A155;
     dw $0001,$5931                                                       ;84A157;
@@ -3753,7 +4425,9 @@ UNUSED_DrawInst_DraygonCannonShieldUpLeft_1_84A151:
     dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
 DrawInst_DraygonCannonLeft_0:
+; Used by instruction list $DDEC: PLM $DF7D (Draygon cannon, facing left)
     dw $0001,$A180                                                       ;84A165;
     db $FF,$00                                                           ;84A169;
     dw $0001,$00FF                                                       ;84A16B;
@@ -3762,6 +4436,7 @@ DrawInst_DraygonCannonLeft_0:
     dw $0000
 
 DrawInst_DraygonCannonLeft_1:
+; Used by instruction list $DDEC: PLM $DF7D (Draygon cannon, facing left)
     dw $0001,$A181                                                       ;84A179;
     db $FF,$00                                                           ;84A17D;
     dw $0001,$00FF                                                       ;84A17F;
@@ -3770,6 +4445,7 @@ DrawInst_DraygonCannonLeft_1:
     dw $0000
 
 DrawInst_DraygonCannonLeft_2:
+; Used by instruction list $DDEC: PLM $DF7D (Draygon cannon, facing left)
     dw $0001,$A182                                                       ;84A18D;
     db $FF,$00                                                           ;84A191;
     dw $0001,$00FF                                                       ;84A193;
@@ -3778,6 +4454,7 @@ DrawInst_DraygonCannonLeft_2:
     dw $0000
 
 DrawInst_DraygonCannonLeft_3:
+; Used by instruction list $DDEC: PLM $DF7D (Draygon cannon, facing left)
     dw $0001,$A183                                                       ;84A1A1;
     db $FF,$00                                                           ;84A1A5;
     dw $0001,$00FF                                                       ;84A1A7;
@@ -3785,8 +4462,10 @@ DrawInst_DraygonCannonLeft_3:
     dw $0002,$00FF,$A1A3                                                 ;84A1AD;
     dw $0000
 
+
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_DraygonCannonDownLeft_0_84A1B5:
+; Used by instruction list $DE35: PLM $DF81 (unused. Draygon cannon, facing down-left)
     dw $0001,$A1A5                                                       ;84A1B5;
     db $FF,$00                                                           ;84A1B9;
     dw $0001,$A1A4                                                       ;84A1BB;
@@ -3795,6 +4474,7 @@ UNUSED_DrawInst_DraygonCannonDownLeft_0_84A1B5:
     dw $0000
 
 UNUSED_DrawInst_DraygonCannonDownLeft_1_84A1C9:
+; Used by instruction list $DE35: PLM $DF81 (unused. Draygon cannon, facing down-left)
     dw $0001,$A1A7                                                       ;84A1C9;
     db $FF,$00                                                           ;84A1CD;
     dw $0001,$A1A6                                                       ;84A1CF;
@@ -3803,6 +4483,7 @@ UNUSED_DrawInst_DraygonCannonDownLeft_1_84A1C9:
     dw $0000
 
 UNUSED_DrawInst_DraygonCannonDownLeft_2_84A1DD:
+; Used by instruction list $DE35: PLM $DF81 (unused. Draygon cannon, facing down-left)
     dw $0001,$A1A9                                                       ;84A1DD;
     db $FF,$00                                                           ;84A1E1;
     dw $0001,$A1A8                                                       ;84A1E3;
@@ -3811,6 +4492,7 @@ UNUSED_DrawInst_DraygonCannonDownLeft_2_84A1DD:
     dw $0000
 
 UNUSED_DrawInst_DraygonCannonDownLeft_3_84A1F1:
+; Used by instruction list $DE35: PLM $DF81 (unused. Draygon cannon, facing down-left)
     dw $0001,$A1AB                                                       ;84A1F1;
     db $FF,$00                                                           ;84A1F5;
     dw $0001,$A1AA                                                       ;84A1F7;
@@ -3818,7 +4500,9 @@ UNUSED_DrawInst_DraygonCannonDownLeft_3_84A1F1:
     dw $0002,$01CA,$A1CB                                                 ;84A1FD;
     dw $0000
 
+
 UNUSED_DrawInst_DraygonCannonUpLeft_0_84A205:
+; Used by instruction list $DE7E: PLM $DF85 (unused. Draygon cannon, facing up-left)
     dw $0001,$A9C5                                                       ;84A205;
     db $FF,$00                                                           ;84A209;
     dw $0001,$09C4                                                       ;84A20B;
@@ -3827,6 +4511,7 @@ UNUSED_DrawInst_DraygonCannonUpLeft_0_84A205:
     dw $0000
 
 UNUSED_DrawInst_DraygonCannonUpLeft_1_84A219:
+; Used by instruction list $DE7E: PLM $DF85 (unused. Draygon cannon, facing up-left)
     dw $0001,$A9C7                                                       ;84A219;
     db $FF,$00                                                           ;84A21D;
     dw $0001,$09C6                                                       ;84A21F;
@@ -3835,6 +4520,7 @@ UNUSED_DrawInst_DraygonCannonUpLeft_1_84A219:
     dw $0000
 
 UNUSED_DrawInst_DraygonCannonUpLeft_2_84A22D:
+; Used by instruction list $DE7E: PLM $DF85 (unused. Draygon cannon, facing up-left)
     dw $0001,$A9C9                                                       ;84A22D;
     db $FF,$00                                                           ;84A231;
     dw $0001,$09C8                                                       ;84A233;
@@ -3843,6 +4529,7 @@ UNUSED_DrawInst_DraygonCannonUpLeft_2_84A22D:
     dw $0000
 
 UNUSED_DrawInst_DraygonCannonUpLeft_3_84A241:
+; Used by instruction list $DE7E: PLM $DF85 (unused. Draygon cannon, facing up-left)
     dw $0001,$A9CB                                                       ;84A241;
     db $FF,$00                                                           ;84A245;
     dw $0001,$09CA                                                       ;84A247;
@@ -3850,50 +4537,92 @@ UNUSED_DrawInst_DraygonCannonUpLeft_3_84A241:
     dw $0002,$A9AA,$A9AB                                                 ;84A24D;
     dw $0000
 
+
+; Tile numbers don't match any tilesets
 UNUSED_DrawInst_84A255:
+; Used by instruction list $AED8: PLM $B6F7 (unused)
     dw $8002,$2330,$2350                                                 ;84A255;
     dw $0000
 
 UNUSED_DrawInst_84A25D:
+; Used by instruction list $AED8: PLM $B6F7 (unused)
     dw $8002,$2331,$2351                                                 ;84A25D;
     dw $0000
 
 UNUSED_DrawInst_84A265:
+; Used by instruction list $AED8: PLM $B6F7 (unused)
     dw $8002,$2332,$2352                                                 ;84A265;
     dw $0000
 
 UNUSED_DrawInst_84A26D:
+; Used by instruction list $AED8: PLM $B6F7 (unused)
     dw $8002,$2333,$2353                                                 ;84A26D;
     dw $0000
 
+
+; 2x2 version of UNUSED_DrawInst_84A255
 UNUSED_DrawInst_84A275:
+; Used by instruction list $AF1E: PLM $B6FB (unused)
     dw $8002,$2330,$2350                                                 ;84A275;
     db $FF,$00                                                           ;84A27B;
     dw $8002,$2330,$2350                                                 ;84A27D;
     dw $0000
 
 UNUSED_DrawInst_84A285:
+; Used by instruction list $AF1E: PLM $B6FB (unused)
     dw $8002,$2331,$2351                                                 ;84A285;
     db $FF,$00                                                           ;84A28B;
     dw $8002,$2331,$2351                                                 ;84A28D;
     dw $0000
 
 UNUSED_DrawInst_84A295:
+; Used by instruction list $AF1E: PLM $B6FB (unused)
     dw $8002,$2332,$2352                                                 ;84A295;
     db $FF,$00                                                           ;84A29B;
     dw $8002,$2332,$2352                                                 ;84A29D;
     dw $0000
 
 UNUSED_DrawInst_84A2A5:
+; Used by instruction list $AF1E: PLM $B6FB (unused)
     dw $8002,$2333,$2353                                                 ;84A2A5;
     db $FF,$00                                                           ;84A2AB;
     dw $8002,$2333,$2353                                                 ;84A2AD;
     dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
 DrawInst_ItemChozoOrb:
+; Used by instruction lists:
+;     $AADF: Unused. Draw empty tile
+;     $D13F: PLM $D6D6 (Lower Norfair chozo hand)
+;     $DFA9: Empty item
+;     $DFC7: Item orb burst
+;     $DFD7: Empty item orb
+;     $E032: Empty item shot block reconcealing
+;     $E44A: PLM $EF2B (energy tank, chozo orb)
+;     $E47C: PLM $EF2F (missile tank, chozo orb)
+;     $E4AE: PLM $EF33 (super missile tank, chozo orb)
+;     $E4E0: PLM $EF37 (power bomb tank, chozo orb)
+;     $E512: PLM $EF3B (bombs, chozo orb)
+;     $E54D: PLM $EF3F (charge beam, chozo orb)
+;     $E588: PLM $EF43 (ice beam, chozo orb)
+;     $E5C3: PLM $EF47 (hi-jump, chozo orb)
+;     $E5FE: PLM $EF4B (speed booster, chozo orb)
+;     $E642: PLM $EF4F (wave beam, chozo orb)
+;     $E67D: PLM $EF53 (spazer beam, chozo orb)
+;     $E6B8: PLM $EF57 (spring ball, chozo orb)
+;     $E6F3: PLM $EF5B (varia suit, chozo orb)
+;     $E735: PLM $EF5F (gravity suit, chozo orb)
+;     $E777: PLM $EF63 (x-ray scope, chozo orb)
+;     $E7B1: PLM $EF67 (plasma beam, chozo orb)
+;     $E7EC: PLM $EF6B (grapple beam, chozo orb)
+;     $E826: PLM $EF6F (space jump, chozo orb)
+;     $E861: PLM $EF73 (screw attack, chozo orb)
+;     $E89C: PLM $EF77 (morph ball, chozo orb)
+;     $E8D7: PLM $EF7B (reserve tank, chozo orb)
     dw $0001,$00FF                                                       ;84A2B5;
     dw $0000
+
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_84A2BB:
@@ -3905,178 +4634,429 @@ UNUSED_DrawInst_84A2C1:
     dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
 DrawInst_ItemOrb_0:
+; Used by instruction list $DFAF: item orb
     dw $0001,$C072                                                       ;84A2C7;
     dw $0000
 
 DrawInst_ItemOrb_1:
+; Used by instruction list $DFAF: item orb
     dw $0001,$C073                                                       ;84A2CD;
     dw $0000
 
 DrawInst_ItemOrb_2:
+; Used by instruction list $DFAF: item orb
     dw $0001,$C074                                                       ;84A2D3;
     dw $0000
 
+
 DrawInst_ItemOrbBurst:
+; Used by instruction list $DFC7: item orb burst
     dw $0001,$8075                                                       ;84A2D9;
     dw $0000
 
+
 DrawInst_EnergyTank_0:
+; Used by instruction lists:
+;     $E099: PLM $EED7 (energy tank)
+;     $E44A: PLM $EF2B (energy tank, chozo orb)
+;     $E911: PLM $EF7F (energy tank, shot block)
     dw $0001,$B04A                                                       ;84A2DF;
     dw $0000
 
 DrawInst_EnergyTank_1:
+; Used by instruction lists:
+;     $E099: PLM $EED7 (energy tank)
+;     $E44A: PLM $EF2B (energy tank, chozo orb)
+;     $E911: PLM $EF7F (energy tank, shot block)
     dw $0001,$B04B                                                       ;84A2E5;
     dw $0000
 
+
 DrawInst_MissileTank_0:
+; Used by instruction lists:
+;     $E0BE: PLM $EEDB (missile tank)
+;     $E47C: PLM $EF2F (missile tank, chozo orb)
+;     $E949: PLM $EF83 (missile tank, shot block)
     dw $0001,$B04C                                                       ;84A2EB;
     dw $0000
 
 DrawInst_MissileTank_1:
+; Used by instruction lists:
+;     $E0BE: PLM $EEDB (missile tank)
+;     $E47C: PLM $EF2F (missile tank, chozo orb)
+;     $E949: PLM $EF83 (missile tank, shot block)
     dw $0001,$B04D                                                       ;84A2F1;
     dw $0000
 
+
 DrawInst_SuperMissileTank_0:
+; Used by instruction lists:
+;     $E0E3: PLM $EEDF (super missile tank)
+;     $E4AE: PLM $EF33 (super missile tank, chozo orb)
+;     $E981: PLM $EF87 (super missile tank, shot block)
     dw $0001,$B04E                                                       ;84A2F7;
     dw $0000
 
 DrawInst_SuperMissileTank_1:
+; Used by instruction lists:
+;     $E0E3: PLM $EEDF (super missile tank)
+;     $E4AE: PLM $EF33 (super missile tank, chozo orb)
+;     $E981: PLM $EF87 (super missile tank, shot block)
     dw $0001,$B04F                                                       ;84A2FD;
     dw $0000
 
+
 DrawInst_PowerBombTank_0:
+; Used by instruction lists:
+;     $E108: PLM $EEE3 (power bomb tank)
+;     $E4E0: PLM $EF37 (power bomb tank, chozo orb)
+;     $E9B9: PLM $EF8B (power bomb tank, shot block)
     dw $0001,$B050                                                       ;84A303;
     dw $0000
 
 DrawInst_PowerBombTank_1:
+; Used by instruction lists:
+;     $E108: PLM $EEE3 (power bomb tank)
+;     $E4E0: PLM $EF37 (power bomb tank, chozo orb)
+;     $E9B9: PLM $EF8B (power bomb tank, shot block)
     dw $0001,$B051                                                       ;84A309;
     dw $0000
 
+
 DrawInst_DrawItemFrame0_0:
+; Item frame 0 - item GFX index 0
+; Used by instruction $E04F: Draw item frame 0
     dw $0001,$B08E                                                       ;84A30F;
     dw $0000
 
 DrawInst_DrawItemFrame1_0:
+; Item frame 1 - item GFX index 0
+; Used by instruction $E04F: Draw item frame 1
     dw $0001,$B08F                                                       ;84A315;
     dw $0000
 
+
 DrawInst_DrawItemFrame0_1:
+; Item frame 0 - item GFX index 1
+; Used by instruction $E04F: Draw item frame 0
     dw $0001,$B090                                                       ;84A31B;
     dw $0000
 
 DrawInst_DrawItemFrame1_1:
+; Item frame 1 - item GFX index 1
+; Used by instruction $E04F: Draw item frame 1
     dw $0001,$B091                                                       ;84A321;
     dw $0000
 
+
 DrawInst_DrawItemFrame0_2:
+; Item frame 0 - item GFX index 2
+; Used by instruction $E04F: Draw item frame 0
     dw $0001,$B092                                                       ;84A327;
     dw $0000
 
 DrawInst_DrawItemFrame1_2:
+; Item frame 1 - item GFX index 2
+; Used by instruction $E04F: Draw item frame 1
     dw $0001,$B093                                                       ;84A32D;
     dw $0000
 
+
 DrawInst_DrawItemFrame0_3:
+; Item frame 0 - item GFX index 3
+; Used by instruction $E04F: Draw item frame 0
     dw $0001,$B094                                                       ;84A333;
     dw $0000
 
 DrawInst_DrawItemFrame1_3:
+; Item frame 1 - item GFX index 3
+; Used by instruction $E04F: Draw item frame 1
     dw $0001,$B095                                                       ;84A339;
     dw $0000
 
+
 DrawInst_84A33F:
+; Used by instruction list $D121: PLM $D127 (unused. Shot block)
     dw $0001,$8052                                                       ;84A33F;
     dw $0000
 
+
 DrawInst_Respawn1x1_0:
+; Used by instruction lists:
+;     $AB31: PLM $B79B (crumble Botwoon wall)
+;     $C92E: PLM $D028 (unused. Respawning screw attack block)
+;     $C951: PLM $D030 (collision reaction, special, BTS Brinstar 82h. Respawning speed block, slower crumble animation)
+;     $C974: PLM $D038 (collision reaction, special, BTS Eh. Respawning speed block)
+;     $C997: PLM $D03C (collision reaction, special, BTS Brinstar 84h. Respawning speed block)
+;     $C9BA: PLM $D02C (unused. Screw attack block)
+;     $C9CF: PLM $D034 (collision reaction, special, BTS Brinstar 83h. Speed block, slower crumble animation)
+;     $C9E4: PLM $D040 (collision reaction, special, BTS Fh / Brinstar 85h. Speed block)
+;     $C9F9: PLM $D044 (collision reaction, special, BTS 0. 1x1 respawning crumble block)
+;     $CA8B: PLM $D054 (collision reaction, special, BTS 4. 1x1 crumble block)
+;     $CADF: PLM $D064 (shot/bombed/grappled reaction, shootable, BTS 0. 1x1 respawning shot block)
+;     $CB71: PLM $D08C (shot/bombed/grappled reaction, shootable, BTS Ah. Respawning super missile block)
+;     $CB94: PLM $D084 (shot/bombed/grappled reaction, shootable, BTS 8. Respawning power bomb block)
+;     $CBB7: PLM $D074 (shot/bombed/grappled reaction, shootable, BTS 4. 1x1 shot block)
+;     $CC0B: PLM $D090 (shot/bombed/grappled reaction, shootable, BTS Bh. Super missile block)
+;     $CC3F: 1x1 respawning bomb block
+;     $CC20: PLM $D088 (shot/bombed/grappled reaction, shootable, BTS 9. Power bomb block)
+;     $CCED: 1x1 bomb block
+;     $CD53: PLM $D094 (enemy collision reaction, spike block, BTS Fh. Enemy breakable block)
+;     $D0F6: PLM $D113 (crumble Lower Norfair chozo room plug)
+;     $E032: Empty item shot block reconcealing
     dw $0001,$0053                                                       ;84A345;
     dw $0000
 
 DrawInst_Respawn1x1_1:
+; Used by instruction lists:
+;     $AB31: PLM $B79B (crumble Botwoon wall)
+;     $C92E: PLM $D028 (unused. Respawning screw attack block)
+;     $C951: PLM $D030 (collision reaction, special, BTS Brinstar 82h. Respawning speed block, slower crumble animation)
+;     $C974: PLM $D038 (collision reaction, special, BTS Eh. Respawning speed block)
+;     $C997: PLM $D03C (collision reaction, special, BTS Brinstar 84h. Respawning speed block)
+;     $C9BA: PLM $D02C (unused. Screw attack block)
+;     $C9CF: PLM $D034 (collision reaction, special, BTS Brinstar 83h. Speed block, slower crumble animation)
+;     $C9E4: PLM $D040 (collision reaction, special, BTS Fh / Brinstar 85h. Speed block)
+;     $C9F9: PLM $D044 (collision reaction, special, BTS 0. 1x1 respawning crumble block)
+;     $CA8B: PLM $D054 (collision reaction, special, BTS 4. 1x1 crumble block)
+;     $CADF: PLM $D064 (shot/bombed/grappled reaction, shootable, BTS 0. 1x1 respawning shot block)
+;     $CB71: PLM $D08C (shot/bombed/grappled reaction, shootable, BTS Ah. Respawning super missile block)
+;     $CB94: PLM $D084 (shot/bombed/grappled reaction, shootable, BTS 8. Respawning power bomb block)
+;     $CBB7: PLM $D074 (shot/bombed/grappled reaction, shootable, BTS 4. 1x1 shot block)
+;     $CC0B: PLM $D090 (shot/bombed/grappled reaction, shootable, BTS Bh. Super missile block)
+;     $CC20: PLM $D088 (shot/bombed/grappled reaction, shootable, BTS 9. Power bomb block)
+;     $CC3F: 1x1 respawning bomb block
+;     $CCED: 1x1 bomb block
+;     $CD53: PLM $D094 (enemy collision reaction, spike block, BTS Fh. Enemy breakable block)
+;     $D0F6: PLM $D113 (crumble Lower Norfair chozo room plug)
+;     $E032: Empty item shot block reconcealing
     dw $0001,$0054                                                       ;84A34B;
     dw $0000
 
 DrawInst_Respawn1x1_2:
+; Used by instruction lists:
+;     $AB31: PLM $B79B (crumble Botwoon wall)
+;     $C92E: PLM $D028 (unused. Respawning screw attack block)
+;     $C951: PLM $D030 (collision reaction, special, BTS Brinstar 82h. Respawning speed block, slower crumble animation)
+;     $C974: PLM $D038 (collision reaction, special, BTS Eh. Respawning speed block)
+;     $C997: PLM $D03C (collision reaction, special, BTS Brinstar 84h. Respawning speed block)
+;     $C9BA: PLM $D02C (unused. Screw attack block)
+;     $C9CF: PLM $D034 (collision reaction, special, BTS Brinstar 83h. Speed block, slower crumble animation)
+;     $C9E4: PLM $D040 (collision reaction, special, BTS Fh / Brinstar 85h. Speed block)
+;     $C9F9: PLM $D044 (collision reaction, special, BTS 0. 1x1 respawning crumble block)
+;     $CA8B: PLM $D054 (collision reaction, special, BTS 4. 1x1 crumble block)
+;     $CADF: PLM $D064 (shot/bombed/grappled reaction, shootable, BTS 0. 1x1 respawning shot block)
+;     $CB71: PLM $D08C (shot/bombed/grappled reaction, shootable, BTS Ah. Respawning super missile block)
+;     $CB94: PLM $D084 (shot/bombed/grappled reaction, shootable, BTS 8. Respawning power bomb block)
+;     $CBB7: PLM $D074 (shot/bombed/grappled reaction, shootable, BTS 4. 1x1 shot block)
+;     $CC0B: PLM $D090 (shot/bombed/grappled reaction, shootable, BTS Bh. Super missile block)
+;     $CC20: PLM $D088 (shot/bombed/grappled reaction, shootable, BTS 9. Power bomb block)
+;     $CC3F: 1x1 respawning bomb block
+;     $CCED: 1x1 bomb block
+;     $CD53: PLM $D094 (enemy collision reaction, spike block, BTS Fh. Enemy breakable block)
+;     $D0F6: PLM $D113 (crumble Lower Norfair chozo room plug)
+;     $E032: Empty item shot block reconcealing
     dw $0001,$0055                                                       ;84A351;
     dw $0000
 
 DrawInst_Respawn1x1_3:
+; Used by instruction lists:
+;     $AB31: PLM $B79B (crumble Botwoon wall)
+;     $C92E: PLM $D028 (unused. Respawning screw attack block)
+;     $C951: PLM $D030 (collision reaction, special, BTS Brinstar 82h. Respawning speed block, slower crumble animation)
+;     $C974: PLM $D038 (collision reaction, special, BTS Eh. Respawning speed block)
+;     $C997: PLM $D03C (collision reaction, special, BTS Brinstar 84h. Respawning speed block)
+;     $C9BA: PLM $D02C (unused. Screw attack block)
+;     $C9CF: PLM $D034 (collision reaction, special, BTS Brinstar 83h. Speed block, slower crumble animation)
+;     $C9E4: PLM $D040 (collision reaction, special, BTS Fh / Brinstar 85h. Speed block)
+;     $C9F9: PLM $D044 (collision reaction, special, BTS 0. 1x1 respawning crumble block)
+;     $CA8B: PLM $D054 (collision reaction, special, BTS 4. 1x1 crumble block)
+;     $CADF: PLM $D064 (shot/bombed/grappled reaction, shootable, BTS 0. 1x1 respawning shot block)
+;     $CB71: PLM $D08C (shot/bombed/grappled reaction, shootable, BTS Ah. Respawning super missile block)
+;     $CB94: PLM $D084 (shot/bombed/grappled reaction, shootable, BTS 8. Respawning power bomb block)
+;     $CBB7: PLM $D074 (shot/bombed/grappled reaction, shootable, BTS 4. 1x1 shot block)
+;     $CC0B: PLM $D090 (shot/bombed/grappled reaction, shootable, BTS Bh. Super missile block)
+;     $CC20: PLM $D088 (shot/bombed/grappled reaction, shootable, BTS 9. Power bomb block)
+;     $CC3F: 1x1 respawning bomb block
+;     $CCED: 1x1 bomb block
+;     $CD53: PLM $D094 (enemy collision reaction, spike block, BTS Fh. Enemy breakable block)
+;     $D0F6: PLM $D113 (crumble Lower Norfair chozo room plug)
     dw $0001,$00FF                                                       ;84A357;
     dw $0000
 
+
 DrawInst_Respawn2x1_0:
+; Used by instruction lists:
+;     $CA1C: PLM $D048 (collision reaction, special, BTS 1. 2x1 respawning crumble block)
+;     $CAA0: PLM $D058 (collision reaction, special, BTS 5. 2x1 crumble block)
+;     $CB02: PLM $D068 (shot/bombed/grappled reaction, shootable, BTS 1. 2x1 respawning shot block)
+;     $CBCC: PLM $D078 (shot/bombed/grappled reaction, shootable, BTS 5. 2x1 shot block)
+;     $CC69: 2x1 respawning bomb block
+;     $CD09: 2x1 bomb block
     dw $0002,$0053,$0053                                                 ;84A35D;
     dw $0000
 
 DrawInst_Respawn2x1_1:
+; Used by instruction lists:
+;     $CA1C: PLM $D048 (collision reaction, special, BTS 1. 2x1 respawning crumble block)
+;     $CAA0: PLM $D058 (collision reaction, special, BTS 5. 2x1 crumble block)
+;     $CB02: PLM $D068 (shot/bombed/grappled reaction, shootable, BTS 1. 2x1 respawning shot block)
+;     $CBCC: PLM $D078 (shot/bombed/grappled reaction, shootable, BTS 5. 2x1 shot block)
+;     $CC69: 2x1 respawning bomb block
+;     $CD09: 2x1 bomb block
     dw $0002,$0054,$0054                                                 ;84A365;
     dw $0000
 
 DrawInst_Respawn2x1_2:
+; Used by instruction lists:
+;     $CA1C: PLM $D048 (collision reaction, special, BTS 1. 2x1 respawning crumble block)
+;     $CAA0: PLM $D058 (collision reaction, special, BTS 5. 2x1 crumble block)
+;     $CB02: PLM $D068 (shot/bombed/grappled reaction, shootable, BTS 1. 2x1 respawning shot block)
+;     $CBCC: PLM $D078 (shot/bombed/grappled reaction, shootable, BTS 5. 2x1 shot block)
+;     $CC69: 2x1 respawning bomb block
+;     $CD09: 2x1 bomb block
     dw $0002,$0055,$0055                                                 ;84A36D;
     dw $0000
 
 DrawInst_Respawn2x1_3:
+; Used by instruction lists:
+;     $CA1C: PLM $D048 (collision reaction, special, BTS 1. 2x1 respawning crumble block)
+;     $CAA0: PLM $D058 (collision reaction, special, BTS 5. 2x1 crumble block)
+;     $CB02: PLM $D068 (shot/bombed/grappled reaction, shootable, BTS 1. 2x1 respawning shot block)
+;     $CBCC: PLM $D078 (shot/bombed/grappled reaction, shootable, BTS 5. 2x1 shot block)
+;     $CC69: 2x1 respawning bomb block
+;     $CD09: 2x1 bomb block
     dw $0002,$00FF,$00FF                                                 ;84A375;
     dw $0000
 
+
 DrawInst_Respawn1x2_0:
+; Used by instruction lists:
+;     $CA41: PLM $D04C (collision reaction, special, BTS 2. 1x2 respawning crumble block)
+;     $CAB5: PLM $D05C (collision reaction, special, BTS 6. 1x2 crumble block)
+;     $CB27: PLM $D06C (shot/bombed/grappled reaction, shootable, BTS 2. 1x2 respawning shot block)
+;     $CBE1: PLM $D07C (shot/bombed/grappled reaction, shootable, BTS 6. 1x2 shot block)
+;     $CC95: 1x2 respawning bomb block
+;     $CD25: 1x2 bomb block
     dw $8002,$0053,$0053                                                 ;84A37D;
     dw $0000
 
 DrawInst_Respawn1x2_1:
+; Used by instruction lists:
+;     $CA41: PLM $D04C (collision reaction, special, BTS 2. 1x2 respawning crumble block)
+;     $CAB5: PLM $D05C (collision reaction, special, BTS 6. 1x2 crumble block)
+;     $CB27: PLM $D06C (shot/bombed/grappled reaction, shootable, BTS 2. 1x2 respawning shot block)
+;     $CBE1: PLM $D07C (shot/bombed/grappled reaction, shootable, BTS 6. 1x2 shot block)
+;     $CC95: 1x2 respawning bomb block
+;     $CD25: 1x2 bomb block
     dw $8002,$0054,$0054                                                 ;84A385;
     dw $0000
 
 DrawInst_Respawn1x2_2:
+; Used by instruction lists:
+;     $CA41: PLM $D04C (collision reaction, special, BTS 2. 1x2 respawning crumble block)
+;     $CAB5: PLM $D05C (collision reaction, special, BTS 6. 1x2 crumble block)
+;     $CB27: PLM $D06C (shot/bombed/grappled reaction, shootable, BTS 2. 1x2 respawning shot block)
+;     $CBE1: PLM $D07C (shot/bombed/grappled reaction, shootable, BTS 6. 1x2 shot block)
+;     $CC95: 1x2 respawning bomb block
+;     $CD25: 1x2 bomb block
     dw $8002,$0055,$0055                                                 ;84A38D;
     dw $0000
 
 DrawInst_Respawn1x2_3:
+; Used by instruction lists:
+;     $CA41: PLM $D04C (collision reaction, special, BTS 2. 1x2 respawning crumble block)
+;     $CAB5: PLM $D05C (collision reaction, special, BTS 6. 1x2 crumble block)
+;     $CB27: PLM $D06C (shot/bombed/grappled reaction, shootable, BTS 2. 1x2 respawning shot block)
+;     $CBE1: PLM $D07C (shot/bombed/grappled reaction, shootable, BTS 6. 1x2 shot block)
+;     $CC95: 1x2 respawning bomb block
+;     $CD25: 1x2 bomb block
     dw $8002,$00FF,$00FF                                                 ;84A395;
     dw $0000
 
+
 DrawInst_Respawn2x2_0:
+; Used by instruction lists:
+;     $CA66: PLM $D050 (collision reaction, special, BTS 3. 2x2 respawning crumble block)
+;     $CACA: PLM $D060 (collision reaction, special, BTS 7. 2x2 crumble block)
+;     $CB4C: PLM $D070 (shot/bombed/grappled reaction, shootable, BTS 3. 2x2 respawning shot block)
+;     $CBF6: PLM $D080 (shot/bombed/grappled reaction, shootable, BTS 7. 2x2 shot block)
+;     $CCC1: 2x2 respawning bomb block
+;     $CD41: 2x2 bomb block
     dw $0002,$0053,$0053                                                 ;84A39D;
     db $00,$01                                                           ;84A3A3;
     dw $0002,$0053,$0053                                                 ;84A3A5;
     dw $0000
 
 DrawInst_Respawn2x2_1:
+; Used by instruction lists:
+;     $CA66: PLM $D050 (collision reaction, special, BTS 3. 2x2 respawning crumble block)
+;     $CACA: PLM $D060 (collision reaction, special, BTS 7. 2x2 crumble block)
+;     $CB4C: PLM $D070 (shot/bombed/grappled reaction, shootable, BTS 3. 2x2 respawning shot block)
+;     $CBF6: PLM $D080 (shot/bombed/grappled reaction, shootable, BTS 7. 2x2 shot block)
+;     $CCC1: 2x2 respawning bomb block
+;     $CD41: 2x2 bomb block
     dw $0002,$0054,$0054                                                 ;84A3AD;
     db $00,$01                                                           ;84A3B3;
     dw $0002,$0054,$0054                                                 ;84A3B5;
     dw $0000
 
 DrawInst_Respawn2x2_2:
+; Used by instruction lists:
+;     $CA66: PLM $D050 (collision reaction, special, BTS 3. 2x2 respawning crumble block)
+;     $CACA: PLM $D060 (collision reaction, special, BTS 7. 2x2 crumble block)
+;     $CB4C: PLM $D070 (shot/bombed/grappled reaction, shootable, BTS 3. 2x2 respawning shot block)
+;     $CBF6: PLM $D080 (shot/bombed/grappled reaction, shootable, BTS 7. 2x2 shot block)
+;     $CCC1: 2x2 respawning bomb block
+;     $CD41: 2x2 bomb block
     dw $0002,$0055,$0055                                                 ;84A3BD;
     db $00,$01                                                           ;84A3C3;
     dw $0002,$0055,$0055                                                 ;84A3C5;
     dw $0000
 
 DrawInst_Respawn2x2_3:
+; Used by instruction lists:
+;     $CA66: PLM $D050 (collision reaction, special, BTS 3. 2x2 respawning crumble block)
+;     $CACA: PLM $D060 (collision reaction, special, BTS 7. 2x2 crumble block)
+;     $CB4C: PLM $D070 (shot/bombed/grappled reaction, shootable, BTS 3. 2x2 respawning shot block)
+;     $CBF6: PLM $D080 (shot/bombed/grappled reaction, shootable, BTS 7. 2x2 shot block)
+;     $CCC1: 2x2 respawning bomb block
+;     $CD41: 2x2 bomb block
     dw $0002,$00FF,$00FF                                                 ;84A3CD;
     db $00,$01                                                           ;84A3D3;
     dw $0002,$00FF,$00FF                                                 ;84A3D5;
     dw $0000
 
+
 DrawInst_ItemShotBlock_0:
+; Used by instruction lists:
+;     $E007: Item shot block
+;     $E020: Item shot block reconcealing
     dw $0001,$8053                                                       ;84A3DD;
     dw $0000
 
 DrawInst_ItemShotBlock_1:
+; Used by instruction lists:
+;     $E007: Item shot block
+;     $E020: Item shot block reconcealing
     dw $0001,$8054                                                       ;84A3E3;
     dw $0000
 
 DrawInst_ItemShotBlock_2:
+; Used by instruction lists:
+;     $E007: Item shot block
+;     $E020: Item shot block reconcealing
     dw $0001,$8055                                                       ;84A3E9;
     dw $0000
+
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_84A3EF:
     dw $0001,$80FF                                                       ;84A3EF;
     dw $0000
+
 
 UNUSED_DrawInst_84A3F5:
     dw $0002,$8053,$8053                                                 ;84A3F5;
@@ -4094,6 +5074,7 @@ UNUSED_DrawInst_84A40D:
     dw $0002,$80FF,$80FF                                                 ;84A40D;
     dw $0000
 
+
 UNUSED_DrawInst_84A415:
     dw $8002,$8053,$8053                                                 ;84A415;
     dw $0000
@@ -4109,6 +5090,7 @@ UNUSED_DrawInst_84A425:
 UNUSED_DrawInst_84A42D:
     dw $8002,$80FF,$80FF                                                 ;84A42D;
     dw $0000
+
 
 UNUSED_DrawInst_84A435:
     dw $0002,$8053,$8053                                                 ;84A435;
@@ -4134,544 +5116,944 @@ UNUSED_DrawInst_84A465:
     dw $0002,$80FF,$80FF                                                 ;84A46D;
     dw $0000
 
+
 UNUSED_DrawInst_1x1ShotBlock_84A475:
+; Used by instruction list $C8D4: PLM $CFEC (unused. Draws 1x1 shot block)
     dw $0001,$C052                                                       ;84A475;
     dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 DrawInst_2x1RespawningShotBlock:
+; Used by instruction lists:
+;     $C8DA: PLM $CFF0 (unused. Draws 1x2 shot block)
+;     $CB02: PLM $D068 (shot/bombed/grappled reaction, shootable, BTS 1. 2x1 respawning shot block)
     dw $0002,$C096,$5097                                                 ;84A47B;
     dw $0000
 
 DrawInst_1x2RespawningShotBlock:
+; Used by instruction lists:
+;     $C8E0: PLM $CFF4 (unused. Draws 2x1 shot block)
+;     $CB27: PLM $D06C (shot/bombed/grappled reaction, shootable, BTS 2. 1x2 respawning shot block)
     dw $8002,$C098,$D0B8                                                 ;84A483;
     dw $0000
 
 DrawInst_2x2RespawningShotBlock:
+; Used by instruction lists:
+;     $C8E6: PLM $CFF8 (unused. Draws 2x2 shot block)
+;     $CB4C: PLM $D070 (shot/bombed/grappled reaction, shootable, BTS 3. 2x2 respawning shot block)
     dw $0002,$C099,$509A                                                 ;84A48B;
     db $00,$01                                                           ;84A491;
     dw $0002,$D0B9,$D0BA                                                 ;84A493;
     dw $0000
 
+
 DrawInst_1x1RespawningCrumbleBlock:
+; Used by instruction list $C8EC: PLM $CFFC (bomb reaction, special block, BTS 0/4. 1x1 (respawning) crumble block)
     dw $0001,$B0BC                                                       ;84A49B;
     dw $0000
 
 DrawInst_2x1RespawningCrumbleBlock:
+; Used by instruction lists:
+;     $C8F2: PLM $D000 (bomb reaction, special block, BTS 1/5. 2x1 (respawning) crumble block)
+;     $CA1C: PLM $D048 (collision reaction, special, BTS 1. 2x1 respawning crumble block)
     dw $0002,$B0BC,$50BC                                                 ;84A4A1;
     dw $0000
 
 DrawInst_1x2RespawningCrumbleBlock:
+; Used by instruction lists:
+;     $C8F8: PLM $D004 (bomb reaction, special block, BTS 2/6. 1x2 (respawning) crumble block)
+;     $CA41: PLM $D04C (collision reaction, special, BTS 2. 1x2 respawning crumble block)
     dw $8002,$B0BC,$D0BC                                                 ;84A4A9;
     dw $0000
 
 DrawInst_2x2RespawningCrumbleBlock:
+; Used by instruction lists:
+;     $C8FE: PLM $D008 (bomb reaction, special block, BTS 3/7. 2x2 (respawning) crumble block)
+;     $CA66: PLM $D050 (collision reaction, special, BTS 3. 2x2 respawning crumble block)
     dw $0002,$B0BC,$50BC                                                 ;84A4B1;
     db $00,$01                                                           ;84A4B7;
     dw $0002,$D0BC,$D0BC                                                 ;84A4B9;
     dw $0000
 
+
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_84A4C1:
+; Used by instruction list $C904: PLM $D00C (unused)
     dw $0001,$F058                                                       ;84A4C1;
     dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 DrawInst_2x1RespawningBombBlock:
+; Used by instruction lists:
+;     $C90A: PLM $D010 (unused)
+;     $CC69: 2x1 respawning bomb block
     dw $0002,$F058,$5058                                                 ;84A4C7;
     dw $0000
 
 DrawInst_1x2RespawningBombBlock:
+; Used by instruction lists:
+;     $C910: PLM $D014 (unused)
+;     $CC95: 1x2 respawning bomb block
     dw $8002,$F058,$D058                                                 ;84A4CF;
     dw $0000
 
 DrawInst_2x2RespawningBombBlock:
+; Used by instruction lists:
+;     $C916: PLM $D018 (unused)
+;     $CCC1: 2x2 respawning bomb block
     dw $0002,$F058,$5058                                                 ;84A4D7;
     db $00,$01                                                           ;84A4DD;
     dw $0002,$D058,$D058                                                 ;84A4DF;
     dw $0000
 
+
 UNUSED_DrawInst_PowerBombBlockBombed_84A4E7:
+; Used by instruction list $C91C: PLM $D01C (unused) / power bomb block bombed
     dw $0001,$C057                                                       ;84A4E7;
     dw $0000
 
 UNUSED_DrawInst_SuperMissileBlockBombed_84A4ED:
+; Used by instruction list $C922: PLM $D020 (unused) / super missile block bombed
     dw $0001,$C09F                                                       ;84A4ED;
     dw $0000
 
 DrawInst_BombReactionSpeedBlock:
+; Used by instruction list $C928: PLM $D024 (bomb reaction, special block, BTS Eh/Fh / Brinstar 82h/83h/84h/85h. Speed block)
     dw $0001,$B0B6                                                       ;84A4F3;
     dw $0000
 
+
 DrawInst_BreakableGrappleBlock_0:
+; Used by instruction lists:
+;     $CD6A: PLM $D0DC (grappled reaction, grapple block, BTS 1. Respawning breakable grapple block)
+;     $CDA9: PLM $D0E0 (grappled reaction, grapple block, BTS 2. Breakable grapple block)
+;     $D135: PLM $D13B (unused. Grapple block)
     dw $0001,$E0B7                                                       ;84A4F9;
     dw $0000
 
 DrawInst_BreakableGrappleBlock_1:
+; Used by instruction lists:
+;     $CD6A: PLM $D0DC (grappled reaction, grapple block, BTS 1. Respawning breakable grapple block)
+;     $CDA9: PLM $D0E0 (grappled reaction, grapple block, BTS 2. Breakable grapple block)
     dw $0001,$0053                                                       ;84A4FF;
     dw $0000
 
 DrawInst_BreakableGrappleBlock_2:
+; Used by instruction lists:
+;     $CD6A: PLM $D0DC (grappled reaction, grapple block, BTS 1. Respawning breakable grapple block)
+;     $CDA9: PLM $D0E0 (grappled reaction, grapple block, BTS 2. Breakable grapple block)
     dw $0001,$0054                                                       ;84A505;
     dw $0000
 
 DrawInst_BreakableGrappleBlock_3:
+; Used by instruction lists:
+;     $CD6A: PLM $D0DC (grappled reaction, grapple block, BTS 1. Respawning breakable grapple block)
+;     $CDA9: PLM $D0E0 (grappled reaction, grapple block, BTS 2. Breakable grapple block)
     dw $0001,$0055                                                       ;84A50B;
     dw $0000
 
 DrawInst_BreakableGrappleBlock_4:
+; Used by instruction lists:
+;     $CD6A: PLM $D0DC (grappled reaction, grapple block, BTS 1. Respawning breakable grapple block)
+;     $CDA9: PLM $D0E0 (grappled reaction, grapple block, BTS 2. Breakable grapple block)
     dw $0001,$00FF                                                       ;84A511;
     dw $0000
 
+
 DrawInst_DownwardsGateOpen:
+; Used by instruction list $BC13: PLM $C826 (downwards open gate)
     dw $8005,$C0D6,$00FF,$00FF,$00FF,$00FF                               ;84A517;
     dw $0000
 
 DrawInst_DownwardsGateOpenClosed_0:
+; Used by instruction lists:
+;     $BC13: PLM $C826 (downwards open gate)
+;     $BC3A: PLM $C82A (downwards closed gate)
     dw $8005,$C0D7,$C0FF,$00FF,$00FF,$00FF                               ;84A525;
     dw $0000
 
 DrawInst_DownwardsGateOpenClosed_1:
+; Used by instruction lists:
+;     $BC13: PLM $C826 (downwards open gate)
+;     $BC3A: PLM $C82A (downwards closed gate)
     dw $8005,$C0D7,$C0FF,$C0FF,$00FF,$00FF                               ;84A533;
     dw $0000
 
 DrawInst_DownwardsGateOpenClosed_2:
+; Used by instruction lists:
+;     $BC13: PLM $C826 (downwards open gate)
+;     $BC3A: PLM $C82A (downwards closed gate)
     dw $8005,$C0D7,$C0FF,$C0FF,$C0FF,$00FF                               ;84A541;
     dw $0000
 
 DrawInst_DownwardsGateOpenClosed_3:
+; Used by instruction lists:
+;     $BC13: PLM $C826 (downwards open gate)
+;     $BC3A: PLM $C82A (downwards closed gate)
     dw $8005,$C0D7,$C0FF,$C0FF,$C0FF,$C0FF                               ;84A54F;
     dw $0000
 
 DrawInst_DownwardsGateClosed:
+; Used by instruction list $BC3A: PLM $C82A (downwards closed gate)
     dw $8005,$C0D6,$C0FF,$C0FF,$C0FF,$C0FF                               ;84A55D;
     dw $0000
 
 DrawInst_UpwardsGateOpen:
-    dw $8001,$C0D6,$FC00,$8004,$00FF,$00FF,$00FF,$00FF                   ;84A56B;
+; Used by instruction list $BC61: PLM $C82E (upwards open gate)
+    dw $8001,$C0D6                                                       ;84A56B;
+    db $00,$FC                                                           ;84A56F;
+    dw $8004,$00FF,$00FF,$00FF,$00FF                                     ;84A571;
     dw $0000                                                             ;84A57B;
 
 DrawInst_UpwardsGateOpenClosed_0:
+; Used by instruction lists:
+;     $BC61: PLM $C82E (upwards open gate)
+;     $BC88: PLM $C832 (upwards closed gate)
     dw $8001,$C0D7                                                       ;84A57D;
     db $00,$FC                                                           ;84A581;
     dw $8004,$00FF,$00FF,$00FF,$80FF                                     ;84A583;
     dw $0000
 
 DrawInst_UpwardsGateOpenClosed_1:
+; Used by instruction lists:
+;     $BC61: PLM $C82E (upwards open gate)
+;     $BC88: PLM $C832 (upwards closed gate)
     dw $8001,$C0D7                                                       ;84A58F;
     db $00,$FC                                                           ;84A593;
     dw $8004,$00FF,$00FF,$C0FF,$C0FF                                     ;84A595;
     dw $0000
 
 DrawInst_UpwardsGateOpenClosed_2:
+; Used by instruction lists:
+;     $BC61: PLM $C82E (upwards open gate)
+;     $BC88: PLM $C832 (upwards closed gate)
     dw $8001,$C0D7                                                       ;84A5A1;
     db $00,$FC                                                           ;84A5A5;
     dw $8004,$00FF,$C0FF,$C0FF,$C0FF                                     ;84A5A7;
     dw $0000
 
 DrawInst_UpwardsGateOpenClosed_3:
+; Used by instruction lists:
+;     $BC61: PLM $C82E (upwards open gate)
+;     $BC88: PLM $C832 (upwards closed gate)
     dw $8001,$C0D7                                                       ;84A5B3;
     db $00,$FC                                                           ;84A5B7;
     dw $8004,$C0FF,$C0FF,$C0FF,$C0FF                                     ;84A5B9;
     dw $0000
 
 DrawInst_UpwardsGateClosed:
+; Used by instruction list $BC88: PLM $C832 (upwards closed gate)
     dw $8001,$C0D6                                                       ;84A5C5;
     db $00,$FC                                                           ;84A5C9;
     dw $8004,$C0FF,$C0FF,$C0FF,$C0FF                                     ;84A5CB;
     dw $0000
 
 DrawInst_GateShotblockDownwardsBlueLeft:
+; Used by instruction list $BCAF: PLM $C836 (downwards gate shotblock) - blue left
     dw $0001,$80D6                                                       ;84A5D7;
     db $FF,$00                                                           ;84A5DB;
     dw $0001,$C0DB                                                       ;84A5DD;
     dw $0000
 
 DrawInst_GateShotblockDownwardsBlueRight:
+; Used by instruction list $BCB5: PLM $C836 (downwards gate shotblock) - blue right
     dw $0002,$80D6,$C4DB                                                 ;84A5E3;
     dw $0000
 
 DrawInst_GateShotblockDownwardsRedLeft:
+; Used by instruction list $BCBB: PLM $C836 (downwards gate shotblock) - red left
     dw $0001,$80D6                                                       ;84A5EB;
     db $FF,$00                                                           ;84A5EF;
     dw $0001,$C0DA                                                       ;84A5F1;
     dw $0000
 
 DrawInst_GateShotblockDownwardsRedRight:
+; Used by instruction list $BCC1: PLM $C836 (downwards gate shotblock) - red right
     dw $0002,$80D6,$C4DA                                                 ;84A5F7;
     dw $0000
 
 DrawInst_GateShotblockDownwardsGreenLeft:
+; Used by instruction list $BCC7: PLM $C836 (downwards gate shotblock) - green left
     dw $0001,$80D6                                                       ;84A5FF;
     db $FF,$00                                                           ;84A603;
     dw $0001,$C0D9                                                       ;84A605;
     dw $0000
 
 DrawInst_GateShotblockDownwardsGreenRight:
+; Used by instruction list $BCCD: PLM $C836 (downwards gate shotblock) - green right
     dw $0002,$80D6,$C4D9                                                 ;84A60B;
     dw $0000
 
 DrawInst_GateShotblockDownwardsYellowLeft:
+; Used by instruction list $BCD3: PLM $C836 (downwards gate shotblock) - yellow left
     dw $0001,$80D6                                                       ;84A613;
     db $FF,$00                                                           ;84A617;
     dw $0001,$C0D8                                                       ;84A619;
     dw $0000
 
 DrawInst_GateShotblockDownwardsYellowRight:
+; Used by instruction list $BCD9: PLM $C836 (downwards gate shotblock) - yellow right
     dw $0002,$80D6,$C4D8                                                 ;84A61F;
     dw $0000
 
 DrawInst_GateShotblockUpwardsBlueLeft:
+; Used by instruction list $BCDF: PLM $C83A (upwards gate shotblock) - blue left
     dw $0001,$88D6                                                       ;84A627;
     db $FF,$00                                                           ;84A62B;
     dw $0001,$C8DB                                                       ;84A62D;
     dw $0000
 
 DrawInst_GateShotblockUpwardsBlueRight:
+; Used by instruction list $BCE5: PLM $C83A (upwards gate shotblock) - blue right
     dw $0002,$88D6,$CCDB                                                 ;84A633;
     dw $0000
 
 DrawInst_GateShotblockUpwardsRedLeft:
+; Used by instruction list $BCEB: PLM $C83A (upwards gate shotblock) - red left
     dw $0001,$88D6                                                       ;84A63B;
     db $FF,$00                                                           ;84A63F;
     dw $0001,$C8DA                                                       ;84A641;
     dw $0000
 
 DrawInst_GateShotblockUpwardsRedRight:
+; Used by instruction list $BCF1: PLM $C83A (upwards gate shotblock) - red right
     dw $0002,$88D6,$CCDA                                                 ;84A647;
     dw $0000
 
 DrawInst_GateShotblockUpwardsGreenLeft:
+; Used by instruction list $BCF7: PLM $C83A (upwards gate shotblock) - green left
     dw $0001,$88D6                                                       ;84A64F;
     db $FF,$00                                                           ;84A653;
     dw $0001,$C8D9                                                       ;84A655;
     dw $0000
 
 DrawInst_GateShotblockUpwardsGreenRight:
+; Used by instruction list $BCFD: PLM $C83A (upwards gate shotblock) - green right
     dw $0002,$88D6,$CCD9                                                 ;84A65B;
     dw $0000
 
 DrawInst_GateShotblockUpwardsYellowLeft:
+; Used by instruction list $BD03: PLM $C83A (upwards gate shotblock) - yellow left
     dw $0001,$88D6                                                       ;84A663;
     db $FF,$00                                                           ;84A667;
     dw $0001,$C8D8                                                       ;84A669;
     dw $0000
 
 DrawInst_GateShotblockUpwardsYellowRight:
+; Used by instruction list $BD09: PLM $C83A (upwards gate shotblock) - yellow right
     dw $0002,$88D6,$CCD8                                                 ;84A66F;
     dw $0000
 
+
 DrawInst_DoorFacingLeft_A677:
+; Used by instruction lists:
+;     $BE59: Door $C842 (grey door facing left)
+;     $BE70: Door $C842 (grey door facing left)
+;     $BFFD: Door $C85A (yellow door facing left)
+;     $C014: Door $C85A (yellow door facing left)
+;     $C185: Door $C872 (green door facing left)
+;     $C19C: Door $C872 (green door facing left)
+;     $C301: Door $C88A (red door facing left)
+;     $C318: Door $C88A (red door facing left)
+;     $C489: Door $C8A2 (shot/bombed/grappled reaction, shootable, BTS 40h. Blue door facing left)
+;     $C49E: Door $C8A2 (shot/bombed/grappled reaction, shootable, BTS 40h. Blue door facing left)
     dw $8004,$0082,$00A2,$08A2,$0882                                     ;84A677;
     dw $0000
 
 DrawInst_DoorFacingRight_A683:
+; Used by instruction lists:
+;     $BA4C: PLM $BAF4 (Bomb Torizo grey door)
+;     $BA7F: PLM $BAF4 (Bomb Torizo grey door)
+;     $BEC2: Door $C848 (grey door facing right)
+;     $BED9: Door $C848 (grey door facing right)
+;     $C060: Door $C860 (yellow door facing right)
+;     $C077: Door $C860 (yellow door facing right)
+;     $C1E4: Door $C878 (green door facing right)
+;     $C1FB: Door $C878 (green door facing right)
+;     $C363: Door $C890 (red door facing right)
+;     $C37A: Door $C890 (red door facing right)
+;     $C4BA: Door $C8A8 (shot/bombed/grappled reaction, shootable, BTS 41h. Blue door facing right)
+;     $C4CF: Door $C8A8 (shot/bombed/grappled reaction, shootable, BTS 41h. Blue door facing right)
     dw $8004,$0482,$04A2,$0CA2,$0C82                                     ;84A683;
     dw $0000
 
 DrawInst_DoorFacingUp_A68F:
+; Used by instruction lists:
+;     $BF2B: Door $C84E (grey door facing up)
+;     $BF42: Door $C84E (grey door facing up)
+;     $C0C3: Door $C866 (yellow door facing up)
+;     $C0DA: Door $C866 (yellow door facing up)
+;     $C243: Door $C87E (green door facing up)
+;     $C25A: Door $C87E (green door facing up)
+;     $C3C5: Door $C896 (red door facing up)
+;     $C3DC: Door $C896 (red door facing up)
+;     $C4EB: Door $C8AE (shot/bombed/grappled reaction, shootable, BTS 42h. Blue door facing up)
+;     $C500: Door $C8AE (shot/bombed/grappled reaction, shootable, BTS 42h. Blue door facing up)
     dw $0004,$0484,$0483,$0083,$0084                                     ;84A68F;
     dw $0000
 
 DrawInst_DoorFacingDown_A69B:
+; Used by instruction lists:
+;     $BF94: Door $C854 (grey door facing down)
+;     $BFAB: Door $C854 (grey door facing down)
+;     $C122: Door $C86C (yellow door facing down)
+;     $C139: Door $C86C (yellow door facing down)
+;     $C2A2: Door $C884 (green door facing down)
+;     $C2B9: Door $C884 (green door facing down)
+;     $C427: Door $C89C (red door facing down)
+;     $C43E: Door $C89C (red door facing down)
+;     $C51C: Door $C8B4 (shot/bombed/grappled reaction, shootable, BTS 43h. Blue door facing down)
+;     $C531: Door $C8B4 (shot/bombed/grappled reaction, shootable, BTS 43h. Blue door facing down)
     dw $0004,$0C84,$0C83,$0883,$0884                                     ;84A69B;
     dw $0000
 
+
 DrawInst_GreyDoorFacingLeft_0:
+; Used by instruction lists:
+;     $BE59: Door $C842 (grey door facing left)
+;     $BE70: Door $C842 (grey door facing left)
     dw $8004,$C0AE,$D0CE,$D8CE,$D8AE                                     ;84A6A7;
     dw $0000
 
 DrawInst_GreyDoorFacingLeft_1:
+; Used by instruction lists:
+;     $BE59: Door $C842 (grey door facing left)
+;     $BE70: Door $C842 (grey door facing left)
     dw $8004,$80AF,$80CF,$88CF,$88AF                                     ;84A6B3;
     dw $0000
 
 DrawInst_GreyDoorFacingLeft_2:
+; Used by instruction lists:
+;     $BE59: Door $C842 (grey door facing left)
+;     $BE70: Door $C842 (grey door facing left)
     dw $8004,$80B0,$80D0,$88D0,$88B0                                     ;84A6BF;
     dw $0000
 
 DrawInst_GreyDoorFacingLeft_3:
+; Used by instruction lists:
+;     $BE59: Door $C842 (grey door facing left)
+;     $BE70: Door $C842 (grey door facing left)
     dw $8004,$80B1,$00D1,$08D1,$88B1                                     ;84A6CB;
     dw $0000
 
+
 DrawInst_GreyDoorFacingRight_0:
+; Used by instruction lists:
+;     $BA4C: PLM $BAF4 (Bomb Torizo grey door)
+;     $BA7F: PLM $BAF4 (Bomb Torizo grey door)
+;     $BEC2: Door $C848 (grey door facing right)
+;     $BED9: Door $C848 (grey door facing right)
     dw $8004,$C4AE,$D4CE,$DCCE,$DCAE                                     ;84A6D7;
     dw $0000
 
 DrawInst_GreyDoorFacingRight_1:
+; Used by instruction lists:
+;     $BA4C: PLM $BAF4 (Bomb Torizo grey door)
+;     $BA7F: PLM $BAF4 (Bomb Torizo grey door)
+;     $BEC2: Door $C848 (grey door facing right)
+;     $BED9: Door $C848 (grey door facing right)
     dw $8004,$84AF,$84CF,$8CCF,$8CAF                                     ;84A6E3;
     dw $0000
 
 DrawInst_GreyDoorFacingRight_2:
+; Used by instruction lists:
+;     $BA4C: PLM $BAF4 (Bomb Torizo grey door)
+;     $BA7F: PLM $BAF4 (Bomb Torizo grey door)
+;     $BEC2: Door $C848 (grey door facing right)
+;     $BED9: Door $C848 (grey door facing right)
     dw $8004,$84B0,$84D0,$8CD0,$8CB0                                     ;84A6EF;
     dw $0000
 
 DrawInst_GreyDoorFacingRight_3:
+; Used by instruction lists:
+;     $BA4C: PLM $BAF4 (Bomb Torizo grey door)
+;     $BA7F: PLM $BAF4 (Bomb Torizo grey door)
+;     $BEC2: Door $C848 (grey door facing right)
+;     $BED9: Door $C848 (grey door facing right)
     dw $8004,$84B1,$84D1,$8CD1,$8CB1                                     ;84A6FB;
     dw $0000
 
+
 DrawInst_GreyDoorFacingUp_0:
+; Used by instruction lists:
+;     $BF2B: Door $C84E (grey door facing up)
+;     $BF42: Door $C84E (grey door facing up)
     dw $0004,$C4B3,$54B2,$50B2,$50B3                                     ;84A707;
     dw $0000
 
 DrawInst_GreyDoorFacingUp_1:
+; Used by instruction lists:
+;     $BF2B: Door $C84E (grey door facing up)
+;     $BF42: Door $C84E (grey door facing up)
     dw $0004,$84D3,$84D2,$80D2,$80D3                                     ;84A713;
     dw $0000
 
 DrawInst_GreyDoorFacingUp_2:
+; Used by instruction lists:
+;     $BF2B: Door $C84E (grey door facing up)
+;     $BF42: Door $C84E (grey door facing up)
     dw $0004,$84B5,$84B4,$80B4,$80B5                                     ;84A71F;
     dw $0000
 
 DrawInst_GreyDoorFacingUp_3:
+; Used by instruction lists:
+;     $BF2B: Door $C84E (grey door facing up)
+;     $BF42: Door $C84E (grey door facing up)
     dw $0004,$84D5,$84D4,$80D4,$80D5                                     ;84A72B;
     dw $0000
 
+
 DrawInst_GreyDoorFacingDown_0:
+; Used by instruction lists:
+;     $BF94: Door $C854 (grey door facing down)
+;     $BFAB: Door $C854 (grey door facing down)
     dw $0004,$CCB3,$5CB2,$58B2,$58B3                                     ;84A737;
     dw $0000
 
 DrawInst_GreyDoorFacingDown_1:
+; Used by instruction lists:
+;     $BF94: Door $C854 (grey door facing down)
+;     $BFAB: Door $C854 (grey door facing down)
     dw $0004,$8CD3,$8CD2,$88D2,$88D3                                     ;84A743;
     dw $0000
 
 DrawInst_GreyDoorFacingDown_2:
+; Used by instruction lists:
+;     $BF94: Door $C854 (grey door facing down)
+;     $BFAB: Door $C854 (grey door facing down)
     dw $0004,$8CB5,$8CB4,$88B4,$88B5                                     ;84A74F;
     dw $0000
 
 DrawInst_GreyDoorFacingDown_3:
+; Used by instruction lists:
+;     $BF94: Door $C854 (grey door facing down)
+;     $BFAB: Door $C854 (grey door facing down)
     dw $0004,$8CD5,$0CD4,$08D4,$88D5                                     ;84A75B;
     dw $0000
 
+
 DrawInst_YellowDoorFacingLeft_0:
+; Used by instruction lists:
+;     $BFFD: Door $C85A (yellow door facing left)
+;     $C014: Door $C85A (yellow door facing left)
     dw $8004,$C000,$D020,$D820,$D800                                     ;84A767;
     dw $0000
 
 DrawInst_YellowDoorFacingLeft_1:
+; Used by instruction lists:
+;     $BFFD: Door $C85A (yellow door facing left)
+;     $C014: Door $C85A (yellow door facing left)
     dw $8004,$8001,$8021,$8821,$8801                                     ;84A773;
     dw $0000
 
 DrawInst_YellowDoorFacingLeft_2:
+; Used by instruction lists:
+;     $BFFD: Door $C85A (yellow door facing left)
+;     $C014: Door $C85A (yellow door facing left)
     dw $8004,$8002,$8022,$8822,$8802                                     ;84A77F;
     dw $0000
 
 DrawInst_YellowDoorFacingLeft_3:
+; Used by instruction lists:
+;     $BFFD: Door $C85A (yellow door facing left)
+;     $C014: Door $C85A (yellow door facing left)
     dw $8004,$8003,$0023,$0823,$8803                                     ;84A78B;
     dw $0000
 
+
 DrawInst_YellowDoorFacingRight_0:
+; Used by instruction lists:
+;     $C060: Door $C860 (yellow door facing right)
+;     $C077: Door $C860 (yellow door facing right)
     dw $8004,$C400,$D420,$DC20,$DC00                                     ;84A797;
     dw $0000
 
 DrawInst_YellowDoorFacingRight_1:
+; Used by instruction lists:
+;     $C060: Door $C860 (yellow door facing right)
+;     $C077: Door $C860 (yellow door facing right)
     dw $8004,$8401,$8421,$8C21,$8C01                                     ;84A7A3;
     dw $0000
 
 DrawInst_YellowDoorFacingRight_2:
+; Used by instruction lists:
+;     $C060: Door $C860 (yellow door facing right)
+;     $C077: Door $C860 (yellow door facing right)
     dw $8004,$8402,$8422,$8C22,$8C02                                     ;84A7AF;
     dw $0000
 
 DrawInst_YellowDoorFacingRight_3:
+; Used by instruction lists:
+;     $C060: Door $C860 (yellow door facing right)
+;     $C077: Door $C860 (yellow door facing right)
     dw $8004,$8403,$8423,$8C23,$8C03                                     ;84A7BB;
     dw $0000
 
+
 DrawInst_YellowDoorFacingUp_0:
+; Used by instruction lists:
+;     $C0C3: Door $C866 (yellow door facing up)
+;     $C0DA: Door $C866 (yellow door facing up)
     dw $0004,$C411,$5410,$5010,$5011                                     ;84A7C7;
     dw $0000
 
 DrawInst_YellowDoorFacingUp_1:
+; Used by instruction lists:
+;     $C0C3: Door $C866 (yellow door facing up)
+;     $C0DA: Door $C866 (yellow door facing up)
     dw $0004,$8431,$8430,$8030,$8031                                     ;84A7D3;
     dw $0000
 
 DrawInst_YellowDoorFacingUp_2:
+; Used by instruction lists:
+;     $C0C3: Door $C866 (yellow door facing up)
+;     $C0DA: Door $C866 (yellow door facing up)
     dw $0004,$8413,$8412,$8012,$8013                                     ;84A7DF;
     dw $0000
 
 DrawInst_YellowDoorFacingUp_3:
+; Used by instruction lists:
+;     $C0C3: Door $C866 (yellow door facing up)
+;     $C0DA: Door $C866 (yellow door facing up)
     dw $0004,$8433,$8432,$8032,$8033                                     ;84A7EB;
     dw $0000
 
+
 DrawInst_YellowDoorFacingDown_0:
+; Used by instruction lists:
+;     $C122: Door $C86C (yellow door facing down)
+;     $C139: Door $C86C (yellow door facing down)
     dw $0004,$CC11,$5C10,$5810,$5811                                     ;84A7F7;
     dw $0000
 
 DrawInst_YellowDoorFacingDown_1:
+; Used by instruction lists:
+;     $C122: Door $C86C (yellow door facing down)
+;     $C139: Door $C86C (yellow door facing down)
     dw $0004,$8C31,$8C30,$8830,$8831                                     ;84A803;
     dw $0000
 
 DrawInst_YellowDoorFacingDown_2:
+; Used by instruction lists:
+;     $C122: Door $C86C (yellow door facing down)
+;     $C139: Door $C86C (yellow door facing down)
     dw $0004,$8C13,$8C12,$8812,$8813                                     ;84A80F;
     dw $0000
 
 DrawInst_YellowDoorFacingDown_3:
+; Used by instruction lists:
+;     $C122: Door $C86C (yellow door facing down)
+;     $C139: Door $C86C (yellow door facing down)
     dw $0004,$8C33,$0C32,$0832,$8833                                     ;84A81B;
     dw $0000
 
+
 DrawInst_GreenDoorFacingLeft_0:
+; Used by instruction lists:
+;     $C185: Door $C872 (green door facing left)
+;     $C19C: Door $C872 (green door facing left)
     dw $8004,$C004,$D024,$D824,$D804                                     ;84A827;
     dw $0000
 
 DrawInst_GreenDoorFacingLeft_1:
+; Used by instruction lists:
+;     $C185: Door $C872 (green door facing left)
+;     $C19C: Door $C872 (green door facing left)
     dw $8004,$8005,$8025,$8825,$8805                                     ;84A833;
     dw $0000
 
 DrawInst_GreenDoorFacingLeft_2:
+; Used by instruction lists:
+;     $C185: Door $C872 (green door facing left)
+;     $C19C: Door $C872 (green door facing left)
     dw $8004,$8006,$8026,$8826,$8806                                     ;84A83F;
     dw $0000
 
 DrawInst_GreenDoorFacingLeft_3:
+; Used by instruction lists:
+;     $C185: Door $C872 (green door facing left)
+;     $C19C: Door $C872 (green door facing left)
     dw $8004,$8007,$0027,$0827,$8807                                     ;84A84B;
     dw $0000
 
+
 DrawInst_GreenDoorFacingRight_0:
+; Used by instruction lists:
+;     $C1E4: Door $C878 (green door facing right)
+;     $C1FB: Door $C878 (green door facing right)
     dw $8004,$C404,$D424,$DC24,$DC04                                     ;84A857;
     dw $0000
 
 DrawInst_GreenDoorFacingRight_1:
+; Used by instruction lists:
+;     $C1E4: Door $C878 (green door facing right)
+;     $C1FB: Door $C878 (green door facing right)
     dw $8004,$8405,$8425,$8C25,$8C05                                     ;84A863;
     dw $0000
 
 DrawInst_GreenDoorFacingRight_2:
+; Used by instruction lists:
+;     $C1E4: Door $C878 (green door facing right)
+;     $C1FB: Door $C878 (green door facing right)
     dw $8004,$8406,$8426,$8C26,$8C06                                     ;84A86F;
     dw $0000
 
 DrawInst_GreenDoorFacingRight_3:
+; Used by instruction lists:
+;     $C1E4: Door $C878 (green door facing right)
+;     $C1FB: Door $C878 (green door facing right)
     dw $8004,$8407,$0427,$0C27,$8C07                                     ;84A87B;
     dw $0000
 
+
 DrawInst_GreenDoorFacingUp_0:
+; Used by instruction lists:
+;     $C243: Door $C87E (green door facing up)
+;     $C25A: Door $C87E (green door facing up)
     dw $0004,$C415,$5414,$5014,$5015                                     ;84A887;
     dw $0000
 
 DrawInst_GreenDoorFacingUp_1:
+; Used by instruction lists:
+;     $C243: Door $C87E (green door facing up)
+;     $C25A: Door $C87E (green door facing up)
     dw $0004,$8435,$8434,$8034,$8035                                     ;84A893;
     dw $0000
 
 DrawInst_GreenDoorFacingUp_2:
+; Used by instruction lists:
+;     $C243: Door $C87E (green door facing up)
+;     $C25A: Door $C87E (green door facing up)
     dw $0004,$8417,$8416,$8016,$8017                                     ;84A89F;
     dw $0000
 
 DrawInst_GreenDoorFacingUp_3:
+; Used by instruction lists:
+;     $C243: Door $C87E (green door facing up)
+;     $C25A: Door $C87E (green door facing up)
     dw $0004,$8437,$8436,$8036,$8037                                     ;84A8AB;
     dw $0000
 
+
 DrawInst_GreenDoorFacingDown_0:
+; Used by instruction lists:
+;     $C2A2: Door $C884 (green door facing down)
+;     $C2B9: Door $C884 (green door facing down)
     dw $0004,$CC15,$5C14,$5814,$5815                                     ;84A8B7;
     dw $0000
 
 DrawInst_GreenDoorFacingDown_1:
+; Used by instruction lists:
+;     $C2A2: Door $C884 (green door facing down)
+;     $C2B9: Door $C884 (green door facing down)
     dw $0004,$8C35,$8C34,$8834,$8835                                     ;84A8C3;
     dw $0000
 
 DrawInst_GreenDoorFacingDown_2:
+; Used by instruction lists:
+;     $C2A2: Door $C884 (green door facing down)
+;     $C2B9: Door $C884 (green door facing down)
     dw $0004,$8C17,$8C16,$8816,$8817                                     ;84A8CF;
     dw $0000
 
 DrawInst_GreenDoorFacingDown_3:
+; Used by instruction lists:
+;     $C2A2: Door $C884 (green door facing down)
+;     $C2B9: Door $C884 (green door facing down)
     dw $0004,$8C37,$8C36,$8836,$8837                                     ;84A8DB;
     dw $0000
 
+
 DrawInst_RedDoorFacingLeft_0:
+; Used by instruction lists:
+;     $C301: Door $C88A (red door facing left)
+;     $C318: Door $C88A (red door facing left)
     dw $8004,$C008,$D028,$D828,$D808                                     ;84A8E7;
     dw $0000
 
 DrawInst_RedDoorFacingLeft_1:
+; Used by instruction lists:
+;     $C301: Door $C88A (red door facing left)
+;     $C318: Door $C88A (red door facing left)
     dw $8004,$8009,$8029,$8829,$8809                                     ;84A8F3;
     dw $0000
 
 DrawInst_RedDoorFacingLeft_2:
+; Used by instruction lists:
+;     $C301: Door $C88A (red door facing left)
+;     $C318: Door $C88A (red door facing left)
     dw $8004,$800A,$802A,$882A,$880A                                     ;84A8FF;
     dw $0000
 
 DrawInst_RedDoorFacingLeft_3:
+; Used by instruction lists:
+;     $C301: Door $C88A (red door facing left)
+;     $C318: Door $C88A (red door facing left)
     dw $8004,$800B,$002B,$082B,$880B                                     ;84A90B;
     dw $0000
 
+
 DrawInst_RedDoorFacingRight_0:
+; Used by instruction lists:
+;     $C363: Door $C890 (red door facing right)
+;     $C37A: Door $C890 (red door facing right)
     dw $8004,$C408,$D428,$DC28,$DC08                                     ;84A917;
     dw $0000
 
 DrawInst_RedDoorFacingRight_1:
+; Used by instruction lists:
+;     $C363: Door $C890 (red door facing right)
+;     $C37A: Door $C890 (red door facing right)
     dw $8004,$8409,$8429,$8C29,$8C09                                     ;84A923;
     dw $0000
 
 DrawInst_RedDoorFacingRight_2:
+; Used by instruction lists:
+;     $C363: Door $C890 (red door facing right)
+;     $C37A: Door $C890 (red door facing right)
     dw $8004,$840A,$842A,$8C2A,$8C0A                                     ;84A92F;
     dw $0000
 
 DrawInst_RedDoorFacingRight_3:
+; Used by instruction lists:
+;     $C363: Door $C890 (red door facing right)
+;     $C37A: Door $C890 (red door facing right)
     dw $8004,$840B,$042B,$0C2B,$8C0B                                     ;84A93B;
     dw $0000
 
+
 DrawInst_RedDoorFacingUp_0:
+; Used by instruction lists:
+;     $C3C5: Door $C896 (red door facing up)
+;     $C3DC: Door $C896 (red door facing up)
     dw $0004,$C419,$5418,$5018,$5019                                     ;84A947;
     dw $0000
 
 DrawInst_RedDoorFacingUp_1:
+; Used by instruction lists:
+;     $C3C5: Door $C896 (red door facing up)
+;     $C3DC: Door $C896 (red door facing up)
     dw $0004,$8439,$8438,$8038,$8039                                     ;84A953;
     dw $0000
 
 DrawInst_RedDoorFacingUp_2:
+; Used by instruction lists:
+;     $C3C5: Door $C896 (red door facing up)
+;     $C3DC: Door $C896 (red door facing up)
     dw $0004,$841B,$841A,$801A,$801B                                     ;84A95F;
     dw $0000
 
 DrawInst_RedDoorFacingUp_3:
+; Used by instruction lists:
+;     $C3C5: Door $C896 (red door facing up)
+;     $C3DC: Door $C896 (red door facing up)
     dw $0004,$843B,$843A,$803A,$803B                                     ;84A96B;
     dw $0000
 
+
 DrawInst_RedDoorFacingDown_0:
+; Used by instruction lists:
+;     $C427: Door $C89C (red door facing down)
+;     $C43E: Door $C89C (red door facing down)
     dw $0004,$CC19,$5C18,$5818,$5819                                     ;84A977;
     dw $0000
 
 DrawInst_RedDoorFacingDown_1:
+; Used by instruction lists:
+;     $C427: Door $C89C (red door facing down)
+;     $C43E: Door $C89C (red door facing down)
     dw $0004,$8C39,$8C38,$8838,$8839                                     ;84A983;
     dw $0000
 
 DrawInst_RedDoorFacingDown_2:
+; Used by instruction lists:
+;     $C427: Door $C89C (red door facing down)
+;     $C43E: Door $C89C (red door facing down)
     dw $0004,$8C1B,$8C1A,$881A,$881B                                     ;84A98F;
     dw $0000
 
 DrawInst_RedDoorFacingDown_3:
+; Used by instruction lists:
+;     $C427: Door $C89C (red door facing down)
+;     $C43E: Door $C89C (red door facing down)
     dw $0004,$8C3B,$8C3A,$883A,$883B                                     ;84A99B;
     dw $0000
 
+
 DrawInst_EyeDoorEyeFacingLeft:
+; Used by instruction list $D81E: PLM $DB56 (eye door eye, facing left)
     dw $8004,$800C,$D02C,$D82C,$D80C                                     ;84A9A7;
     dw $0000
 
 DrawInst_DoorFacingLeft_A9B3:
+; Used by instruction lists:
+;     $BE70: Door $C842 (grey door facing left)
+;     $C014: Door $C85A (yellow door facing left)
+;     $C19C: Door $C872 (green door facing left)
+;     $C318: Door $C88A (red door facing left)
+;     $C4B1: Closed blue door facing left
     dw $8004,$C00C,$D02C,$D82C,$D80C                                     ;84A9B3;
     dw $0000
 
 DrawInst_BlueDoorFacingLeft_0:
+; Used by instruction lists:
+;     $C489: Door $C8A2 (shot/bombed/grappled reaction, shootable, BTS 40h. Blue door facing left)
+;     $C49E: Door $C8A2 (shot/bombed/grappled reaction, shootable, BTS 40h. Blue door facing left)
     dw $8004,$800D,$802D,$882D,$880D                                     ;84A9BF;
     dw $0000
 
 DrawInst_BlueDoorFacingLeft_1:
+; Used by instruction lists:
+;     $C489: Door $C8A2 (shot/bombed/grappled reaction, shootable, BTS 40h. Blue door facing left)
+;     $C49E: Door $C8A2 (shot/bombed/grappled reaction, shootable, BTS 40h. Blue door facing left)
     dw $8004,$800E,$802E,$882E,$880E                                     ;84A9CB;
     dw $0000
 
 DrawInst_BlueDoorFacingLeft_2:
+; Used by instruction lists:
+;     $C489: Door $C8A2 (shot/bombed/grappled reaction, shootable, BTS 40h. Blue door facing left)
+;     $C49E: Door $C8A2 (shot/bombed/grappled reaction, shootable, BTS 40h. Blue door facing left)
     dw $8004,$800F,$002F,$082F,$880F                                     ;84A9D7;
     dw $0000
 
+
 DrawInst_EyeDoorEyeFacingRight:
+; Used by instruction list $D955: PLM $DB48 (eye door eye, facing right)
     dw $8004,$840C,$D42C,$DC2C,$DC0C                                     ;84A9E3;
     dw $0000
 
 DrawInst_DoorFacingRight_A9EF:
+; Used by instruction lists:
+;     $BA7F: PLM $BAF4 (Bomb Torizo grey door)
+;     $BED9: Door $C848 (grey door facing right)
+;     $C077: Door $C860 (yellow door facing right)
+;     $C1FB: Door $C878 (green door facing right)
+;     $C37A: Door $C890 (red door facing right)
+;     $C4E2: Closed blue door facing right
     dw $8004,$C40C,$D42C,$DC2C,$DC0C                                     ;84A9EF;
     dw $0000
 
 DrawInst_BlueDoorFacingRight_0:
+; Used by instruction lists:
+;     $C4BA: Door $C8A8 (shot/bombed/grappled reaction, shootable, BTS 41h. Blue door facing right)
+;     $C4CF: Door $C8A8 (shot/bombed/grappled reaction, shootable, BTS 41h. Blue door facing right)
     dw $8004,$840D,$842D,$8C2D,$8C0D                                     ;84A9FB;
     dw $0000
 
 DrawInst_BlueDoorFacingRight_1:
+; Used by instruction lists:
+;     $C4BA: Door $C8A8 (shot/bombed/grappled reaction, shootable, BTS 41h. Blue door facing right)
+;     $C4CF: Door $C8A8 (shot/bombed/grappled reaction, shootable, BTS 41h. Blue door facing right)
     dw $8004,$840E,$842E,$8C2E,$8C0E                                     ;84AA07;
     dw $0000
 
 DrawInst_BlueDoorFacingRight_2:
+; Used by instruction lists:
+;     $C4BA: Door $C8A8 (shot/bombed/grappled reaction, shootable, BTS 41h. Blue door facing right)
+;     $C4CF: Door $C8A8 (shot/bombed/grappled reaction, shootable, BTS 41h. Blue door facing right)
     dw $8004,$840F,$042F,$0C2F,$8C0F                                     ;84AA13;
     dw $0000
+
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_84AA1F:
@@ -4679,21 +6061,39 @@ UNUSED_DrawInst_84AA1F:
     dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
 DrawInst_DoorFacingUp_AA2B:
+; Used by instruction lists:
+;     $BF42: Door $C84E (grey door facing up)
+;     $C0DA: Door $C866 (yellow door facing up)
+;     $C25A: Door $C87E (green door facing up)
+;     $C3DC: Door $C896 (red door facing up)
+;     $C513: Closed blue door facing up
     dw $0004,$C41D,$541C,$501C,$501D                                     ;84AA2B;
     dw $0000
 
+
 DrawInst_BlueDoorFacingUp_0:
+; Used by instruction lists:
+;     $C4EB: Door $C8AE (shot/bombed/grappled reaction, shootable, BTS 42h. Blue door facing up)
+;     $C500: Door $C8AE (shot/bombed/grappled reaction, shootable, BTS 42h. Blue door facing up)
     dw $0004,$843D,$843C,$803C,$803D                                     ;84AA37;
     dw $0000
 
 DrawInst_BlueDoorFacingUp_1:
+; Used by instruction lists:
+;     $C4EB: Door $C8AE (shot/bombed/grappled reaction, shootable, BTS 42h. Blue door facing up)
+;     $C500: Door $C8AE (shot/bombed/grappled reaction, shootable, BTS 42h. Blue door facing up)
     dw $0004,$841F,$841E,$801E,$801F                                     ;84AA43;
     dw $0000
 
 DrawInst_BlueDoorFacingUp_2:
+; Used by instruction lists:
+;     $C4EB: Door $C8AE (shot/bombed/grappled reaction, shootable, BTS 42h. Blue door facing up)
+;     $C500: Door $C8AE (shot/bombed/grappled reaction, shootable, BTS 42h. Blue door facing up)
     dw $0004,$843F,$843E,$803E,$803F                                     ;84AA4F;
     dw $0000
+
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_84AA5B:
@@ -4701,23 +6101,41 @@ UNUSED_DrawInst_84AA5B:
     dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
 DrawInst_DoorFacingDown_AA67:
+; Used by instruction lists:
+;     $BFAB: Door $C854 (grey door facing down)
+;     $C139: Door $C86C (yellow door facing down)
+;     $C2B9: Door $C884 (green door facing down)
+;     $C43E: Door $C89C (red door facing down)
+;     $C544: Closed blue door facing down
     dw $0004,$CC1D,$5C1C,$581C,$581D                                     ;84AA67;
     dw $0000
 
 DrawInst_BlueDoorFacingDown_0:
+; Used by instruction lists:
+;     $C51C: Door $C8B4 (shot/bombed/grappled reaction, shootable, BTS 43h. Blue door facing down)
+;     $C531: Door $C8B4 (shot/bombed/grappled reaction, shootable, BTS 43h. Blue door facing down)
     dw $0004,$8C3D,$8C3C,$883C,$883D                                     ;84AA73;
     dw $0000
 
 DrawInst_BlueDoorFacingDown_1:
+; Used by instruction lists:
+;     $C51C: Door $C8B4 (shot/bombed/grappled reaction, shootable, BTS 43h. Blue door facing down)
+;     $C531: Door $C8B4 (shot/bombed/grappled reaction, shootable, BTS 43h. Blue door facing down)
     dw $0004,$8C1F,$8C1E,$881E,$881F                                     ;84AA7F;
     dw $0000
 
 DrawInst_BlueDoorFacingDown_2:
+; Used by instruction lists:
+;     $C51C: Door $C8B4 (shot/bombed/grappled reaction, shootable, BTS 43h. Blue door facing down)
+;     $C531: Door $C8B4 (shot/bombed/grappled reaction, shootable, BTS 43h. Blue door facing down)
     dw $0004,$8C3F,$8C3E,$883E,$883F                                     ;84AA8B;
     dw $0000
 
+
 DrawInst_ElevatorPlatform_0:
+; Used by instruction list $AFB6: PLM $B70B (elevator platform)
     dw $0001,$8085                                                       ;84AA97;
     db $03,$00                                                           ;84AA9B;
     dw $0001,$8485                                                       ;84AA9D;
@@ -4726,6 +6144,7 @@ DrawInst_ElevatorPlatform_0:
     dw $0000
 
 DrawInst_ElevatorPlatform_1:
+; Used by instruction list $AFB6: PLM $B70B (elevator platform)
     dw $0001,$8086                                                       ;84AAAF;
     db $03,$00                                                           ;84AAB3;
     dw $0001,$8486                                                       ;84AAB5;
@@ -4734,6 +6153,7 @@ DrawInst_ElevatorPlatform_1:
     dw $0000
 
 DrawInst_ElevatorPlatform_2:
+; Used by instruction list $AFB6: PLM $B70B (elevator platform)
     dw $0001,$8087                                                       ;84AAC7;
     db $03,$00                                                           ;84AACB;
     dw $0001,$8487                                                       ;84AACD;
@@ -4743,13 +6163,18 @@ DrawInst_ElevatorPlatform_2:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $AADF: Unused. Instruction list - draw empty tile ;;;
 UNUSED_InstList_PLM_DrawEmptyTile_84AADF:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84AADF;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $AAE3: Instruction list - delete ;;;
 InstList_PLM_Delete:
     dw Instruction_PLM_Delete                                            ;84AAE3;
 
+
+;;; $AAE5: Instruction list - PLM $B773 (crumble access to Tourian elevator) ;;;
 InstList_PLM_CrumbleAccessToTourianElevator_0:
     dw Instruction_PLM_TimerEqualsY_8Bit : db $06                        ;84AAE5;
 
@@ -4763,7 +6188,13 @@ InstList_PLM_CrumbleAccessToTourianElevator_1:
     dw InstList_PLM_CrumbleAccessToTourianElevator_1                     ;84AAFC;
     dw Instruction_PLM_Delete                                            ;84AAFE;
 
+
+;;; $AB00: Instruction - move PLM down one block ;;;
 Instruction_PLM_MovePLMDown1Block_84AB00:
+;; Parameters:
+;;     X: PLM index
+
+; Clone of UNUSED_Instruction_PLM_MovePLMDown1Block_848D89
     LDA.W $07A5                                                          ;84AB00;
     ASL A                                                                ;84AB03;
     CLC                                                                  ;84AB04;
@@ -4772,31 +6203,42 @@ Instruction_PLM_MovePLMDown1Block_84AB00:
     RTS                                                                  ;84AB0B;
 
 
+;;; $AB0C: Instruction list - PLM $B777 (clear access to Tourian elevator) ;;;
 InstList_PLM_ClearAccessToTourianElevator:
     dw $0001,DrawInst_ClearAccessToTourianElevator                       ;84AB0C;
     dw Instruction_PLM_Delete                                            ;84AB10;
 
+
+;;; $AB12: Instruction list - PLM $B78F (crumble Spore Spawn ceiling) ;;;
 InstList_PLM_CrumbleSporeSpawnCeiling:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $0A                   ;84AB12;
     dw $0004,DrawInst_CrumbleSporeSpawnCeiling_0                         ;84AB15;
     dw $0004,DrawInst_CrumbleSporeSpawnCeiling_1                         ;84AB19;
     dw $0004,DrawInst_CrumbleSporeSpawnCeiling_2                         ;84AB1D;
 
+
+;;; $AB21: Instruction list - PLM $B793 (clear Spore Spawn ceiling) ;;;
 InstList_PLM_ClearSporeSpawnCeiling:
     dw $0004,DrawInst_ClearSporeSpawnCeiling                             ;84AB21;
     dw Instruction_PLM_Delete                                            ;84AB25;
 
 
+;;; $AB27: RTS. Setup - PLM $B797 (clear Botwoon wall) ;;;
 RTS_84AB27:
     RTS                                                                  ;84AB27;
 
+
+;;; $AB28: Setup - PLM $B79B (crumble Botwoon wall) - wait 40h frames ;;;
 Setup_CrumbleBotwoonWall_Wait40Frames:
+;; Parameters:
+;;     Y: PLM index
     TYX                                                                  ;84AB28;
     LDA.W #$0040                                                         ;84AB29;
     STA.L $7EDE1C,X                                                      ;84AB2C;
     RTS                                                                  ;84AB30;
 
 
+;;; $AB31: Instruction list - PLM $B79B (crumble Botwoon wall) ;;;
 InstList_PLM_CrumbleBotwoonWall_0:
     dw Instruction_PLM_TimerEqualsY_8Bit : db $09                        ;84AB31;
     dw Instruction_PLM_Scroll_0_1_Blue                                   ;84AB34;
@@ -4813,12 +6255,19 @@ InstList_PLM_CrumbleBotwoonWall_1:
     dw Instruction_PLM_Delete                                            ;84AB4F;
 
 
+;;; $AB51: Instruction - scroll 0..1 = blue ;;;
 Instruction_PLM_Scroll_0_1_Blue:
     LDA.W #$0101                                                         ;84AB51;
     STA.L $7ECD20                                                        ;84AB54;
     RTS                                                                  ;84AB58;
 
+
+;;; $AB59: Instruction - move PLM down one block ;;;
 Instruction_PLM_MovePLMDown1Block:
+;; Parameters:
+;;     X: PLM index
+
+; Clone of UNUSED_Instruction_PLM_MovePLMDown1Block_848D89
     LDA.W $1C87,X                                                        ;84AB59;
     CLC                                                                  ;84AB5C;
     ADC.W $07A5                                                          ;84AB5D;
@@ -4827,41 +6276,58 @@ Instruction_PLM_MovePLMDown1Block:
     RTS                                                                  ;84AB66;
 
 
+;;; $AB67: Instruction list - PLM $B797 (clear Botwoon wall) ;;;
 InstList_PLM_ClearBotwoonWall:
     dw $0001,DrawInst_ClearBotwoonWall                                   ;84AB67;
     dw Instruction_PLM_Delete                                            ;84AB6B;
 
+
+;;; $AB6D: Instruction list - PLM $B7A3 (crumble Kraid ceiling block into background 1) ;;;
 InstList_PLM_CrumbleKraidCeilingBlockIntoBackground1:
     dw $0003,DrawInst_CrumbleKraidCeiling_CrumbleKraidSpikes_Elevatube   ;84AB6D;
     dw $0003,DrawInst_CrumbleKraidCeiling_CrumbleKraidSpikes_0           ;84AB71;
     dw $0003,DrawInst_CrumbleKraidCeiling_CrumbleKraidSpikes_1           ;84AB75;
 
+
+;;; $AB79: Instruction list - PLM $B79F (unused. Set Kraid ceiling block to background 1) ;;;
 InstList_PLM_SetKraidCeilingBlockToBackground1:
     dw $0003,UNUSED_DrawInst_SetKraidCeilingBlockToBackground1_849379    ;84AB79;
     dw Instruction_PLM_Delete                                            ;84AB7D;
 
+
+;;; $AB7F: Instruction list - PLM $B7AB (crumble Kraid ceiling block into background 2) ;;;
 InstList_PLM_CrumbleKraidCeilingBlockIntoBackground2:
     dw $0003,DrawInst_CrumbleKraidCeiling_CrumbleKraidSpikes_Elevatube   ;84AB7F;
     dw $0003,DrawInst_CrumbleKraidCeiling_CrumbleKraidSpikes_0           ;84AB83;
     dw $0003,DrawInst_CrumbleKraidCeiling_CrumbleKraidSpikes_1           ;84AB87;
 
+
+;;; $AB8B: Instruction list - PLM $B7A7 (set Kraid ceiling block to background 2) ;;;
 InstList_PLM_SetKraidCeilingBlockToBackground2:
     dw $0003,DrawInst_SetKraidCeilingBlockToBackground2                  ;84AB8B;
     dw Instruction_PLM_Delete                                            ;84AB8F;
 
+
+;;; $AB91: Instruction list - PLM $B7B3 (crumble Kraid ceiling block into background 3) ;;;
 InstList_PLM_CrumbleKraidCeilingBlockIntoBackground3:
     dw $0003,DrawInst_CrumbleKraidCeiling_CrumbleKraidSpikes_Elevatube   ;84AB91;
     dw $0003,DrawInst_CrumbleKraidCeiling_CrumbleKraidSpikes_0           ;84AB95;
     dw $0003,DrawInst_CrumbleKraidCeiling_CrumbleKraidSpikes_1           ;84AB99;
 
+
+;;; $AB9D: Instruction list - PLM $B7AF (set Kraid ceiling block to background 3) ;;;
 InstList_PLM_SetKraidCeilingBlockToBackground3:
     dw $0003,DrawInst_SetKraidCeilingBlockToBackground3                  ;84AB9D;
     dw Instruction_PLM_Delete                                            ;84ABA1;
 
+
+;;; $ABA3: Instruction list - PLM $B7B7 (clear Kraid ceiling) ;;;
 InstList_PLM_ClearKraidCeiling:
     dw $0001,DrawInst_ClearKraidCeiling                                  ;84ABA3;
     dw Instruction_PLM_Delete                                            ;84ABA7;
 
+
+;;; $ABA9: Instruction list - PLM $B7BF (crumble Kraid spike blocks) ;;;
 InstList_PLM_CrumbleKraidSpikeBlocks_0:
     dw Instruction_PLM_TimerEqualsY_8Bit : db $0B                        ;84ABA9;
 
@@ -4881,132 +6347,199 @@ InstList_PLM_CrumbleKraidSpikeBlocks_1:
     dw Instruction_PLM_Delete                                            ;84ABD4;
 
 
+;;; $ABD6: Instruction - move PLM right one block ;;;
 Instruction_PLM_MovePLMRight1Block:
+;; Parameters:
+;;     X: PLM index
     INC.W $1C87,X                                                        ;84ABD6;
     INC.W $1C87,X                                                        ;84ABD9;
     RTS                                                                  ;84ABDC;
 
 
+;;; $ABDD: Instruction list - PLM $B7BB (clear Kraid spike blocks) ;;;
 InstList_PLM_ClearKraidSpikeBlocks:
     dw $0001,DrawInst_ClearKraidSpikeBlocks                              ;84ABDD;
     dw Instruction_PLM_Delete                                            ;84ABE1;
 
+
 if !FEATURE_KEEP_UNREFERENCED
+;;; $ABE3: Instruction list - PLM $B65F (unused) ;;;
 UNUSED_InstList_PLM_84ABE3:
+; Matches the level data of a zebetite
     dw $0001,UNUSED_DrawInst_849453                                      ;84ABE3;
     dw Instruction_PLM_Delete                                            ;84ABE7;
 
+
+;;; $ABE9: Instruction list - PLM $B663 (unused) ;;;
 UNUSED_InstList_PLM_84ABE9:
+; Solid version of $B65F
     dw $0001,UNUSED_DrawInst_849463                                      ;84ABE9;
     dw Instruction_PLM_Delete                                            ;84ABED;
 
+
+;;; $ABEF: Instruction list - PLM $B667 (unused) ;;;
 UNUSED_InstList_PLM_84ABEF_0:
+; Open escape gate that becomes closed after 18h frames
     dw $0018,DrawInst_EscapeRoom1Gate_0                                  ;84ABEF;
 
 UNUSED_InstList_PLM_84ABF3_1:
     dw $0001,DrawInst_EscapeRoom1Gate_2                                  ;84ABF3;
     dw Instruction_PLM_Delete                                            ;84ABF7;
 
+
+;;; $ABF9: Instruction list - PLM $B66B (unused. Blank air) ;;;
 UNUSED_InstList_PLM_84ABF9:
     dw $0001,UNUSED_DrawInst_849497                                      ;84ABF9;
     dw Instruction_PLM_Delete                                            ;84ABFD;
 
+
+;;; $ABFF: Instruction list - PLM $B66F (unused. Blank solid) ;;;
 UNUSED_PLM_InstList_84ABFF:
     dw $0001,UNUSED_DrawInst_84949D                                      ;84ABFF;
     dw Instruction_PLM_Delete                                            ;84AC03;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $AC05: Instruction list - PLM $B673 (fill Mother Brain's wall) ;;;
 InstList_PLM_FillMotherBrainsWall:
     dw $0001,DrawInst_FillMotherBrainsWall                               ;84AC05;
     dw Instruction_PLM_Delete                                            ;84AC09;
 
+
+;;; $AC0B: Instruction list - PLM $B677 (Mother Brain's room escape door) ;;;
 InstList_PLM_MotherBrainsRoomEscapeDoor:
     dw $0001,DrawInst_MotherBrainsRoomEscapeDoor                         ;84AC0B;
     dw Instruction_PLM_Delete                                            ;84AC0F;
 
+
+;;; $AC11: Instruction list - PLM $B67B (Mother Brain's background row 2) ;;;
 InstList_PLM_MotherBrainsBackgroundRow2:
     dw $0001,DrawInst_MotherBrainsBackgroundRow2                         ;84AC11;
     dw Instruction_PLM_Delete                                            ;84AC15;
 
+
+;;; $AC17: Instruction list - PLM $B67F (Mother Brain's background row 3) ;;;
 InstList_PLM_MotherBrainsBackgroundRow3:
     dw $0001,DrawInst_MotherBrainsBackgroundRow3                         ;84AC17;
     dw Instruction_PLM_Delete                                            ;84AC1B;
 
+
+;;; $AC1D: Instruction list - PLM $B683 (Mother Brain's background row 4) ;;;
 InstList_PLM_MotherBrainsBackgroundRow4:
     dw $0001,DrawInst_MotherBrainsBackgroundRow4                         ;84AC1D;
     dw Instruction_PLM_Delete                                            ;84AC21;
 
+
+;;; $AC23: Instruction list - PLM $B687 (Mother Brain's background row 5) ;;;
 InstList_PLM_MotherBrainsBackgroundRow5:
     dw $0001,DrawInst_MotherBrainsBackgroundRow5                         ;84AC23;
     dw Instruction_PLM_Delete                                            ;84AC27;
 
+
+;;; $AC29: Instruction list - PLM $B68B (Mother Brain's background row 6) ;;;
 InstList_PLM_MotherBrainsBackgroundRow6:
     dw $0001,DrawInst_MotherBrainsBackgroundRow6                         ;84AC29;
     dw Instruction_PLM_Delete                                            ;84AC2D;
 
+
+;;; $AC2F: Instruction list - PLM $B68F (Mother Brain's background row 7) ;;;
 InstList_PLM_MotherBrainsBackgroundRow7:
     dw $0001,DrawInst_MotherBrainsBackgroundRow7                         ;84AC2F;
     dw Instruction_PLM_Delete                                            ;84AC33;
 
+
+;;; $AC35: Instruction list - PLM $B693 (Mother Brain's background row 8) ;;;
 InstList_PLM_MotherBrainsBackgroundRow8:
     dw $0001,DrawInst_MotherBrainsBackgroundRow8                         ;84AC35;
     dw Instruction_PLM_Delete                                            ;84AC39;
 
+
+;;; $AC3B: Instruction list - PLM $B697 (Mother Brain's background row 9) ;;;
 InstList_PLM_MotherBrainsBackgroundRow9:
     dw $0001,DrawInst_MotherBrainsBackgroundRow9                         ;84AC3B;
     dw Instruction_PLM_Delete                                            ;84AC3F;
 
+
+;;; $AC41: Instruction list - PLM $B69B (Mother Brain's background row Ah) ;;;
 InstList_PLM_MotherBrainsBackgroundRowA:
     dw $0001,DrawInst_MotherBrainsBackgroundRowA                         ;84AC41;
     dw Instruction_PLM_Delete                                            ;84AC45;
 
+
+;;; $AC47: Instruction list - PLM $B69F (Mother Brain's background row Bh) ;;;
 InstList_PLM_MotherBrainsBackgroundRowB:
     dw $0001,DrawInst_MotherBrainsBackgroundRowB                         ;84AC47;
     dw Instruction_PLM_Delete                                            ;84AC4B;
 
+
+;;; $AC4D: Instruction list - PLM $B6A3 (Mother Brain's background row Ch) ;;;
 InstList_PLM_MotherBrainsBackgroundRowC:
     dw $0001,DrawInst_MotherBrainsBackgroundRowC                         ;84AC4D;
     dw Instruction_PLM_Delete                                            ;84AC51;
 
+
+;;; $AC53: Instruction list - PLM $B6A7 (Mother Brain's background row Dh) ;;;
 InstList_PLM_MotherBrainsBackgroundRowD:
     dw $0001,DrawInst_MotherBrainsBackgroundRowD                         ;84AC53;
     dw Instruction_PLM_Delete                                            ;84AC57;
 
+
 if !FEATURE_KEEP_UNREFERENCED
+;;; $AC59: Instruction list - PLM $B6AB (unused. Mother Brain's background row Eh) ;;;
 UNUSED_InstList_PLM_84AC59:
     dw $0001,UNUSED_DrawInst_94966D                                      ;84AC59;
     dw Instruction_PLM_Delete                                            ;84AC5D;
 
+
 UNUSED_InstList_PLM_84AC5F:
+;;; $AC5F: Instruction list - PLM $B6AF (unused. Mother Brain's background row Fh) ;;;
     dw $0001,UNUSED_DrawInst_94968B                                      ;84AC5F;
     dw Instruction_PLM_Delete                                            ;84AC63;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $AC65: Instruction list - PLM $B6B3 (clear ceiling block in Mother Brain's room) ;;;
 InstList_PLM_ClearCeilingBlockInMotherBrainsRoom:
     dw $0001,DrawInst_ClearCeilingBlockInMotherBrainsRoom                ;84AC65;
     dw Instruction_PLM_Delete                                            ;84AC69;
 
+
+;;; $AC6B: Instruction list - PLM $B6B7 (clear ceiling tube in Mother Brain's room) ;;;
 InstList_PLM_ClearCeilingTubeInMotherBrainsRoom:
     dw $0001,DrawInst_ClearCeilingTubeInMotherBrainsRoom                 ;84AC6B;
     dw Instruction_PLM_Delete                                            ;84AC6F;
 
+
+;;; $AC71: Instruction list - PLM $B6BB (clear Mother Brain's bottom-middle-side tube) ;;;
 InstList_PLM_ClearMotherBrainsBottomMiddleSideTube:
     dw $0001,DrawInst_ClearMotherBrainsBottomMiddleSideTube              ;84AC71;
     dw Instruction_PLM_Delete                                            ;84AC75;
 
+
+;;; $AC77: Instruction list - PLM $B6BF (clear Mother Brain's bottom-middle tubes) ;;;
 InstList_PLM_ClearMotherBrainsBottomMiddleTubes:
     dw $0001,DrawInst_ClearMotherBrainsBottomMiddleTubes                 ;84AC77;
     dw Instruction_PLM_Delete                                            ;84AC7B;
 
+
+;;; $AC7D: Instruction list - PLM $B6C3 (clear Mother Brain's bottom-left tube) ;;;
 InstList_PLM_ClearMotherBrainsBottomLeftTube:
     dw $0001,DrawInst_ClearMotherBrainsBottomLeftTube                    ;84AC7D;
     dw Instruction_PLM_Delete                                            ;84AC81;
 
+
+;;; $AC83: Instruction list - PLM $B6C7 (clear Mother Brain's bottom-right tube) ;;;
 InstList_PLM_ClearMotherBrainsBottomRightTube:
     dw $0001,DrawInst_ClearMotherBrainsBottomRightTube                   ;84AC83;
     dw Instruction_PLM_Delete                                            ;84AC87;
 
+
+;;; $AC89: Pre-instruction - position Samus and give at least 10h frames of invincibility ;;;
 PreInst_PLM_PositionSamus_GiveAtLeast10FramesOfInvincibility:
+;; Parameter:
+;;     X: PLM index
+
+; Used for Brinstar plants
     LDA.W $1E17,X                                                        ;84AC89;
     STA.W $0AF6                                                          ;84AC8C;
     LDA.L $7EDF0C,X                                                      ;84AC8F;
@@ -5016,6 +6549,7 @@ PreInst_PLM_PositionSamus_GiveAtLeast10FramesOfInvincibility:
     RTS                                                                  ;84AC9C;
 
 
+;;; $AC9D: Instruction - deal 2 damage to Samus ;;;
 Instruction_PLM_Deal2DamageToSamus:
     LDA.W $0A4E                                                          ;84AC9D;
     CLC                                                                  ;84ACA0;
@@ -5027,12 +6561,14 @@ Instruction_PLM_Deal2DamageToSamus:
     RTS                                                                  ;84ACB0;
 
 
+;;; $ACB1: Instruction - give Samus 30h frames of invincibility ;;;
 Instruction_PLM_GiveSamus30FramesOfInvincibility:
     LDA.W #$0030                                                         ;84ACB1;
     STA.W $18A8                                                          ;84ACB4;
     RTS                                                                  ;84ACB7;
 
 
+;;; $ACB8: Instruction list - PLM $B6CB (inside reaction, special air, BTS Brinstar 80h. Floor plant) ;;;
 InstList_PLM_BrinstarFloorPlant_0:
     dw Instruction_PLM_PreInstruction_inY                                ;84ACB8;
     dw PreInst_PLM_PositionSamus_GiveAtLeast10FramesOfInvincibility      ;84ACBA;
@@ -5058,6 +6594,8 @@ InstList_PLM_BrinstarFloorPlant_1:
     dw $0001,DrawInst_BrinstarFloorPlant_0                               ;84ACF2;
     dw Instruction_PLM_Delete                                            ;84ACF6;
 
+
+;;; $ACF8: Instruction list - PLM $B6CF (inside reaction, special air, BTS Brinstar 81h. Ceiling plant) ;;;
 InstList_PLM_BrinstarCeilingPlant_0:
     dw Instruction_PLM_PreInstruction_inY                                ;84ACF8;
     dw PreInst_PLM_PositionSamus_GiveAtLeast10FramesOfInvincibility      ;84ACFA;
@@ -5083,6 +6621,8 @@ InstList_PLM_BrinstarCeilingPlant_1:
     dw $0001,DrawInst_BrinstarCeilingPlant_0                             ;84AD32;
     dw Instruction_PLM_Delete                                            ;84AD36;
 
+
+;;; $AD38: Instruction list - PLM $B64B (Wrecked Ship entrance treadmill from west) ;;;
 InstList_PLM_WreckedShipEntranceTreadmillFromWest_0:
     dw Instruction_PLM_GotoY_ifBossBitsSet : db $01                      ;84AD38;
     dw InstList_PLM_WreckedShipEntranceTreadmillFromWest_1               ;84AD3B;
@@ -5092,12 +6632,17 @@ InstList_PLM_WreckedShipEntranceTreadmillFromWest_1:
     dw Instruction_PLM_Draw38TilesOfBlankRightwardsTreadmill             ;84AD3F;
     dw Instruction_PLM_Delete                                            ;84AD41;
 
+
+;;; $AD43: Instruction - draw 38h tiles of blank rightwards treadmill ;;;
 Instruction_PLM_Draw38TilesOfBlankRightwardsTreadmill:
+;; Parameters:
+;;     X: PLM index
     JSR.W Write_Row_of_Level_Data_Block_and_BTS                          ;84AD43;
     dw $30FF,$0008,$0038                                                 ;84AD46;
     RTS                                                                  ;84AD4C;
 
 
+;;; $AD4D: Instruction list - PLM $B64F (Wrecked Ship entrance treadmill from east) ;;;
 InstList_PLM_WreckedShipEntranceTreadmillFromEast_0:
     dw Instruction_PLM_GotoY_ifBossBitsSet : db $01                      ;84AD4D;
     dw InstList_PLM_WreckedShipEntranceTreadmillFromEast_1               ;84AD50;
@@ -5107,12 +6652,17 @@ InstList_PLM_WreckedShipEntranceTreadmillFromEast_1:
     dw Instruction_PLM_Draw38TilesOfBlankLeftwardsTreadmill              ;84AD54;
     dw Instruction_PLM_Delete                                            ;84AD56;
 
+
+;;; $AD58: Instruction - draw 38h tiles of blank leftwards treadmill ;;;
 Instruction_PLM_Draw38TilesOfBlankLeftwardsTreadmill:
+;; Parameters:
+;;     X: PLM index
     JSR.W Write_Row_of_Level_Data_Block_and_BTS                          ;84AD58;
     dw $30FF,$0009,$0038                                                 ;84AD5B;
     RTS                                                                  ;84AD61;
 
 
+;;; $AD62: Instruction list - PLM $B6D3 (map station) ;;;
 InstList_PLM_MapStation_0:
     dw Instruction_PLM_LinkInstruction_Y                                 ;84AD62;
     dw InstList_PLM_MapStation_2                                         ;84AD64;
@@ -5131,6 +6681,8 @@ InstList_PLM_MapStation_2:
     dw Instruction_PLM_GotoY                                             ;84AD82;
     dw InstList_PLM_MapStation_2                                         ;84AD84;
 
+
+;;; $AD86: Instruction list - PLM $B6D7 (collision reaction, special, BTS 47h. Map station right access) ;;;
 InstList_PLM_MapStationRightAccess:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $37                   ;84AD86;
     dw $0006,DrawInst_MapStationRightAccess_0                            ;84AD89;
@@ -5142,6 +6694,8 @@ InstList_PLM_MapStationRightAccess:
     dw $0006,DrawInst_MapStationRightAccess_0                            ;84AD9E;
     dw Instruction_PLM_Delete                                            ;84ADA2;
 
+
+;;; $ADA4: Instruction list - PLM $B6DB (collision reaction, special, BTS 48h. Map station left access) ;;;
 InstList_PLM_MapStationLeftAccess:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $37                   ;84ADA4;
     dw $0006,DrawInst_MapStationLeftAccess_0                             ;84ADA7;
@@ -5153,6 +6707,8 @@ InstList_PLM_MapStationLeftAccess:
     dw $0006,DrawInst_MapStationLeftAccess_0                             ;84ADBC;
     dw Instruction_PLM_Delete                                            ;84ADC0;
 
+
+;;; $ADC2: Instruction list - PLM $B6DF (energy station) ;;;
 InstList_PLM_EnergyStation_0:
     dw Instruction_PLM_LinkInstruction_Y                                 ;84ADC2;
     dw InstList_PLM_EnergyStation_2                                      ;84ADC4;
@@ -5180,6 +6736,8 @@ InstList_PLM_EnergyStation_4:
     dw Instruction_PLM_GotoY                                             ;84ADED;
     dw InstList_PLM_EnergyStation_0                                      ;84ADEF;
 
+
+;;; $ADF1: Instruction list - PLM $B6E3 (collision reaction, special, BTS 49h. Energy station right access) ;;;
 InstList_PLM_EnergyStationRightAccess_0:
     dw Instruction_PLM_GotoY_EnableMovementIfSamusEnergyIsFull           ;84ADF1;
     dw InstList_PLM_EnergyStationRightAccess_1                           ;84ADF3;
@@ -5195,6 +6753,8 @@ InstList_PLM_EnergyStationRightAccess_0:
 InstList_PLM_EnergyStationRightAccess_1:
     dw Instruction_PLM_Delete                                            ;84AE11;
 
+
+;;; $AE13: Instruction list - PLM $B6E7 (collision reaction, special, BTS 4Ah. Energy station left access) ;;;
 InstList_PLM_EnergyStationLeftAccess_0:
     dw Instruction_PLM_GotoY_EnableMovementIfSamusEnergyIsFull           ;84AE13;
     dw InstList_PLM_EnergyStationLeftAccess_1                            ;84AE15;
@@ -5210,14 +6770,19 @@ InstList_PLM_EnergyStationLeftAccess_0:
 InstList_PLM_EnergyStationLeftAccess_1:
     dw Instruction_PLM_Delete                                            ;84AE33;
 
+
+;;; $AE35: Instruction - go to [[Y]] and enable movement if Samus health is full ;;;
 Instruction_PLM_GotoY_EnableMovementIfSamusEnergyIsFull:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $09C4                                                          ;84AE35;
     CMP.W $09C2                                                          ;84AE38;
     BEQ .fullEnergy                                                      ;84AE3B;
     INY                                                                  ;84AE3D;
     INY                                                                  ;84AE3E;
     RTS                                                                  ;84AE3F;
-
 
   .fullEnergy:
     LDA.W #$0001                                                         ;84AE40;
@@ -5227,6 +6792,7 @@ Instruction_PLM_GotoY_EnableMovementIfSamusEnergyIsFull:
     RTS                                                                  ;84AE4B;
 
 
+;;; $AE4C: Instruction list - PLM $B6EB (missile station) ;;;
 InstList_PLM_MissileStation_0:
     dw Instruction_PLM_LinkInstruction_Y                                 ;84AE4C;
     dw InstList_PLM_MissileStation_2                                     ;84AE4E;
@@ -5254,6 +6820,8 @@ InstList_PLM_MissileStation_4:
     dw Instruction_PLM_GotoY                                             ;84AE77;
     dw InstList_PLM_MissileStation_0                                     ;84AE79;
 
+
+;;; $AE7B: Instruction list - PLM $B6EF (collision reaction, special, BTS 4Bh. Missile station right access) ;;;
 InstList_PLM_MissileStationRightAccess_0:
     dw Instruction_PLM_GotoY_EnableMovementIfSamusMissilesAreFull        ;84AE7B;
     dw InstList_PLM_MissileStationRightAccess_1                          ;84AE7D;
@@ -5269,6 +6837,8 @@ InstList_PLM_MissileStationRightAccess_0:
 InstList_PLM_MissileStationRightAccess_1:
     dw Instruction_PLM_Delete                                            ;84AE9B;
 
+
+;;; $AE9D: Instruction list - PLM $B6F3 (collision reaction, special, BTS 4Ch. Missile station left access) ;;;
 InstList_PLM_MissileStationLeftAccess_0:
     dw Instruction_PLM_GotoY_EnableMovementIfSamusMissilesAreFull        ;84AE9D;
     dw InstList_PLM_MissileStationLeftAccess_1                           ;84AE9F;
@@ -5284,14 +6854,19 @@ InstList_PLM_MissileStationLeftAccess_0:
 InstList_PLM_MissileStationLeftAccess_1:
     dw Instruction_PLM_Delete                                            ;84AEBD;
 
+
+;;; $AEBF: Instruction - go to [[Y]] and enable movement if Samus missiles are full ;;;
 Instruction_PLM_GotoY_EnableMovementIfSamusMissilesAreFull:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $09C8                                                          ;84AEBF;
     CMP.W $09C6                                                          ;84AEC2;
     BEQ .missilesFull                                                    ;84AEC5;
     INY                                                                  ;84AEC7;
     INY                                                                  ;84AEC8;
     RTS                                                                  ;84AEC9;
-
 
   .missilesFull:
     LDA.W #$0001                                                         ;84AECA;
@@ -5302,7 +6877,9 @@ Instruction_PLM_GotoY_EnableMovementIfSamusMissilesAreFull:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $AED6: Instruction list - PLM $B6F7 (unused) ;;;
 InstList_PLM_Nothing_84AED6:
+; Unknown. 4 frame animation loop of 1x2 spike air blocks, tile numbers don't match any tilesets
     dw Instruction_PLM_Delete                                            ;84AED6;
 
 InstList_PLM_Nothing_84AED8:
@@ -5325,7 +6902,10 @@ InstList_PLM_Nothing_84AED8:
     dw Instruction_PLM_GotoY                                             ;84AF18;
     dw InstList_PLM_Nothing_84AED8                                       ;84AF1A;
 
+
+;;; $AF1C: Instruction list - PLM $B6FB (unused) ;;;
 InstList_PLM_Nothing_84AF1C:
+; 2x2 version of $B6F7
     dw Instruction_PLM_Delete                                            ;84AF1C;
 
 InstList_PLM_Nothing_84AF1E:
@@ -5349,32 +6929,42 @@ InstList_PLM_Nothing_84AF1E:
     dw InstList_PLM_Nothing_84AF1E                                       ;84AF60;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $AF62: Debug. Scroll PLM draw instructions ;;;
 DrawInst_Debug_ScrollPLM:
+; Used by instruction list $AF86: PLM $B703 (scroll PLM)
     dw $0001,$3074                                                       ;84AF62;
     dw $0000
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DrawInst_Debug_SolidScrollPLM_84AF68:
+; Used by instruction list $AF92: Unused. PLM $B707 (solid scroll PLM)
     dw $0001,$B074                                                       ;84AF68;
     dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 DrawInst_Debug_LeftwardsExtension:
+; Used by instruction list $AF9E: PLM $B63F (leftwards extension)
     dw $0001,$5011                                                       ;84AF6E;
     dw $0000
 
 DrawInst_Debug_RightwardsExtension:
+; Used by instruction list $AFA4: PLM $B63B (rightwards extension)
     dw $0001,$5411                                                       ;84AF74;
     dw $0000
 
 DrawInst_Debug_UpwardsExtension:
+; Used by instruction list $AFAA: PLM $B647 (upwards extension)
     dw $0001,$D800                                                       ;84AF7A;
     dw $0000
 
 DrawInst_Debug_DownwardsExtension:
+; Used by instruction list $AFB0: PLM $B643 (downwards extension)
     dw $0001,$D000                                                       ;84AF80;
     dw $0000
 
+
+;;; $AF86: Instruction list - PLM $B703 (scroll PLM) ;;;
 InstList_PLM_ScrollPLM_0:
     dw $0001,DrawInst_Debug_ScrollPLM                                    ;84AF86;
 
@@ -5384,7 +6974,9 @@ InstList_PLM_ScrollPLM_1:
     dw Instruction_PLM_GotoY                                             ;84AF8E;
     dw InstList_PLM_ScrollPLM_1                                          ;84AF90;
 
+
 if !FEATURE_KEEP_UNREFERENCED
+;;; $AF92: Instruction list - PLM $B707 (solid scroll PLM) ;;;
 InstList_PLM_SolidScrollPLM_0:
     dw $0001,UNUSED_DrawInst_Debug_SolidScrollPLM_84AF68                 ;84AF92;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -5395,22 +6987,32 @@ InstList_PLM_SolidScrollPLM_1:
     dw Instruction_PLM_GotoY                                             ;84AF9A;
     dw InstList_PLM_SolidScrollPLM_1                                     ;84AF9C;
 
+
+;;; $AF9E: Debug. Instruction list - PLM $B63F (leftwards extension) ;;;
 InstList_PLM_Debug_LeftwardsExtension:
     dw $0001,DrawInst_Debug_LeftwardsExtension                           ;84AF9E;
     dw Instruction_PLM_Delete                                            ;84AFA2;
 
+
+;;; $AFA4: Debug. Instruction list - PLM $B63B (rightwards extension) ;;;
 InstList_PLM_Debug_RightwardsExtension:
     dw $0001,DrawInst_Debug_RightwardsExtension                          ;84AFA4;
     dw Instruction_PLM_Delete                                            ;84AFA8;
 
+
+;;; $AFAA: Debug. Instruction list - PLM $B647 (upwards extension) ;;;
 InstList_PLM_Debug_UpwardsExtension:
     dw $0001,DrawInst_Debug_UpwardsExtension                             ;84AFAA;
     dw Instruction_PLM_Delete                                            ;84AFAE;
 
+
+;;; $AFB0: Debug. Instruction list - PLM $B643 (downwards extension) ;;;
 InstList_PLM_Debug_DownwardsExtension:
     dw $0001,DrawInst_Debug_DownwardsExtension                           ;84AFB0;
     dw Instruction_PLM_Delete                                            ;84AFB4;
 
+
+;;; $AFB6: Instruction list - PLM $B70B (elevator platform) ;;;
 InstList_PLM_ElevatorPlatform:
     dw $0004,DrawInst_ElevatorPlatform_0                                 ;84AFB6;
     dw $0004,DrawInst_ElevatorPlatform_1                                 ;84AFBA;
@@ -5419,26 +7021,38 @@ InstList_PLM_ElevatorPlatform:
     dw Instruction_PLM_GotoY                                             ;84AFC6;
     dw InstList_PLM_ElevatorPlatform                                     ;84AFC8;
 
+
+;;; $AFCA: Instruction list - PLM $B747 (clear Crocomire's bridge) ;;;
 InstList_PLM_ClearCrocomiresBridge:
     dw $0001,DrawInst_ClearCrocomiresBridge                              ;84AFCA;
     dw Instruction_PLM_Delete                                            ;84AFCE;
 
+
+;;; $AFD0: Instruction list - PLM $B74B (crumble a block of Crocomire's bridge) ;;;
 InstList_PLM_CrumbleABlockOfCrocomiresBridge:
     dw $0001,DrawInst_CrumbleABlockOfCrocomiresBridge                    ;84AFD0;
     dw Instruction_PLM_Delete                                            ;84AFD4;
 
+
+;;; $AFD6: Instruction list - PLM $B74F (clear a block of Crocomire's bridge) ;;;
 InstList_PLM_ClearABlockOfCrocomiresBridge:
     dw $0001,DrawInst_ClearABlockOfCrocomiresBridge                      ;84AFD6;
     dw Instruction_PLM_Delete                                            ;84AFDA;
 
+
+;;; $AFDC: Instruction list - PLM $B753 (clear Crocomire invisible wall) ;;;
 InstList_PLM_ClearCrocomiresInvisibleWall:
     dw $0001,DrawInst_ClearCrocomireInvisibleWall_0                      ;84AFDC;
     dw Instruction_PLM_Delete                                            ;84AFE0;
 
+
+;;; $AFE2: Instruction list - PLM $B757 (create Crocomire invisible wall) ;;;
 InstList_PLM_CreateCrocomiresInvisibleWall:
     dw $0001,DrawInst_ClearCrocomireInvisibleWall_1                      ;84AFE2;
     dw Instruction_PLM_Delete                                            ;84AFE6;
 
+
+;;; $AFE8: Instruction list - PLM $B76F (save station) ;;;
 InstList_PLM_SaveStation_0:
     dw $0001,DrawInst_SaveStation_0                                      ;84AFE8;
     dw Instruction_PLM_Sleep                                             ;84AFEC;
@@ -5460,6 +7074,8 @@ InstList_PLM_SaveStation_2:
     dw Instruction_PLM_GotoY                                             ;84B00A;
     dw InstList_PLM_SaveStation_0                                        ;84B00C;
 
+
+;;; $B00E: Instruction - place Samus on save station ;;;
 Instruction_PLM_PlaceSamusOnSaveStation:
     LDA.W $0AF6                                                          ;84B00E;
     CLC                                                                  ;84B011;
@@ -5474,6 +7090,7 @@ Instruction_PLM_PlaceSamusOnSaveStation:
     RTS                                                                  ;84B023;
 
 
+;;; $B024: Instruction - display game saved message box ;;;
 Instruction_PLM_DisplayGameSavedMessageBox:
     PHX                                                                  ;84B024;
     PHY                                                                  ;84B025;
@@ -5484,6 +7101,7 @@ Instruction_PLM_DisplayGameSavedMessageBox:
     RTS                                                                  ;84B02F;
 
 
+;;; $B030: Instruction - enable movement and set save station used ;;;
 Instruction_PLM_EnableMovement_SetSaveStationUsed:
     LDA.W #$0001                                                         ;84B030;
     JSL.L Run_Samus_Command                                              ;84B033;
@@ -5493,16 +7111,25 @@ Instruction_PLM_EnableMovement_SetSaveStationUsed:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $B03E: Instruction list - PLM $B75B (unused. Draw 13 blank air tiles) ;;;
 UNUSED_InstList_PLM_Draw13BlankAirTiles_84B03E:
     dw $0001,UNUSED_DrawInst_Draw13BlankAirTiles_849ACF                  ;84B03E;
     dw Instruction_PLM_Delete                                            ;84B042;
 
+
+;;; $B044: Instruction list - PLM $B75F (unused. Draw 13 blank solid tiles) ;;;
 UNUSED_InstList_PLM_Draw13BlankSolidTiles_84B044:
     dw $0001,UNUSED_DrawInst_Draw13BlankSolidTiles_849AED                ;84B044;
     dw Instruction_PLM_Delete                                            ;84B048;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $B04A: Setup - PLM $B64B / $B64F (Wrecked Ship entrance treadmill) ;;;
 Setup_WreckedShipEntranceTreadmill:
+;; Parameters:
+;;     Y: PLM index
+
+; Write 38h blocks of blank air
     LDX.W $1C87,Y                                                        ;84B04A;
     LDA.W #$00FF                                                         ;84B04D;
     LDY.W #$0038                                                         ;84B050;
@@ -5517,7 +7144,11 @@ Setup_WreckedShipEntranceTreadmill:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $B05D: Unused. Load FX entry, completely broken ;;;
 UNUSED_LoadFXEntry_CompletelyBroken_84B05D:
+; I guess it was supposed to be an optimised wrapper that only loads the FX data if it hasn't already been loaded,
+; but it's not even close to functional.
+; Wrong bank, almost guaranteed stack corruption and non-sense comparison
     PHB                                                                  ;84B05D;
     PHA                                                                  ;84B05E;
     PEA.W $8F00                                                          ;84B05F;
@@ -5551,6 +7182,7 @@ UNUSED_LoadFXEntry_CompletelyBroken_84B05D:
     RTS                                                                  ;84B08A;
 
 
+;;; $B08B: Unused. Load FX entry 0 if PLM is in leftmost screen column ;;;
 UNUSED_LoadFXEntry0IfPLMIsInLeftmostScreenColumn_84B08B:
     LDX.W $1C27                                                          ;84B08B;
     JSL.L Calculate_PLM_Block_Coordinates                                ;84B08E;
@@ -5564,12 +7196,12 @@ UNUSED_LoadFXEntry0IfPLMIsInLeftmostScreenColumn_84B08B:
     LDA.W #$0000                                                         ;84B09E;
     JMP.W UNUSED_LoadFXEntry_CompletelyBroken_84B05D                     ;84B0A1;
 
-
   .return:
     CLC                                                                  ;84B0A4;
     RTS                                                                  ;84B0A5;
 
 
+;;; $B0A6: Unused. Load FX entry 1 if PLM is in leftmost screen column ;;;
 UNUSED_LoadFXEntry1IfPLMIsInLeftmostScreenColumn_84B0A6:
     LDX.W $1C27                                                          ;84B0A6;
     JSL.L Calculate_PLM_Block_Coordinates                                ;84B0A9;
@@ -5583,12 +7215,12 @@ UNUSED_LoadFXEntry1IfPLMIsInLeftmostScreenColumn_84B0A6:
     LDA.W #$0001                                                         ;84B0B9;
     JMP.W UNUSED_LoadFXEntry_CompletelyBroken_84B05D                     ;84B0BC;
 
-
   .return:
     CLC                                                                  ;84B0BF;
     RTS                                                                  ;84B0C0;
 
 
+;;; $B0C1: Unused. Load FX entry 2 if PLM is in leftmost screen column ;;;
 UNUSED_LoadFXEntry2IfPLMIsInLeftmostScreenColumn_84B0C1:
     LDX.W $1C27                                                          ;84B0C1;
     JSL.L Calculate_PLM_Block_Coordinates                                ;84B0C4;
@@ -5602,14 +7234,16 @@ UNUSED_LoadFXEntry2IfPLMIsInLeftmostScreenColumn_84B0C1:
     LDA.W #$0002                                                         ;84B0D4;
     JMP.W UNUSED_LoadFXEntry_CompletelyBroken_84B05D                     ;84B0D7;
 
-
   .return:
     CLC                                                                  ;84B0DA;
     RTS                                                                  ;84B0DB;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $B0DC: Setup - PLM $B6CB (inside reaction, special air, BTS Brinstar 80h. Floor plant) ;;;
 Setup_BrinstarFloorPlant:
+;; Parameters:
+;;     Y: PLM index
     LDA.W $0AFA                                                          ;84B0DC;
     CLC                                                                  ;84B0DF;
     ADC.W $0B00                                                          ;84B0E0;
@@ -5621,7 +7255,6 @@ Setup_BrinstarFloorPlant:
     STA.W $1C37,Y                                                        ;84B0EF;
     CLC                                                                  ;84B0F2;
     RTS                                                                  ;84B0F3;
-
 
   .deactivate:
     LDX.W $1C87,Y                                                        ;84B0F4;
@@ -5638,7 +7271,10 @@ Setup_BrinstarFloorPlant:
     RTS                                                                  ;84B112;
 
 
+;;; $B113: Setup - PLM $B6CF (inside reaction, special air, BTS Brinstar 81h. Ceiling plant) ;;;
 Setup_BrinstarCeilingPlant:
+;; Parameters:
+;;     Y: PLM index
     LDA.W $0AFA                                                          ;84B113;
     SEC                                                                  ;84B116;
     SBC.W $0B00                                                          ;84B117;
@@ -5648,7 +7284,6 @@ Setup_BrinstarCeilingPlant:
     STA.W $1C37,Y                                                        ;84B122;
     CLC                                                                  ;84B125;
     RTS                                                                  ;84B126;
-
 
   .deactivate:
     LDX.W $1C87,Y                                                        ;84B127;
@@ -5665,7 +7300,13 @@ Setup_BrinstarCeilingPlant:
     RTS                                                                  ;84B145;
 
 
+;;; $B146: Activate the station at block index [A] if Samus arm cannon is lined up ;;;
 ActivateStationIfSamusArmCannonLinedUp:
+;; Parameters:
+;;     A: Block index
+;;     Y: PLM index
+;; Returns:
+;;     Carry: Set. Unconditional collision
     LDX.W #$004E                                                         ;84B146;
 
   .loop:
@@ -5675,7 +7316,6 @@ ActivateStationIfSamusArmCannonLinedUp:
     DEX                                                                  ;84B14F;
     BPL .loop                                                            ;84B150;
     BRA .delete                                                          ;84B152;
-
 
   .found:
     PHX                                                                  ;84B154;
@@ -5699,7 +7339,6 @@ ActivateStationIfSamusArmCannonLinedUp:
     SEC                                                                  ;84B181;
     RTS                                                                  ;84B182;
 
-
   .delete:
     LDA.W #$0000                                                         ;84B183;
     STA.W $1C37,Y                                                        ;84B186;
@@ -5707,7 +7346,10 @@ ActivateStationIfSamusArmCannonLinedUp:
     RTS                                                                  ;84B18A;
 
 
+;;; $B18B: Setup - PLM $B6D3 (map station) ;;;
 Setup_MapStation:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $1C87,Y                                                        ;84B18B;
     LDA.L $7F0002,X                                                      ;84B18E;
     AND.W #$0FFF                                                         ;84B192;
@@ -5731,14 +7373,18 @@ Setup_MapStation:
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84B1BD;
     RTS                                                                  ;84B1C0;
 
-
   .setInstruction:
     LDA.W #InstList_PLM_MapStation_2                                     ;84B1C1;
     STA.W $1D27,Y                                                        ;84B1C4;
     RTS                                                                  ;84B1C7;
 
 
+;;; $B1C8: Setup - PLM $B6D7 (collision reaction, special, BTS 47h. Map station right access) ;;;
 Setup_MapStationRightAccess:
+;; Parameters:
+;;     Y: PLM index
+;; Returns:
+;;     Carry: Set. Unconditional collision
     LDA.W $0B02                                                          ;84B1C8;
     AND.W #$000F                                                         ;84B1CB;
     BNE .connected                                                       ;84B1CE;
@@ -5753,7 +7399,6 @@ Setup_MapStationRightAccess:
     DEC A                                                                ;84B1E4;
     JMP.W ActivateStationIfSamusArmCannonLinedUp                         ;84B1E5;
 
-
   .connected:
     LDA.W #$0000                                                         ;84B1E8;
     STA.W $1C37,Y                                                        ;84B1EB;
@@ -5761,7 +7406,12 @@ Setup_MapStationRightAccess:
     RTS                                                                  ;84B1EF;
 
 
+;;; $B1F0: Setup - PLM $B6DB (collision reaction, special, BTS 48h. Map station left access) ;;;
 Setup_MapStationLeftAccess:
+;; Parameters:
+;;     Y: PLM index
+;; Returns:
+;;     Carry: Set. Unconditional collision
     LDA.W $0B02                                                          ;84B1F0;
     AND.W #$000F                                                         ;84B1F3;
     CMP.W #$0001                                                         ;84B1F6;
@@ -5779,7 +7429,6 @@ Setup_MapStationLeftAccess:
     INC A                                                                ;84B211;
     JMP.W ActivateStationIfSamusArmCannonLinedUp                         ;84B212;
 
-
   .connected:
     LDA.W #$0000                                                         ;84B215;
     STA.W $1C37,Y                                                        ;84B218;
@@ -5787,7 +7436,10 @@ Setup_MapStationLeftAccess:
     RTS                                                                  ;84B21C;
 
 
+;;; $B21D: Setup - PLM $B6DF (energy station) ;;;
 Setup_EnergyStation:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $1C87,Y                                                        ;84B21D;
     LDA.L $7F0002,X                                                      ;84B220;
     AND.W #$0FFF                                                         ;84B224;
@@ -5806,7 +7458,10 @@ Setup_EnergyStation:
     RTS                                                                  ;84B244;
 
 
+;;; $B245: Setup - PLM $B6EB (missile station) ;;;
 Setup_MissileStation:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $1C87,Y                                                        ;84B245;
     LDA.L $7F0002,X                                                      ;84B248;
     AND.W #$0FFF                                                         ;84B24C;
@@ -5825,7 +7480,12 @@ Setup_MissileStation:
     RTS                                                                  ;84B26C;
 
 
+;;; $B26D: Setup - PLM $B6E3 (collision reaction, special, BTS 49h. Energy station right access) ;;;
 Setup_EnergyStationRightAccess:
+;; Parameters:
+;;     Y: PLM index
+;; Returns:
+;;     Carry: Set. Unconditional collision
     LDA.W $0B02                                                          ;84B26D;
     AND.W #$000F                                                         ;84B270;
     BNE .connected                                                       ;84B273;
@@ -5843,7 +7503,6 @@ Setup_EnergyStationRightAccess:
     DEC A                                                                ;84B291;
     JMP.W ActivateStationIfSamusArmCannonLinedUp                         ;84B292;
 
-
   .connected:
     LDA.W #$0000                                                         ;84B295;
     STA.W $1C37,Y                                                        ;84B298;
@@ -5851,7 +7510,12 @@ Setup_EnergyStationRightAccess:
     RTS                                                                  ;84B29C;
 
 
+;;; $B29D: Setup - PLM $B6E7 (collision reaction, special, BTS 4Ah. Energy station left access) ;;;
 Setup_EnergyStationLeftAccess:
+;; Parameters:
+;;     Y: PLM index
+;; Returns:
+;;     Carry: Set. Unconditional collision
     LDA.W $0B02                                                          ;84B29D;
     AND.W #$000F                                                         ;84B2A0;
     CMP.W #$0001                                                         ;84B2A3;
@@ -5870,7 +7534,6 @@ Setup_EnergyStationLeftAccess:
     INC A                                                                ;84B2C4;
     JMP.W ActivateStationIfSamusArmCannonLinedUp                         ;84B2C5;
 
-
   .connected:
     LDA.W #$0000                                                         ;84B2C8;
     STA.W $1C37,Y                                                        ;84B2CB;
@@ -5878,7 +7541,12 @@ Setup_EnergyStationLeftAccess:
     RTS                                                                  ;84B2CF;
 
 
+;;; $B2D0: Setup - PLM $B6EF (collision reaction, special, BTS 4Bh. Missile station right access) ;;;
 Setup_MissileStationRightAccess:
+;; Parameters:
+;;     Y: PLM index
+;; Returns:
+;;     Carry: Set. Unconditional collision
     LDA.W $0B02                                                          ;84B2D0;
     AND.W #$000F                                                         ;84B2D3;
     BNE .connected                                                       ;84B2D6;
@@ -5896,7 +7564,6 @@ Setup_MissileStationRightAccess:
     DEC A                                                                ;84B2F4;
     JMP.W ActivateStationIfSamusArmCannonLinedUp                         ;84B2F5;
 
-
   .connected:
     LDA.W #$0000                                                         ;84B2F8;
     STA.W $1C37,Y                                                        ;84B2FB;
@@ -5904,7 +7571,12 @@ Setup_MissileStationRightAccess:
     RTS                                                                  ;84B2FF;
 
 
+;;; $B300: Setup - PLM $B6F3 (collision reaction, special, BTS 4Ch. Missile station left access) ;;;
 Setup_MissileStationLeftAccess:
+;; Parameters:
+;;     Y: PLM index
+;; Returns:
+;;     Carry: Set. Unconditional collision
     LDA.W $0B02                                                          ;84B300;
     AND.W #$000F                                                         ;84B303;
     CMP.W #$0001                                                         ;84B306;
@@ -5923,7 +7595,6 @@ Setup_MissileStationLeftAccess:
     INC A                                                                ;84B327;
     JMP.W ActivateStationIfSamusArmCannonLinedUp                         ;84B328;
 
-
   .connected:
     LDA.W #$0000                                                         ;84B32B;
     STA.W $1C37,Y                                                        ;84B32E;
@@ -5931,41 +7602,67 @@ Setup_MissileStationLeftAccess:
     RTS                                                                  ;84B332;
 
 
+;;; $B333: Delete PLM ;;;
 DeletePLM:
+;; Parameters:
+;;     Y: PLM index
     LDA.W #$0000                                                         ;84B333;
     STA.W $1C37,Y                                                        ;84B336;
     RTS                                                                  ;84B339;
 
 
+;;; $B33A: Setup - PLM $B63B (rightwards extension) ;;;
 Setup_RightwardsExtension:
+;; Parameters:
+;;     Y: PLM index
+
+; Write horizontal extension block with BTS FFh and delete PLM
     LDX.W $1C87,Y                                                        ;84B33A;
     LDA.W #$50FF                                                         ;84B33D;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84B340;
     BRA DeletePLM                                                        ;84B343;
 
 
+;;; $B345: Setup - PLM $B63F (leftwards extension) ;;;
 Setup_LeftwardsExtension:
+;; Parameters:
+;;     Y: PLM index
+
+; Write horizontal extension block with BTS 1 and delete PLM
     LDX.W $1C87,Y                                                        ;84B345;
     LDA.W #$5001                                                         ;84B348;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84B34B;
     BRA DeletePLM                                                        ;84B34E;
 
 
+;;; $B350: Setup - PLM $B643 (downwards extension) ;;;
 Setup_DownwardsExtension:
+;; Parameters:
+;;     Y: PLM index
+
+; Write vertical extension block with BTS FFh and delete PLM
     LDX.W $1C87,Y                                                        ;84B350;
     LDA.W #$D0FF                                                         ;84B353;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84B356;
     BRA DeletePLM                                                        ;84B359;
 
 
+;;; $B35B: Setup - PLM $B647 (upwards extension) ;;;
 Setup_UpwardsExtension:
+;; Parameters:
+;;     Y: PLM index
+
+; Write vertical extension block with BTS 1 and delete PLM
     LDX.W $1C87,Y                                                        ;84B35B;
     LDA.W #$D001                                                         ;84B35E;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84B361;
     BRA DeletePLM                                                        ;84B364;
 
 
+;;; $B366: Skip debug draw instruction for scroll PLMs ;;;
 Skip_Debug_DrawInstruction_for_ScrollPLM:
+;; Parameters:
+;;     Y: PLM index
     LDA.W $1D27,Y                                                        ;84B366;
     CLC                                                                  ;84B369;
     ADC.W #$0004                                                         ;84B36A;
@@ -5973,7 +7670,12 @@ Skip_Debug_DrawInstruction_for_ScrollPLM:
     RTS                                                                  ;84B370;
 
 
+;;; $B371: Setup - PLM $B703 (scroll PLM) ;;;
 Setup_ScrollPLM:
+;; Parameters:
+;;     Y: PLM index
+
+; Write scroll PLM trigger block, set PLM as not triggered and skip debug draw instruction
     LDX.W $1C87,Y                                                        ;84B371;
     LDA.W #$3046                                                         ;84B374;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84B377;
@@ -5982,7 +7684,12 @@ Setup_ScrollPLM:
     BRA Skip_Debug_DrawInstruction_for_ScrollPLM                         ;84B380;
 
 
+;;; $B382: Setup - PLM $B707 (unused. Solid scroll PLM) ;;;
 Setup_SolidScrollPLM:
+;; Parameters:
+;;     Y: PLM index
+
+; Write solid scroll PLM trigger block, set PLM as not triggered and skip debug draw instruction
     LDX.W $1C87,Y                                                        ;84B382;
     LDA.W #$B046                                                         ;84B385;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84B388;
@@ -5991,7 +7698,12 @@ Setup_SolidScrollPLM:
     BRA Skip_Debug_DrawInstruction_for_ScrollPLM                         ;84B391;
 
 
+;;; $B393: Setup - PLM $B6FF (collision reaction, special, BTS 46h / inside reaction, special air, BTS 46h. Scroll block touch PLM) ;;;
 Setup_ScrollBlockTouchPLM:
+;; Parameters:
+;;     Y: PLM index
+;; Returns:
+;;     Carry: Set. Unconditional collision
     TYX                                                                  ;84B393;
     LDA.W $1C87,X                                                        ;84B394;
     STZ.W $1C87,X                                                        ;84B397;
@@ -6007,7 +7719,6 @@ Setup_ScrollBlockTouchPLM:
   .crash:
     BRA .crash                                                           ;84B3A6;
 
-
   .found:
     LDA.W $1E17,X                                                        ;84B3A8;
     BMI .return                                                          ;84B3AB;
@@ -6022,27 +7733,38 @@ Setup_ScrollBlockTouchPLM:
     RTS                                                                  ;84B3C0;
 
 
+;;; $B3C1: Setup - deactivate PLM ;;;
 Setup_DeactivatePLM:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $1C87,Y                                                        ;84B3C1;
     LDA.L $7F0002,X                                                      ;84B3C4;
     AND.W #$8FFF                                                         ;84B3C8;
     STA.L $7F0002,X                                                      ;84B3CB; fallthrough to RTS_84B3CF
 
+
 RTS_84B3CF:
     RTS                                                                  ;84B3CF;
 
 
+;;; $B3D0: Clear carry. Setup - PLM $B633 (collision reaction, special, BTS Brinstar 80h/81h) ;;;
 Setup_ClearCarry:
     CLC                                                                  ;84B3D0;
     RTS                                                                  ;84B3D1;
 
 
+;;; $B3D2: Unused. Set carry. Setup - PLM $B637 (nothing) ;;;
 Setup_SetCarry:
     SEC                                                                  ;84B3D2;
     RTS                                                                  ;84B3D3;
 
 
+;;; $B3D4: Setup - PLM $D094 (enemy collision reaction, spike block, BTS Fh. Enemy breakable block) ;;;
 Setup_EnemyBreakableBlock:
+;; Parameters:
+;;     Y: PLM index
+
+; Make PLM block air
     LDX.W $1C87,Y                                                        ;84B3D4;
     LDA.L $7F0002,X                                                      ;84B3D7;
     AND.W #$0FFF                                                         ;84B3DB;
@@ -6051,6 +7773,7 @@ Setup_EnemyBreakableBlock:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $B3E3: Setup - PLM $B743 (unused. Torizo drool?) ;;;
 UNUSED_Setup_TorizoDrool_84B3E3:
     LDY.W #UNUSED_EnemyProjectile_BombTorizo_86A977                      ;84B3E3;
     JSL.L SpawnEnemyProjectileY_ParameterA_RoomGraphics                  ;84B3E6;
@@ -6058,6 +7781,7 @@ UNUSED_Setup_TorizoDrool_84B3E3:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $B3EB: Setup - PLM $B70F (inside reaction, special air, BTS Crateria/Debug 80h. Ice physics) ;;;
 Setup_IcePhysics:
     LDA.W $0AFA                                                          ;84B3EB;
     CLC                                                                  ;84B3EE;
@@ -6078,6 +7802,7 @@ Setup_IcePhysics:
     RTS                                                                  ;84B407;
 
 
+;;; $B408: Setup - PLM $B713 / $B717 / $B71B (inside reaction, special air, BTS Maridia 80h/81h/82h. Quicksand surface) ;;;
 Setup_QuicksandSurface:
     STZ.W $0B3C                                                          ;84B408;
     STZ.W $0B3E                                                          ;84B40B;
@@ -6102,14 +7827,17 @@ Setup_QuicksandSurface:
     JSR.W (.pointers,X)                                                  ;84B43B;
     RTS                                                                  ;84B43E;
 
-
   .pointers:
     dw InsideReaction_QuicksandSurface_SamusIsGrounded                   ;84B43F;
     dw InsideReaction_QuicksandSurface_SamusIsMovingUp                   ;84B441;
     dw InsideReaction_QuicksandSurface_SamusIsMovingDown                 ;84B443;
     dw InsideReaction_QuicksandSurface_SamusIsGrounded                   ;84B445;
 
+
+;;; $B447: Inside reaction - quicksand surface - Samus is grounded ;;;
 InsideReaction_QuicksandSurface_SamusIsGrounded:
+;; Parameters:
+;;     Y: Quicksand physics table index. 0 = without gravity suit, 2 = with gravity suit
     STZ.W $0B2C                                                          ;84B447;
     STZ.W $0B2E                                                          ;84B44A;
     STZ.W $0B5A                                                          ;84B44D;
@@ -6121,7 +7849,10 @@ InsideReaction_QuicksandSurface_SamusIsGrounded:
     RTS                                                                  ;84B459;
 
 
+;;; $B45A: Inside reaction - quicksand surface - Samus is moving up ;;;
 InsideReaction_QuicksandSurface_SamusIsMovingUp:
+;; Parameters:
+;;     Y: Quicksand physics table index. 0 = without gravity suit, 2 = with gravity suit
     LDA.W QuicksandSurface_InsideReaction_maxVelocity,Y                  ;84B45A;
     CMP.W $0B2D                                                          ;84B45D;
     BCS +                                                                ;84B460;
@@ -6137,7 +7868,10 @@ InsideReaction_QuicksandSurface_SamusIsMovingUp:
     RTS                                                                  ;84B47A;
 
 
+;;; $B47B: Inside reaction - quicksand surface - Samus is moving down ;;;
 InsideReaction_QuicksandSurface_SamusIsMovingDown:
+;; Parameters:
+;;     Y: Quicksand physics table index. 0 = without gravity suit, 2 = with gravity suit
     STZ.W $0B5A                                                          ;84B47B;
     STZ.W $0B5C                                                          ;84B47E;
     LDA.W QuicksandSurface_InsideReaction_distanceInAir,Y                ;84B481;
@@ -6146,18 +7880,20 @@ InsideReaction_QuicksandSurface_SamusIsMovingDown:
     RTS                                                                  ;84B48A;
 
 
+;;; $B48B: Quicksand physics table ;;;
 QuicksandSurface_InsideReaction:
 ;        _________ Without gravity suit
 ;       |      ___ With gravity suit
 ;       |     |
   .distanceInAir:
-    dw $0200,$0200                                                       ;84B48B;
+    dw $0200,$0200 ; Distance to move Samus vertically * 100h in air
   .distanceOnGround:
-    dw $0120,$0100                                                       ;84B48F;
+    dw $0120,$0100 ; Distance to move Samus vertically * 100h on ground
   .maxVelocity:
-    dw $0280,$0380                                                       ;84B493;
+    dw $0280,$0380 ; Samus max vertical velocity * 100h
 
 
+;;; $B497: Setup - PLM $B71F (inside reaction, special air, BTS Maridia 83h. Submerging quicksand) ;;;
 Setup_Inside_SubmergingQuicksand:
     STZ.W $0AF4                                                          ;84B497;
     LDA.W #$2000                                                         ;84B49A;
@@ -6168,6 +7904,7 @@ Setup_Inside_SubmergingQuicksand:
     RTS                                                                  ;84B4A7;
 
 
+;;; $B4A8: Setup - PLM $B723 (inside reaction, special air, BTS Maridia 84h. Sand falls - slow) ;;;
 Setup_SandfallsSlow:
     LDA.W #$4000                                                         ;84B4A8;
     STA.W $0B5A                                                          ;84B4AB;
@@ -6177,6 +7914,7 @@ Setup_SandfallsSlow:
     RTS                                                                  ;84B4B5;
 
 
+;;; $B4B6: Setup - PLM $B727 (inside reaction, special air, BTS Maridia 85h. Sand falls - fast) ;;;
 Setup_SandfallsFast:
     LDA.W #$C000                                                         ;84B4B6;
     STA.W $0B5A                                                          ;84B4B9;
@@ -6186,13 +7924,20 @@ Setup_SandfallsFast:
     RTS                                                                  ;84B4C3;
 
 
+;;; $B4C4: Setup - PLM $B72B / $B72F / $B733 (collision reaction, special, BTS Maridia 80h/81h/82h. Quicksand surface) ;;;
 Setup_QuicksandSurface_BTS85:
+;; Parameters:
+;;     $12.$14: Distance to check for collision
+;; Returns:
+;;     Carry: Set if collision, clear otherwise
+;;     $12.$14: Adjusted distance to move Samus or distance to collision
+
+; Effectively no effect for horizontal collisions
     LDA.W $0B02                                                          ;84B4C4;
     AND.W #$0002                                                         ;84B4C7;
     BNE .vertical                                                        ;84B4CA;
     CLC                                                                  ;84B4CC;
     RTS                                                                  ;84B4CD;
-
 
   .vertical:
     LDY.W #$0000                                                         ;84B4CE;
@@ -6216,14 +7961,21 @@ Setup_QuicksandSurface_BTS85:
     STX.B $14                                                            ;84B4F5;
     RTS                                                                  ;84B4F7;
 
-
   .pointers:
     dw CollisionReaction_QuicksandSurface_SamusIsGrounded                ;84B4F8;
     dw ClearCarry_84B528                                                 ;84B4FA;
     dw CollisionReaction_QuicksandSurface_SamusIsMovingDown              ;84B4FC;
     dw CollisionReaction_QuicksandSurface_SamusIsGrounded                ;84B4FE;
 
+
+;;; $B500: Collision reaction - quicksand surface - Samus is grounded ;;;
 CollisionReaction_QuicksandSurface_SamusIsGrounded:
+;; Parameters:
+;;     Y: Quicksand surface max sinking speed table index. 0 without gravity suit, 2 with gravity suit
+;;     $14.$12: Distance to check for collision
+;; Returns:
+;;     Carry: Set if collision, clear otherwise
+;;     $14.$12: Adjusted distance to move Samus or distance to collision
     LDA.W $0B02                                                          ;84B500;
     AND.W #$000F                                                         ;84B503;
     CMP.W #$0002                                                         ;84B506;
@@ -6231,7 +7983,6 @@ CollisionReaction_QuicksandSurface_SamusIsGrounded:
     CMP.W #$0003                                                         ;84B50B;
     BEQ .up                                                              ;84B50E;
     BRA .noCollision                                                     ;84B510;
-
 
   .up:
     LDA.W $0A6E                                                          ;84B512;
@@ -6249,12 +8000,19 @@ CollisionReaction_QuicksandSurface_SamusIsGrounded:
     RTS                                                                  ;84B527;
 
 
+;;; $B528: Clear carry. Collision reaction - quicksand surface - Samus is moving up ;;;
 ClearCarry_84B528:
     CLC                                                                  ;84B528;
     RTS                                                                  ;84B529;
 
 
+;;; $B52A: Collision reaction - quicksand surface - Samus is moving down ;;;
 CollisionReaction_QuicksandSurface_SamusIsMovingDown:
+;; Parameters:
+;;     $14.$12: Distance to check for collision
+;; Returns:
+;;     Carry: Set if collision, clear otherwise
+;;     $14.$12: Distance to move Samus or distance to collision
     LDA.W $0A6E                                                          ;84B52A;
     CMP.W #$0001                                                         ;84B52D;
     BEQ CollisionReaction_QuicksandSurface_QuicksandSpeedBoosting        ;84B530;
@@ -6263,20 +8021,29 @@ CollisionReaction_QuicksandSurface_SamusIsMovingDown:
     RTS                                                                  ;84B536;
 
 
+;;; $B537: Collision reaction - quicksand surface - quicksand speed boosting ;;;
 CollisionReaction_QuicksandSurface_QuicksandSpeedBoosting:
+;; Returns:
+;;     Carry: Set. Unconditional collision
+;;     $14.$12: 0.0. Distance to collision
     STZ.B $12                                                            ;84B537;
     STZ.B $14                                                            ;84B539;
     SEC                                                                  ;84B53B;
     RTS                                                                  ;84B53C;
 
 
+;;; $B53D: Quicksand surface max sinking speed ;;;
 QuicksandSurface_MaxSinkingSpeed:
 ;        _________ Without gravity suit
 ;       |      ___ With gravity suit
 ;       |     |
     dw $0030,$0030                                                       ;84B53D;
 
+
+;;; $B541: Setup - PLM $B737 (collision reaction, special, BTS Maridia 83h. Submerging quicksand) ;;;
 Setup_Collision_SubmergingQuicksand:
+;; Returns:
+;;     Carry: Clear. No collision
     STZ.W $0B2C                                                          ;84B541;
     STZ.W $0B2E                                                          ;84B544;
     STZ.W $0B32                                                          ;84B547;
@@ -6285,12 +8052,18 @@ Setup_Collision_SubmergingQuicksand:
     RTS                                                                  ;84B54E;
 
 
+;;; $B54F: Clear carry. Setup - PLM $B73B / $B73F (collision reaction, special, BTS Maridia  84h/85h. Sand falls) ;;;
 Setup_CollisionReaction_SandFalls:
     CLC                                                                  ;84B54F;
     RTS                                                                  ;84B550;
 
 
+;;; $B551: Setup - PLM $B763 (clear Shitroid invisible wall) ;;;
 Setup_ClearBabyMetroidInvisibleWall:
+;; Parameters:
+;;     Y: PLM index
+
+; Make the 10-block column below this PLM air
     LDX.W $1C87,Y                                                        ;84B551;
     LDY.W #$000A                                                         ;84B554;
 
@@ -6308,7 +8081,12 @@ Setup_ClearBabyMetroidInvisibleWall:
     RTS                                                                  ;84B56E;
 
 
+;;; $B56F: Setup - PLM $B767 (create Shitroid invisible wall) ;;;
 CreateBabyMetroidInvisibleWall:
+;; Parameters:
+;;     Y: PLM index
+
+; Make the 10-block column below this PLM solid
     LDX.W $1C87,Y                                                        ;84B56F;
     LDY.W #$000A                                                         ;84B572;
 
@@ -6327,7 +8105,16 @@ CreateBabyMetroidInvisibleWall:
     RTS                                                                  ;84B58F;
 
 
+;;; $B590: Setup - PLM $B76B (collision reaction, special, BTS 4Dh. Save station trigger) ;;;
 Setup_CollisionReaction_SaveStationTrigger:
+;; Parameters:
+;;     Y: PLM index
+;; Returns:
+;;     Carry: Set. Unconditional collision
+
+; I wrote `[Samus X position] < PLM X position + 18h` below,
+; but Samus X position must be less than PLM X position + 10h for the collision to happen in the first place.
+; So save stations cruelly require Samus center to be within the center-left quarter of the station
     LDA.W $0592                                                          ;84B590;
     BNE .collisionReturn                                                 ;84B593;
     LDA.W $0A1C                                                          ;84B595;
@@ -6369,7 +8156,6 @@ Setup_CollisionReaction_SaveStationTrigger:
     SEC                                                                  ;84B5DD;
     RTS                                                                  ;84B5DE;
 
-
   .found:
     INC.W $1D27,X                                                        ;84B5DF;
     INC.W $1D27,X                                                        ;84B5E2;
@@ -6381,14 +8167,24 @@ Setup_CollisionReaction_SaveStationTrigger:
     RTS                                                                  ;84B5ED;
 
 
+;;; $B5EE: Setup - PLM $B76F (save station) ;;;
 Setup_SaveStation:
+;; Parameters:
+;;     Y: PLM index
+
+; Make PLM block a save station trigger
     LDX.W $1C87,Y                                                        ;84B5EE;
     LDA.W #$B04D                                                         ;84B5F1;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84B5F4;
     RTS                                                                  ;84B5F7;
 
 
+;;; $B5F8: Setup - PLM $B677 (Mother Brain's room escape door) ;;;
 Setup_MotherBrainsRoomEscapeDoor:
+;; Parameters:
+;;     Y: PLM index
+
+; Make PLM block a door block with BTS 1, extended downwards by 3 blocks
     LDX.W $1C87,Y                                                        ;84B5F8;
     LDA.W #$9001                                                         ;84B5FB;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84B5FE;
@@ -6421,428 +8217,534 @@ PLMEntries_nothing:
     dw InstList_PLM_Delete                                               ;84B631;
 
 PLMEntries_collisionReactionClearCarry:
+; Collision reaction, special, BTS Brinstar 80h/81h. Clear carry
     dw Setup_ClearCarry                                                  ;84B633;
     dw InstList_PLM_Delete                                               ;84B635;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_PLMEntries_84B637:
+; Unused. Set carry
     dw Setup_SetCarry                                                    ;84B637;
     dw InstList_PLM_Delete                                               ;84B639;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PLMEntries_rightwardsExtension:
+; Rightwards extension
     dw Setup_RightwardsExtension                                         ;84B63B;
     dw InstList_PLM_Debug_RightwardsExtension                            ;84B63D;
 
 PLMEntries_leftwardsExtension:
+; Leftwards extension
     dw Setup_LeftwardsExtension                                          ;84B63F;
     dw InstList_PLM_Debug_LeftwardsExtension                             ;84B641;
 
 PLMEntries_downwardsExtension:
+; Downwards extension
     dw Setup_DownwardsExtension                                          ;84B643;
     dw InstList_PLM_Debug_DownwardsExtension                             ;84B645;
 
 PLMEntries_upwardsExtension:
+; Upwards extension
     dw Setup_UpwardsExtension                                            ;84B647;
     dw InstList_PLM_Debug_UpwardsExtension                               ;84B649;
 
 PLMEntries_wreckedShipEntranceTreadmillFromWest:
+; Wrecked Ship entrance treadmill from west
     dw Setup_WreckedShipEntranceTreadmill                                ;84B64B;
     dw InstList_PLM_WreckedShipEntranceTreadmillFromWest_0               ;84B64D;
 
 PLMEntries_wreckedShipEntranceTreadmillFromEast:
+; Wrecked Ship entrance treadmill from east
     dw Setup_WreckedShipEntranceTreadmill                                ;84B64F;
     dw InstList_PLM_WreckedShipEntranceTreadmillFromEast_0               ;84B651;
 
 PLMEntries_insideReactionNothing_B653:
+; Inside reaction, special air, BTS Norfair 80h. Nothing
     dw RTS_84B3CF                                                        ;84B653;
     dw InstList_PLM_Delete                                               ;84B655;
 
 PLMEntries_insideReactionNothing_B657:
+; Inside reaction, special air, BTS Norfair 81h. Nothing
     dw RTS_84B3CF                                                        ;84B657;
     dw InstList_PLM_Delete                                               ;84B659;
 
 PLMEntries_insideReactionNothing_B65B:
+; Inside reaction, special air, BTS Norfair 82h. Nothing
     dw RTS_84B3CF                                                        ;84B65B;
     dw InstList_PLM_Delete                                               ;84B65D;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_PLMEntries_84B65F:
+; Unused. Draws a column 1AFB,00FF,00FF,12FB centered around PLM. Matches the level data of a zebetite
     dw Setup_DeactivatePLM                                               ;84B65F;
     dw UNUSED_InstList_PLM_84ABE3                                        ;84B661;
 
 UNUSED_PLMEntries_84B663:
+; Unused. Draws a column 8AFB,80FF,80FF,82FB centered around PLM. Solid version of $B65F
     dw Setup_DeactivatePLM                                               ;84B663;
     dw UNUSED_InstList_PLM_84ABE9                                        ;84B665;
 
 UNUSED_PLMEntries_84B667:
+; Unused. Open escape gate that becomes closed after 18h frames
     dw Setup_DeactivatePLM                                               ;84B667;
     dw UNUSED_InstList_PLM_84ABEF_0                                      ;84B669;
 
 UNUSED_PLMEntries_84B66B:
+; Unused. Blank air
     dw Setup_DeactivatePLM                                               ;84B66B;
     dw UNUSED_InstList_PLM_84ABF9                                        ;84B66D;
 
 UNUSED_PLMEntries_84B66F:
+; Unused. Blank solid
     dw Setup_DeactivatePLM                                               ;84B66F;
     dw UNUSED_PLM_InstList_84ABFF                                        ;84B671;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PLMEntries_fillMotherBrainsWall:
+; Fill Mother Brain's wall
     dw Setup_DeactivatePLM                                               ;84B673;
     dw InstList_PLM_FillMotherBrainsWall                                 ;84B675;
 
 PLMEntries_motherBrainsRoomEscapeDoor:
+; Mother Brain's room escape door
     dw Setup_MotherBrainsRoomEscapeDoor                                  ;84B677;
     dw InstList_PLM_MotherBrainsRoomEscapeDoor                           ;84B679;
 
 PLMEntries_motherBrainsBackgroundRow2:
+; Mother Brain's background row 2
     dw Setup_DeactivatePLM                                               ;84B67B;
     dw InstList_PLM_MotherBrainsBackgroundRow2                           ;84B67D;
 
 PLMEntries_motherBrainsBackgroundRow3:
+; Mother Brain's background row 3
     dw Setup_DeactivatePLM                                               ;84B67F;
     dw InstList_PLM_MotherBrainsBackgroundRow3                           ;84B681;
 
 PLMEntries_motherBrainsBackgroundRow4:
+; Mother Brain's background row 4
     dw Setup_DeactivatePLM                                               ;84B683;
     dw InstList_PLM_MotherBrainsBackgroundRow4                           ;84B685;
 
 PLMEntries_motherBrainsBackgroundRow5:
+; Mother Brain's background row 5
     dw Setup_DeactivatePLM                                               ;84B687;
     dw InstList_PLM_MotherBrainsBackgroundRow5                           ;84B689;
 
 PLMEntries_motherBrainsBackgroundRow6:
+; Mother Brain's background row 6
     dw Setup_DeactivatePLM                                               ;84B68B;
     dw InstList_PLM_MotherBrainsBackgroundRow6                           ;84B68D;
 
 PLMEntries_motherBrainsBackgroundRow7:
+; Mother Brain's background row 7
     dw Setup_DeactivatePLM                                               ;84B68F;
     dw InstList_PLM_MotherBrainsBackgroundRow7                           ;84B691;
 
 PLMEntries_motherBrainsBackgroundRow8:
+; Mother Brain's background row 8
     dw Setup_DeactivatePLM                                               ;84B693;
     dw InstList_PLM_MotherBrainsBackgroundRow8                           ;84B695;
 
 PLMEntries_motherBrainsBackgroundRow9:
+; Mother Brain's background row 9
     dw Setup_DeactivatePLM                                               ;84B697;
     dw InstList_PLM_MotherBrainsBackgroundRow9                           ;84B699;
 
 PLMEntries_motherBrainsBackgroundRowA:
+; Mother Brain's background row Ah
     dw Setup_DeactivatePLM                                               ;84B69B;
     dw InstList_PLM_MotherBrainsBackgroundRowA                           ;84B69D;
 
 PLMEntries_motherBrainsBackgroundRowB:
+; Mother Brain's background row Bh
     dw Setup_DeactivatePLM                                               ;84B69F;
     dw InstList_PLM_MotherBrainsBackgroundRowB                           ;84B6A1;
 
 PLMEntries_motherBrainsBackgroundRowC:
+; Mother Brain's background row Ch
     dw Setup_DeactivatePLM                                               ;84B6A3;
     dw InstList_PLM_MotherBrainsBackgroundRowC                           ;84B6A5;
 
 PLMEntries_motherBrainsBackgroundRowD:
+; Mother Brain's background row Dh
     dw Setup_DeactivatePLM                                               ;84B6A7;
     dw InstList_PLM_MotherBrainsBackgroundRowD                           ;84B6A9;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_PLMEntries_84B6AB:
+; Unused. Mother Brain's background row Eh
     dw Setup_DeactivatePLM                                               ;84B6AB;
     dw UNUSED_InstList_PLM_84AC59                                        ;84B6AD;
 
 UNUSED_PLMEntries_84B6AF:
+; Unused. Mother Brain's background row Fh
     dw Setup_DeactivatePLM                                               ;84B6AF;
     dw UNUSED_InstList_PLM_84AC5F                                        ;84B6B1;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PLMEntries_clearCeilingBlockInMotherBrainsRoom:
+; Clear ceiling block in Mother Brain's room
     dw Setup_DeactivatePLM                                               ;84B6B3;
     dw InstList_PLM_ClearCeilingBlockInMotherBrainsRoom                  ;84B6B5;
 
 PLMEntries_clearCeilingTubeInMotherBrainsRoom:
+; Clear ceiling tube in Mother Brain's room
     dw Setup_DeactivatePLM                                               ;84B6B7;
     dw InstList_PLM_ClearCeilingTubeInMotherBrainsRoom                   ;84B6B9;
 
 PLMEntries_clearMotherBrainsBottomMiddleSideTube:
+; Clear Mother Brain's bottom-middle-side tube
     dw Setup_DeactivatePLM                                               ;84B6BB;
     dw InstList_PLM_ClearMotherBrainsBottomMiddleSideTube                ;84B6BD;
 
 PLMEntries_clearMotherBrainsBottomMiddleTubes:
+; Clear Mother Brain's bottom-middle tubes
     dw Setup_DeactivatePLM                                               ;84B6BF;
     dw InstList_PLM_ClearMotherBrainsBottomMiddleTubes                   ;84B6C1;
 
 PLMEntries_clearMotherBrainsBottomLeftTube:
+; Clear Mother Brain's bottom-left tube
     dw Setup_DeactivatePLM                                               ;84B6C3;
     dw InstList_PLM_ClearMotherBrainsBottomLeftTube                      ;84B6C5;
 
 PLMEntries_clearMotherBrainsBottomRightTube:
+; Clear Mother Brain's bottom-right tube
     dw Setup_DeactivatePLM                                               ;84B6C7;
     dw InstList_PLM_ClearMotherBrainsBottomRightTube                     ;84B6C9;
 
 PLMEntries_insideReactionBrinstarFloorPlant:
+; Inside reaction, special air, BTS Brinstar 80h. Floor plant
     dw Setup_BrinstarFloorPlant                                          ;84B6CB;
     dw InstList_PLM_BrinstarFloorPlant_0                                 ;84B6CD;
 
 PLMEntries_insideReactionBrinstarCeilingPlant:
+; Inside reaction, special air, BTS Brinstar 81h. Ceiling plant
     dw Setup_BrinstarCeilingPlant                                        ;84B6CF;
     dw InstList_PLM_BrinstarCeilingPlant_0                               ;84B6D1;
 
 PLMEntries_mapStation:
+; Map station
     dw Setup_MapStation                                                  ;84B6D3;
     dw InstList_PLM_MapStation_0                                         ;84B6D5;
 
 PLMEntries_mapStationRightAccess:
+; Collision reaction, special, BTS 47h. Map station right access
     dw Setup_MapStationRightAccess                                       ;84B6D7;
     dw InstList_PLM_MapStationRightAccess                                ;84B6D9;
 
 PLMEntries_mapStationLeftAccess:
+; Collision reaction, special, BTS 48h. Map station left access
     dw Setup_MapStationLeftAccess                                        ;84B6DB;
     dw InstList_PLM_MapStationLeftAccess                                 ;84B6DD;
 
 PLMEntries_energyStation:
+; Energy station
     dw Setup_EnergyStation                                               ;84B6DF;
     dw InstList_PLM_EnergyStation_0                                      ;84B6E1;
 
 PLMEntries_energyStationRightAccess:
+; Collision reaction, special, BTS 49h. Energy station right access
     dw Setup_EnergyStationRightAccess                                    ;84B6E3;
     dw InstList_PLM_EnergyStationRightAccess_0                           ;84B6E5;
 
 PLMEntries_energyStationLeftAccess:
+; Collision reaction, special, BTS 4Ah. Energy station left access
     dw Setup_EnergyStationLeftAccess                                     ;84B6E7;
     dw InstList_PLM_EnergyStationLeftAccess_0                            ;84B6E9;
 
 PLMEntries_missileStation:
+; Missile station
     dw Setup_MissileStation                                              ;84B6EB;
     dw InstList_PLM_MissileStation_0                                     ;84B6ED;
 
 PLMEntries_missileStationRightAccess:
+; Collision reaction, special, BTS 4Bh. Missile station right access
     dw Setup_MissileStationRightAccess                                   ;84B6EF;
     dw InstList_PLM_MissileStationRightAccess_0                          ;84B6F1;
 
 PLMEntries_missileStationLeftAccess:
+; Collision reaction, special, BTS 4Ch. Missile station left access
     dw Setup_MissileStationLeftAccess                                    ;84B6F3;
     dw InstList_PLM_MissileStationLeftAccess_0                           ;84B6F5;
 
 if !FEATURE_KEEP_UNREFERENCED
 PLMEntries_nothing_84B6F7:
+; Unused. Unknown. 4 frame animation loop of 1x2 spike air blocks, tile numbers don't match any tilesets
     dw Setup_DeactivatePLM                                               ;84B6F7;
     dw InstList_PLM_Nothing_84AED6                                       ;84B6F9;
 
 PLMEntries_nothing_84B6FB:
+; Unused. 2x2 version of $B6F7
     dw Setup_DeactivatePLM                                               ;84B6FB;
     dw InstList_PLM_Nothing_84AF1C                                       ;84B6FD;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PLMEntries_scrollPLMTrigger:
+; Collision reaction, special, BTS 46h / inside reaction, special air, BTS 46h. Scroll PLM trigger
     dw Setup_ScrollBlockTouchPLM                                         ;84B6FF;
     dw InstList_PLM_Delete                                               ;84B701;
 
 PLMEntries_ScrollPLM:
+; Scroll PLM
     dw Setup_ScrollPLM                                                   ;84B703;
     dw InstList_PLM_ScrollPLM_0                                          ;84B705;
 
 if !FEATURE_KEEP_UNREFERENCED
 PLMEntries_unusedSolidScrollPLM:
+; Unused. Solid scroll PLM
     dw Setup_SolidScrollPLM                                              ;84B707;
     dw InstList_PLM_SolidScrollPLM_0                                     ;84B709;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PLMEntries_elevatorPlatform:
+; Elevator platform
     dw Setup_DeactivatePLM                                               ;84B70B;
     dw InstList_PLM_ElevatorPlatform                                     ;84B70D;
 
 PLMEntries_insideReactionCrateria80:
+; Inside reaction, special air, BTS Crateria/Debug 80h
     dw Setup_IcePhysics                                                  ;84B70F;
     dw InstList_PLM_Delete                                               ;84B711;
 
 PLMEntries_insideReactionQuicksandSurface:
+; Inside reaction, special air, BTS Maridia 80h/81h/82h. Quicksand surface
     dw Setup_QuicksandSurface                                            ;84B713;
     dw InstList_PLM_Delete                                               ;84B715;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_PLMEntries_84B717:
+; Unused. Clone of PLMEntries_insideReactionQuicksandSurface
     dw Setup_QuicksandSurface                                            ;84B717;
     dw InstList_PLM_Delete                                               ;84B719;
 
 UNUSED_PLMEntries_84B71B:
+; Unused. Clone of PLMEntries_insideReactionQuicksandSurface
     dw Setup_QuicksandSurface                                            ;84B71B;
     dw InstList_PLM_Delete                                               ;84B71D;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PLMEntries_insideReactionSubmergingQuicksand:
+; Inside reaction, special air, BTS Maridia 83h. Submerging quicksand
     dw Setup_Inside_SubmergingQuicksand                                  ;84B71F;
     dw InstList_PLM_Delete                                               ;84B721;
 
 PLMEntries_insideReactionSandFallsSlow:
+; Inside reaction, special air, BTS Maridia 84h. Sand falls - slow
     dw Setup_SandfallsSlow                                               ;84B723;
     dw InstList_PLM_Delete                                               ;84B725;
 
 PLMEntries_insideReactionSandFallsFast:
+; Inside reaction, special air, BTS Maridia 85h. Sand falls - fast
     dw Setup_SandfallsFast                                               ;84B727;
     dw InstList_PLM_Delete                                               ;84B729;
 
 PLMEntries_collisionReactionQuicksandSurface:
+; Collision reaction, special, BTS Maridia 80h/81h/82h. Quicksand surface
     dw Setup_QuicksandSurface_BTS85                                      ;84B72B;
     dw InstList_PLM_Delete                                               ;84B72D;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_PLMEntries_84B72F:
+; Unused. Clone of PLMEntries_collisionReactionQuicksandSurface
     dw Setup_QuicksandSurface_BTS85                                      ;84B72F;
     dw InstList_PLM_Delete                                               ;84B731;
 
 UNUSED_PLMEntries_84B733:
+; Unused. Clone of PLMEntries_collisionReactionQuicksandSurface
     dw Setup_QuicksandSurface_BTS85                                      ;84B733;
     dw InstList_PLM_Delete                                               ;84B735;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PLMEntries_collisionReactionSubmergingQuicksand:
+; Collision reaction, special, BTS Maridia 83h. Submerging quicksand
     dw Setup_Collision_SubmergingQuicksand                               ;84B737;
     dw InstList_PLM_Delete                                               ;84B739;
 
 PLMEntries_collisionReactionSandFallsSlow:
+; Collision reaction, special, BTS Maridia 84h. Sand falls - slow
     dw Setup_CollisionReaction_SandFalls                                 ;84B73B;
     dw InstList_PLM_Delete                                               ;84B73D;
 
 PLMEntries_collisionReactionSandFallsFast:
+; Collision reaction, special, BTS Maridia 85h. Sand falls - fast
     dw Setup_CollisionReaction_SandFalls                                 ;84B73F;
     dw InstList_PLM_Delete                                               ;84B741;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_PLMEntries_unusedTorizoDrool_84B743:
+; Unused. Torizo drool?
     dw UNUSED_Setup_TorizoDrool_84B3E3                                   ;84B743;
     dw InstList_PLM_Delete                                               ;84B745;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PLMEntries_clearCrocomiresBridge:
+; Clear Crocomire's bridge
     dw Setup_DeactivatePLM                                               ;84B747;
     dw InstList_PLM_ClearCrocomiresBridge                                ;84B749;
 
 PLMEntries_crumbleABlockOfCrocomiresBridge:
+; Crumble a block of Crocomire's bridge
     dw Setup_DeactivatePLM                                               ;84B74B;
     dw InstList_PLM_CrumbleABlockOfCrocomiresBridge                      ;84B74D;
 
 PLMEntries_clearABlockOfCrocomiresBridge:
+; Clear a block of Crocomire's bridge
     dw Setup_DeactivatePLM                                               ;84B74F;
     dw InstList_PLM_ClearABlockOfCrocomiresBridge                        ;84B751;
 
 PLMEntries_clearCrocomireInvisibleWall:
+; Clear Crocomire invisible wall
     dw Setup_DeactivatePLM                                               ;84B753;
     dw InstList_PLM_ClearCrocomiresInvisibleWall                         ;84B755;
 
 PLMEntries_createCrocomireInvisibleWall:
+; Create Crocomire invisible wall
     dw Setup_DeactivatePLM                                               ;84B757;
     dw InstList_PLM_CreateCrocomiresInvisibleWall                        ;84B759;
 
 if !FEATURE_KEEP_UNREFERENCED
 PLMEntries_unusedDraw13BlankAirTiles:
+; Unused. Draw 13 blank air tiles
     dw RTS_84B3CF                                                        ;84B75B;
     dw UNUSED_InstList_PLM_Draw13BlankAirTiles_84B03E                    ;84B75D;
 
 PLMEntries_unusedDraw13BlankSolidTiles:
+; Unused. Draw 13 blank solid tiles
     dw RTS_84B3CF                                                        ;84B75F;
     dw UNUSED_InstList_PLM_Draw13BlankSolidTiles_84B044                  ;84B761;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PLMEntries_clearBabyMetroidInvisibleWall:
+; Clear Shitroid invisible wall
     dw Setup_ClearBabyMetroidInvisibleWall                               ;84B763;
     dw InstList_PLM_Delete                                               ;84B765;
 
 PLMEntries_createBabyMetroidInvisibleWall:
+; Create Shitroid invisible wall
     dw CreateBabyMetroidInvisibleWall                                    ;84B767;
     dw InstList_PLM_Delete                                               ;84B769;
 
 PLMEntries_saveStationTrigger:
+; Collision reaction, special, BTS 4Dh. Save station trigger
     dw Setup_CollisionReaction_SaveStationTrigger                        ;84B76B;
     dw InstList_PLM_Delete                                               ;84B76D;
 
 PLMEntries_saveStation:
+; Save station
     dw Setup_SaveStation                                                 ;84B76F;
     dw InstList_PLM_SaveStation_0                                        ;84B771;
 
 PLMEntries_crumbleAccessToTourianElevator:
+; Crumble access to Tourian elevator
     dw Setup_DeactivatePLM                                               ;84B773;
     dw InstList_PLM_CrumbleAccessToTourianElevator_0                     ;84B775;
 
 PLMEntries_clearAccessToTourianElevator:
+; Clear access to Tourian elevator
     dw Setup_DeactivatePLM                                               ;84B777;
     dw InstList_PLM_ClearAccessToTourianElevator                         ;84B779;
 
+
+;;; $B77B: Instruction list - PLM $B781 (draw Phantoon's door during boss fight) ;;;
 InstList_drawPhantoonsDoorDuringBossFight:
     dw $0001,DrawInst_DrawPhantoonsDoorDuringBossFight                   ;84B77B;
     dw Instruction_PLM_Delete                                            ;84B77F;
 
+
 PLMEntries_drawPhantoonsDoorDuringBossFight:
+; Draw Phantoon's door during boss fight
     dw Setup_DeactivatePLM                                               ;84B781;
     dw InstList_drawPhantoonsDoorDuringBossFight                         ;84B783;
 
+
+;;; $B785: Instruction list - PLM $B78B (restore Phantoon's door after boss fight) ;;;
 InstList_restorePhantoonsDoorDuringBossFight:
     dw $0001,DrawInst_RestorePhantoonsDoorDuringBossFight                ;84B785;
     dw Instruction_PLM_Delete                                            ;84B789;
 
+
 PLMEntries_restorePhantoonsDoorDuringBossFight:
+; Restore Phantoon's door after boss fight
     dw Setup_DeactivatePLM                                               ;84B78B;
     dw InstList_restorePhantoonsDoorDuringBossFight                      ;84B78D;
 
 PLMEntries_crumbleSporeSpawnCeiling:
+; Crumble Spore Spawn ceiling
     dw Setup_DeactivatePLM                                               ;84B78F;
     dw InstList_PLM_CrumbleSporeSpawnCeiling                             ;84B791;
 
 PLMEntries_clearSporeSpawnCeiling:
+; Clear Spore Spawn ceiling
     dw Setup_DeactivatePLM                                               ;84B793;
     dw InstList_PLM_ClearSporeSpawnCeiling                               ;84B795;
 
 PLMEntries_clearBotwoonWall:
+; Clear Botwoon wall
     dw RTS_84AB27                                                        ;84B797;
     dw InstList_PLM_ClearBotwoonWall                                     ;84B799;
 
 PLMEntries_crumbleBotwoonWall:
+; Crumble Botwoon wall
     dw Setup_CrumbleBotwoonWall_Wait40Frames                             ;84B79B;
     dw InstList_PLM_CrumbleBotwoonWall_0                                 ;84B79D;
 
 if !FEATURE_KEEP_UNREFERENCED
 PLMEntries_unusedSetKraidCeilingBlockToBackground1:
+; Unused. Set Kraid ceiling block to background 1
     dw Setup_DeactivatePLM                                               ;84B79F;
     dw InstList_PLM_SetKraidCeilingBlockToBackground1                    ;84B7A1;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PLMEntries_crumbleKraidCeilingBlockIntoBackground1:
+; Crumble Kraid ceiling block into background 1
     dw Setup_DeactivatePLM                                               ;84B7A3;
     dw InstList_PLM_CrumbleKraidCeilingBlockIntoBackground1              ;84B7A5;
 
 PLMEntries_setKraidCeilingBlockToBackground2:
+; Set Kraid ceiling block to background 2
     dw Setup_DeactivatePLM                                               ;84B7A7;
     dw InstList_PLM_SetKraidCeilingBlockToBackground2                    ;84B7A9;
 
 PLMEntries_crumbleKraidCeilingBlockIntoBackground2:
+; Crumble Kraid ceiling block into background 2
     dw Setup_DeactivatePLM                                               ;84B7AB;
     dw InstList_PLM_CrumbleKraidCeilingBlockIntoBackground2              ;84B7AD;
 
 PLMEntries_SetKraidCeilingBlockToBackground3:
+; Set Kraid ceiling block to background 3
     dw Setup_DeactivatePLM                                               ;84B7AF;
     dw InstList_PLM_SetKraidCeilingBlockToBackground3                    ;84B7B1;
 
 PLMEntries_crumbleKraidCeilingBlockIntoBackground3:
+; Crumble Kraid ceiling block into background 3
     dw Setup_DeactivatePLM                                               ;84B7B3;
     dw InstList_PLM_CrumbleKraidCeilingBlockIntoBackground3              ;84B7B5;
 
 PLMEntries_clearKraidCeilingBlocks:
+; Clear Kraid ceiling blocks
     dw Setup_DeactivatePLM                                               ;84B7B7;
     dw InstList_PLM_ClearKraidCeiling                                    ;84B7B9;
 
 PLMEntries_clearKraidSpikeBlocks:
+; Clear Kraid spike blocks
     dw Setup_DeactivatePLM                                               ;84B7BB;
     dw InstList_PLM_ClearKraidSpikeBlocks                                ;84B7BD;
 
 PLMEntries_crumbleKraidSpikeBlocks:
+; Crumble Kraid spike blocks
     dw Setup_DeactivatePLM                                               ;84B7BF;
     dw InstList_PLM_CrumbleKraidSpikeBlocks_0                            ;84B7C1;
 
+
+;;; $B7C3: Setup - PLM $B7EB (enable sounds in 20h frames, or F0h frames if on Ceres) ;;;
 Setup_EnableSoundsIn20Frames_F0FramesIfCeres:
+;; Parameters:
+;;     Y: PLM index
     LDA.W $079F                                                          ;84B7C3;
     CMP.W #$0006                                                         ;84B7C6;
     BNE .ceres                                                           ;84B7C9;
     LDA.W #$0020                                                         ;84B7CB;
     BRA +                                                                ;84B7CE;
-
 
   .ceres:
     LDA.W #$00F0                                                         ;84B7D0;
@@ -6853,7 +8755,12 @@ Setup_EnableSoundsIn20Frames_F0FramesIfCeres:
     RTS                                                                  ;84B7DC;
 
 
+;;; $B7DD: Pre-instruction - decrement timer, enable sounds and delete PLM if zero ;;;
 PreInstruction_PLM_DecTimer_EnableSounds_DeletePLMIfZero:
+;; Parameter:
+;;     X: PLM index
+
+; Used by PLM $B7EB (enable sounds in 20h frames, or F0h frames if on Ceres)
     DEC.W $1D77,X                                                        ;84B7DD;
     BNE .return                                                          ;84B7E0;
     STZ.W $05F5                                                          ;84B7E2;
@@ -6863,14 +8770,23 @@ PreInstruction_PLM_DecTimer_EnableSounds_DeletePLMIfZero:
     RTS                                                                  ;84B7E8;
 
 
+;;; $B7E9: Instruction list - PLM $B7EB (enable sounds in 20h frames, or F0h frames if on Ceres) ;;;
 InstList_PLM_EnableSoundsIn20Frames_F0FramesIfCeres:
     dw Instruction_PLM_Sleep                                             ;84B7E9;
 
+
+;;; $B7EB: PLM entry - enable sounds in 20h frames, or F0h frames if on Ceres ;;;
 PLMEntries_enableSoundsIn20Frames_F0FramesIfCeres:
     dw Setup_EnableSoundsIn20Frames_F0FramesIfCeres                      ;84B7EB;
     dw InstList_PLM_EnableSoundsIn20Frames_F0FramesIfCeres               ;84B7ED;
 
+
+;;; $B7EF: Pre-instruction - wake PLM and start lavaquake if speed booster collected ;;;
 PreInst_PLM_WakePLM_StartLavaquakeIfSpeedBoosterCollected:
+;; Parameter:
+;;     X: PLM index
+
+; Used by PLM $B8AC (speed booster escape)
     LDA.W $09A4                                                          ;84B7EF;
     AND.W #$2000                                                         ;84B7F2;
     BNE .collectedSpeedBooster                                           ;84B7F5;
@@ -6881,7 +8797,6 @@ PreInst_PLM_WakePLM_StartLavaquakeIfSpeedBoosterCollected:
     STZ.W $1840                                                          ;84B803;
     STZ.W $1C37,X                                                        ;84B806;
     RTS                                                                  ;84B809;
-
 
   .collectedSpeedBooster:
     LDA.W $197A                                                          ;84B80A;
@@ -6895,13 +8810,17 @@ PreInst_PLM_WakePLM_StartLavaquakeIfSpeedBoosterCollected:
     STZ.W $1D77,X                                                        ;84B822;
     RTS                                                                  ;84B825;
 
-
   .deletePLM:
     STZ.W $1C37,X                                                        ;84B826;
     RTS                                                                  ;84B829;
 
 
+;;; $B82A: Pre-instruction - wake PLM and start FX motion if Samus is far enough left ;;;
 PreInst_PLM_WakePLM_StartFXMotionIfSamusIsFarEnoughLeft:
+;; Parameter:
+;;     X: PLM index
+
+; Used by PLM $B8AC (speed booster escape)
     LDA.W #$0AE0                                                         ;84B82A;
     CMP.W $0AF6                                                          ;84B82D;
     BCC .return                                                          ;84B830;
@@ -6916,7 +8835,12 @@ PreInst_PLM_WakePLM_StartFXMotionIfSamusIsFarEnoughLeft:
     RTS                                                                  ;84B845;
 
 
+;;; $B846: Pre-instruction - advance lava as Samus moves left, set speed booster lavaquake event when done ;;;
 PreInst_PLM_AdvanceLavaAsSamusMovesLeft_SetLavaquakeEvent:
+;; Parameter:
+;;     X: PLM index
+
+; Used by PLM $B8AC (speed booster escape)
     LDA.W $1D77,X                                                        ;84B846;
     TAY                                                                  ;84B849;
     LDA.W .targetSamusXpos,Y                                             ;84B84A;
@@ -6938,7 +8862,6 @@ PreInst_PLM_AdvanceLavaAsSamusMovesLeft_SetLavaquakeEvent:
   .return:
     RTS                                                                  ;84B86D;
 
-
   .setLavaquake:
     LDA.W #$0015                                                         ;84B86E;
     JSL.L MarkEvent_inA                                                  ;84B871;
@@ -6958,6 +8881,8 @@ PreInst_PLM_AdvanceLavaAsSamusMovesLeft_SetLavaquakeEvent:
     dw $0244,$0100,$FF20
     dw $8000
 
+
+;;; $B88A: Instruction list - PLM $B8AC (speed booster escape) ;;;
 InstList_PLM_SpeedBoosterEscape:
     dw Instruction_PLM_PreInstruction_inY                                ;84B88A;
     dw PreInst_PLM_WakePLM_StartLavaquakeIfSpeedBoosterCollected         ;84B88C;
@@ -6969,7 +8894,11 @@ InstList_PLM_SpeedBoosterEscape:
     dw PreInst_PLM_AdvanceLavaAsSamusMovesLeft_SetLavaquakeEvent         ;84B898;
     dw Instruction_PLM_Sleep                                             ;84B89A;
 
+
+;;; $B89C: Setup - PLM $B8AC (speed booster escape) ;;;
 Setup_SpeedBoosterEscape:
+;; Parameters:
+;;     Y: PLM index
     LDA.W #$0015                                                         ;84B89C;
     JSL.L CheckIfEvent_inA_HasHappened                                   ;84B89F;
     BCC .return                                                          ;84B8A3;
@@ -6980,11 +8909,18 @@ Setup_SpeedBoosterEscape:
     RTS                                                                  ;84B8AB;
 
 
+;;; $B8AC: PLM entry - speed booster escape ;;;
 PLMEntries_SpeedBoosterEscape:
     dw Setup_SpeedBoosterEscape                                          ;84B8AC;
     dw InstList_PLM_SpeedBoosterEscape                                   ;84B8AE;
 
+
+;;; $B8B0: Pre-instruction - Shaktool's room ;;;
 PreInstruction_PLM_ShaktoolsRoom:
+;; Parameter:
+;;     X: PLM index
+
+; Used by PLM $B8EB (Shaktool's room)
     LDA.W $0592                                                          ;84B8B0;
     BEQ .powerBombNotActive                                              ;84B8B3;
     LDA.W #$0101                                                         ;84B8B5;
@@ -7004,12 +8940,16 @@ PreInstruction_PLM_ShaktoolsRoom:
     RTS                                                                  ;84B8D5;
 
 
+;;; $B8D6: Instruction list - PLM $B8EB (Shaktool's room) ;;;
 InstList_PLM_ShaktoolsRoom:
     dw Instruction_PLM_PreInstruction_inY                                ;84B8D6;
     dw PreInstruction_PLM_ShaktoolsRoom                                  ;84B8D8;
     dw Instruction_PLM_Sleep                                             ;84B8DA;
 
+
+;;; $B8DC: Setup - PLM $B8EB (Shaktool's room) ;;;
 Setup_ShaktoolsRoom:
+; Scroll 0 = blue, 1..3 = red
     LDA.W #$0001                                                         ;84B8DC;
     STA.L $7ECD20                                                        ;84B8DF;
     LDA.W #$0000                                                         ;84B8E3;
@@ -7017,24 +8957,39 @@ Setup_ShaktoolsRoom:
     RTS                                                                  ;84B8EA;
 
 
+;;; $B8EB: PLM entry - Shaktool's room ;;;
 PLMEntries_shaktoolsRoom:
     dw Setup_ShaktoolsRoom                                               ;84B8EB;
     dw InstList_PLM_ShaktoolsRoom                                        ;84B8ED;
 
+
+;;; $B8EF: RTS. Setup - PLM $B8F9 (Maridia elevatube) ;;;
 Setup_MaridiaElevatube:
     RTS                                                                  ;84B8EF;
 
 
+;;; $B8F0: Instruction list - PLM $B8F9 (Maridia elevatube) ;;;
 InstList_PLM_MaridiaElevatube:
+; The draw instruction is just some garbage block, it only exists to create a 10h frame delay (this PLM is created at (1, 0) so is hidden by the HUD)
+; I have no idea what sound effect this is
     dw $0010,DrawInst_CrumbleKraidCeiling_CrumbleKraidSpikes_Elevatube   ;84B8F0;
     dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $15                   ;84B8F4;
     dw Instruction_PLM_Delete                                            ;84B8F7;
 
+
+;;; $B8F9: PLM entry - Maridia elevatube ;;;
 PLMEntries_maridiaElevatube:
+; This PLM effectively does nothing
     dw Setup_MaridiaElevatube                                            ;84B8F9;
     dw InstList_PLM_MaridiaElevatube                                     ;84B8FB;
 
+
+;;; $B8FD: Wake PLM if Samus is below and right of target position ;;;
 WakePLMIfSamusIsBelowRightOfTarget:
+;; Parameters:
+;;     X: PLM index
+;;     $12: Target X position
+;;     $14: Target Y position
     LDA.B $12                                                            ;84B8FD;
     CMP.W $0AF6                                                          ;84B8FF;
     BCS .return                                                          ;84B902;
@@ -7050,6 +9005,7 @@ WakePLMIfSamusIsBelowRightOfTarget:
     RTS                                                                  ;84B918;
 
 
+;;; $B919: Instruction list - PLM $B964 (make old Tourian escape shaft fake wall explode) ;;;
 InstList_PLM_MakeOldTourianEscapeShaftFakeWallExplode:
     dw Instruction_PLM_PreInstruction_inY                                ;84B919;
     dw PreInstruction_PLM_MakeOldTourianEscapeShaftFakeWallExplode       ;84B91B;
@@ -7058,7 +9014,11 @@ InstList_PLM_MakeOldTourianEscapeShaftFakeWallExplode:
     dw $0001,DrawInst_OldTourianEscapeShaftBlocks                        ;84B921;
     dw Instruction_PLM_Delete                                            ;84B925;
 
+
+;;; $B927: Pre-instruction - make old Tourian escape shaft fake wall explode ;;;
 PreInstruction_PLM_MakeOldTourianEscapeShaftFakeWallExplode:
+;; Parameter:
+;;     X: PLM index
     LDA.W #$00F0                                                         ;84B927;
     STA.B $12                                                            ;84B92A;
     LDA.W #$0820                                                         ;84B92C;
@@ -7074,13 +9034,18 @@ PreInstruction_PLM_MakeOldTourianEscapeShaftFakeWallExplode:
     RTS                                                                  ;84B93F;
 
 
+;;; $B940: Instruction list - PLM $B968 (raise acid in escape room before old Tourian escape shaft) ;;;
 InstList_PLM_RaiseAcidInEscapeBeforeOldTourianEscapeShaft:
     dw Instruction_PLM_PreInstruction_inY                                ;84B940;
     dw PreInst_PLM_RaiseAcidInEscapeRoomBeforeOldTourianEscapeShaft      ;84B942;
     dw Instruction_PLM_Sleep                                             ;84B944;
     dw Instruction_PLM_Delete                                            ;84B946;
 
+
+;;; $B948: Pre-instruction - raise acid in escape room before old Tourian escape shaft ;;;
 PreInst_PLM_RaiseAcidInEscapeRoomBeforeOldTourianEscapeShaft:
+;; Parameter:
+;;     X: PLM index
     LDA.W #$00F0                                                         ;84B948;
     STA.B $12                                                            ;84B94B;
     LDA.W #$0540                                                         ;84B94D;
@@ -7096,14 +9061,19 @@ PreInst_PLM_RaiseAcidInEscapeRoomBeforeOldTourianEscapeShaft:
     RTS                                                                  ;84B963;
 
 
+;;; $B964: PLM entry - make old Tourian escape shaft fake wall explode ;;;
 PLMEntries_MakeOldTourianEscapeShaftFakeWallExplode:
     dw Setup_DeactivatePLM                                               ;84B964;
     dw InstList_PLM_MakeOldTourianEscapeShaftFakeWallExplode             ;84B966;
 
+
+;;; $B968: PLM entry - raise acid in escape room before old Tourian escape shaft ;;;
 PLMEntries_RaiseAcidInEscapeRoomBeforeOldTourianEscapeShaft:
     dw Setup_DeactivatePLM                                               ;84B968;
     dw InstList_PLM_RaiseAcidInEscapeBeforeOldTourianEscapeShaft         ;84B96A;
 
+
+;;; $B96C: Setup - PLM $B974 (shot/bombed/grappled reaction, shootable, BTS 10h. Gate block) ;;;
 Setup_GateBlock:
     STZ.B $26                                                            ;84B96C;
     LDA.W #$FFFF                                                         ;84B96E;
@@ -7111,11 +9081,18 @@ Setup_GateBlock:
     RTS                                                                  ;84B973;
 
 
+;;; $B974: PLM entry - shot/bombed/grappled reaction, shootable, BTS 10h. Gate block ;;;
 PLMEntries_gateBlock:
     dw Setup_GateBlock                                                   ;84B974;
     dw InstList_PLM_Delete                                               ;84B976;
 
+
+;;; $B978: Setup - PLM $B9C1 (shot/bombed/grappled reaction, shootable, BTS 4Fh. Critters escape block) ;;;
 Setup_Reaction_CrittersEscapeBlock:
+;; Parameters:
+;;     Y: PLM index
+
+; Sets the PLM respawn block, but never uses it
     LDX.W $0DDE                                                          ;84B978;
     LDA.W $0C18,X                                                        ;84B97B;
     BNE .projectile                                                      ;84B97E;
@@ -7123,7 +9100,6 @@ Setup_Reaction_CrittersEscapeBlock:
     LDA.W #$0000                                                         ;84B983;
     STA.W $1C37,Y                                                        ;84B986;
     RTS                                                                  ;84B989;
-
 
   .projectile:
     LDX.W $1C87,Y                                                        ;84B98A;
@@ -7136,6 +9112,7 @@ Setup_Reaction_CrittersEscapeBlock:
     RTS                                                                  ;84B9A1;
 
 
+;;; $B9A2: Instruction list - PLM $B9C1 (shot/bombed/grappled reaction, shootable, BTS 4Fh. Critters escape block) ;;;
 InstList_PLM_CrittersEscapeBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $0A                   ;84B9A2;
     dw $0004,DrawInst_CrittersEscapeBlock_0                              ;84B9A5;
@@ -7145,17 +9122,26 @@ InstList_PLM_CrittersEscapeBlock:
     dw Instruction_PLM_SetCrittersEscapedEvent                           ;84B9B5;
     dw Instruction_PLM_Delete                                            ;84B9B7;
 
+
+;;; $B9B9: Instruction - set critters escaped event ;;;
 Instruction_PLM_SetCrittersEscapedEvent:
     LDA.W #$000F                                                         ;84B9B9;
     JSL.L MarkEvent_inA                                                  ;84B9BC;
     RTS                                                                  ;84B9C0;
 
 
+;;; $B9C1: PLM entry - shot/bombed/grappled reaction, shootable, BTS 4Fh. Critters escape block ;;;
 PLMEntries_Reaction_CrittersEscapeBlock:
     dw Setup_Reaction_CrittersEscapeBlock                                ;84B9C1;
     dw InstList_PLM_CrittersEscapeBlock                                  ;84B9C3;
 
+
+;;; $B9C5: Setup - PLM $B9ED (critters escape block) ;;;
 Setup_CrittersEscapeBlock:
+;; Parameters:
+;;     Y: PLM index
+
+; Make PLM block a critters escape block, extended downwards by 2 blocks
     LDX.W $1C87,Y                                                        ;84B9C5;
     LDA.W #$C04F                                                         ;84B9C8;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84B9CB;
@@ -7176,11 +9162,16 @@ Setup_CrittersEscapeBlock:
     RTS                                                                  ;84B9EC;
 
 
+;;; $B9ED: PLM entry - critters escape block ;;;
 PLMEntries_CrittersEscapeBlock:
     dw Setup_CrittersEscapeBlock                                         ;84B9ED;
     dw InstList_PLM_Delete                                               ;84B9EF;
 
+
+;;; $B9F1: Setup - PLM $BA48 (turn Ceres elevator door to solid blocks during escape) ;;;
 Setup_TurnCeresElevatorDoorToSolidBlocksDuringEscape:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $1C87,Y                                                        ;84B9F1;
     LDA.L $7F0002,X                                                      ;84B9F4;
     AND.W #$0FFF                                                         ;84B9F8;
@@ -7216,10 +9207,13 @@ Setup_TurnCeresElevatorDoorToSolidBlocksDuringEscape:
     RTS                                                                  ;84BA47;
 
 
+;;; $BA48: PLM entry - turn Ceres elevator door to solid blocks during escape ;;;
 PLMEntries_turnCeresElevatorDoorToSolidBlocksDuringEscape:
     dw Setup_TurnCeresElevatorDoorToSolidBlocksDuringEscape              ;84BA48;
     dw InstList_PLM_Delete                                               ;84BA4A;
 
+
+;;; $BA4C: Instruction list - closing - PLM $BAF4 (Bomb Torizo grey door) ;;;
 InstList_PLM_BombTorizoGreyDoor:
     dw $0002,DrawInst_DoorFacingRight_A683                               ;84BA4C;
     dw Instruction_PLM_GotoYIfSamusDoesntHaveBombs                       ;84BA50;
@@ -7233,7 +9227,13 @@ InstList_PLM_BombTorizoGreyDoor:
     dw Instruction_PLM_GotoY                                             ;84BA6B;
     dw InstList_PLM_BombTorizoGreyDoor_0                                 ;84BA6D;
 
+
+;;; $BA6F: Instruction - go to [[Y]] if Samus doesn't have bombs ;;;
 Instruction_PLM_GotoYIfSamusDoesntHaveBombs:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $09A4                                                          ;84BA6F;
     BIT.W #$1000                                                         ;84BA72;
     BEQ .noBombs                                                         ;84BA75;
@@ -7241,13 +9241,13 @@ Instruction_PLM_GotoYIfSamusDoesntHaveBombs:
     INY                                                                  ;84BA78;
     RTS                                                                  ;84BA79;
 
-
   .noBombs:
     LDA.W $0000,Y                                                        ;84BA7A;
     TAY                                                                  ;84BA7D;
     RTS                                                                  ;84BA7E;
 
 
+;;; $BA7F: Instruction list - PLM $BAF4 (Bomb Torizo grey door) ;;;
 InstList_PLM_BombTorizoGreyDoor_0:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84BA7F;
     dw InstList_PLM_ClosedBlueDoorFacingLeft_41                          ;84BA81;
@@ -7289,8 +9289,14 @@ InstList_PLM_BombTorizoGreyDoor_5:
     dw $0001,DrawInst_DoorFacingRight_A683                               ;84BACB;
     dw Instruction_PLM_Delete                                            ;84BACF;
 
+
 if !FEATURE_KEEP_UNREFERENCED
+;;; $BAD1: Unused. Setup ;;;
 UNUSED_Setup_84BAD1:
+;; Parameters:
+;;     Y: PLM index
+
+; Would be the setup for the Bomb Torizo grey door, just the same as the generic grey door setup, but with a hard coded grey door type
     LDA.W $1DC8,Y                                                        ;84BAD1;
     AND.W #$007C                                                         ;84BAD4;
     LSR A                                                                ;84BAD7;
@@ -7307,27 +9313,37 @@ UNUSED_Setup_84BAD1:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $BAF4: PLM entry - Bomb Torizo grey door ;;;
 PLMEntries_bombTorizoGreyDoor:
     dw Setup_GreyDoor                                                    ;84BAF4;
     dw InstList_PLM_BombTorizoGreyDoor_0                                 ;84BAF6;
     dw InstList_PLM_BombTorizoGreyDoor                                   ;84BAF8;
 
+
+;;; $BAFA: Setup - PLM $BB05 (Wrecked Ship attic) ;;;
 Setup_WreckedShipAttic:
     SEP #$20                                                             ;84BAFA;
     REP #$20                                                             ;84BAFC;
     RTS                                                                  ;84BAFE;
 
 
+;;; $BAFF: Instruction list - PLM $BB05 (Wrecked Ship attic) ;;;
 InstList_PLM_WreckedShipAttic:
     dw Instruction_PLM_PreInstruction_inY                                ;84BAFF;
     dw Setup_WreckedShipAttic                                            ;84BB01;
     dw Instruction_PLM_Sleep                                             ;84BB03;
 
+
+;;; $BB05: PLM entry - Wrecked Ship attic ;;;
 PLMEntries_wreckedShipAttic:
     dw Setup_WreckedShipAttic                                            ;84BB05;
     dw InstList_PLM_WreckedShipAttic                                     ;84BB07;
 
+
+;;; $BB09: Setup - PLM $BB30 (clear Crateria mainstreet escape passage if critters escaped) ;;;
 Setup_ClearCrateriaMainstreetEscapePassageIfCrittersEscaped:
+;; Parameters:
+;;     Y: PLM index
     LDA.W #$000F                                                         ;84BB09;
     JSL.L CheckIfEvent_inA_HasHappened                                   ;84BB0C;
     BCS .return                                                          ;84BB10;
@@ -7338,13 +9354,18 @@ Setup_ClearCrateriaMainstreetEscapePassageIfCrittersEscaped:
     RTS                                                                  ;84BB18;
 
 
+;;; $BB19: Instruction list - PLM $BB30 (clear Crateria mainstreet escape passage if critters escaped) ;;;
 InstList_PLM_ClearCrateriaMainstreetEscPassageIfCrittersEsc:
     dw $0001,DrawInst_CrateriaMainStreetEscape                           ;84BB19;
     dw Instruction_PLM_MovePLMRight4Blocks                               ;84BB1D;
     dw $0001,DrawInst_CrateriaMainStreetEscape                           ;84BB1F;
     dw Instruction_PLM_Delete                                            ;84BB23;
 
+
+;;; $BB25: Instruction - move PLM right 4 blocks ;;;
 Instruction_PLM_MovePLMRight4Blocks:
+;; Parameters:
+;;     X: PLM index
     LDA.W $1C87,X                                                        ;84BB25;
     CLC                                                                  ;84BB28;
     ADC.W #$0008                                                         ;84BB29;
@@ -7352,28 +9373,40 @@ Instruction_PLM_MovePLMRight4Blocks:
     RTS                                                                  ;84BB2F;
 
 
+;;; $BB30: PLM entry - clear Crateria mainstreet escape passage if critters escaped ;;;
 PLMEntries_ClearCrateriaMainstreetEscapePassageIfCrittersEsc:
     dw Setup_ClearCrateriaMainstreetEscapePassageIfCrittersEscaped       ;84BB30;
     dw InstList_PLM_ClearCrateriaMainstreetEscPassageIfCrittersEsc       ;84BB32;
 
+
+;;; $BB34: Instruction list - door $C8CA (gate that closes during escape in room after Mother Brain) ;;;
 InstList_PLM_GateThatClosesDuringEscapeAfterMotherBrain_0:
     dw $0006,DrawInst_EscapeRoom1Gate_2                                  ;84BB34;
     dw Instruction_PLM_Delete                                            ;84BB38;
 
+
 if !FEATURE_KEEP_UNREFERENCED
+;;; $BB3A: Unused. Instruction list ;;;
 UNUSED_InstList_84BB34:
+; Half-closed escape gate that becomes open after 6 frames
     dw $0006,DrawInst_EscapeRoom1Gate_1                                  ;84BB3A;
     dw $005E,DrawInst_EscapeRoom1Gate_0                                  ;84BB3E;
     dw Instruction_PLM_Delete                                            ;84BB42;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
 InstList_PLM_GateThatClosesDuringEscapeAfterMotherBrain_1:
+;;; $BB44: Instruction list - closing - door $C8CA / PLM $C8D0 (gate that closes during escape in room after Mother Brain) ;;;
     dw $0002,DrawInst_EscapeRoom1Gate_0                                  ;84BB44;
     dw $0002,DrawInst_EscapeRoom1Gate_1                                  ;84BB48;
     dw $0002,DrawInst_EscapeRoom1Gate_2                                  ;84BB4C;
     dw Instruction_PLM_Delete                                            ;84BB50;
 
+
+;;; $BB52: Pre-instruction - wake PLM if triggered ;;;
 PreInstruction_PLM_WakePLMIfTriggered:
+;; Parameter:
+;;     X: PLM index
     LDA.W $1D77,X                                                        ;84BB52;
     BEQ .return                                                          ;84BB55;
     INC.W $1D27,X                                                        ;84BB57;
@@ -7387,7 +9420,10 @@ PreInstruction_PLM_WakePLMIfTriggered:
     RTS                                                                  ;84BB6A;
 
 
+;;; $BB6B: Pre-instruction - wake PLM if triggered or Samus is within 4 block column below PLM ;;;
 PreInst_PLM_WakePLMIfTriggeredOrSamusWithin4BlockColumnBelow:
+;; Parameter:
+;;     X: PLM index
     JSL.L Calculate_PLM_Block_Coordinates                                ;84BB6B;
     LDA.W $0AF6                                                          ;84BB6F;
     LSR A                                                                ;84BB72;
@@ -7421,7 +9457,10 @@ PreInst_PLM_WakePLMIfTriggeredOrSamusWithin4BlockColumnBelow:
     RTS                                                                  ;84BBA3;
 
 
+;;; $BBA4: Pre-instruction - wake PLM if triggered or Samus is within 4 block column above PLM ;;;
 PreInst_PLM_WakePLMIfTriggeredOrSamusWithin4BlockColumnAbove:
+;; Parameter:
+;;     X: PLM index
     JSL.L Calculate_PLM_Block_Coordinates                                ;84BBA4;
     LDA.W $0AF6                                                          ;84BBA8;
     LSR A                                                                ;84BBAB;
@@ -7455,12 +9494,20 @@ PreInst_PLM_WakePLMIfTriggeredOrSamusWithin4BlockColumnAbove:
     RTS                                                                  ;84BBDC;
 
 
+;;; $BBDD: Instruction - clear trigger ;;;
 Instruction_PLM_ClearTrigger:
+;; Parameters:
+;;     X: PLM index
     STZ.W $1D77,X                                                        ;84BBDD;
     RTS                                                                  ;84BBE0;
 
 
+;;; $BBE1: Instruction - spawn enemy projectile [[Y]] ;;;
 Instruction_PLM_SpawnEnemyProjectileY:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     PHX                                                                  ;84BBE1;
     PHY                                                                  ;84BBE2;
     LDA.W $0000,Y                                                        ;84BBE3;
@@ -7473,7 +9520,15 @@ Instruction_PLM_SpawnEnemyProjectileY:
     RTS                                                                  ;84BBEF;
 
 
+;;; $BBF0: Instruction - wake enemy projectile at PLM's position ;;;
 Instruction_PLM_WakeEnemyProjectileAtPLMsPosition:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
+
+; 2-byte unused enemy projectile ID argument
     PHX                                                                  ;84BBF0;
     PHY                                                                  ;84BBF1;
     LDA.W $1C87,X                                                        ;84BBF2;
@@ -7499,6 +9554,7 @@ Instruction_PLM_WakeEnemyProjectileAtPLMsPosition:
     RTS                                                                  ;84BC12;
 
 
+;;; $BC13: Instruction list - PLM $C826 (downwards open gate) ;;;
 InstList_PLM_DownwardsOpenGate:
     dw $0001,DrawInst_DownwardsGateOpen                                  ;84BC13;
     dw Instruction_PLM_ClearTrigger                                      ;84BC17;
@@ -7514,6 +9570,8 @@ InstList_PLM_DownwardsOpenGate:
     dw $0010,DrawInst_DownwardsGateOpenClosed_2                          ;84BC32;
     dw $0018,DrawInst_DownwardsGateOpenClosed_3                          ;84BC36;
 
+
+;;; $BC3A: Instruction list - PLM $C82A (downwards closed gate) ;;;
 InstList_PLM_DownwardsClosedGate:
     dw $0001,DrawInst_DownwardsGateClosed                                ;84BC3A;
     dw Instruction_PLM_ClearTrigger                                      ;84BC3E;
@@ -7530,6 +9588,8 @@ InstList_PLM_DownwardsClosedGate:
     dw Instruction_PLM_GotoY                                             ;84BC5D;
     dw InstList_PLM_DownwardsOpenGate                                    ;84BC5F;
 
+
+;;; $BC61: Instruction list - PLM $C82E (upwards open gate) ;;;
 InstList_PLM_UpwardsOpenGate:
     dw $0008,DrawInst_UpwardsGateOpen                                    ;84BC61;
     dw Instruction_PLM_ClearTrigger                                      ;84BC65;
@@ -7545,13 +9605,13 @@ InstList_PLM_UpwardsOpenGate:
     dw $0010,DrawInst_UpwardsGateOpenClosed_2                            ;84BC80;
     dw $0010,DrawInst_UpwardsGateOpenClosed_3                            ;84BC84;
 
+
+;;; $BC88: Instruction list - PLM $C832 (upwards closed gate) ;;;
 InstList_PLM_UpwardsClosedGate:
     dw $0008,DrawInst_UpwardsGateClosed                                  ;84BC88;
     dw Instruction_PLM_ClearTrigger                                      ;84BC8C;
     dw Instruction_PLM_PreInstruction_inY                                ;84BC8E;
     dw PreInst_PLM_WakePLMIfTriggeredOrSamusWithin4BlockColumnAbove      ;84BC90;
-
-InstList_PLM_UpwardsClosedGate_sleep:
     dw Instruction_PLM_Sleep                                             ;84BC92;
     dw Instruction_PLM_WakeEnemyProjectileAtPLMsPosition                 ;84BC94;
     dw InstList_EnemyProjectile_ShotGate_InitialClosedUpwards_sleep      ;84BC96;
@@ -7563,71 +9623,107 @@ InstList_PLM_UpwardsClosedGate_sleep:
     dw Instruction_PLM_GotoY                                             ;84BCAB;
     dw InstList_PLM_UpwardsOpenGate                                      ;84BCAD;
 
+
+;;; $BCAF: Instruction list - PLM $C836 (downwards gate shotblock) - blue left ;;;
 InstList_PLM_DownwardsGateShotblock_BlueLeft:
     dw $0001,DrawInst_GateShotblockDownwardsBlueLeft                     ;84BCAF;
     dw Instruction_PLM_Delete                                            ;84BCB3;
 
+
+;;; $BCB5: Instruction list - PLM $C836 (downwards gate shotblock) - blue right ;;;
 InstList_PLM_DownwardsGateShotblock_BlueRight:
     dw $0001,DrawInst_GateShotblockDownwardsBlueRight                    ;84BCB5;
     dw Instruction_PLM_Delete                                            ;84BCB9;
 
+
 InstList_PLM_DownwardsGateShotblock_RedLeft:
+;;; $BCBB: Instruction list - PLM $C836 (downwards gate shotblock) - red left ;;;
     dw $0001,DrawInst_GateShotblockDownwardsRedLeft                      ;84BCBB;
     dw Instruction_PLM_Delete                                            ;84BCBF;
 
+
 InstList_PLM_DownwardsGateShotblock_RedRight:
+;;; $BCC1: Instruction list - PLM $C836 (downwards gate shotblock) - red right ;;;
     dw $0001,DrawInst_GateShotblockDownwardsRedRight                     ;84BCC1;
     dw Instruction_PLM_Delete                                            ;84BCC5;
 
+
 InstList_PLM_DownwardsGateShotblock_GreenLeft:
+;;; $BCC7: Instruction list - PLM $C836 (downwards gate shotblock) - green left ;;;
     dw $0001,DrawInst_GateShotblockDownwardsGreenLeft                    ;84BCC7;
     dw Instruction_PLM_Delete                                            ;84BCCB;
 
+
 InstList_PLM_DownwardsGateShotblock_GreenRight:
+;;; $BCCD: Instruction list - PLM $C836 (downwards gate shotblock) - green right ;;;
     dw $0001,DrawInst_GateShotblockDownwardsGreenRight                   ;84BCCD;
     dw Instruction_PLM_Delete                                            ;84BCD1;
 
+
 InstList_PLM_DownwardsGateShotblock_YellowLeft:
+;;; $BCD3: Instruction list - PLM $C836 (downwards gate shotblock) - yellow left ;;;
     dw $0001,DrawInst_GateShotblockDownwardsYellowLeft                   ;84BCD3;
     dw Instruction_PLM_Delete                                            ;84BCD7;
 
+
 InstList_PLM_DownwardsGateShotblock_YellowRight:
+;;; $BCD9: Instruction list - PLM $C836 (downwards gate shotblock) - yellow right ;;;
     dw $0001,DrawInst_GateShotblockDownwardsYellowRight                  ;84BCD9;
     dw Instruction_PLM_Delete                                            ;84BCDD;
 
+
 InstList_PLM_UpwardsGateShotblock_BlueLeft:
+;;; $BCDF: Instruction list - PLM $C83A (upwards gate shotblock) - blue left ;;;
     dw $0001,DrawInst_GateShotblockUpwardsBlueLeft                       ;84BCDF;
     dw Instruction_PLM_Delete                                            ;84BCE3;
 
+
 InstList_PLM_UpwardsGateShotblock_BlueRight:
+;;; $BCE5: Instruction list - PLM $C83A (upwards gate shotblock) - blue right ;;;
     dw $0001,DrawInst_GateShotblockUpwardsBlueRight                      ;84BCE5;
     dw Instruction_PLM_Delete                                            ;84BCE9;
 
+
 InstList_PLM_UpwardsGateShotblock_RedLeft:
+;;; $BCEB: Instruction list - PLM $C83A (upwards gate shotblock) - red left ;;;
     dw $0001,DrawInst_GateShotblockUpwardsRedLeft                        ;84BCEB;
     dw Instruction_PLM_Delete                                            ;84BCEF;
 
+
 InstList_PLM_UpwardsGateShotblock_RedRight:
+;;; $BCF1: Instruction list - PLM $C83A (upwards gate shotblock) - red right ;;;
     dw $0001,DrawInst_GateShotblockUpwardsRedRight                       ;84BCF1;
     dw Instruction_PLM_Delete                                            ;84BCF5;
 
+
 InstList_PLM_UpwardsGateShotblock_GreenLeft:
+;;; $BCF7: Instruction list - PLM $C83A (upwards gate shotblock) - green left ;;;
     dw $0001,DrawInst_GateShotblockUpwardsGreenLeft                      ;84BCF7;
     dw Instruction_PLM_Delete                                            ;84BCFB;
 
+
 InstList_PLM_UpwardsGateShotblock_GreenRight:
+;;; $BCFD: Instruction list - PLM $C83A (upwards gate shotblock) - green right ;;;
     dw $0001,DrawInst_GateShotblockUpwardsGreenRight                     ;84BCFD;
     dw Instruction_PLM_Delete                                            ;84BD01;
 
+
 InstList_PLM_UpwardsGateShotblock_YellowLeft:
+;;; $BD03: Instruction list - PLM $C83A (upwards gate shotblock) - yellow left ;;;
     dw $0001,DrawInst_GateShotblockUpwardsYellowLeft                     ;84BD03;
     dw Instruction_PLM_Delete                                            ;84BD07;
 
+
 InstList_PLM_UpwardsGateShotblock_YellowRight:
+;;; $BD09: Instruction list - PLM $C83A (upwards gate shotblock) - yellow right ;;;
     dw $0001,DrawInst_GateShotblockUpwardsYellowRight                    ;84BD09;
     dw Instruction_PLM_Delete                                            ;84BD0D;
 
+
+;;; $BD0F: Pre-instruction - go to link instruction if shot ;;;
 PreInstruction_PLM_GotoLinkInstructionIfShot:
+;; Parameter:
+;;     X: PLM index
     LDA.W $1D77,X                                                        ;84BD0F;
     BEQ .return                                                          ;84BD12;
     STZ.W $1D77,X                                                        ;84BD14;
@@ -7640,7 +9736,10 @@ PreInstruction_PLM_GotoLinkInstructionIfShot:
     RTS                                                                  ;84BD25;
 
 
+;;; $BD26: Pre-instruction - go to link instruction if shot with a power bomb ;;;
 PreInstruction_PLM_GotoLinkInstructionIfHitWithPowerBomb:
+;; Parameter:
+;;     X: PLM index
     LDA.W $1D77,X                                                        ;84BD26;
     BEQ .clearPLMShotStatus                                              ;84BD29;
     AND.W #$0F00                                                         ;84BD2B;
@@ -7653,7 +9752,6 @@ PreInstruction_PLM_GotoLinkInstructionIfHitWithPowerBomb:
     STA.L $7EDE1C,X                                                      ;84BD40;
     RTS                                                                  ;84BD44;
 
-
   .playSFX:
     LDA.W #$0057                                                         ;84BD45;
     JSL.L QueueSound_Lib2_Max6                                           ;84BD48;
@@ -7663,7 +9761,10 @@ PreInstruction_PLM_GotoLinkInstructionIfHitWithPowerBomb:
     RTS                                                                  ;84BD4F;
 
 
+;;; $BD50: Pre-instruction - go to link instruction if shot with a (super) missile ;;;
 PreInstruction_PLM_GotoLinkInstructionIfShotWithAMissile:
+;; Parameter:
+;;     X: PLM index
     LDA.W $1D77,X                                                        ;84BD50;
     BEQ .clearPLMShotStatus                                              ;84BD53;
     AND.W #$0F00                                                         ;84BD55;
@@ -7680,7 +9781,6 @@ PreInstruction_PLM_GotoLinkInstructionIfShotWithAMissile:
     STA.L $7EDE1C,X                                                      ;84BD6F;
     RTS                                                                  ;84BD73;
 
-
   .dud:
     LDA.W #$0057                                                         ;84BD74;
     JSL.L QueueSound_Lib2_Max6                                           ;84BD77;
@@ -7689,14 +9789,16 @@ PreInstruction_PLM_GotoLinkInstructionIfShotWithAMissile:
     STZ.W $1D77,X                                                        ;84BD7B;
     RTS                                                                  ;84BD7E;
 
-
   .super:
     LDA.W #$0077                                                         ;84BD7F;
     STA.L $7EDF0C,X                                                      ;84BD82;
     BRA .missile                                                         ;84BD86;
 
 
+;;; $BD88: Pre-instruction - go to link instruction if shot with a super missile ;;;
 PreInstruction_PLM_GotoLinkInstIfShotWithASuperMissile:
+;; Parameter:
+;;     X: PLM index
     LDA.W $1D77,X                                                        ;84BD88;
     BEQ .clearPLMShotStatus                                              ;84BD8B;
     AND.W #$0F00                                                         ;84BD8D;
@@ -7709,7 +9811,6 @@ PreInstruction_PLM_GotoLinkInstIfShotWithASuperMissile:
     STA.L $7EDE1C,X                                                      ;84BDA2;
     RTS                                                                  ;84BDA6;
 
-
   .playSFX:
     LDA.W #$0057                                                         ;84BDA7;
     JSL.L QueueSound_Lib2_Max6                                           ;84BDAA;
@@ -7719,7 +9820,10 @@ PreInstruction_PLM_GotoLinkInstIfShotWithASuperMissile:
     RTS                                                                  ;84BDB1;
 
 
+;;; $BDB2: Go to link instruction ;;;
 Goto_Link_Instruction:
+;; Parameter:
+;;     X: PLM index
     STZ.W $1D77,X                                                        ;84BDB2;
     LDA.L $7EDEBC,X                                                      ;84BDB5;
     STA.W $1D27,X                                                        ;84BDB9;
@@ -7728,7 +9832,10 @@ Goto_Link_Instruction:
     RTS                                                                  ;84BDC3;
 
 
+;;; $BDC4: Play dud sound ;;;
 Play_Dud_Sound:
+;; Parameter:
+;;     X: PLM index
     LDA.W $1D77,X                                                        ;84BDC4;
     BEQ .clearPLMShotStatus                                              ;84BDC7;
     LDA.W #$0057                                                         ;84BDC9;
@@ -7739,23 +9846,27 @@ Play_Dud_Sound:
     RTS                                                                  ;84BDD3;
 
 
+;;; $BDD4: Pre-instruction - go to link instruction if area boss is dead else play dud sound ;;;
 PreInstruction_PLM_GotoLinkInstructionIfAreaBossDead:
+;; Parameter:
+;;     X: PLM index
     LDA.W #$0001                                                         ;84BDD4;
     JSL.L CheckIfBossBitsForCurrentAreaMatchAnyBitsInA                   ;84BDD7;
     BCC .playSFX                                                         ;84BDDB;
     JMP.W Goto_Link_Instruction                                          ;84BDDD;
 
-
   .playSFX:
     JMP.W Play_Dud_Sound                                                 ;84BDE0;
 
 
+;;; $BDE3: Pre-instruction - go to link instruction if area mini-boss (inc. Mother Brain) is dead else play dud sound ;;;
 PreInstruction_PLM_GotoLinkInstructionIfAreaMiniBossIsDead:
+;; Parameter:
+;;     X: PLM index
     LDA.W #$0002                                                         ;84BDE3;
     JSL.L CheckIfBossBitsForCurrentAreaMatchAnyBitsInA                   ;84BDE6;
     BCC .playSFX                                                         ;84BDEA;
     JMP.W Goto_Link_Instruction                                          ;84BDEC;
-
 
   .playSFX:
     JMP.W Play_Dud_Sound                                                 ;84BDEF;
@@ -7767,12 +9878,14 @@ PreInstruction_PLM_GotoLinkInstructionIfAreaTorizoIsDead:
     BCC .playSFX                                                         ;84BDF9;
     JMP.W Goto_Link_Instruction                                          ;84BDFB;
 
-
   .playSFX:
     JMP.W Play_Dud_Sound                                                 ;84BDFE;
 
 
+;;; $BDF2: Pre-instruction - go to link instruction if area torizo is dead else play dud sound ;;;
 PreInst_PLM_GotoLinkInst_SetZebesAwakeEventIfEnemiesDead:
+;; Parameter:
+;;     X: PLM index
     PHY                                                                  ;84BE01;
     PHX                                                                  ;84BE02;
     LDA.W $0E50                                                          ;84BE03;
@@ -7784,18 +9897,23 @@ PreInst_PLM_GotoLinkInst_SetZebesAwakeEventIfEnemiesDead:
     PLY                                                                  ;84BE13;
     JMP.W Goto_Link_Instruction                                          ;84BE14;
 
-
   .playSFX:
     PLX                                                                  ;84BE17;
     PLY                                                                  ;84BE18;
     JMP.W Play_Dud_Sound                                                 ;84BE19;
 
 
+;;; $BE1C: Pre-instruction - play dud sound ;;;
 PreInstruction_PLM_PlayDudSound:
+;; Parameter:
+;;     X: PLM index
     JMP.W Play_Dud_Sound                                                 ;84BE1C;
 
 
+;;; $BE1F: Pre-instruction - go to link instruction if Tourian statue has finished processing else play dud sound ;;;
 PreInst_PLM_GotoLinkInstIfTourianStatueFinishedProcessing:
+;; Parameter:
+;;     X: PLM index
     PHY                                                                  ;84BE1F;
     PHX                                                                  ;84BE20;
     LDA.W $1E6D                                                          ;84BE21;
@@ -7804,32 +9922,35 @@ PreInst_PLM_GotoLinkInstIfTourianStatueFinishedProcessing:
     PLY                                                                  ;84BE27;
     JMP.W Goto_Link_Instruction                                          ;84BE28;
 
-
   .playSFX:
     PLX                                                                  ;84BE2B;
     PLY                                                                  ;84BE2C;
     JMP.W Play_Dud_Sound                                                 ;84BE2D;
 
 
+;;; $BE30: Pre-instruction - go to link instruction if critters escaped else play dud sound ;;;
 PreInstruction_PLM_GotoLinkInstructionIfCrittersEscaped:
+;; Parameter:
+;;     X: PLM index
     LDA.W #$000F                                                         ;84BE30;
     JSL.L CheckIfEvent_inA_HasHappened                                   ;84BE33;
     BCC .playSFX                                                         ;84BE37;
     JMP.W Goto_Link_Instruction                                          ;84BE39;
 
-
   .playSFX:
     JMP.W Play_Dud_Sound                                                 ;84BE3C;
 
 
+;;; $BE3F: Instruction - set grey door pre-instruction ;;;
 Instruction_PLM_SetGreyDoorPreInstruction:
+;; Parameter:
+;;     X: PLM index
     PHY                                                                  ;84BE3F;
     LDY.W $1E17,X                                                        ;84BE40;
     LDA.W .pointers,Y                                                    ;84BE43;
     STA.W $1CD7,X                                                        ;84BE46;
     PLY                                                                  ;84BE49;
     RTS                                                                  ;84BE4A;
-
 
   .pointers:
     dw PreInstruction_PLM_GotoLinkInstructionIfAreaBossDead              ;84BE4B;
@@ -7840,6 +9961,8 @@ Instruction_PLM_SetGreyDoorPreInstruction:
     dw PreInst_PLM_GotoLinkInstIfTourianStatueFinishedProcessing         ;84BE55;
     dw PreInstruction_PLM_GotoLinkInstructionIfCrittersEscaped           ;84BE57;
 
+
+;;; $BE59: Instruction list - closing - door $C842 (grey door facing left) ;;;
 InstList_PLM_GreyDoorFacingLeft_0:
     dw $0002,DrawInst_DoorFacingLeft_A677                                ;84BE59;
     dw $0002,DrawInst_GreyDoorFacingLeft_3                               ;84BE5D;
@@ -7848,6 +9971,8 @@ InstList_PLM_GreyDoorFacingLeft_0:
     dw $0002,DrawInst_GreyDoorFacingLeft_1                               ;84BE68;
     dw $0001,DrawInst_GreyDoorFacingLeft_0                               ;84BE6C;
 
+
+;;; $BE70: Instruction list - door $C842 (grey door facing left) ;;;
 InstList_PLM_GreyDoorFacingLeft_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84BE70;
     dw InstList_PLM_ClosedBlueDoorFacingLeft_40                          ;84BE72;
@@ -7889,6 +10014,8 @@ InstList_PLM_GreyDoorFacingLeft_6:
     dw $0001,DrawInst_DoorFacingLeft_A677                                ;84BEBC;
     dw Instruction_PLM_Delete                                            ;84BEC0;
 
+
+;;; $BEC2: Instruction list - closing - door $C848 (grey door facing right) ;;;
 InstList_PLM_GreyDoorFacingRight_0:
     dw $0002,DrawInst_DoorFacingRight_A683                               ;84BEC2;
     dw $0002,DrawInst_GreyDoorFacingRight_3                              ;84BEC6;
@@ -7897,6 +10024,8 @@ InstList_PLM_GreyDoorFacingRight_0:
     dw $0002,DrawInst_GreyDoorFacingRight_1                              ;84BED1;
     dw $0001,DrawInst_GreyDoorFacingRight_0                              ;84BED5;
 
+
+;;; $BED9: Instruction list - door $C848 (grey door facing right) ;;;
 InstList_PLM_GreyDoorFacingRight_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84BED9;
     dw InstList_PLM_ClosedBlueDoorFacingLeft_41                          ;84BEDB;
@@ -7938,6 +10067,8 @@ InstList_PLM_GreyDoorFacingRight_6:
     dw $0001,DrawInst_DoorFacingRight_A683                               ;84BF25;
     dw Instruction_PLM_Delete                                            ;84BF29;
 
+
+;;; $BF2B: Instruction list - closing - door $C84E (grey door facing up) ;;;
 InstList_PLM_GreyDoorFacingUp_0:
     dw $0002,DrawInst_DoorFacingUp_A68F                                  ;84BF2B;
     dw $0002,DrawInst_GreyDoorFacingUp_3                                 ;84BF2F;
@@ -7946,6 +10077,8 @@ InstList_PLM_GreyDoorFacingUp_0:
     dw $0002,DrawInst_GreyDoorFacingUp_1                                 ;84BF3A;
     dw $0001,DrawInst_GreyDoorFacingUp_0                                 ;84BF3E;
 
+
+;;; $BF42: Instruction list - door $C84E (grey door facing up) ;;;
 InstList_PLM_GreyDoorFacingUp_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84BF42;
     dw InstList_PLM_ClosedBlueDoorFacingUp_42                            ;84BF44;
@@ -7987,6 +10120,8 @@ InstList_PLM_GreyDoorFacingUp_6:
     dw $0001,DrawInst_DoorFacingUp_A68F                                  ;84BF8E;
     dw Instruction_PLM_Delete                                            ;84BF92;
 
+
+;;; $BF94: Instruction list - closing - door $C854 (grey door facing down) ;;;
 InstList_PLM_GreyDoorFacingDown_0:
     dw $0002,DrawInst_DoorFacingDown_A69B                                ;84BF94;
     dw $0002,DrawInst_GreyDoorFacingDown_3                               ;84BF98;
@@ -7995,6 +10130,8 @@ InstList_PLM_GreyDoorFacingDown_0:
     dw $0002,DrawInst_GreyDoorFacingDown_1                               ;84BFA3;
     dw $0001,DrawInst_GreyDoorFacingDown_0                               ;84BFA7;
 
+
+;;; $BFAB: Instruction list - door $C854 (grey door facing down) ;;;
 InstList_PLM_GreyDoorFacingDown_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84BFAB;
     dw InstList_PLM_ClosedBlueDoorFacingUp_43                            ;84BFAD;
@@ -8036,6 +10173,8 @@ InstList_PLM_GreyDoorFacingDown_6:
     dw $0001,DrawInst_DoorFacingDown_A69B                                ;84BFF7;
     dw Instruction_PLM_Delete                                            ;84BFFB;
 
+
+;;; $BFFD: Instruction list - closing - door $C85A (yellow door facing left) ;;;
 InstList_PLM_YellowDoorFacingLeft_0:
     dw $0002,DrawInst_DoorFacingLeft_A677                                ;84BFFD;
     dw $0002,DrawInst_YellowDoorFacingLeft_3                             ;84C001;
@@ -8044,6 +10183,8 @@ InstList_PLM_YellowDoorFacingLeft_0:
     dw $0002,DrawInst_YellowDoorFacingLeft_1                             ;84C00C;
     dw $0001,DrawInst_YellowDoorFacingLeft_0                             ;84C010;
 
+
+;;; $C014: Instruction list - door $C85A (yellow door facing left) ;;;
 InstList_PLM_YellowDoorFacingLeft_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C014;
     dw InstList_PLM_ClosedBlueDoorFacingLeft_40                          ;84C016;
@@ -8078,6 +10219,8 @@ InstList_PLM_YellowDoorFacingLeft_4:
     dw $005C,DrawInst_DoorFacingLeft_A677                                ;84C05A;
     dw Instruction_PLM_Delete                                            ;84C05E;
 
+
+;;; $C060: Instruction list - closing - door $C860 (yellow door facing right) ;;;
 InstList_PLM_YellowDoorFacingRight_0:
     dw $0002,DrawInst_DoorFacingRight_A683                               ;84C060;
     dw $0002,DrawInst_YellowDoorFacingRight_3                            ;84C064;
@@ -8086,6 +10229,8 @@ InstList_PLM_YellowDoorFacingRight_0:
     dw $0002,DrawInst_YellowDoorFacingRight_1                            ;84C06F;
     dw $0001,DrawInst_YellowDoorFacingRight_0                            ;84C073;
 
+
+;;; $C077: Instruction list - door $C860 (yellow door facing right) ;;;
 InstList_PLM_YellowDoorFacingRight_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C077;
     dw InstList_PLM_ClosedBlueDoorFacingLeft_41                          ;84C079;
@@ -8120,6 +10265,8 @@ InstList_PLM_YellowDoorFacingRight_4:
     dw $0001,DrawInst_DoorFacingRight_A683                               ;84C0BD;
     dw Instruction_PLM_Delete                                            ;84C0C1;
 
+
+;;; $C0C3: Instruction list - closing - door $C866 (yellow door facing up) ;;;
 InstList_PLM_YellowDoorFacingUp_0:
     dw $0002,DrawInst_DoorFacingUp_A68F                                  ;84C0C3;
     dw $0002,DrawInst_YellowDoorFacingUp_3                               ;84C0C7;
@@ -8128,6 +10275,8 @@ InstList_PLM_YellowDoorFacingUp_0:
     dw $0002,DrawInst_YellowDoorFacingUp_1                               ;84C0D2;
     dw $0001,DrawInst_YellowDoorFacingUp_0                               ;84C0D6;
 
+
+;;; $C0DA: Instruction list - door $C866 (yellow door facing up) ;;;
 InstList_PLM_YellowDoorFacingUp_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C0DA;
     dw InstList_PLM_ClosedBlueDoorFacingUp_42                            ;84C0DC;
@@ -8160,6 +10309,8 @@ InstList_PLM_YellowDoorFacingUp_4:
     dw $0001,DrawInst_DoorFacingUp_A68F                                  ;84C11C;
     dw Instruction_PLM_Delete                                            ;84C120;
 
+
+;;; $C122: Instruction list - closing - door $C86C (yellow door facing down) ;;;
 InstList_PLM_YellowDoorFacingDown_0:
     dw $0002,DrawInst_DoorFacingDown_A69B                                ;84C122;
     dw $0002,DrawInst_YellowDoorFacingDown_3                             ;84C126;
@@ -8168,6 +10319,8 @@ InstList_PLM_YellowDoorFacingDown_0:
     dw $0002,DrawInst_YellowDoorFacingDown_1                             ;84C131;
     dw $0001,DrawInst_YellowDoorFacingDown_0                             ;84C135;
 
+
+;;; $C139: Instruction list - door $C86C (yellow door facing down) ;;;
 InstList_PLM_YellowDoorFacingDown_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C139;
     dw InstList_PLM_ClosedBlueDoorFacingUp_43                            ;84C13B;
@@ -8201,6 +10354,8 @@ InstList_PLM_YellowDoorFacingDown_4:
     dw $0001,DrawInst_DoorFacingDown_A69B                                ;84C17F;
     dw Instruction_PLM_Delete                                            ;84C183;
 
+
+;;; $C185: Instruction list - closing - door $C872 (green door facing left) ;;;
 InstList_PLM_GreenDoorFacingLeft_0:
     dw $0002,DrawInst_DoorFacingLeft_A677                                ;84C185;
     dw $0002,DrawInst_GreenDoorFacingLeft_3                              ;84C189;
@@ -8209,6 +10364,8 @@ InstList_PLM_GreenDoorFacingLeft_0:
     dw $0002,DrawInst_GreenDoorFacingLeft_1                              ;84C194;
     dw $0001,DrawInst_GreenDoorFacingLeft_0                              ;84C198;
 
+
+;;; $C19C: Instruction list - door $C872 (green door facing left) ;;;
 InstList_PLM_GreenDoorFacingLeft_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C19C;
     dw InstList_PLM_ClosedBlueDoorFacingLeft_40                          ;84C19E;
@@ -8241,6 +10398,8 @@ InstList_PLM_GreenDoorFacingLeft_4:
     dw $0001,DrawInst_DoorFacingLeft_A677                                ;84C1DE;
     dw Instruction_PLM_Delete                                            ;84C1E2;
 
+
+;;; $C1E4: Instruction list - closing - door $C878 (green door facing right) ;;;
 InstList_PLM_GreenDoorFacingRight_0:
     dw $0002,DrawInst_DoorFacingRight_A683                               ;84C1E4;
     dw $0002,DrawInst_GreenDoorFacingRight_3                             ;84C1E8;
@@ -8249,6 +10408,8 @@ InstList_PLM_GreenDoorFacingRight_0:
     dw $0002,DrawInst_GreenDoorFacingRight_1                             ;84C1F3;
     dw $0001,DrawInst_GreenDoorFacingRight_0                             ;84C1F7;
 
+
+;;; $C1FB: Instruction list - door $C878 (green door facing right) ;;;
 InstList_PLM_GreenDoorFacingRight_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C1FB;
     dw InstList_PLM_ClosedBlueDoorFacingLeft_41                          ;84C1FD;
@@ -8281,6 +10442,8 @@ InstList_PLM_GreenDoorFacingRight_4:
     dw $0001,DrawInst_DoorFacingRight_A683                               ;84C23D;
     dw Instruction_PLM_Delete                                            ;84C241;
 
+
+;;; $C243: Instruction list - closing - door $C87E (green door facing up) ;;;
 InstList_PLM_GreenDoorFacingUp_0:
     dw $0002,DrawInst_DoorFacingUp_A68F                                  ;84C243;
     dw $0002,DrawInst_GreenDoorFacingUp_3                                ;84C247;
@@ -8289,6 +10452,8 @@ InstList_PLM_GreenDoorFacingUp_0:
     dw $0002,DrawInst_GreenDoorFacingUp_1                                ;84C252;
     dw $0001,DrawInst_GreenDoorFacingUp_0                                ;84C256;
 
+
+;;; $C25A: Instruction list - door $C87E (green door facing up) ;;;
 InstList_PLM_GreenDoorFacingUp_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C25A;
     dw InstList_PLM_ClosedBlueDoorFacingUp_42                            ;84C25C;
@@ -8321,6 +10486,8 @@ InstList_PLM_GreenDoorFacingUp_4:
     dw $0001,DrawInst_DoorFacingUp_A68F                                  ;84C29C;
     dw Instruction_PLM_Delete                                            ;84C2A0;
 
+
+;;; $C2A2: Instruction list - closing - door $C884 (green door facing down) ;;;
 InstList_PLM_GreenDoorFacingDown_0:
     dw $0002,DrawInst_DoorFacingDown_A69B                                ;84C2A2;
     dw $0002,DrawInst_GreenDoorFacingDown_3                              ;84C2A6;
@@ -8329,6 +10496,8 @@ InstList_PLM_GreenDoorFacingDown_0:
     dw $0002,DrawInst_GreenDoorFacingDown_1                              ;84C2B1;
     dw $0001,DrawInst_GreenDoorFacingDown_0                              ;84C2B5;
 
+
+;;; $C2B9: Instruction list - door $C884 (green door facing down) ;;;
 InstList_PLM_GreenDoorFacingDown_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C2B9;
     dw InstList_PLM_ClosedBlueDoorFacingUp_43                            ;84C2BB;
@@ -8361,6 +10530,8 @@ InstList_PLM_GreenDoorFacingDown_4:
     dw $0001,DrawInst_DoorFacingDown_A69B                                ;84C2FB;
     dw Instruction_PLM_Delete                                            ;84C2FF;
 
+
+;;; $C301: Instruction list - closing - door $C88A (red door facing left) ;;;
 InstList_PLM_RedDoorFacingLeft_0:
     dw $0002,DrawInst_DoorFacingLeft_A677                                ;84C301;
     dw $0002,DrawInst_RedDoorFacingLeft_3                                ;84C305;
@@ -8369,6 +10540,8 @@ InstList_PLM_RedDoorFacingLeft_0:
     dw $0002,DrawInst_RedDoorFacingLeft_1                                ;84C310;
     dw $0001,DrawInst_RedDoorFacingLeft_0                                ;84C314;
 
+
+;;; $C318: Instruction list - door $C88A (red door facing left) ;;;
 InstList_PLM_RedDoorFacingLeft_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C318;
     dw InstList_PLM_ClosedBlueDoorFacingLeft_40                          ;84C31A;
@@ -8402,6 +10575,8 @@ InstList_PLM_RedDoorFacingLeft_4:
     dw $0001,DrawInst_DoorFacingLeft_A677                                ;84C35D;
     dw Instruction_PLM_Delete                                            ;84C361;
 
+
+;;; $C363: Instruction list - closing - door $C890 (red door facing right) ;;;
 InstList_PLM_RedDoorFacingRight_0:
     dw $0002,DrawInst_DoorFacingRight_A683                               ;84C363;
     dw $0002,DrawInst_RedDoorFacingRight_3                               ;84C367;
@@ -8410,6 +10585,8 @@ InstList_PLM_RedDoorFacingRight_0:
     dw $0002,DrawInst_RedDoorFacingRight_1                               ;84C372;
     dw $0001,DrawInst_RedDoorFacingRight_0                               ;84C376;
 
+
+;;; $C37A: Instruction list - door $C890 (red door facing right) ;;;
 InstList_PLM_RedDoorFacingRight_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C37A;
     dw InstList_PLM_ClosedBlueDoorFacingLeft_41                          ;84C37C;
@@ -8443,6 +10620,8 @@ InstList_PLM_RedDoorFacingRight_4:
     dw $0001,DrawInst_DoorFacingRight_A683                               ;84C3BF;
     dw Instruction_PLM_Delete                                            ;84C3C3;
 
+
+;;; $C3C5: Instruction list - closing - door $C896 (red door facing up) ;;;
 InstList_PLM_RedDoorFacingUp_0:
     dw $0002,DrawInst_DoorFacingUp_A68F                                  ;84C3C5;
     dw $0002,DrawInst_RedDoorFacingUp_3                                  ;84C3C9;
@@ -8451,6 +10630,8 @@ InstList_PLM_RedDoorFacingUp_0:
     dw $0002,DrawInst_RedDoorFacingUp_1                                  ;84C3D4;
     dw $0001,DrawInst_RedDoorFacingUp_0                                  ;84C3D8;
 
+
+;;; $C3DC: Instruction list - door $C896 (red door facing up) ;;;
 InstList_PLM_RedDoorFacingUp_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C3DC;
     dw InstList_PLM_ClosedBlueDoorFacingUp_42                            ;84C3DE;
@@ -8484,6 +10665,8 @@ InstList_PLM_RedDoorFacingUp_4:
     dw $0001,DrawInst_DoorFacingUp_A68F                                  ;84C421;
     dw Instruction_PLM_Delete                                            ;84C425;
 
+
+;;; $C427: Instruction list - closing - door $C89C (red door facing down) ;;;
 InstList_PLM_RedDoorFacingDown_0:
     dw $0002,DrawInst_DoorFacingDown_A69B                                ;84C427;
     dw $0002,DrawInst_RedDoorFacingDown_3                                ;84C42B;
@@ -8492,6 +10675,8 @@ InstList_PLM_RedDoorFacingDown_0:
     dw $0002,DrawInst_RedDoorFacingDown_1                                ;84C436;
     dw $0001,DrawInst_RedDoorFacingDown_0                                ;84C43A;
 
+
+;;; $C43E: Instruction list - door $C89C (red door facing down) ;;;
 InstList_PLM_RedDoorFacingDown_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C43E;
     dw InstList_PLM_ClosedBlueDoorFacingUp_43                            ;84C440;
@@ -8525,6 +10710,8 @@ InstList_PLM_RedDoorFacingDown_4:
     dw $0001,DrawInst_DoorFacingDown_A69B                                ;84C483;
     dw Instruction_PLM_Delete                                            ;84C487;
 
+
+;;; $C489: Instruction list - door $C8A2 (shot/bombed/grappled reaction, shootable, BTS 40h. Blue door facing left) ;;;
 InstList_PLM_BlueDoorFacingLeftOpened_40:
     dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C489;
     dw $0006,DrawInst_BlueDoorFacingLeft_0                               ;84C48C;
@@ -8533,6 +10720,8 @@ InstList_PLM_BlueDoorFacingLeftOpened_40:
     dw $005E,DrawInst_DoorFacingLeft_A677                                ;84C498;
     dw Instruction_PLM_Delete                                            ;84C49C;
 
+
+;;; $C49E: Instruction list - closing - door $C8A2 (shot/bombed/grappled reaction, shootable, BTS 40h. Blue door facing left) ;;;
 InstList_PLM_BlueDoorFacingLeftClosed:
     dw $0002,DrawInst_DoorFacingLeft_A677                                ;84C49E;
     dw $0002,DrawInst_BlueDoorFacingLeft_2                               ;84C4A2;
@@ -8540,11 +10729,15 @@ InstList_PLM_BlueDoorFacingLeftClosed:
     dw $0002,DrawInst_BlueDoorFacingLeft_1                               ;84C4A9;
     dw $0002,DrawInst_BlueDoorFacingLeft_0                               ;84C4AD;
 
+
+;;; $C4B1: Instruction list - closed blue door facing left ;;;
 InstList_PLM_ClosedBlueDoorFacingLeft_40:
     dw Instruction_PLM_PLMBTS_Y : db $40                                 ;84C4B1;
     dw $0001,DrawInst_DoorFacingLeft_A9B3                                ;84C4B4;
     dw Instruction_PLM_Delete                                            ;84C4B8;
 
+
+;;; $C4BA: Instruction list - door $C8A8 (shot/bombed/grappled reaction, shootable, BTS 41h. Blue door facing right) ;;;
 InstList_PLM_BlueDoorFacingLeftOpened_41:
     dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C4BA;
     dw $0006,DrawInst_BlueDoorFacingRight_0                              ;84C4BD;
@@ -8553,6 +10746,8 @@ InstList_PLM_BlueDoorFacingLeftOpened_41:
     dw $005E,DrawInst_DoorFacingRight_A683                               ;84C4C9;
     dw Instruction_PLM_Delete                                            ;84C4CD;
 
+
+;;; $C4CF: Instruction list - closing - door $C8A8 (shot/bombed/grappled reaction, shootable, BTS 41h. Blue door facing right) ;;;
 InstList_PLM_BlueDoorFacingRightClosed:
     dw $0002,DrawInst_DoorFacingRight_A683                               ;84C4CF;
     dw $0002,DrawInst_BlueDoorFacingRight_2                              ;84C4D3;
@@ -8560,11 +10755,15 @@ InstList_PLM_BlueDoorFacingRightClosed:
     dw $0002,DrawInst_BlueDoorFacingRight_1                              ;84C4DA;
     dw $0002,DrawInst_BlueDoorFacingRight_0                              ;84C4DE;
 
+
+;;; $C4E2: Instruction list - closed blue door facing right ;;;
 InstList_PLM_ClosedBlueDoorFacingLeft_41:
     dw Instruction_PLM_PLMBTS_Y : db $41                                 ;84C4E2;
     dw $0001,DrawInst_DoorFacingRight_A9EF                               ;84C4E5;
     dw Instruction_PLM_Delete                                            ;84C4E9;
 
+
+;;; $C4EB: Instruction list - door $C8AE (shot/bombed/grappled reaction, shootable, BTS 42h. Blue door facing up) ;;;
 InstList_PLM_BlueDoorFacingUpOpened_42:
     dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C4EB;
     dw $0006,DrawInst_BlueDoorFacingUp_0                                 ;84C4EE;
@@ -8573,6 +10772,8 @@ InstList_PLM_BlueDoorFacingUpOpened_42:
     dw $005E,DrawInst_DoorFacingUp_A68F                                  ;84C4FA;
     dw Instruction_PLM_Delete                                            ;84C4FE;
 
+
+;;; $C500: Instruction list - closing - door $C8AE (shot/bombed/grappled reaction, shootable, BTS 42h. Blue door facing up) ;;;
 InstList_PLM_BlueDoorFacingUpClosed_42:
     dw $0002,DrawInst_DoorFacingUp_A68F                                  ;84C500;
     dw $0002,DrawInst_BlueDoorFacingUp_2                                 ;84C504;
@@ -8580,11 +10781,15 @@ InstList_PLM_BlueDoorFacingUpClosed_42:
     dw $0002,DrawInst_BlueDoorFacingUp_1                                 ;84C50B;
     dw $0002,DrawInst_BlueDoorFacingUp_0                                 ;84C50F;
 
+
+;;; $C513: Instruction list - closed blue door facing up ;;;
 InstList_PLM_ClosedBlueDoorFacingUp_42:
     dw Instruction_PLM_PLMBTS_Y : db $42                                 ;84C513;
     dw $0001,DrawInst_DoorFacingUp_AA2B                                  ;84C516;
     dw Instruction_PLM_Delete                                            ;84C51A;
 
+
+;;; $C51C: Instruction list - door $C8B4 (shot/bombed/grappled reaction, shootable, BTS 43h. Blue door facing down) ;;;
 InstList_PLM_BlueDoorFacingUpOpened_43:
     dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C51C;
     dw $0006,DrawInst_BlueDoorFacingDown_0                               ;84C51F;
@@ -8593,6 +10798,8 @@ InstList_PLM_BlueDoorFacingUpOpened_43:
     dw $005E,DrawInst_DoorFacingDown_A69B                                ;84C52B;
     dw Instruction_PLM_Delete                                            ;84C52F;
 
+
+;;; $C531: Instruction list - closing - door $C8B4 (shot/bombed/grappled reaction, shootable, BTS 43h. Blue door facing down) ;;;
 InstList_PLM_BlueDoorFacingUpClosed_43:
     dw $0002,DrawInst_DoorFacingDown_A69B                                ;84C531;
     dw $0002,DrawInst_BlueDoorFacingDown_2                               ;84C535;
@@ -8600,19 +10807,24 @@ InstList_PLM_BlueDoorFacingUpClosed_43:
     dw $0002,DrawInst_BlueDoorFacingDown_1                               ;84C53C;
     dw $0002,DrawInst_BlueDoorFacingDown_0                               ;84C540;
 
+
+;;; $C544: Instruction list - closed blue door facing down ;;;
 InstList_PLM_ClosedBlueDoorFacingUp_43:
     dw Instruction_PLM_PLMBTS_Y : db $43                                 ;84C544;
     dw $0001,DrawInst_DoorFacingDown_AA67                                ;84C547;
     dw Instruction_PLM_Delete                                            ;84C54B;
 
+
+;;; $C54D: Setup - PLM $C806 (shot/bombed/grappled reaction, shootable, BTS 4Ah. Left green gate trigger) ;;;
 Setup_LeftGreenGateTrigger:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $0DDE                                                          ;84C54D;
     LDA.W $0C18,X                                                        ;84C550;
     AND.W #$0FFF                                                         ;84C553;
     CMP.W #$0200                                                         ;84C556;
     BNE .playSFX                                                         ;84C559;
     JMP.W TriggerPLMOfBlockToTheRight                                    ;84C55B;
-
 
   .playSFX:
     LDA.W #$0057                                                         ;84C55E;
@@ -8622,14 +10834,16 @@ Setup_LeftGreenGateTrigger:
     RTS                                                                  ;84C56B;
 
 
+;;; $C56C: Setup - PLM $C80A (shot/bombed/grappled reaction, shootable, BTS 4Bh. Right green gate trigger) ;;;
 Setup_RightGreenGateTrigger:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $0DDE                                                          ;84C56C;
     LDA.W $0C18,X                                                        ;84C56F;
     AND.W #$0FFF                                                         ;84C572;
     CMP.W #$0200                                                         ;84C575;
     BNE .playSFX                                                         ;84C578;
     JMP.W TriggerPLMOfBlockToTheLeft                                     ;84C57A;
-
 
   .playSFX:
     LDA.W #$0057                                                         ;84C57D;
@@ -8639,7 +10853,10 @@ Setup_RightGreenGateTrigger:
     RTS                                                                  ;84C58A;
 
 
+;;; $C58B: Setup - PLM $C80E (shot/bombed/grappled reaction, shootable, BTS 48h. Left red gate trigger) ;;;
 Setup_LeftRedGateTrigger:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $0DDE                                                          ;84C58B;
     LDA.W $0C18,X                                                        ;84C58E;
     AND.W #$0FFF                                                         ;84C591;
@@ -8651,7 +10868,6 @@ Setup_LeftRedGateTrigger:
   .triggerPLM:
     JMP.W TriggerPLMOfBlockToTheRight                                    ;84C59E;
 
-
   .playSFX:
     LDA.W #$0057                                                         ;84C5A1;
     JSL.L QueueSound_Lib2_Max6                                           ;84C5A4;
@@ -8660,7 +10876,10 @@ Setup_LeftRedGateTrigger:
     RTS                                                                  ;84C5AE;
 
 
+;;; $C5AF: Setup - PLM $C812 (shot/bombed/grappled reaction, shootable, BTS 49h. Right red gate trigger) ;;;
 Setup_RightRedGateTrigger:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $0DDE                                                          ;84C5AF;
     LDA.W $0C18,X                                                        ;84C5B2;
     AND.W #$0FFF                                                         ;84C5B5;
@@ -8672,7 +10891,6 @@ Setup_RightRedGateTrigger:
   .triggerPLM:
     JMP.W TriggerPLMOfBlockToTheLeft                                     ;84C5C2;
 
-
   .playSFX:
     LDA.W #$0057                                                         ;84C5C5;
     JSL.L QueueSound_Lib2_Max6                                           ;84C5C8;
@@ -8681,7 +10899,12 @@ Setup_RightRedGateTrigger:
     RTS                                                                  ;84C5D2;
 
 
+;;; $C5D3: Setup - PLM $C81E (shot/bombed/grappled reaction, shootable, BTS 4Ch. Left yellow gate trigger) ;;;
 Setup_LeftYellowGateTrigger:
+;; Parameters:
+;;     Y: PLM index
+
+; Missing RTS, causes dud shot sound effect to be queued twice >_<;
     LDX.W $0DDE                                                          ;84C5D3;
     LDA.W $0C18,X                                                        ;84C5D6;
     AND.W #$0FFF                                                         ;84C5D9;
@@ -8689,21 +10912,23 @@ Setup_LeftYellowGateTrigger:
     BNE .playSFX                                                         ;84C5DF;
     JMP.W TriggerPLMOfBlockToTheRight                                    ;84C5E1;
 
-
   .playSFX:
     LDA.W #$0057                                                         ;84C5E4;
     JSL.L QueueSound_Lib2_Max6                                           ;84C5E7;
     LDA.W #$0000                                                         ;84C5EB;
-    STA.W $1C37,Y                                                        ;84C5EE;
+    STA.W $1C37,Y                                                        ;84C5EE; fallthrough to RightYellowGateTrigger
 
+
+;;; $C5F1: Setup - PLM $C822 (shot/bombed/grappled reaction, shootable, BTS 4Dh. Right yellow gate trigger) ;;;
 RightYellowGateTrigger:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $0DDE                                                          ;84C5F1;
     LDA.W $0C18,X                                                        ;84C5F4;
     AND.W #$0FFF                                                         ;84C5F7;
     CMP.W #$0300                                                         ;84C5FA;
     BNE .playSFX                                                         ;84C5FD;
     JMP.W TriggerPLMOfBlockToTheLeft                                     ;84C5FF;
-
 
   .playSFX:
     LDA.W #$0057                                                         ;84C602;
@@ -8713,7 +10938,12 @@ RightYellowGateTrigger:
     RTS                                                                  ;84C60F;
 
 
+;;; $C610: Setup - PLM $C816 (shot/bombed/grappled reaction, shootable, BTS 46h. Left blue gate trigger) ;;;
 Setup_LeftBlueGateTrigger:
+;; Parameters:
+;;     Y: PLM index
+
+; (Harmless) missing RTS >_<;
     LDX.W $0DDE                                                          ;84C610;
     LDA.W $0C18,X                                                        ;84C613;
     AND.W #$0FFF                                                         ;84C616;
@@ -8721,12 +10951,15 @@ Setup_LeftBlueGateTrigger:
     BEQ .deletePLM                                                       ;84C61C;
     JMP.W TriggerPLMOfBlockToTheRight                                    ;84C61E;
 
-
   .deletePLM:
     LDA.W #$0000                                                         ;84C621;
-    STA.W $1C37,Y                                                        ;84C624;
+    STA.W $1C37,Y                                                        ;84C624; fallthrough to Setup_RightBlueGateTrigger
 
+
+;;; $C627: Setup - PLM $C81A (shot/bombed/grappled reaction, shootable, BTS 47h. Right blue gate trigger) ;;;
 Setup_RightBlueGateTrigger:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $0DDE                                                          ;84C627;
     LDA.W $0C18,X                                                        ;84C62A;
     AND.W #$0FFF                                                         ;84C62D;
@@ -8734,14 +10967,16 @@ Setup_RightBlueGateTrigger:
     BEQ .deletePLM                                                       ;84C633;
     JMP.W TriggerPLMOfBlockToTheLeft                                     ;84C635;
 
-
   .deletePLM:
     LDA.W #$0000                                                         ;84C638;
     STA.W $1C37,Y                                                        ;84C63B;
     RTS                                                                  ;84C63E;
 
 
+;;; $C63F: Trigger PLM of block to the right ;;;
 TriggerPLMOfBlockToTheRight:
+;; Parameters:
+;;     Y: PLM index
     LDA.W $1C87,Y                                                        ;84C63F;
     INC A                                                                ;84C642;
     INC A                                                                ;84C643;
@@ -8749,11 +10984,18 @@ TriggerPLMOfBlockToTheRight:
 
 
 TriggerPLMOfBlockToTheLeft:
+;; Parameters:
+;;     Y: PLM index
     LDA.W $1C87,Y                                                        ;84C647;
     DEC A                                                                ;84C64A;
-    DEC A                                                                ;84C64B;
+    DEC A                                                                ;84C64B; fallthrough to TriggerPLMAtBlockIndex_A
 
+
+;;; $C647: Trigger PLM of block to the left ;;;
 TriggerPLMAtBlockIndex_A:
+;; Parameters:
+;;     A: Block index
+;;     Y: PLM index
     LDX.W #$004E                                                         ;84C64C;
 
   .loop:
@@ -8763,7 +11005,6 @@ TriggerPLMAtBlockIndex_A:
     DEX                                                                  ;84C655;
     BPL .loop                                                            ;84C656;
     BRA .return                                                          ;84C658;
-
 
   .found:
     LDA.W $1D77,X                                                        ;84C65A;
@@ -8777,7 +11018,10 @@ TriggerPLMAtBlockIndex_A:
     RTS                                                                  ;84C669;
 
 
+;;; $C66A: Give 5-block column below PLM BTS 10h ;;;
 Give5BlockColumnBelowPLM_BTS10:
+;; Parameters:
+;;     Y: PLM index
     LDA.W $1C87,Y                                                        ;84C66A;
     LSR A                                                                ;84C66D;
     TAX                                                                  ;84C66E;
@@ -8789,7 +11033,12 @@ Give5BlockColumnBelowPLM_BTS10:
     RTS                                                                  ;84C67E;
 
 
+;;; $C67F: PLM BTS = 10h, move PLM down a row ;;;
 PLM_BTS10_MovePLMDownARow:
+;; Parameters:
+;;     X: Block index
+;; Returns:
+;;     X: Next block index
     LDA.L $7F6402,X                                                      ;84C67F;
     AND.W #$FF00                                                         ;84C683;
     ORA.W #$0010                                                         ;84C686;
@@ -8801,7 +11050,10 @@ PLM_BTS10_MovePLMDownARow:
     RTS                                                                  ;84C693;
 
 
+;;; $C694: Give 5-block column above PLM BTS 10h ;;;
 Give5BlockColumnAbovePLM_BTS10:
+;; Parameters:
+;;     Y: PLM index
     LDA.W $1C87,Y                                                        ;84C694;
     LSR A                                                                ;84C697;
     TAX                                                                  ;84C698;
@@ -8813,7 +11065,12 @@ Give5BlockColumnAbovePLM_BTS10:
     RTS                                                                  ;84C6A8;
 
 
+;;; $C6A9: PLM BTS = 10h, move PLM up a row ;;;
 PLM_BTS10_MovePLMUpARow:
+;; Parameters:
+;;     X: Block index
+;; Returns:
+;;     X: Next block index
     LDA.L $7F6402,X                                                      ;84C6A9;
     AND.W #$FF00                                                         ;84C6AD;
     ORA.W #$0010                                                         ;84C6B0;
@@ -8825,7 +11082,10 @@ PLM_BTS10_MovePLMUpARow:
     RTS                                                                  ;84C6BD;
 
 
+;;; $C6BE: Setup - PLM $C82A (downwards closed gate) ;;;
 Setup_DownwardsClosedGate:
+;; Parameters:
+;;     Y: PLM index
     PHY                                                                  ;84C6BE;
     LDY.W #EnemyProjectile_DownwardsShotGateInitiallyClosed              ;84C6BF;
     JSL.L SpawnEnemyProjectileY_ParameterA_RoomGraphics                  ;84C6C2;
@@ -8834,7 +11094,10 @@ Setup_DownwardsClosedGate:
     RTS                                                                  ;84C6CA;
 
 
+;;; $C6CB: Setup - PLM $C832 (upwards closed gate) ;;;
 Setup_UpwardsClosedGate:
+;; Parameters:
+;;     Y: PLM index
     PHY                                                                  ;84C6CB;
     LDY.W #EnemyProjectile_UpwardsShotGateInitiallyClosed                ;84C6CC;
     JSL.L SpawnEnemyProjectileY_ParameterA_RoomGraphics                  ;84C6CF;
@@ -8843,17 +11106,26 @@ Setup_UpwardsClosedGate:
     RTS                                                                  ;84C6D7;
 
 
+;;; $C6D8: Setup - PLM $C826 (downwards open gate) ;;;
 Setup_DownwardsOpenGate:
+;; Parameters:
+;;     Y: PLM index
     JSR.W Give5BlockColumnBelowPLM_BTS10                                 ;84C6D8;
     RTS                                                                  ;84C6DB;
 
 
+;;; $C6DC: Setup - PLM $C82E (upwards open gate) ;;;
 Setup_UpwardsOpenGate:
+;; Parameters:
+;;     Y: PLM index
     JSR.W Give5BlockColumnAbovePLM_BTS10                                 ;84C6DC;
     RTS                                                                  ;84C6DF;
 
 
+;;; $C6E0: Setup - PLM $C836 (downwards gate shotblock) ;;;
 Setup_DownwardsGateShotblock:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $1DC7,Y                                                        ;84C6E0;
     LDA.W .instListPointers,X                                            ;84C6E3;
     STA.W $1D27,Y                                                        ;84C6E6;
@@ -8876,7 +11148,6 @@ Setup_DownwardsGateShotblock:
 
   .return:
     RTS                                                                  ;84C709;
-
 
   .instListPointers:
     dw InstList_PLM_DownwardsGateShotblock_BlueLeft                      ;84C70A;
@@ -8901,7 +11172,11 @@ Setup_DownwardsGateShotblock:
   .rightBlock:
     dw $0000,$C047,$0000,$C049,$0000,$C04B,$0000,$C04D                   ;84C72A;
 
+
+;;; $C73A: Setup - PLM $C83A (upwards gate shotblock) ;;;
 Setup_UpwardsGateShotblock:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $1DC7,Y                                                        ;84C73A;
     LDA.W .instListPointers,X                                            ;84C73D;
     STA.W $1D27,Y                                                        ;84C740;
@@ -8924,7 +11199,6 @@ Setup_UpwardsGateShotblock:
 
   .return:
     RTS                                                                  ;84C763;
-
 
   .instListPointers:
     dw InstList_PLM_UpwardsGateShotblock_BlueLeft                        ;84C764;
@@ -8949,7 +11223,11 @@ Setup_UpwardsGateShotblock:
   .rightBlock:
     dw $0000,$C047,$0000,$C049,$0000,$C04B,$0000,$C04D                   ;84C784;
 
+
+;;; $C794: Setup - door $BAF4/$C842/$C848/$C84E/$C854 (grey door) ;;;
 Setup_GreyDoor:
+;; Parameters:
+;;     Y: PLM index
     LDA.W $1DC8,Y                                                        ;84C794;
     AND.W #$007C                                                         ;84C797;
     LSR A                                                                ;84C79A;
@@ -8963,14 +11241,20 @@ Setup_GreyDoor:
     RTS                                                                  ;84C7B0;
 
 
+;;; $C7B1: Setup - door $C85A/$C860/$C866/$C86C/$C872/$C878/$C87E/$C884/$C88A/$C890/$C896/$C89C (coloured door) ;;;
 Setup_ColoredDoor:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $1C87,Y                                                        ;84C7B1;
     LDA.W #$C044                                                         ;84C7B4;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84C7B7;
     RTS                                                                  ;84C7BA;
 
 
+;;; $C7BB: Setup - door $C8A2/$C8A8/$C8AE/$C8B4 (shot/bombed/grappled reaction, shootable, BTS 40h..43h. Blue door) ;;;
 Setup_BlueDoor:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $0DDE                                                          ;84C7BB;
     LDA.W $0C18,X                                                        ;84C7BE;
     AND.W #$0F00                                                         ;84C7C1;
@@ -8979,7 +11263,6 @@ Setup_BlueDoor:
     LDA.W #$0000                                                         ;84C7C9;
     STA.W $1C37,Y                                                        ;84C7CC;
     RTS                                                                  ;84C7CF;
-
 
   .notPowerBomb:
     LDX.W $1C87,Y                                                        ;84C7D0;
@@ -8990,7 +11273,12 @@ Setup_BlueDoor:
     RTS                                                                  ;84C7E1;
 
 
+;;; $C7E2: Setup - PLM $C83E (shot/bombed/grappled reaction, shootable, BTS 44h / collision reaction, special, BTS 44h. Generic shot trigger for a PLM) ;;;
 Setup_GenericShotTriggerForAPLM:
+;; Parameters:
+;;     Y: PLM index
+;; Returns:
+;;     Carry: Set if PLM found (unconditional collision), garbage otherwise
     TYX                                                                  ;84C7E2;
     LDA.W $1C87,X                                                        ;84C7E3;
     STZ.W $1C87,X                                                        ;84C7E6;
@@ -9004,7 +11292,6 @@ Setup_GenericShotTriggerForAPLM:
     BPL .loop                                                            ;84C7F3;
     RTS                                                                  ;84C7F5;
 
-
   .found:
     LDY.W $0DDE                                                          ;84C7F6;
     LDA.W $0C18,Y                                                        ;84C7F9;
@@ -9014,256 +11301,334 @@ Setup_GenericShotTriggerForAPLM:
     RTS                                                                  ;84C805;
 
 
+;;; $C806: PLM entries ;;;
 PLMEntries_leftGreenGateTrigger:
+; Shot/bombed/grappled reaction, shootable, BTS 4Ah. Left green gate trigger
     dw Setup_LeftGreenGateTrigger                                        ;84C806;
     dw InstList_PLM_Delete                                               ;84C808;
 
 PLMEntries_rightGreenGateTrigger:
+; Shot/bombed/grappled reaction, shootable, BTS 4Bh. Right green gate trigger
     dw Setup_RightGreenGateTrigger                                       ;84C80A;
     dw InstList_PLM_Delete                                               ;84C80C;
 
 PLMEntries_leftRedGateTrigger:
+; Shot/bombed/grappled reaction, shootable, BTS 48h. Left red gate trigger
     dw Setup_LeftRedGateTrigger                                          ;84C80E;
     dw InstList_PLM_Delete                                               ;84C810;
 
 PLMEntries_rightRedGateTrigger:
+; Shot/bombed/grappled reaction, shootable, BTS 49h. Right red gate trigger
     dw Setup_RightRedGateTrigger                                         ;84C812;
     dw InstList_PLM_Delete                                               ;84C814;
 
 PLMEntries_leftBlueGateTrigger:
+; Shot/bombed/grappled reaction, shootable, BTS 46h. Left blue gate trigger
     dw Setup_LeftBlueGateTrigger                                         ;84C816;
     dw InstList_PLM_Delete                                               ;84C818;
 
 PLMEntries_rightBlueGateTrigger:
+; Shot/bombed/grappled reaction, shootable, BTS 47h. Right blue gate trigger
     dw Setup_RightBlueGateTrigger                                        ;84C81A;
     dw InstList_PLM_Delete                                               ;84C81C;
 
 PLMEntries_leftYellowGateTrigger:
+; Shot/bombed/grappled reaction, shootable, BTS 4Ch. Left yellow gate trigger
     dw Setup_LeftYellowGateTrigger                                       ;84C81E;
     dw InstList_PLM_Delete                                               ;84C820;
 
 PLMEntries_rightYellowGateTrigger:
+; Shot/bombed/grappled reaction, shootable, BTS 4Dh. Right yellow gate trigger
     dw RightYellowGateTrigger                                            ;84C822;
     dw InstList_PLM_Delete                                               ;84C824;
 
 PLMEntries_downwardsOpenGate:
+; Downwards open gate
     dw Setup_DownwardsOpenGate                                           ;84C826;
     dw InstList_PLM_DownwardsOpenGate                                    ;84C828;
 
 PLMEntries_downwardsClosedGate:
+; Downwards closed gate
     dw Setup_DownwardsClosedGate                                         ;84C82A;
     dw InstList_PLM_DownwardsClosedGate                                  ;84C82C;
 
 PLMEntries_upwardsOpenGate:
+; Upwards open gate
     dw Setup_UpwardsOpenGate                                             ;84C82E;
     dw InstList_PLM_UpwardsOpenGate                                      ;84C830;
 
 PLMEntries_upwardsClosedGate:
+; Upwards closed gate
     dw Setup_UpwardsClosedGate                                           ;84C832;
     dw InstList_PLM_UpwardsClosedGate                                    ;84C834;
 
 PLMEntries_downwardsGateShotblock:
+; Downwards gate shotblock
     dw Setup_DownwardsGateShotblock                                      ;84C836;
     dw InstList_PLM_DownwardsGateShotblock_BlueLeft                      ;84C838;
 
 PLMEntries_upwardsGateShotblock:
+; Upwards gate shotblock
     dw Setup_UpwardsGateShotblock                                        ;84C83A;
     dw InstList_PLM_UpwardsGateShotblock_BlueLeft                        ;84C83C;
 
 PLMEntries_genericShotTriggerForAPLM:
+; Shot/bombed/grappled reaction, shootable, BTS 44h / collision reaction, special, BTS 44h. Generic shot trigger for a PLM
     dw Setup_GenericShotTriggerForAPLM                                   ;84C83E;
     dw InstList_PLM_Delete                                               ;84C840;
 
 PLMEntries_greyDoorFacingLeft:
+; Door. Grey door facing left
     dw Setup_GreyDoor                                                    ;84C842;
     dw InstList_PLM_GreyDoorFacingLeft_1                                 ;84C844;
     dw InstList_PLM_GreyDoorFacingLeft_0                                 ;84C846;
 
 PLMEntries_greyDoorFacingRight:
+; Door. Grey door facing right
     dw Setup_GreyDoor                                                    ;84C848;
     dw InstList_PLM_GreyDoorFacingRight_1                                ;84C84A;
     dw InstList_PLM_GreyDoorFacingRight_0                                ;84C84C;
 
 PLMEntries_greyDoorFacingUp:
+; Door. Grey door facing up
     dw Setup_GreyDoor                                                    ;84C84E;
     dw InstList_PLM_GreyDoorFacingUp_1                                   ;84C850;
     dw InstList_PLM_GreyDoorFacingUp_0                                   ;84C852;
 
 PLMEntries_greyDoorFacingDown:
+; Door. Grey door facing down
     dw Setup_GreyDoor                                                    ;84C854;
     dw InstList_PLM_GreyDoorFacingDown_1                                 ;84C856;
     dw InstList_PLM_GreyDoorFacingDown_0                                 ;84C858;
 
 PLMEntries_yellowDoorFacingLeft:
+; Door. Yellow door facing left
     dw Setup_ColoredDoor                                                 ;84C85A;
     dw InstList_PLM_YellowDoorFacingLeft_1                               ;84C85C;
     dw InstList_PLM_YellowDoorFacingLeft_0                               ;84C85E;
 
-PLMEntries_yellowDoorFacingRIght:
+PLMEntries_yellowDoorFacingRight:
+; Door. Yellow door facing right
     dw Setup_ColoredDoor                                                 ;84C860;
     dw InstList_PLM_YellowDoorFacingRight_1                              ;84C862;
     dw InstList_PLM_YellowDoorFacingRight_0                              ;84C864;
 
 PLMEntries_yellowDoorFacingUp:
+; Door. Yellow door facing up
     dw Setup_ColoredDoor                                                 ;84C866;
     dw InstList_PLM_YellowDoorFacingUp_1                                 ;84C868;
     dw InstList_PLM_YellowDoorFacingUp_0                                 ;84C86A;
 
 PLMEntries_yellowDoorFacingDown:
+; Door. Yellow door facing down
     dw Setup_ColoredDoor                                                 ;84C86C;
     dw InstList_PLM_YellowDoorFacingDown_1                               ;84C86E;
     dw InstList_PLM_YellowDoorFacingDown_0                               ;84C870;
 
 PLMEntries_greenDoorFacingLeft:
+; Door. Green door facing left
     dw Setup_ColoredDoor                                                 ;84C872;
     dw InstList_PLM_GreenDoorFacingLeft_1                                ;84C874;
     dw InstList_PLM_GreenDoorFacingLeft_0                                ;84C876;
 
 PLMEntries_greenDoorFacingRight:
+; Door. Green door facing right
     dw Setup_ColoredDoor                                                 ;84C878;
     dw InstList_PLM_GreenDoorFacingRight_1                               ;84C87A;
     dw InstList_PLM_GreenDoorFacingRight_0                               ;84C87C;
 
 PLMEntries_greenDoorFacingUp:
+; Door. Green door facing up
     dw Setup_ColoredDoor                                                 ;84C87E;
     dw InstList_PLM_GreenDoorFacingUp_1                                  ;84C880;
     dw InstList_PLM_GreenDoorFacingUp_0                                  ;84C882;
 
 PLMEntries_greenDoorFacingDown:
+; Door. Green door facing down
     dw Setup_ColoredDoor                                                 ;84C884;
     dw InstList_PLM_GreenDoorFacingDown_1                                ;84C886;
     dw InstList_PLM_GreenDoorFacingDown_0                                ;84C888;
 
 PLMEntries_redDoorFacingLeft:
+; Door. Red door facing left
     dw Setup_ColoredDoor                                                 ;84C88A;
     dw InstList_PLM_RedDoorFacingLeft_1                                  ;84C88C;
     dw InstList_PLM_RedDoorFacingLeft_0                                  ;84C88E;
 
 PLMEntries_redDoorFacingRight:
+; Door. Red door facing right
     dw Setup_ColoredDoor                                                 ;84C890;
     dw InstList_PLM_RedDoorFacingRight_1                                 ;84C892;
     dw InstList_PLM_RedDoorFacingRight_0                                 ;84C894;
 
 PLMEntries_redDoorFacingUp:
+; Door. Red door facing up
     dw Setup_ColoredDoor                                                 ;84C896;
     dw InstList_PLM_RedDoorFacingUp_1                                    ;84C898;
     dw InstList_PLM_RedDoorFacingUp_0                                    ;84C89A;
 
 PLMEntries_redDoorFacingDown:
+; Door. Red door facing down
     dw Setup_ColoredDoor                                                 ;84C89C;
     dw InstList_PLM_RedDoorFacingDown_1                                  ;84C89E;
     dw InstList_PLM_RedDoorFacingDown_0                                  ;84C8A0;
 
 PLMEntries_blueDoorFacingLeft:
+; Door. Shot/bombed/grappled reaction, shootable, BTS 40h. Blue facing left
     dw Setup_BlueDoor                                                    ;84C8A2;
     dw InstList_PLM_BlueDoorFacingLeftOpened_40                          ;84C8A4;
     dw InstList_PLM_BlueDoorFacingLeftClosed                             ;84C8A6;
 
 PLMEntries_blueDoorFacingRight:
+; Door. Shot/bombed/grappled reaction, shootable, BTS 41h. Blue facing right
     dw Setup_BlueDoor                                                    ;84C8A8;
     dw InstList_PLM_BlueDoorFacingLeftOpened_41                          ;84C8AA;
     dw InstList_PLM_BlueDoorFacingRightClosed                            ;84C8AC;
 
 PLMEntries_blueDoorFacingUp:
+; Door. Shot/bombed/grappled reaction, shootable, BTS 42h. Blue facing up
     dw Setup_BlueDoor                                                    ;84C8AE;
     dw InstList_PLM_BlueDoorFacingUpOpened_42                            ;84C8B0;
     dw InstList_PLM_BlueDoorFacingUpClosed_42                            ;84C8B2;
 
 PLMEntries_blueDoorFacingDown:
+; Door. Shot/bombed/grappled reaction, shootable, BTS 43h. Blue facing down
     dw Setup_BlueDoor                                                    ;84C8B4;
     dw InstList_PLM_BlueDoorFacingUpOpened_43                            ;84C8B6;
     dw InstList_PLM_BlueDoorFacingUpClosed_43                            ;84C8B8;
 
 PLMEntries_blueDoorClosingFacingLeft:
+; Blue door closing facing left
     dw Setup_DeactivatePLM                                               ;84C8BA;
     dw InstList_PLM_BlueDoorFacingLeftClosed                             ;84C8BC;
 
 PLMEntries_blueDoorClosingFacingRight:
+; Blue door closing facing right
     dw Setup_DeactivatePLM                                               ;84C8BE;
     dw InstList_PLM_BlueDoorFacingRightClosed                            ;84C8C0;
 
 PLMEntries_blueDoorClosingFacingUp:
+; Blue door closing facing up
     dw Setup_DeactivatePLM                                               ;84C8C2;
     dw InstList_PLM_BlueDoorFacingUpClosed_42                            ;84C8C4;
 
 PLMEntries_blueDoorClosingFacingDown:
+; Blue door closing facing down
     dw Setup_DeactivatePLM                                               ;84C8C6;
     dw InstList_PLM_BlueDoorFacingUpClosed_43                            ;84C8C8;
 
 PLMEntries_gateThatClosesInEscapeRoom1:
+; Door. Gate that closes during escape in room after Mother Brain
     dw Setup_DeactivatePLM                                               ;84C8CA;
     dw InstList_PLM_GateThatClosesDuringEscapeAfterMotherBrain_0         ;84C8CC;
     dw InstList_PLM_GateThatClosesDuringEscapeAfterMotherBrain_1         ;84C8CE;
 
 PLMEntries_gateThatClosesInEscapeRoom1_PLM:
+; PLM version of the above
     dw Setup_DeactivatePLM                                               ;84C8D0;
     dw InstList_PLM_GateThatClosesDuringEscapeAfterMotherBrain_1         ;84C8D2;
 
+
 if !FEATURE_KEEP_UNREFERENCED
+;;; $C8D4: Instruction list - PLM $CFEC (unused. Draws 1x1 shot block) ;;;
 UNUSED_InstList_PLM_Draws1x1ShotBlock_84C8D4:
     dw $0001,UNUSED_DrawInst_1x1ShotBlock_84A475                         ;84C8D4;
     dw Instruction_PLM_Delete                                            ;84C8D8;
 
+
+;;; $C8DA: Instruction list - PLM $CFF0 (unused. Draws 1x2 shot block) ;;;
 UNUSED_InstList_PLM_Draws1x2ShotBlock_84C8DA:
     dw $0001,DrawInst_2x1RespawningShotBlock                             ;84C8DA;
     dw Instruction_PLM_Delete                                            ;84C8DE;
 
+
+;;; $C8E0: Instruction list - PLM $CFF4 (unused. Draws 2x1 shot block) ;;;
 UNUSED_InstList_PLM_Draws2x1ShotBlock_84C8E0:
     dw $0001,DrawInst_1x2RespawningShotBlock                             ;84C8E0;
     dw Instruction_PLM_Delete                                            ;84C8E4;
 
+
+;;; $C8E6: Instruction list - PLM $CFF8 (unused. Draws 2x2 shot block) ;;;
 UNUSED_InstList_PLM_Draws2x2ShotBlock_84C8E6:
     dw $0001,DrawInst_2x2RespawningShotBlock                             ;84C8E6;
     dw Instruction_PLM_Delete                                            ;84C8EA;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $C8EC: Instruction list - PLM $CFFC (bomb reaction, special block, BTS 0/4. 1x1 (respawning) crumble block) ;;;
 InstList_BombReaction_PLM_1x1RespawningCrumbleBlock:
     dw $0001,DrawInst_1x1RespawningCrumbleBlock                          ;84C8EC;
     dw Instruction_PLM_Delete                                            ;84C8F0;
 
+
+;;; $C8F2: Instruction list - PLM $D000 (bomb reaction, special block, BTS 1/5. 2x1 (respawning) crumble block) ;;;
 InstList_BombReaction_PLM_2x1RespawningCrumbleBlock:
     dw $0001,DrawInst_2x1RespawningCrumbleBlock                          ;84C8F2;
     dw Instruction_PLM_Delete                                            ;84C8F6;
 
+
+;;; $C8F8: Instruction list - PLM $D004 (bomb reaction, special block, BTS 2/6. 1x2 (respawning) crumble block) ;;;
 InstList_BombReaction_PLM_1x2RespawningCrumbleBlock:
     dw $0001,DrawInst_1x2RespawningCrumbleBlock                          ;84C8F8;
     dw Instruction_PLM_Delete                                            ;84C8FC;
 
+
+;;; $C8FE: Instruction list - PLM $D008 (bomb reaction, special block, BTS 3/7. 2x2 (respawning) crumble block) ;;;
 InstList_BombReaction_PLM_2x2RespawningCrumbleBlock:
     dw $0001,DrawInst_2x2RespawningCrumbleBlock                          ;84C8FE;
     dw Instruction_PLM_Delete                                            ;84C902;
 
+
 if !FEATURE_KEEP_UNREFERENCED
+;;; $C904: Instruction list - PLM $D00C (unused) ;;;
 UNUSED_InstList_PLM_84C904:
+; Draws 1x1 bomb block
     dw $0001,UNUSED_DrawInst_84A4C1                                      ;84C904;
     dw Instruction_PLM_Delete                                            ;84C908;
 
+
+;;; $C90A: Instruction list - PLM $D010 (unused) ;;;
 UNUSED_InstList_PLM_84C90A:
+; Draws 1x2 bomb block
     dw $0001,DrawInst_2x1RespawningBombBlock                             ;84C90A;
     dw Instruction_PLM_Delete                                            ;84C90E;
 
+
+;;; $C910: Instruction list - PLM $D014 (unused) ;;;
 UNUSED_InstList_PLM_84C910:
+; Draws 2x1 bomb block
     dw $0001,DrawInst_1x2RespawningBombBlock                             ;84C910;
     dw Instruction_PLM_Delete                                            ;84C914;
 
+
+;;; $C916: Instruction list - PLM $D018 (unused) ;;;
 UNUSED_InstList_PLM_84C916:
+; Draws 2x2 bomb block
     dw $0001,DrawInst_2x2RespawningBombBlock                             ;84C916;
     dw Instruction_PLM_Delete                                            ;84C91A;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $C91C: Instruction list - power bomb block bombed / PLM $D01C (unused) ;;;
 UNUSED_InstList_PLM_PowerBombBlockBombed_84C91C:
     dw $0001,UNUSED_DrawInst_PowerBombBlockBombed_84A4E7                 ;84C91C;
     dw Instruction_PLM_Delete                                            ;84C920;
 
+
+;;; $C922: Instruction list - super missile block bombed / PLM $D020 (unused) ;;;
 UNUSED_InstList_PLM_SuperMissileBlockBombed_84C922:
     dw $0001,UNUSED_DrawInst_SuperMissileBlockBombed_84A4ED              ;84C922;
     dw Instruction_PLM_Delete                                            ;84C926;
 
+
+;;; $C928: Instruction list - PLM $D024 (bomb reaction, special block, BTS Eh/Fh / Brinstar 82h/83h/84h/85h. Speed block) ;;;
 InstList_PLM_BombReaction_SpeedBlock:
     dw $0001,DrawInst_BombReactionSpeedBlock                             ;84C928;
     dw Instruction_PLM_Delete                                            ;84C92C;
 
+
 if !FEATURE_KEEP_UNREFERENCED
+;;; $C92E: Instruction list - PLM $D028 (unused. Respawning screw attack block) ;;;
 UNUSED_InstList_PLM_84C92E:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $06                   ;84C92E;
     dw $0004,DrawInst_Respawn1x1_0                                       ;84C931;
@@ -9277,6 +11642,8 @@ UNUSED_InstList_PLM_84C92E:
     dw Instruction_PLM_Delete                                            ;84C94F;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $C951: Instruction list - PLM $D030 (collision reaction, special, BTS Brinstar 82h. Respawning speed block, slower crumble animation) ;;;
 InstList_PLM_RespawningSpeedBlock_SlowerCrumbleAnimation:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $06                   ;84C951;
     dw $0002,DrawInst_Respawn1x1_0                                       ;84C954;
@@ -9289,6 +11656,8 @@ InstList_PLM_RespawningSpeedBlock_SlowerCrumbleAnimation:
     dw Instruction_PLM_DrawPLMBlock                                      ;84C970;
     dw Instruction_PLM_Delete                                            ;84C972;
 
+
+;;; $C974: Instruction list - PLM $D038 (collision reaction, special, BTS Eh. Respawning speed block) ;;;
 InstList_PLM_RespawningSpeedBoostBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $06                   ;84C974;
     dw $0001,DrawInst_Respawn1x1_0                                       ;84C977;
@@ -9301,6 +11670,8 @@ InstList_PLM_RespawningSpeedBoostBlock:
     dw Instruction_PLM_DrawPLMBlock                                      ;84C993;
     dw Instruction_PLM_Delete                                            ;84C995;
 
+
+;;; $C997: Instruction list - PLM $D03C (collision reaction, special, BTS Brinstar 84h. Respawning speed block) ;;;
 InstList_PLM_RespawningSpeedBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $06                   ;84C997;
                                                                    ;84C999;
@@ -9314,8 +11685,11 @@ InstList_PLM_RespawningSpeedBlock:
     dw Instruction_PLM_DrawPLMBlock_Clone                                ;84C9B6;
     dw Instruction_PLM_Delete                                            ;84C9B8;
 
+
 if !FEATURE_KEEP_UNREFERENCED
+;;; $C9BA: Instruction list - PLM $D02C (unused. Screw attack block) ;;;
 UNUSED_InstList_PLM_84C9BA:
+; Even slower version of InstList_PLM_SpeedBlockSlowerCrumbleAnimation
     dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $06                   ;84C9BA;
     dw $0004,DrawInst_Respawn1x1_0                                       ;84C9BD;
     dw $0004,DrawInst_Respawn1x1_1                                       ;84C9C1;
@@ -9324,6 +11698,8 @@ UNUSED_InstList_PLM_84C9BA:
     dw Instruction_PLM_Delete                                            ;84C9CD;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $C9CF: Instruction list - PLM $D034 (collision reaction, special, BTS Brinstar 83h. Speed block, slower crumble animation) ;;;
 InstList_PLM_SpeedBlockSlowerCrumbleAnimation:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $06                   ;84C9CF;
     dw $0002,DrawInst_Respawn1x1_0                                       ;84C9D2;
@@ -9332,6 +11708,8 @@ InstList_PLM_SpeedBlockSlowerCrumbleAnimation:
     dw $0001,DrawInst_Respawn1x1_3                                       ;84C9DE;
     dw Instruction_PLM_Delete                                            ;84C9E2;
 
+
+;;; $C9E4: Instruction list - PLM $D040 (collision reaction, special, BTS Fh / Brinstar 85h. Speed block) ;;;
 InstList_PLM_SpeedBoostBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $06                   ;84C9E4;
     dw $0001,DrawInst_Respawn1x1_0                                       ;84C9E7;
@@ -9340,6 +11718,8 @@ InstList_PLM_SpeedBoostBlock:
     dw $0001,DrawInst_Respawn1x1_3                                       ;84C9F3;
     dw Instruction_PLM_Delete                                            ;84C9F7;
 
+
+;;; $C9F9: Instruction list - PLM $D044 (collision reaction, special, BTS 0. 1x1 respawning crumble block) ;;;
 InstList_PLM_1x1RespawningCrumbleBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84C9F9;
     dw $0008,DrawInst_Respawn1x1_0                                       ;84C9FC;
@@ -9352,6 +11732,8 @@ InstList_PLM_1x1RespawningCrumbleBlock:
     dw Instruction_PLM_DrawPLMBlock                                      ;84CA18;
     dw Instruction_PLM_Delete                                            ;84CA1A;
 
+
+;;; $CA1C: Instruction list - PLM $D048 (collision reaction, special, BTS 1. 2x1 respawning crumble block) ;;;
 InstList_PLM_2x1RespawningCrumbleBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CA1C;
     dw $0004,DrawInst_Respawn2x1_0                                       ;84CA1F;
@@ -9364,6 +11746,8 @@ InstList_PLM_2x1RespawningCrumbleBlock:
     dw $0001,DrawInst_2x1RespawningCrumbleBlock                          ;84CA3B;
     dw Instruction_PLM_Delete                                            ;84CA3F;
 
+
+;;; $CA41: Instruction list - PLM $D04C (collision reaction, special, BTS 2. 1x2 respawning crumble block) ;;;
 InstList_PLM_1x2RespawningCrumbleBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CA41;
     dw $0004,DrawInst_Respawn1x2_0                                       ;84CA44;
@@ -9376,6 +11760,8 @@ InstList_PLM_1x2RespawningCrumbleBlock:
     dw $0001,DrawInst_1x2RespawningCrumbleBlock                          ;84CA60;
     dw Instruction_PLM_Delete                                            ;84CA64;
 
+
+;;; $CA66: Instruction list - PLM $D050 (collision reaction, special, BTS 3. 2x2 respawning crumble block) ;;;
 InstList_PLM_2x2RespawningCrumbleBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CA66;
     dw $0004,DrawInst_Respawn2x2_0                                       ;84CA69;
@@ -9388,6 +11774,8 @@ InstList_PLM_2x2RespawningCrumbleBlock:
     dw $0001,DrawInst_2x2RespawningCrumbleBlock                          ;84CA85;
     dw Instruction_PLM_Delete                                            ;84CA89;
 
+
+;;; $CA8B: Instruction list - PLM $D054 (collision reaction, special, BTS 4. 1x1 crumble block) ;;;
 InstList_PLM_1x1CrumbleBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CA8B;
     dw $0004,DrawInst_Respawn1x1_0                                       ;84CA8E;
@@ -9396,6 +11784,8 @@ InstList_PLM_1x1CrumbleBlock:
     dw $0001,DrawInst_Respawn1x1_3                                       ;84CA9A;
     dw Instruction_PLM_Delete                                            ;84CA9E;
 
+
+;;; $CAA0: Instruction list - PLM $D058 (collision reaction, special, BTS 5. 2x1 crumble block) ;;;
 InstList_PLM_2x1CrumbleBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CAA0;
     dw $0004,DrawInst_Respawn2x1_0                                       ;84CAA3;
@@ -9404,6 +11794,8 @@ InstList_PLM_2x1CrumbleBlock:
     dw $0001,DrawInst_Respawn2x1_3                                       ;84CAAF;
     dw Instruction_PLM_Delete                                            ;84CAB3;
 
+
+;;; $CAB5: Instruction list - PLM $D05C (collision reaction, special, BTS 6. 1x2 crumble block) ;;;
 InstList_PLM_1x2CrumbleBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CAB5;
     dw $0004,DrawInst_Respawn1x2_0                                       ;84CAB8;
@@ -9412,6 +11804,8 @@ InstList_PLM_1x2CrumbleBlock:
     dw $0001,DrawInst_Respawn1x2_3                                       ;84CAC4;
     dw Instruction_PLM_Delete                                            ;84CAC8;
 
+
+;;; $CACA: Instruction list - PLM $D060 (collision reaction, special, BTS 7. 2x2 crumble block) ;;;
 InstList_PLM_2x2CrumbleBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CACA;
     dw $0004,DrawInst_Respawn2x2_0                                       ;84CACD;
@@ -9420,6 +11814,8 @@ InstList_PLM_2x2CrumbleBlock:
     dw $0001,DrawInst_Respawn2x2_3                                       ;84CAD9;
     dw Instruction_PLM_Delete                                            ;84CADD;
 
+
+;;; $CADF: Instruction list - PLM $D064 (shot/bombed/grappled reaction, shootable, BTS 0. 1x1 respawning shot block) ;;;
 InstList_PLM_1x1RespawningShotBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CADF;
     dw $0004,DrawInst_Respawn1x1_0                                       ;84CAE2;
@@ -9432,6 +11828,8 @@ InstList_PLM_1x1RespawningShotBlock:
     dw Instruction_PLM_DrawPLMBlock                                      ;84CAFE;
     dw Instruction_PLM_Delete                                            ;84CB00;
 
+
+;;; $CB02: Instruction list - PLM $D068 (shot/bombed/grappled reaction, shootable, BTS 1. 2x1 respawning shot block) ;;;
 InstList_PLM_2x1RespawningShotBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CB02;
     dw $0004,DrawInst_Respawn2x1_0                                       ;84CB05;
@@ -9444,6 +11842,8 @@ InstList_PLM_2x1RespawningShotBlock:
     dw $0001,DrawInst_2x1RespawningShotBlock                             ;84CB21;
     dw Instruction_PLM_Delete                                            ;84CB25;
 
+
+;;; $CB27: Instruction list - PLM $D06C (shot/bombed/grappled reaction, shootable, BTS 2. 1x2 respawning shot block) ;;;
 InstList_PLM_1x2RespawningShotBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CB27;
     dw $0004,DrawInst_Respawn1x2_0                                       ;84CB2A;
@@ -9456,6 +11856,8 @@ InstList_PLM_1x2RespawningShotBlock:
     dw $0001,DrawInst_1x2RespawningShotBlock                             ;84CB46;
     dw Instruction_PLM_Delete                                            ;84CB4A;
 
+
+;;; $CB4C: Instruction list - PLM $D070 (shot/bombed/grappled reaction, shootable, BTS 3. 2x2 respawning shot block) ;;;
 InstList_PLM_2x2RespawningShotBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CB4C;
     dw $0004,DrawInst_Respawn2x2_0                                       ;84CB4F;
@@ -9468,6 +11870,8 @@ InstList_PLM_2x2RespawningShotBlock:
     dw $0001,DrawInst_2x2RespawningShotBlock                             ;84CB6B;
     dw Instruction_PLM_Delete                                            ;84CB6F;
 
+
+;;; $CB71: Instruction list - PLM $D08C (shot/bombed/grappled reaction, shootable, BTS Ah. Respawning super missile block) ;;;
 InstList_PLM_RespawningSuperMissileBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $0A                   ;84CB71;
     dw $0004,DrawInst_Respawn1x1_0                                       ;84CB74;
@@ -9480,6 +11884,8 @@ InstList_PLM_RespawningSuperMissileBlock:
     dw Instruction_PLM_DrawPLMBlock                                      ;84CB90;
     dw Instruction_PLM_Delete                                            ;84CB92;
 
+
+;;; $CB94: Instruction list - PLM $D084 (shot/bombed/grappled reaction, shootable, BTS 8. Respawning power bomb block) ;;;
 InstList_PLM_RespawningPowerBombBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CB94;
     dw $0004,DrawInst_Respawn1x1_0                                       ;84CB97;
@@ -9492,6 +11898,8 @@ InstList_PLM_RespawningPowerBombBlock:
     dw Instruction_PLM_DrawPLMBlock                                      ;84CBB3;
     dw Instruction_PLM_Delete                                            ;84CBB5;
 
+
+;;; $CBB7: Instruction list - PLM $D074 (shot/bombed/grappled reaction, shootable, BTS 4. 1x1 shot block) ;;;
 InstList_PLM_1x1ShotBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CBB7;
     dw $0004,DrawInst_Respawn1x1_0                                       ;84CBBA;
@@ -9500,6 +11908,8 @@ InstList_PLM_1x1ShotBlock:
     dw $0001,DrawInst_Respawn1x1_3                                       ;84CBC6;
     dw Instruction_PLM_Delete                                            ;84CBCA;
 
+
+;;; $CBCC: Instruction list - PLM $D078 (shot/bombed/grappled reaction, shootable, BTS 5. 2x1 shot block) ;;;
 InstList_PLM_2x1ShotBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CBCC;
     dw $0004,DrawInst_Respawn2x1_0                                       ;84CBCF;
@@ -9508,6 +11918,8 @@ InstList_PLM_2x1ShotBlock:
     dw $0001,DrawInst_Respawn2x1_3                                       ;84CBDB;
     dw Instruction_PLM_Delete                                            ;84CBDF;
 
+
+;;; $CBE1: Instruction list - PLM $D07C (shot/bombed/grappled reaction, shootable, BTS 6. 1x2 shot block) ;;;
 InstList_PLM_1x2ShotBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CBE1;
     dw $0004,DrawInst_Respawn1x2_0                                       ;84CBE4;
@@ -9516,6 +11928,8 @@ InstList_PLM_1x2ShotBlock:
     dw $0001,DrawInst_Respawn1x2_3                                       ;84CBF0;
     dw Instruction_PLM_Delete                                            ;84CBF4;
 
+
+;;; $CBF6: Instruction list - PLM $D080 (shot/bombed/grappled reaction, shootable, BTS 7. 2x2 shot block) ;;;
 InstList_PLM_2x2ShotBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CBF6;
     dw $0004,DrawInst_Respawn2x2_0                                       ;84CBF9;
@@ -9524,6 +11938,8 @@ InstList_PLM_2x2ShotBlock:
     dw $0001,DrawInst_Respawn2x2_3                                       ;84CC05;
     dw Instruction_PLM_Delete                                            ;84CC09;
 
+
+;;; $CC0B: Instruction list - PLM $D090 (shot/bombed/grappled reaction, shootable, BTS Bh. Super missile block) ;;;
 InstList_PLM_SuperMissileBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $0A                   ;84CC0B;
     dw $0004,DrawInst_Respawn1x1_0                                       ;84CC0E;
@@ -9532,6 +11948,8 @@ InstList_PLM_SuperMissileBlock:
     dw $0001,DrawInst_Respawn1x1_3                                       ;84CC1A;
     dw Instruction_PLM_Delete                                            ;84CC1E;
 
+
+;;; $CC20: Instruction list - PLM $D088 (shot/bombed/grappled reaction, shootable, BTS 9. Power bomb block) ;;;
 InstList_PLM_PowerBombBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CC20;
     dw $0003,DrawInst_Respawn1x1_0                                       ;84CC23;
@@ -9540,14 +11958,20 @@ InstList_PLM_PowerBombBlock:
     dw $0001,DrawInst_Respawn1x1_3                                       ;84CC2F;
     dw Instruction_PLM_Delete                                            ;84CC33;
 
+
+;;; $CC35: Instruction list - PLM $D098 (collision reaction, bombable, BTS 0. 1x1 respawning bomb block) ;;;
 InstList_PLM_CollisionReaction_1x1RespawningBombBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $06                   ;84CC35;
     dw Instruction_PLM_GotoY                                             ;84CC38;
     dw InstList_PLM_1x1RespawningBombBlock                               ;84CC3A;
 
+
+;;; $CC3C: Instruction list - PLM $D0B8 (shot/bombed/grappled reaction, bombable, BTS 0. 1x1 respawning bomb block) ;;;
 InstList_PLM_Reaction_1x1RespawningBombBlock_0:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $0A                   ;84CC3C;
 
+
+;;; $CC3F: Instruction list - 1x1 respawning bomb block ;;;
 InstList_PLM_1x1RespawningBombBlock:
     dw $0004,DrawInst_Respawn1x1_0                                       ;84CC3F;
     dw $0004,DrawInst_Respawn1x1_1                                       ;84CC43;
@@ -9559,14 +11983,20 @@ InstList_PLM_1x1RespawningBombBlock:
     dw Instruction_PLM_DrawPLMBlock                                      ;84CC5B;
     dw Instruction_PLM_Delete                                            ;84CC5D;
 
+
+;;; $CC5F: Instruction list - PLM $D09C (collision reaction, bombable, BTS 1. 2x1 respawning bomb block) ;;;
 InstList_PLM_Collision_2x1RespawningBombBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $06                   ;84CC5F;
     dw Instruction_PLM_GotoY                                             ;84CC62;
     dw InstList_PLM_2x1RespawningBombBlock                               ;84CC64;
 
+
+;;; $CC66: Instruction list - PLM $D0BC (shot/bombed/grappled reaction, bombable, BTS 1. 2x1 respawning bomb block) ;;;
 InstList_PLM_Reaction_2x1RespawningBombBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $0A                   ;84CC66;
 
+
+;;; $CC69: Instruction list - 2x1 respawning bomb block ;;;
 InstList_PLM_2x1RespawningBombBlock:
     dw $0004,DrawInst_Respawn2x1_0                                       ;84CC69;
     dw $0004,DrawInst_Respawn2x1_1                                       ;84CC6D;
@@ -9578,14 +12008,20 @@ InstList_PLM_2x1RespawningBombBlock:
     dw $0001,DrawInst_2x1RespawningBombBlock                             ;84CC85;
     dw Instruction_PLM_Delete                                            ;84CC89;
 
+
+;;; $CC8B: Instruction list - PLM $D0A0 (collision reaction, bombable, BTS 2. 1x2 respawning bomb block) ;;;
 InstList_PLM_Collision_1x2RespawningBombBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $06                   ;84CC8B;
     dw Instruction_PLM_GotoY                                             ;84CC8E;
     dw InstList_PLM_1x2RespawningBombBlock                               ;84CC90;
 
+
+;;; $CC92: Instruction list - PLM $D0C0 (shot/bombed/grappled reaction, bombable, BTS 2. 1x2 respawning bomb block) ;;;
 InstList_PLM_Reaction_1x2RespawningBombBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $0A                   ;84CC92;
 
+
+;;; $CC95: Instruction list - 1x2 respawning bomb block ;;;
 InstList_PLM_1x2RespawningBombBlock:
     dw $0004,DrawInst_Respawn1x2_0                                       ;84CC95;
     dw $0004,DrawInst_Respawn1x2_1                                       ;84CC99;
@@ -9597,14 +12033,20 @@ InstList_PLM_1x2RespawningBombBlock:
     dw $0001,DrawInst_1x2RespawningBombBlock                             ;84CCB1;
     dw Instruction_PLM_Delete                                            ;84CCB5;
 
+
+;;; $CCB7: Instruction list - PLM $D0A4 (collision reaction, bombable, BTS 3. 2x2 respawning bomb block) ;;;
 InstList_PLM_Collision_2x2RespawningBombBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $06                   ;84CCB7;
     dw Instruction_PLM_GotoY                                             ;84CCBA;
     dw InstList_PLM_2x2RespawningBombBlock                               ;84CCBC;
 
+
+;;; $CCBE: Instruction list - PLM $D0C4 (shot/bombed/grappled reaction, bombable, BTS 3. 2x2 respawning bomb block) ;;;
 InstList_PLM_Reaction_2x2RespawningBombBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $0A                   ;84CCBE;
 
+
+;;; $CCC1: Instruction list - 2x2 respawning bomb block ;;;
 InstList_PLM_2x2RespawningBombBlock:
     dw $0004,DrawInst_Respawn2x2_0                                       ;84CCC1;
     dw $0004,DrawInst_Respawn2x2_1                                       ;84CCC5;
@@ -9616,14 +12058,20 @@ InstList_PLM_2x2RespawningBombBlock:
     dw $0001,DrawInst_2x2RespawningBombBlock                             ;84CCDD;
     dw Instruction_PLM_Delete                                            ;84CCE1;
 
+
+;;; $CCE3: Instruction list - PLM $D0A8 (collision reaction, bombable, BTS 4. 1x1 bomb block) ;;;
 InstList_PLM_Collision_1x1RespawningBombBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $06                   ;84CCE3;
     dw Instruction_PLM_GotoY                                             ;84CCE6;
     dw InstList_PLM_1x1BombBlock                                         ;84CCE8;
 
+
+;;; $CCEA: Instruction list - PLM $D0C8 (shot/bombed/grappled reaction, bombable, BTS 4. 1x1 bomb block) ;;;
 InstList_PLM_Reaction_1x1RespawningBombBlock_4:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $0A                   ;84CCEA;
 
+
+;;; $CCED: Instruction list - 1x1 bomb block ;;;
 InstList_PLM_1x1BombBlock:
     dw $0004,DrawInst_Respawn1x1_0                                       ;84CCED;
     dw $0004,DrawInst_Respawn1x1_1                                       ;84CCF1;
@@ -9631,14 +12079,20 @@ InstList_PLM_1x1BombBlock:
     dw $0001,DrawInst_Respawn1x1_3                                       ;84CCF9;
     dw Instruction_PLM_Delete                                            ;84CCFD;
 
+
+;;; $CCFF: Instruction list - PLM $D0AC (collision reaction, bombable, BTS 5. 2x1 bomb block) ;;;
 InstList_PLM_Collision_2x1BombBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $06                   ;84CCFF;
     dw Instruction_PLM_GotoY                                             ;84CD02;
     dw InstList_PLM_2x1BombBlock                                         ;84CD04;
 
+
+;;; $CD06: Instruction list - PLM $D0CC (shot/bombed/grappled reaction, bombable, BTS 5. 2x1 bomb block) ;;;
 InstList_PLM_Reaction_2x1BombBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $0A                   ;84CD06;
 
+
+;;; $CD09: Instruction list - 2x1 bomb block ;;;
 InstList_PLM_2x1BombBlock:
     dw $0004,DrawInst_Respawn2x1_0                                       ;84CD09;
     dw $0004,DrawInst_Respawn2x1_1                                       ;84CD0D;
@@ -9646,14 +12100,20 @@ InstList_PLM_2x1BombBlock:
     dw $0001,DrawInst_Respawn2x1_3                                       ;84CD15;
     dw Instruction_PLM_Delete                                            ;84CD19;
 
+
+;;; $CD1B: Instruction list - PLM $D0B0 (collision reaction, bombable, BTS 6. 1x2 bomb block) ;;;
 InstList_PLM_Collision_1x2BombBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $06                   ;84CD1B;
     dw Instruction_PLM_GotoY                                             ;84CD1E;
     dw InstList_PLM_1x2BombBlock                                         ;84CD20;
 
+
+;;; $CD22: Instruction list - PLM $D0D0 (shot/bombed/grappled reaction, bombable, BTS 6. 1x2 bomb block) ;;;
 InstList_PLM_Reaction_1x2BombBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $0A                   ;84CD22;
 
+
+;;; $CD25: Instruction list - 1x2 bomb block ;;;
 InstList_PLM_1x2BombBlock:
     dw $0004,DrawInst_Respawn1x2_0                                       ;84CD25;
     dw $0004,DrawInst_Respawn1x2_1                                       ;84CD29;
@@ -9661,14 +12121,20 @@ InstList_PLM_1x2BombBlock:
     dw $0001,DrawInst_Respawn1x2_3                                       ;84CD31;
     dw Instruction_PLM_Delete                                            ;84CD35;
 
+
+;;; $CD37: Instruction list - PLM $D0B4 (collision reaction, bombable, BTS 7. 2x2 bomb block) ;;;
 InstList_PLM_Collision_2x2BombBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $06                   ;84CD37;
     dw Instruction_PLM_GotoY                                             ;84CD3A;
     dw InstList_PLM_2x2BombBlock                                         ;84CD3C;
 
+
+;;; $CD3E: Instruction list - PLM $D0D4 (shot/bombed/grappled reaction, bombable, BTS 7. 2x2 bomb block) ;;;
 InstList_PLM_Reaction_2x2BombBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $0A                   ;84CD3E;
 
+
+;;; $CD41: Instruction list - 2x2 bomb block ;;;
 InstList_PLM_2x2BombBlock:
     dw $0004,DrawInst_Respawn2x2_0                                       ;84CD41;
     dw $0004,DrawInst_Respawn2x2_1                                       ;84CD45;
@@ -9676,6 +12142,8 @@ InstList_PLM_2x2BombBlock:
     dw $0001,DrawInst_Respawn2x2_3                                       ;84CD4D;
     dw Instruction_PLM_Delete                                            ;84CD51;
 
+
+;;; $CD53: Instruction list - PLM $D094 (enemy collision reaction, spike block, BTS Fh. Enemy breakable block) ;;;
 InstList_PLM_EnemyBreakableBlock:
     dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $0A                   ;84CD53;
     dw $0004,DrawInst_Respawn1x1_0                                       ;84CD56;
@@ -9684,9 +12152,13 @@ InstList_PLM_EnemyBreakableBlock:
     dw $0001,DrawInst_Respawn1x1_3                                       ;84CD62;
     dw Instruction_PLM_Delete                                            ;84CD66;
 
+
+;;; $CD68: Instruction list - PLM $D0D8/$D0E4/$D0E8 (grappled reaction, spike block / grapple block, BTS 0/3. Grapple block) ;;;
 InstList_PLM_GrappleBlock:
     dw Instruction_PLM_Delete                                            ;84CD68;
 
+
+;;; $CD6A: Instruction list - PLM $D0DC (grappled reaction, grapple block, BTS 1. Respawning breakable grapple block) ;;;
 InstList_PLM_RespawningBreakableGrappleBlock:
     dw $00F0,DrawInst_BreakableGrappleBlock_0                            ;84CD6A;
     dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $0A                   ;84CD6E;
@@ -9701,7 +12173,11 @@ InstList_PLM_RespawningBreakableGrappleBlock:
     dw Instruction_PLM_DrawPLMBlock                                      ;84CD8F;
     dw Instruction_PLM_Delete                                            ;84CD91;
 
+
+;;; $CD93: PLM BTS = 1 ;;;
 Instruction_SetPLMBTSTo1:
+;; Parameters:
+;;     X: PLM index
     PHX                                                                  ;84CD93;
     LDA.W $1C87,X                                                        ;84CD94;
     LSR A                                                                ;84CD97;
@@ -9714,6 +12190,7 @@ Instruction_SetPLMBTSTo1:
     RTS                                                                  ;84CDA8;
 
 
+;;; $CDA9: Instruction list - PLM $D0E0 (grappled reaction, grapple block, BTS 2. Breakable grapple block) ;;;
 InstList_PLM_BreakableGrappleBlock:
     dw $0078,DrawInst_BreakableGrappleBlock_0                            ;84CDA9;
     dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $0A                   ;84CDAD;
@@ -9723,8 +12200,12 @@ InstList_PLM_BreakableGrappleBlock:
     dw $0001,DrawInst_BreakableGrappleBlock_4                            ;84CDBC;
     dw Instruction_PLM_Delete                                            ;84CDC0;
 
+
 if !FEATURE_KEEP_UNREFERENCED
+;;; $CDC2: Setup - PLM $D028/$D02C (unused. (Respawning) screw attack block) ;;;
 UNUSED_Setup_84CDC2:
+;; Parameters:
+;;     Y: PLM index
     LDA.W $0A1C                                                          ;84CDC2;
     CMP.W #$0081                                                         ;84CDC5;
     BEQ .screwAttacking                                                  ;84CDC8;
@@ -9740,7 +12221,6 @@ UNUSED_Setup_84CDC2:
     CLC                                                                  ;84CDE0;
     RTS                                                                  ;84CDE1;
 
-
   .deletePLM:
     LDA.W #$0000                                                         ;84CDE2;
     STA.W $1C37,Y                                                        ;84CDE5;
@@ -9749,7 +12229,12 @@ UNUSED_Setup_84CDC2:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $CDEA: Setup - PLM $D030/$D034/$D038/$D03C/$D040 (collision reaction, special, BTS Eh/Fh / Brinstar 82h..85h. Respawning speed block) ;;;
 Setup_Collision_RespawningSpeedBoostBlock:
+;; Parameters:
+;;     Y: PLM index
+;; Returns:
+;;     Carry: Set if collision, clear otherwise
     LDA.W $0B3E                                                          ;84CDEA;
     AND.W #$0F00                                                         ;84CDED;
     CMP.W #$0400                                                         ;84CDF0;
@@ -9772,7 +12257,6 @@ Setup_Collision_RespawningSpeedBoostBlock:
     SEC                                                                  ;84CE1C;
     RTS                                                                  ;84CE1D;
 
-
   .speed:
     LDX.W $1C87,Y                                                        ;84CE1E;
     LDA.L $7F0002,X                                                      ;84CE21;
@@ -9785,7 +12269,12 @@ Setup_Collision_RespawningSpeedBoostBlock:
     RTS                                                                  ;84CE36;
 
 
+;;; $CE37: Setup - PLM $D044/$D048/$D04C/$D050/$D054/$D058/$D05C/$D060 (collision reaction, special, BTS 0..7. (Respawning) crumble block) ;;;
 Setup_Collision_RespawningCrumbleBlock:
+;; Parameters:
+;;     Y: PLM index
+;; Returns:
+;;     Carry: Set. Unconditional collision
     LDA.W $0B02                                                          ;84CE37;
     AND.W #$000F                                                         ;84CE3A;
     CMP.W #$0003                                                         ;84CE3D;
@@ -9803,7 +12292,6 @@ Setup_Collision_RespawningCrumbleBlock:
     SEC                                                                  ;84CE61;
     RTS                                                                  ;84CE62;
 
-
   .deletePLM:
     LDA.W #$0000                                                         ;84CE63;
     STA.W $1C37,Y                                                        ;84CE66;
@@ -9811,7 +12299,12 @@ Setup_Collision_RespawningCrumbleBlock:
     RTS                                                                  ;84CE6A;
 
 
+;;; $CE6B: Setup - PLM $D064/$D068/$D06C/$D070 (shot/bombed/grappled reaction, shootable, BTS 0..3. Respawning shot block) ;;;
 Setup_Reaction_RespawningShotBlock:
+;; Parameters:
+;;     Y: PLM index
+
+; Note that the PLM respawn block is only used by the 1x1 case
     LDX.W $1C87,Y                                                        ;84CE6B;
     LDA.L $7F0002,X                                                      ;84CE6E;
     AND.W #$F000                                                         ;84CE72;
@@ -9822,7 +12315,10 @@ Setup_Reaction_RespawningShotBlock:
     RTS                                                                  ;84CE82;
 
 
+;;; $CE83: Setup - PLM $D098/$D09C/$D0A0/$D0A4/$D0A8/$D0AC/$D0B0/$D0B4 (collision reaction, bombable, BTS 0..7. (Respawning) bomb block) ;;;
 Setup_Collision_RespawningBombBlock:
+;; Parameters:
+;;     Y: PLM index
     LDA.W $0B3E                                                          ;84CE83;
     AND.W #$0F00                                                         ;84CE86;
     CMP.W #$0400                                                         ;84CE89;
@@ -9849,7 +12345,6 @@ Setup_Collision_RespawningBombBlock:
     SEC                                                                  ;84CEBF;
     RTS                                                                  ;84CEC0;
 
-
   .screwOrSpeed:
     LDX.W $1C87,Y                                                        ;84CEC1;
     LDA.L $7F0002,X                                                      ;84CEC4;
@@ -9862,7 +12357,10 @@ Setup_Collision_RespawningBombBlock:
     RTS                                                                  ;84CED9;
 
 
+;;; $CEDA: Setup - PLM $D0B8/$D0BC/$D0C0/$D0C4/$D0C8/$D0CC/$D0D0/$D0D4 (shot/bombed/grappled reaction, bombable, BTS 0..7. (Respawning) bomb block) ;;;
 Setup_Reaction_RespawningBombBlock:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $0DDE                                                          ;84CEDA;
     LDA.W $0C18,X                                                        ;84CEDD;
     AND.W #$0F00                                                         ;84CEE0;
@@ -9874,7 +12372,6 @@ Setup_Reaction_RespawningBombBlock:
     STA.W $1C37,Y                                                        ;84CEF0;
     RTS                                                                  ;84CEF3;
 
-
   .powerBomb:
     LDX.W $1C87,Y                                                        ;84CEF4;
     LDA.L $7F0002,X                                                      ;84CEF7;
@@ -9884,7 +12381,6 @@ Setup_Reaction_RespawningBombBlock:
     AND.W #$8FFF                                                         ;84CF04;
     STA.L $7F0002,X                                                      ;84CF07;
     RTS                                                                  ;84CF0B;
-
 
   .bomb:
     LDA.W $1D27,Y                                                        ;84CF0C;
@@ -9901,7 +12397,10 @@ Setup_Reaction_RespawningBombBlock:
     RTS                                                                  ;84CF2D;
 
 
+;;; $CF2E: Setup - PLM $D084/$D088 (shot/bombed/grappled reaction, shootable, BTS 8/9. (Respawning) power bomb block) ;;;
 Setup_Reaction_RespawningPowerBombBlock:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $0DDE                                                          ;84CF2E;
     LDA.W $0C18,X                                                        ;84CF31;
     AND.W #$0F00                                                         ;84CF34;
@@ -9913,7 +12412,6 @@ Setup_Reaction_RespawningPowerBombBlock:
     STA.W $1C37,Y                                                        ;84CF44;
     RTS                                                                  ;84CF47;
 
-
   .powerBomb:
     LDX.W $1C87,Y                                                        ;84CF48;
     LDA.L $7F0002,X                                                      ;84CF4B;
@@ -9924,14 +12422,16 @@ Setup_Reaction_RespawningPowerBombBlock:
     STA.L $7F0002,X                                                      ;84CF5B;
     RTS                                                                  ;84CF5F;
 
-
   .bomb:
     LDA.W #UNUSED_InstList_PLM_PowerBombBlockBombed_84C91C               ;84CF60;
     STA.W $1D27,Y                                                        ;84CF63;
     RTS                                                                  ;84CF66;
 
 
+;;; $CF67: Setup - PLM $D08C/$D090 (shot/bombed/grappled reaction, shootable, BTS Ah/Bh. (Respawning) super missile block) ;;;
 Setup_Reaction_SuperMissileBlock:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $0DDE                                                          ;84CF67;
     LDA.W $0C18,X                                                        ;84CF6A;
     AND.W #$0F00                                                         ;84CF6D;
@@ -9943,7 +12443,6 @@ Setup_Reaction_SuperMissileBlock:
     STA.W $1C37,Y                                                        ;84CF7D;
     RTS                                                                  ;84CF80;
 
-
   .superMissile:
     LDX.W $1C87,Y                                                        ;84CF81;
     LDA.L $7F0002,X                                                      ;84CF84;
@@ -9954,14 +12453,16 @@ Setup_Reaction_SuperMissileBlock:
     STA.L $7F0002,X                                                      ;84CF94;
     RTS                                                                  ;84CF98;
 
-
   .bomb:
     LDA.W #UNUSED_InstList_PLM_SuperMissileBlockBombed_84C922            ;84CF99;
     STA.W $1D27,Y                                                        ;84CF9C;
     RTS                                                                  ;84CF9F;
 
 
+;;; $CFA0: Setup - PLM $CFEC/$CFF0/$CFF4/$CFF8/$CFFC/$D000/$D004/$D008/$D00C/$D010/$D014/$D018/$D01C/$D020/$D024 (bomb reaction, special block, BTS 0..7 / Eh/Fh / Brinstar 82h..85h. (Respawning) crumble block / speed block / unused) ;;;
 Setup_Reaction_SpeedCrumbleBlock:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $0DDE                                                          ;84CFA0;
     LDA.W $0C18,X                                                        ;84CFA3;
     AND.W #$0F00                                                         ;84CFA6;
@@ -9974,7 +12475,13 @@ Setup_Reaction_SpeedCrumbleBlock:
     RTS                                                                  ;84CFB4;
 
 
+;;; $CFB5: Setup - PLM $D0DC/$D0E0 (grappled reaction, grapple block, BTS 1/2. (Respawning) breakable grapple block) ;;;
 Setup_RespawningBreakableGrappleBlock:
+;; Parameters:
+;;     Y: PLM index
+;; Returns:
+;;     Carry: Set. Unconditional collision
+;;     Overflow: Set. Connect grapple beam
     LDX.W $1C87,Y                                                        ;84CFB5;
     LDA.L $7F0002,X                                                      ;84CFB8;
     STA.W $1E17,Y                                                        ;84CFBC;
@@ -9983,21 +12490,36 @@ Setup_RespawningBreakableGrappleBlock:
     TAX                                                                  ;84CFC1;
     LDA.L $7F6402,X                                                      ;84CFC2;
     AND.W #$FF00                                                         ;84CFC6;
-    STA.L $7F6402,X                                                      ;84CFC9;
+    STA.L $7F6402,X                                                      ;84CFC9; fallthrough to Setup_GenericGrappleBlock_SetOverflow
 
+
+;;; $CFCD: Setup - PLM $D0D8 (grappled reaction, grapple block, BTS 0/3. Generic grapple block) ;;;
 Setup_GenericGrappleBlock_SetOverflow:
-    SEP #$40                                                             ;84CFCD;
+;; Returns:
+;;     Carry: Set. Unconditional collision
+;;     Overflow: Set. Connect grapple beam
+    SEP #$40                                                             ;84CFCD; >.< SEP #$41
     SEC                                                                  ;84CFCF;
     RTS                                                                  ;84CFD0;
 
 
+;;; $CFD1: Setup - PLM $D0E4 (grappled reaction, generic spike block) ;;;
 Setup_GenericGrappleBlock_ResetOverflow:
-    REP #$40                                                             ;84CFD1;
+;; Returns:
+;;     Carry: Set. Unconditional collision
+;;     Overflow: Clear. Cancel grapple beam
+    REP #$40                                                             ;84CFD1; >.< SEP #$41
     SEC                                                                  ;84CFD3;
     RTS                                                                  ;84CFD4;
 
 
+;;; $CFD5: Setup - PLM $D0E8 (grappled reaction, spike block, BTS 3. Draygon's broken turret) ;;;
 Setup_DraygonsBrokenTurret:
+;; Returns:
+;;     Carry: Set. Unconditional collision
+;;     Overflow: Set. Connect grapple beam
+
+; Deal 1 damage to Samus
     LDA.W $0A4E                                                          ;84CFD5;
     CLC                                                                  ;84CFD8;
     ADC.W #$0000                                                         ;84CFD9;
@@ -10005,283 +12527,353 @@ Setup_DraygonsBrokenTurret:
     LDA.W $0A50                                                          ;84CFDF;
     ADC.W #$0001                                                         ;84CFE2;
     STA.W $0A50                                                          ;84CFE5;
-    SEP #$40                                                             ;84CFE8;
+    SEP #$40                                                             ;84CFE8; >.< SEP #$41
     SEC                                                                  ;84CFEA;
     RTS                                                                  ;84CFEB;
 
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_PLMEntries_Draws1x1ShotBlock_84CFEC:
+; Unused. Draws 1x1 shot block
     dw Setup_Reaction_SpeedCrumbleBlock                                  ;84CFEC;
     dw UNUSED_InstList_PLM_Draws1x1ShotBlock_84C8D4                      ;84CFEE;
 
 UNUSED_PLMEntries_Draws1x2ShotBlock_84CFF0:
+; Unused. Draws 1x2 shot block
     dw Setup_Reaction_SpeedCrumbleBlock                                  ;84CFF0;
     dw UNUSED_InstList_PLM_Draws1x2ShotBlock_84C8DA                      ;84CFF2;
 
 UNUSED_PLMEntries_Draws2x1ShotBlock_84CFF4:
+; Unused. Draws 2x1 shot block
     dw Setup_Reaction_SpeedCrumbleBlock                                  ;84CFF4;
     dw UNUSED_InstList_PLM_Draws2x1ShotBlock_84C8E0                      ;84CFF6;
 
 UNUSED_PLMEntries_Draws2x2ShotBlock_84CFF8:
+; Unused. Draws 2x2 shot block
     dw Setup_Reaction_SpeedCrumbleBlock                                  ;84CFF8;
     dw UNUSED_InstList_PLM_Draws2x2ShotBlock_84C8E6                      ;84CFFA;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PLMEntries_1x1RespawningCrumbleBlock:
+; Bomb reaction, special block, BTS 0/4. 1x1 (respawning) crumble block
     dw Setup_Reaction_SpeedCrumbleBlock                                  ;84CFFC;
     dw InstList_BombReaction_PLM_1x1RespawningCrumbleBlock               ;84CFFE;
 
 PLMEntries_2x1RespawningCrumbleBlock:
+; Bomb reaction, special block, BTS 1/5. 2x1 (respawning) crumble block
     dw Setup_Reaction_SpeedCrumbleBlock                                  ;84D000;
     dw InstList_BombReaction_PLM_2x1RespawningCrumbleBlock               ;84D002;
 
 PLMEntries_1x2RespawningCrumbleBlock:
+; Bomb reaction, special block, BTS 2/6. 1x2 (respawning) crumble block
     dw Setup_Reaction_SpeedCrumbleBlock                                  ;84D004;
     dw InstList_BombReaction_PLM_1x2RespawningCrumbleBlock               ;84D006;
 
 PLMEntries_2x2RespawningCrumbleBlock:
+; Bomb reaction, special block, BTS 3/7. 2x2 (respawning) crumble block
     dw Setup_Reaction_SpeedCrumbleBlock                                  ;84D008;
     dw InstList_BombReaction_PLM_2x2RespawningCrumbleBlock               ;84D00A;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_PLMEntries_84D00C:
+; Unused. Draws 1x1 bomb block
     dw Setup_Reaction_SpeedCrumbleBlock                                  ;84D00C;
     dw UNUSED_InstList_PLM_84C904                                        ;84D00E;
 
 UNUSED_PLMEntries_84D010:
+; Unused. Draws 1x2 bomb block
     dw Setup_Reaction_SpeedCrumbleBlock                                  ;84D010;
     dw UNUSED_InstList_PLM_84C90A                                        ;84D012;
 
 UNUSED_PLMEntries_84D014:
+; Unused. Draws 2x1 bomb block
     dw Setup_Reaction_SpeedCrumbleBlock                                  ;84D014;
     dw UNUSED_InstList_PLM_84C910                                        ;84D016;
 
 UNUSED_PLMEntries_84D018:
+; Unused. Draws 2x2 bomb block
     dw Setup_Reaction_SpeedCrumbleBlock                                  ;84D018;
     dw UNUSED_InstList_PLM_84C916                                        ;84D01A;
 
 UNUSED_PLMEntries_84D01C:
+; Unused. Draws power bomb block
     dw Setup_Reaction_SpeedCrumbleBlock                                  ;84D01C;
     dw UNUSED_InstList_PLM_PowerBombBlockBombed_84C91C                   ;84D01E;
 
 UNUSED_PLMEntries_84D020:
+; Unused. Draws super missile block
     dw Setup_Reaction_SpeedCrumbleBlock                                  ;84D020;
     dw UNUSED_InstList_PLM_SuperMissileBlockBombed_84C922                ;84D022;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PLMEntries_BombReaction_SpeedBoostBlock:
+; Bomb reaction, special block, BTS Eh/Fh / Brinstar 82h/83h/84h/85h. Speed block
     dw Setup_Reaction_SpeedCrumbleBlock                                  ;84D024;
     dw InstList_PLM_BombReaction_SpeedBlock                              ;84D026;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_PLMEntries_84D028:
+; Unused. Respawning screw attack block
     dw UNUSED_Setup_84CDC2                                               ;84D028;
     dw UNUSED_InstList_PLM_84C92E                                        ;84D02A;
 
 UNUSED_PLMEntries_84D02C:
+; Unused. Screw attack block
     dw UNUSED_Setup_84CDC2                                               ;84D02C;
     dw UNUSED_InstList_PLM_84C9BA                                        ;84D02E;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PLMEntries_Collision_BTS82:
+; Collision reaction, special, BTS Brinstar 82h. Respawning speed block, slower crumble animation
     dw Setup_Collision_RespawningSpeedBoostBlock                         ;84D030;
     dw InstList_PLM_RespawningSpeedBlock_SlowerCrumbleAnimation          ;84D032;
 
 PLMEntries_Collision_BTS83:
+; Collision reaction, special, BTS Brinstar 83h. Speed block, slower crumble animation
     dw Setup_Collision_RespawningSpeedBoostBlock                         ;84D034;
     dw InstList_PLM_SpeedBlockSlowerCrumbleAnimation                     ;84D036;
 
 PLMEntries_Collision_RespawningSpeedBoostBlock:
+; Collision reaction, special, BTS Eh. Respawning speed block
     dw Setup_Collision_RespawningSpeedBoostBlock                         ;84D038;
     dw InstList_PLM_RespawningSpeedBoostBlock                            ;84D03A;
 
 PLMEntries_Collision_DachoraRespawningSpeedBoostBlock:
+; Collision reaction, special, BTS Brinstar 84h. Respawning speed block
     dw Setup_Collision_RespawningSpeedBoostBlock                         ;84D03C;
     dw InstList_PLM_RespawningSpeedBlock                                 ;84D03E;
 
 PLMEntries_Collision_SpeedBoostBlock:
+; Collision reaction, special, BTS Fh / Brinstar 85h. Speed block
     dw Setup_Collision_RespawningSpeedBoostBlock                         ;84D040;
     dw InstList_PLM_SpeedBoostBlock                                      ;84D042;
 
 PLMEntries_Collision_1x1RespawningCrumbleBlock:
+; Collision reaction, special, BTS 0. 1x1 respawning crumble block
     dw Setup_Collision_RespawningCrumbleBlock                            ;84D044;
     dw InstList_PLM_1x1RespawningCrumbleBlock                            ;84D046;
 
 PLMEntries_Collision_2x1RespawningCrumbleBlock:
+; Collision reaction, special, BTS 1. 2x1 respawning crumble block
     dw Setup_Collision_RespawningCrumbleBlock                            ;84D048;
     dw InstList_PLM_2x1RespawningCrumbleBlock                            ;84D04A;
 
 PLMEntries_Collision_1x2RespawningCrumbleBlock:
+; Collision reaction, special, BTS 2. 1x2 respawning crumble block
     dw Setup_Collision_RespawningCrumbleBlock                            ;84D04C;
     dw InstList_PLM_1x2RespawningCrumbleBlock                            ;84D04E;
 
 PLMEntries_Collision_2x2RespawningCrumbleBlock:
+; Collision reaction, special, BTS 3. 2x2 respawning crumble block
     dw Setup_Collision_RespawningCrumbleBlock                            ;84D050;
     dw InstList_PLM_2x2RespawningCrumbleBlock                            ;84D052;
 
 PLMEntries_Collision_1x1CrumbleBlock:
+; Collision reaction, special, BTS 4. 1x1 crumble block
     dw Setup_Collision_RespawningCrumbleBlock                            ;84D054;
     dw InstList_PLM_1x1CrumbleBlock                                      ;84D056;
 
 PLMEntries_Collision_2x1CrumbleBlock:
+; Collision reaction, special, BTS 5. 2x1 crumble block
     dw Setup_Collision_RespawningCrumbleBlock                            ;84D058;
     dw InstList_PLM_2x1CrumbleBlock                                      ;84D05A;
 
 PLMEntries_Collision_1x2CrumbleBlock:
+; Collision reaction, special, BTS 6. 1x2 crumble block
     dw Setup_Collision_RespawningCrumbleBlock                            ;84D05C;
     dw InstList_PLM_1x2CrumbleBlock                                      ;84D05E;
 
 PLMEntries_Collision_2x2CrumbleBlock:
+; Collision reaction, special, BTS 7. 2x2 crumble block
     dw Setup_Collision_RespawningCrumbleBlock                            ;84D060;
     dw InstList_PLM_2x2CrumbleBlock                                      ;84D062;
 
 PLMEntries_Reaction_1x1RespawningShotBlock:
+; Shot/bombed/grappled reaction, shootable, BTS 0. 1x1 respawning shot block
     dw Setup_Reaction_RespawningShotBlock                                ;84D064;
     dw InstList_PLM_1x1RespawningShotBlock                               ;84D066;
 
 PLMEntries_Reaction_2x1RespawningShotBlock:
+; Shot/bombed/grappled reaction, shootable, BTS 1. 2x1 respawning shot block
     dw Setup_Reaction_RespawningShotBlock                                ;84D068;
     dw InstList_PLM_2x1RespawningShotBlock                               ;84D06A;
 
 PLMEntries_Reaction_1x2RespawningShotBlock:
+; Shot/bombed/grappled reaction, shootable, BTS 2. 1x2 respawning shot block
     dw Setup_Reaction_RespawningShotBlock                                ;84D06C;
     dw InstList_PLM_1x2RespawningShotBlock                               ;84D06E;
 
 PLMEntries_Reaction_2x2RespawningShotBlock:
+; Shot/bombed/grappled reaction, shootable, BTS 3. 2x2 respawning shot block
     dw Setup_Reaction_RespawningShotBlock                                ;84D070;
     dw InstList_PLM_2x2RespawningShotBlock                               ;84D072;
 
 PLMEntries_Reaction_1x1ShotBlock:
+; Shot/bombed/grappled reaction, shootable, BTS 4. 1x1 shot block
     dw Setup_DeactivatePLM                                               ;84D074;
     dw InstList_PLM_1x1ShotBlock                                         ;84D076;
 
 PLMEntries_Reaction_2x1ShotBlock:
+; Shot/bombed/grappled reaction, shootable, BTS 5. 2x1 shot block
     dw Setup_DeactivatePLM                                               ;84D078;
     dw InstList_PLM_2x1ShotBlock                                         ;84D07A;
 
 PLMEntries_Reaction_1x2ShotBlock:
+; Shot/bombed/grappled reaction, shootable, BTS 6. 1x2 shot block
     dw Setup_DeactivatePLM                                               ;84D07C;
     dw InstList_PLM_1x2ShotBlock                                         ;84D07E;
 
 PLMEntries_Reaction_2x2ShotBlock:
+; Shot/bombed/grappled reaction, shootable, BTS 7. 2x2 shot block
     dw Setup_DeactivatePLM                                               ;84D080;
     dw InstList_PLM_2x2ShotBlock                                         ;84D082;
 
 PLMEntries_Reaction_RespawningPowerBombBlock:
+; Shot/bombed/grappled reaction, shootable, BTS 8. Respawning power bomb block
     dw Setup_Reaction_RespawningPowerBombBlock                           ;84D084;
     dw InstList_PLM_RespawningPowerBombBlock                             ;84D086;
 
 PLMEntries_Reaction_PowerBombBlock:
+; Shot/bombed/grappled reaction, shootable, BTS 9. Power bomb block
     dw Setup_Reaction_RespawningPowerBombBlock                           ;84D088;
     dw InstList_PLM_PowerBombBlock                                       ;84D08A;
 
 PLMEntries_Reaction_RespawningSuperMissileBlock:
+; Shot/bombed/grappled reaction, shootable, BTS A. Respawning super missile block
     dw Setup_Reaction_SuperMissileBlock                                  ;84D08C;
     dw InstList_PLM_RespawningSuperMissileBlock                          ;84D08E;
 
 PLMEntries_Reaction_SuperMissileBlock:
+; Shot/bombed/grappled reaction, shootable, BTS B. Super missile block
     dw Setup_Reaction_SuperMissileBlock                                  ;84D090;
     dw InstList_PLM_SuperMissileBlock                                    ;84D092;
 
 PLMEntries_EnemyBreakableBlock:
+; Enemy collision reaction, spike block, BTS Fh. Enemy breakable block
     dw Setup_EnemyBreakableBlock                                         ;84D094;
     dw InstList_PLM_EnemyBreakableBlock                                  ;84D096;
 
 PLMEntries_Collision_1x1RespawningBombBlock:
+; Collision reaction, bombable, BTS 0. 1x1 respawning bomb block
     dw Setup_Collision_RespawningBombBlock                               ;84D098;
     dw InstList_PLM_CollisionReaction_1x1RespawningBombBlock             ;84D09A;
 
 PLMEntries_Collision_2x1RespawningBombBlock:
+; Collision reaction, bombable, BTS 1. 2x1 respawning bomb block
     dw Setup_Collision_RespawningBombBlock                               ;84D09C;
     dw InstList_PLM_Collision_2x1RespawningBombBlock                     ;84D09E;
 
 PLMEntries_Collision_1x2RespawningBombBlock:
+; Collision reaction, bombable, BTS 2. 1x2 respawning bomb block
     dw Setup_Collision_RespawningBombBlock                               ;84D0A0;
     dw InstList_PLM_Collision_1x2RespawningBombBlock                     ;84D0A2;
 
 PLMEntries_Collision_2x2RespawningBombBlock:
+; Collision reaction, bombable, BTS 3. 2x2 respawning bomb block
     dw Setup_Collision_RespawningBombBlock                               ;84D0A4;
     dw InstList_PLM_Collision_2x2RespawningBombBlock                     ;84D0A6;
 
 PLMEntries_Collision_1x1BombBlock:
+; Collision reaction, bombable, BTS 4. 1x1 bomb block
     dw Setup_Collision_RespawningBombBlock                               ;84D0A8;
     dw InstList_PLM_Collision_1x1RespawningBombBlock                     ;84D0AA;
 
 PLMEntries_Collision_2x1BombBlock:
+; Collision reaction, bombable, BTS 5. 2x1 bomb block
     dw Setup_Collision_RespawningBombBlock                               ;84D0AC;
     dw InstList_PLM_Collision_2x1BombBlock                               ;84D0AE;
 
 PLMEntries_Collision_1x2BombBlock:
+; Collision reaction, bombable, BTS 6. 1x2 bomb block
     dw Setup_Collision_RespawningBombBlock                               ;84D0B0;
     dw InstList_PLM_Collision_1x2BombBlock                               ;84D0B2;
 
 PLMEntries_Collision_2x2BombBlock:
+; Collision reaction, bombable, BTS 7. 2x2 bomb block
     dw Setup_Collision_RespawningBombBlock                               ;84D0B4;
     dw InstList_PLM_Collision_2x2BombBlock                               ;84D0B6;
 
 PLMEntries_Reaction_1x1RespawningBombBlock:
+; Shot/bombed/grappled reaction, bombable, BTS 0. 1x1 respawning bomb block
     dw Setup_Reaction_RespawningBombBlock                                ;84D0B8;
     dw InstList_PLM_Reaction_1x1RespawningBombBlock_0                    ;84D0BA;
 
 PLMEntries_Reaction_2x1RespawningBombBlock:
+; Shot/bombed/grappled reaction, bombable, BTS 1. 2x1 respawning bomb block
     dw Setup_Reaction_RespawningBombBlock                                ;84D0BC;
     dw InstList_PLM_Reaction_2x1RespawningBombBlock                      ;84D0BE;
 
 PLMEntries_Reaction_1x2RespawningBombBlock:
+; Shot/bombed/grappled reaction, bombable, BTS 2. 1x2 respawning bomb block
     dw Setup_Reaction_RespawningBombBlock                                ;84D0C0;
     dw InstList_PLM_Reaction_1x2RespawningBombBlock                      ;84D0C2;
 
 PLMEntries_Reaction_2x2RespawningBombBlock:
+; Shot/bombed/grappled reaction, bombable, BTS 3. 2x2 respawning bomb block
     dw Setup_Reaction_RespawningBombBlock                                ;84D0C4;
     dw InstList_PLM_Reaction_2x2RespawningBombBlock                      ;84D0C6;
 
 PLMEntries_Reaction_1x1BombBlock:
+; Shot/bombed/grappled reaction, bombable, BTS 4. 1x1 bomb block
     dw Setup_Reaction_RespawningBombBlock                                ;84D0C8;
     dw InstList_PLM_Reaction_1x1RespawningBombBlock_4                    ;84D0CA;
 
 PLMEntries_Reaction_2x1BombBlock:
+; Shot/bombed/grappled reaction, bombable, BTS 5. 2x1 bomb block
     dw Setup_Reaction_RespawningBombBlock                                ;84D0CC;
     dw InstList_PLM_Reaction_2x1BombBlock                                ;84D0CE;
 
 PLMEntries_Reaction_1x2BombBlock:
+; Shot/bombed/grappled reaction, bombable, BTS 6. 1x2 bomb block
     dw Setup_Reaction_RespawningBombBlock                                ;84D0D0;
     dw InstList_PLM_Reaction_1x2BombBlock                                ;84D0D2;
 
 PLMEntries_Reaction_2x2BombBlock:
+; Shot/bombed/grappled reaction, bombable, BTS 7. 2x2 bomb block
     dw Setup_Reaction_RespawningBombBlock                                ;84D0D4;
     dw InstList_PLM_Reaction_2x2BombBlock                                ;84D0D6;
 
 PLMEntries_Grappled_GrappleBlock:
+; Grappled reaction, grapple block, BTS 0/3. Grapple block
     dw Setup_GenericGrappleBlock_SetOverflow                             ;84D0D8;
     dw InstList_PLM_GrappleBlock                                         ;84D0DA;
 
 PLMEntries_Grappled_RespawningBreakableGrappleBlock:
+; Grappled reaction, grapple block, BTS 1. Respawning breakable grapple block
     dw Setup_RespawningBreakableGrappleBlock                             ;84D0DC;
     dw InstList_PLM_RespawningBreakableGrappleBlock                      ;84D0DE;
 
 PLMEntries_Grappled_BreakableGrappleBlock:
+; Grappled reaction, grapple block, BTS 2. Breakable grapple block
     dw Setup_RespawningBreakableGrappleBlock                             ;84D0E0;
     dw InstList_PLM_BreakableGrappleBlock                                ;84D0E2;
 
 PLMEntries_Grappled_GenericSpikeBlock:
+; Grappled reaction, generic spike block
     dw Setup_GenericGrappleBlock_ResetOverflow                           ;84D0E4;
     dw InstList_PLM_GrappleBlock                                         ;84D0E6;
 
 PLMEntries_Grappled_DraygonsBrokenTurret:
+; Grappled reaction, spike block, BTS 3. Draygon's broken turret
     dw Setup_DraygonsBrokenTurret                                        ;84D0E8;
     dw InstList_PLM_GrappleBlock                                         ;84D0EA;
 
+
 if !FEATURE_KEEP_UNREFERENCED
+;;; $D0EC: Instruction list - PLM $D0F2 (unused. Blue Brinstar face-block) ;;;
 InstList_PLM_UnusedBlueBrinstarFaceBlock:
     dw $0001,DrawInst_UnusedBlueBrinstarFaceBlock                        ;84D0EC;
     dw Instruction_PLM_Delete                                            ;84D0F0;
 
+
+;;; $D0F2: Unused. PLM entry - Blue Brinstar face-block ;;;
 PLMEntries_UnusedBlueBrinstarFaceBlock:
     dw Setup_DeactivatePLM                                               ;84D0F2;
     dw InstList_PLM_UnusedBlueBrinstarFaceBlock                          ;84D0F4;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $D0F6: Instruction list - PLM $D113 (chozo crumbled block) ;;;
 InstList_PLM_CrumbleLowerNorfairChozoRoomPlug:
     dw $0004,DrawInst_Respawn1x1_0                                       ;84D0F6;
     dw $0004,DrawInst_Respawn1x1_1                                       ;84D0FA;
@@ -10289,18 +12881,28 @@ InstList_PLM_CrumbleLowerNorfairChozoRoomPlug:
     dw $0001,DrawInst_Respawn1x1_3                                       ;84D102;
     dw Instruction_PLM_Delete                                            ;84D106;
 
+
+;;; $D108: Setup - PLM $D113 (chozo crumbled block) ;;;
 Setup_CrumbleLowerNorfairChozoRoomPlug:
+;; Parameters:
+;;     Y: PLM index
+
+; This setup routine fails to set the block to air correctly (missing LDA)
     LDX.W $1C87,Y                                                        ;84D108;
     AND.W #$0FFF                                                         ;84D10B;
     STA.L $7F0002,X                                                      ;84D10E;
     RTS                                                                  ;84D112;
 
 
+;;; $D113: PLM entry - chozo crumbled block ;;;
 PLMEntries_CrumbleLowerNorfairChozoRoomPlug:
+; Chozo crumbled block
     dw Setup_CrumbleLowerNorfairChozoRoomPlug                            ;84D113;
     dw InstList_PLM_CrumbleLowerNorfairChozoRoomPlug                     ;84D115;
 
+
 if !FEATURE_KEEP_UNREFERENCED
+;;; $D117: Setup - PLM $D127 (unused. Shot block) ;;;
 Setup_UnusedShotBlock:
     LDX.W $1C87,Y                                                        ;84D117;
     LDA.W #$C000                                                         ;84D11A;
@@ -10308,14 +12910,20 @@ Setup_UnusedShotBlock:
     RTS                                                                  ;84D120;
 
 
+;;; $D121: Instruction list - PLM $D127 (unused. Shot block) ;;;
 InstList_PLM_UnusedShotBlock:
     dw $0004,DrawInst_84A33F                                             ;84D121;
     dw Instruction_PLM_Delete                                            ;84D125;
 
+
+;;; $D127: Unused. PLM entry - shot block ;;;
 PLMEntries_UnusedShotBlock:
+; Unused. Shot block
     dw Setup_UnusedShotBlock                                             ;84D127;
     dw InstList_PLM_UnusedShotBlock                                      ;84D129;
 
+
+;;; $D12B: Setup - PLM $D13B (unused. Grapple block) ;;;
 Setup_UnusedGrappleBlock:
     LDX.W $1C87,Y                                                        ;84D12B;
     LDA.W #$E000                                                         ;84D12E;
@@ -10323,15 +12931,20 @@ Setup_UnusedGrappleBlock:
     RTS                                                                  ;84D134;
 
 
+;;; $D135: Instruction list - PLM $D13B (unused. Grapple block) ;;;
 InstList_PLM_UnusedGrappleBlock:
     dw $0001,DrawInst_BreakableGrappleBlock_0                            ;84D135;
     dw Instruction_PLM_Delete                                            ;84D139;
 
+
+;;; $D13B: Unused. PLM entry - grapple block ;;;
 PLMEntries_UnusedGrappleBlock:
     dw Setup_UnusedGrappleBlock                                          ;84D13B;
     dw InstList_PLM_UnusedGrappleBlock                                   ;84D13D;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $D13F: Instruction list - PLM $D6D6 (Lower Norfair chozo hand) ;;;
 InstList_PLM_LowerNorfairChozoHand_0:
     dw Instruction_PLM_GotoY_ifEventIsSet                                ;84D13F;
     dw $000C,InstList_PLM_LowerNorfairChozoHand_1                        ;84D141;
@@ -10345,13 +12958,18 @@ InstList_PLM_LowerNorfairChozoHand_1:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84D14F;
     dw Instruction_PLM_Delete                                            ;84D153;
 
+
+;;; $D155: Instruction - FX base Y position = 2D2h ;;;
 Instruction_PLM_FXBaseYPosition_2D2:
     LDA.W #$02D2                                                         ;84D155;
     STA.W $1978                                                          ;84D158;
     RTS                                                                  ;84D15B;
 
 
+;;; $D15C: Pre-instruction - delete PLM and spawn trigger block if block (4, 8) is a blank air block ;;;
 PreInstruction_DeletePLM_SpawnTriggerBlockIf_4_8_IsBlankAir:
+; Used by PLM $D6D6 (Lower Norfair chozo hand)
+; Block (4, 8) is presumed to be where the chozo's hand is
     PHX                                                                  ;84D15C;
     SEP #$20                                                             ;84D15D;
     LDA.B #$08                                                           ;84D15F;
@@ -10378,11 +12996,19 @@ PreInstruction_DeletePLM_SpawnTriggerBlockIf_4_8_IsBlankAir:
     RTS                                                                  ;84D18D;
 
 
+;;; $D18E: RTS. Setup - PLM $D6D6 (Lower Norfair chozo hand) ;;;
 RTS_84D18E:
     RTS                                                                  ;84D18E;
 
 
+;;; $D18F: Setup - PLM $D6DA (collision reaction, special, BTS Norfair 83h. Lower Norfair chozo hand trigger) ;;;
 Setup_Reaction_LowerNorfairChozoHandTrigger:
+;; Parameters:
+;;     Y: PLM index
+;; Returns:
+;;     Carry: Set. Unconditional collision
+
+; Enemy 0 is presumed to be the chozo statue
     LDA.W $09A4                                                          ;84D18F;
     AND.W #$0200                                                         ;84D192;
     BEQ .return                                                          ;84D195;
@@ -10420,7 +13046,12 @@ Setup_Reaction_LowerNorfairChozoHandTrigger:
     RTS                                                                  ;84D1E5;
 
 
+;;; $D1E6: Pre-instruction - increment PLM room argument if shot by (super) missile ;;;
 PreInstruction_PLM_IncrementPLMRoomArgIfShotByMissile:
+;; Parameter:
+;;     X: PLM index
+
+; Used by PLM $D6DE (Mother Brain's glass)
     LDA.W $1D77,X                                                        ;84D1E6;
     BEQ .return                                                          ;84D1E9;
     AND.W #$0F00                                                         ;84D1EB;
@@ -10438,6 +13069,7 @@ PreInstruction_PLM_IncrementPLMRoomArgIfShotByMissile:
     RTS                                                                  ;84D201;
 
 
+;;; $D202: Instruction list - PLM $D6DE (Mother Brain's glass) ;;;
 InstList_PLM_MotherBrainsGlass_0:
     dw Instruction_PLM_GotoY_ifBossBitsSet                               ;84D202;
     db $01 : dw InstList_PLM_UnusedMotherBrainsGlass_AreaBossDead        ;84D204;
@@ -10519,22 +13151,32 @@ InstList_PLM_MotherBrainsGlass_9:
     dw Instruction_PLM_SetTheEvent,$0002                                 ;84D2E7;
     dw Instruction_PLM_Delete                                            ;84D2EB;
 
+
+;;; $D2ED: Instruction list - PLM $D6E2 (unused. Mother Brain's glass, area boss dead state) ;;;
 InstList_PLM_UnusedMotherBrainsGlass_AreaBossDead:
     dw $0001,UNUSED_DrawInst_849817                                      ;84D2ED;
     dw Instruction_PLM_Delete                                            ;84D2F1;
 
+
+;;; $D2F3: Instruction list - PLM $D6E6 (unused. Mother Brain's glass, no glass state) ;;;
 InstList_PLM_UnusedMotherBrainsGlass_NoGlassState:
     dw $0001,DrawInst_MotherBrainsGlass_9                                ;84D2F3;
     dw Instruction_PLM_Delete                                            ;84D2F7;
 
+
+;;; $D2F9: Instruction - go to [[Y] + 2] if [room argument] < [[Y]] ;;;
 Instruction_PLM_GotoY_IfRoomArgGreaterThanY:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $1DC7,X                                                        ;84D2F9;
     CMP.W $0000,Y                                                        ;84D2FC;
     BCS .next                                                            ;84D2FF;
     LDA.W $0002,Y                                                        ;84D301;
     TAY                                                                  ;84D304;
     RTS                                                                  ;84D305;
-
 
   .next:
     INY                                                                  ;84D306;
@@ -10544,7 +13186,12 @@ Instruction_PLM_GotoY_IfRoomArgGreaterThanY:
     RTS                                                                  ;84D30A;
 
 
+;;; $D30B: Instruction - spawn four Mother Brain's glass shattering shards with arguments [[Y]..[Y]+7] ;;;
 Inst_PLM_Spawn4MotherBrainsGlassShatteringShardsWithArgs:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W #$002E                                                         ;84D30B;
     JSL.L QueueSound_Lib3_Max15                                          ;84D30E;
     LDA.W $0000,Y                                                        ;84D312;
@@ -10562,7 +13209,13 @@ Inst_PLM_Spawn4MotherBrainsGlassShatteringShardsWithArgs:
     RTS                                                                  ;84D330;
 
 
+;;; $D331: Spawn Mother Brain's glass shattering shard with argument [A] ;;;
 Spawn4MotherBrainsGlassShatteringShardsWithArgA:
+;; Parameters:
+;;     A: Enemy projectile argument
+;;         0: 8
+;;         2: -28h
+;;         4: -10h
     PHY                                                                  ;84D331;
     LDY.W #EnemyProjectile_MotherBrainGlassShattering_Shard              ;84D332;
     JSL.L SpawnEnemyProjectileY_ParameterA_RoomGraphics                  ;84D335;
@@ -10570,7 +13223,12 @@ Spawn4MotherBrainsGlassShatteringShardsWithArgA:
     RTS                                                                  ;84D33A;
 
 
+;;; $D33B: Pre-instruction - wake PLM if Samus has bombs ;;;
 PreInstruction_PLM_WakePLMIfSamusHasBombs:
+;; Parameter:
+;;     X: PLM index
+
+; Used by PLM $D6EA (Bomb Torizo's crumbling chozo)
     LDA.W $09A4                                                          ;84D33B;
     AND.W #$1000                                                         ;84D33E;
     BEQ .return                                                          ;84D341;
@@ -10585,7 +13243,12 @@ PreInstruction_PLM_WakePLMIfSamusHasBombs:
     RTS                                                                  ;84D356;
 
 
+;;; $D357: Instruction - spawn Bomb Torizo statue breaking with argument [[Y]] ;;;
 Instruction_PLM_SpawnBombTorizoStatueBreakingWIthArgY:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     PHX                                                                  ;84D357;
     PHY                                                                  ;84D358;
     LDA.W $0000,Y                                                        ;84D359;
@@ -10598,6 +13261,7 @@ Instruction_PLM_SpawnBombTorizoStatueBreakingWIthArgY:
     RTS                                                                  ;84D367;
 
 
+;;; $D368: Instruction list - PLM $D6EA (Bomb Torizo's crumbling chozo) ;;;
 InstList_PLM_BombTorizosCrumblingChozo:
     dw $0001,DrawInst_BombTorizosCrumblingChozo_0                        ;84D368;
     dw Instruction_PLM_PreInstruction_inY                                ;84D36C;
@@ -10626,18 +13290,25 @@ InstList_PLM_BombTorizosCrumblingChozo:
     dw Instruction_PLM_QueueSong1MusicTrack                              ;84D3C3;
     dw Instruction_PLM_Delete                                            ;84D3C5;
 
+
+;;; $D3C7: Instruction - queue song 1 music track ;;;
 Instruction_PLM_QueueSong1MusicTrack:
     LDA.W #$0006                                                         ;84D3C7;
     JSL.L QueueMusicDataOrTrack_8FrameDelay                              ;84D3CA;
     RTS                                                                  ;84D3CE;
 
 
+;;; $D3CF: Instruction list - PLM $D6F8 (clear slope access for Wrecked Ship chozo) ;;;
 InstList_PLM_ClearSlopeAccessForWreckedShipChozo:
     dw $0001,DrawInst_ClearSlopeAccessForWreckedShipChozo                ;84D3CF;
     dw Instruction_PLM_TransformWreckedShipChozosSpikesIntoSlopes        ;84D3D3;
     dw Instruction_PLM_Delete                                            ;84D3D5;
 
+
+;;; $D3D7: Instruction - transform Wrecked Ship chozo's spikes into slopes ;;;
 Instruction_PLM_TransformWreckedShipChozosSpikesIntoSlopes:
+;; Parameters:
+;;     X: PLM index
     PHX                                                                  ;84D3D7;
     LDX.W #$1608                                                         ;84D3D8;
     LDA.W #$1012                                                         ;84D3DB;
@@ -10649,12 +13320,17 @@ Instruction_PLM_TransformWreckedShipChozosSpikesIntoSlopes:
     RTS                                                                  ;84D3EB;
 
 
+;;; $D3EC: Instruction list - PLM $D6FC (block slope access for Wrecked Ship chozo) ;;;
 InstList_PLM_BlockSlopeAccessForWreckedShipChozo:
     dw $0001,DrawInst_BlockSlopeAccessForWreckedShipChozo                ;84D3EC;
     dw Instruction_PLM_RevertWreckedShipChozosSlopesIntoSpikes           ;84D3F0;
     dw Instruction_PLM_Delete                                            ;84D3F2;
 
+
+;;; $D3F4: Instruction - revert Wrecked Ship chozo's slopes into spikes ;;;
 Instruction_PLM_RevertWreckedShipChozosSlopesIntoSpikes:
+;; Parameters:
+;;     X: PLM index
     PHX                                                                  ;84D3F4;
     LDX.W #$1608                                                         ;84D3F5;
     LDA.W #$A000                                                         ;84D3F8;
@@ -10667,7 +13343,12 @@ Instruction_PLM_RevertWreckedShipChozosSlopesIntoSpikes:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $D409: Unused. Pre-instruction - go to link instruction if shot with a bomb ;;;
 UNUSED_PreInst_PLM_GotoToLinkInstructionIfBombed_84D409:
+;; Parameter:
+;;     X: PLM index
+
+; Used PLM $D700 (unused. Wrecked Ship 3x4 chozo bomb block)
     LDA.W $1D77,X                                                        ;84D409;
     AND.W #$0F00                                                         ;84D40C;
     CMP.W #$0500                                                         ;84D40F;
@@ -10682,6 +13363,7 @@ UNUSED_PreInst_PLM_GotoToLinkInstructionIfBombed_84D409:
     RTS                                                                  ;84D425;
 
 
+;;; $D426: Instruction list - PLM $D700 (unused. Wrecked Ship 3x4 chozo bomb block) ;;;
 UNUSED_InstList_PLM_WreckedShip3x4ChozoBombBlock_84D426:
     dw Instruction_PLM_GotoY_ifRoomArg_ChozoBlockDestroyed               ;84D426;
     dw UNUSED_InstList_PLM_WreckedShip3x4ChozoBombBlock_84D448           ;84D428;
@@ -10705,6 +13387,8 @@ UNUSED_InstList_PLM_WreckedShip3x4ChozoBombBlock_84D448:
     dw $0004,UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_4_849DE9       ;84D448;
     dw Instruction_PLM_Delete                                            ;84D44C;
 
+
+;;; $D44E: Instruction list - PLM $D704 (unused. Alternate Lower Norfair chozo hand) ;;;
 UNUSED_InstList_PLM_AlternateLowerNorfairChozoHand_84D44E:
     dw Instruction_PLM_GotoY_ifEventIsSet                                ;84D44E;
     dw $000C,UNUSED_InstList_PLM_AlternateLowerNorfairChozoHand_84D46E   ;84D450;
@@ -10726,6 +13410,8 @@ UNUSED_InstList_PLM_AlternateLowerNorfairChozoHand_84D46E:
     dw $0001,UNUSED_DrawInst_AlternateLowerNorfairChozoHand_849CBF       ;84D470;
     dw Instruction_PLM_Delete                                            ;84D474;
 
+
+;;; $D476: Unused. Instruction - drain acid lake ;;;
 UNUSED_Instruction_PLM_DrainAcidLake_84D476:
     LDA.W #$02D2                                                         ;84D476;
     STA.W $197A                                                          ;84D479;
@@ -10736,12 +13422,15 @@ UNUSED_Instruction_PLM_DrainAcidLake_84D476:
     RTS                                                                  ;84D488;
 
 
+;;; $D489: Unused. Instruction - FX base Y position = 2D2h ;;;
 UNUSED_Instruction_PLM_FXBaseYPosition_2D2_84D489:
+; Clone of Instruction_PLM_FXBaseYPosition_2D2
     LDA.W #$02D2                                                         ;84D489;
     STA.W $1978                                                          ;84D48C;
     RTS                                                                  ;84D48F;
 
 
+;;; $D490: Instruction list - PLM $D708 (unused. Lower Norfair 2x2 chozo shot block) ;;;
 InstList_PLM_UnusedLowerNorfair2x2ChozoShotBlock_84D490:
     dw Instruction_PLM_GotoY_ifRoomArg_ChozoBlockDestroyed               ;84D490;
     dw InstList_PLM_UnusedLowerNorfair2x2ChozoShotBlock_84D4B8           ;84D492;
@@ -10766,11 +13455,18 @@ InstList_PLM_UnusedLowerNorfair2x2ChozoShotBlock_84D4B8:
     dw Instruction_PLM_Delete                                            ;84D4BC;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $D4BE: RTS. Instruction - NOP ;;;
 RTS_84D4BE:
     RTS                                                                  ;84D4BE;
 
 
+;;; $D4BF: Pre-instruction - wake PLM if A/X/B/Y/left/right pressed ;;;
 PreInstruction_PLM_WakePLMIf_A_B_X_Y_Left_Right:
+;; Parameter:
+;;     X: PLM index
+
+; Used by PLM $D70C (n00b tube)
     LDA.B $8F                                                            ;84D4BF;
     AND.W #$C3C0                                                         ;84D4C1;
     BEQ .return                                                          ;84D4C4;
@@ -10783,6 +13479,7 @@ PreInstruction_PLM_WakePLMIf_A_B_X_Y_Left_Right:
     RTS                                                                  ;84D4D3;
 
 
+;;; $D4D4: Instruction list - PLM $D70C (n00b tube) ;;;
 InstList_PLM_NoobTube_0:
     dw Instruction_PLM_GotoY_ifEventIsSet                                ;84D4D4;
     dw $000B,InstList_PLM_NoobTube_4                                     ;84D4D6;
@@ -10824,12 +13521,15 @@ InstList_PLM_NoobTube_4:
     dw Instruction_PLM_EnableWaterPhysics                                ;84D521;
     dw Instruction_PLM_Delete                                            ;84D523;
 
+
+;;; $D525: Instruction - enable water physics ;;;
 Instruction_PLM_EnableWaterPhysics:
     LDA.W #$0004                                                         ;84D525;
     TRB.W $197E                                                          ;84D528;
     RTS                                                                  ;84D52B;
 
 
+;;; $D52C: Instruction - spawn n00b tube crack enemy projectile ;;;
 Instruction_PLM_SpawnNoobTubeCrackEnemyProjectile:
     PHY                                                                  ;84D52C;
     LDY.W #EnemyProjectile_NoobTubeCrack                                 ;84D52D;
@@ -10838,6 +13538,7 @@ Instruction_PLM_SpawnNoobTubeCrackEnemyProjectile:
     RTS                                                                  ;84D535;
 
 
+;;; $D536: Instruction - trigger n00b tube earthquake ;;;
 Instruction_PLM_TriggerNoobTubeEarthquake:
     LDA.W #$000B                                                         ;84D536;
     STA.W $183E                                                          ;84D539;
@@ -10846,6 +13547,7 @@ Instruction_PLM_TriggerNoobTubeEarthquake:
     RTS                                                                  ;84D542;
 
 
+;;; $D543: Instruction - spawn ten n00b tube shards and six n00b tube released air bubbles ;;;
 Inst_PLM_SpawnANoobTubeShards_6NoobTubeReleasedAirBubbles:
     PHY                                                                  ;84D543;
     LDA.W #$0000                                                         ;84D544;
@@ -10900,19 +13602,25 @@ Inst_PLM_SpawnANoobTubeShards_6NoobTubeReleasedAirBubbles:
     RTS                                                                  ;84D5E5;
 
 
+;;; $D5E6: Instruction - lock Samus ;;;
 Instruction_PLM_LockSamus:
     LDA.W #$0000                                                         ;84D5E6;
     JSL.L Run_Samus_Command                                              ;84D5E9;
     RTS                                                                  ;84D5ED;
 
 
+;;; $D5EE: Instruction - unlock Samus ;;;
 Instruction_PLM_UnlockSamus:
     LDA.W #$0001                                                         ;84D5EE;
     JSL.L Run_Samus_Command                                              ;84D5F1;
     RTS                                                                  ;84D5F5;
 
 
+;;; $D5F6: Setup - PLM $D6DE (Mother Brain's glass) ;;;
 Setup_MotherBrainsGlass:
+;; Parameters:
+;;     Y: PLM index
+
 ; A draw instruction changes the PLM block type to shot block, making this a generic shot trigger
     LDA.W #$0000                                                         ;84D5F6;\
     STA.W $1DC7,Y                                                        ;84D5F9;} Clear PLM room argument (used as hit counter)
@@ -10922,7 +13630,12 @@ Setup_MotherBrainsGlass:
     RTS                                                                  ;84D605;
 
 
+;;; $D606: Setup - PLM $D6EA (Bomb Torizo's crumbling chozo) ;;;
 Setup_BombTorizosCrumblingChozo:
+;; Parameters:
+;;     Y: PLM index
+
+; Delete PLM if area torizo is dead
     LDA.W #$0004                                                         ;84D606;
     JSL.L CheckIfBossBitsForCurrentAreaMatchAnyBitsInA                   ;84D609;
     BCC .return                                                          ;84D60D;
@@ -10933,14 +13646,26 @@ Setup_BombTorizosCrumblingChozo:
     RTS                                                                  ;84D615;
 
 
+;;; $D616: Setup - PLM $D6EE (Wrecked Ship chozo hand) ;;;
 Setup_WreckedShipChozoHand:
+;; Parameters:
+;;     Y: PLM index
+
+; Make PLM block a Wrecked Ship chozo hand trigger
     LDX.W $1C87,Y                                                        ;84D616;
     LDA.W #$B080                                                         ;84D619;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84D61C;
     RTS                                                                  ;84D61F;
 
 
+;;; $D620: Setup - PLM $D6F2 (collision reaction, special, BTS Wrecked Ship 80h. Wrecked Ship chozo hand trigger) ;;;
 Setup_Collision_WreckedShipChozoHandTrigger:
+;; Parameters:
+;;     Y: PLM index
+;; Returns:
+;;     Carry: Set. Unconditional collision
+
+; Enemy 0 is presumed to be the chozo statue
     LDA.W #$0001                                                         ;84D620;
     JSL.L CheckIfBossBitsForCurrentAreaMatchAnyBitsInA                   ;84D623;
     BCC .return                                                          ;84D627;
@@ -10981,21 +13706,36 @@ Setup_Collision_WreckedShipChozoHandTrigger:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $D67F: Setup - PLM $D700 (unused. Wrecked Ship 3x4 chozo bomb block) ;;;
 Setup_UnusedWreckedShip3x4ChozoBombBlock:
+;; Parameters:
+;;     Y: PLM index
+
+; Make PLM block an air block with BTS 44h (BTS for generic shot trigger)
     LDX.W $1C87,Y                                                        ;84D67F;
     LDA.W #$0044                                                         ;84D682;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84D685;
     RTS                                                                  ;84D688;
 
 
+;;; $D689: Setup - PLM $D704 (unused. Alternate Lower Norfair chozo hand) ;;;
 Setup_UnusedAlternateLowerNorfairChozoHand:
+;; Parameters:
+;;     Y: PLM index
+
+; Make PLM block a solid block with BTS 44h (BTS for generic shot trigger)
     LDX.W $1C87,Y                                                        ;84D689;
     LDA.W #$8044                                                         ;84D68C;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84D68F;
     RTS                                                                  ;84D692;
 
 
+;;; $D693: Setup - PLM $D708 (unused. Lower Norfair 2x2 chozo shot block) ;;;
 Setup_UnusedLowerNorfair2x2ChozoShotBlock:
+;; Parameters:
+;;     Y: PLM index
+
+; Make PLM block a solid block with BTS 44h (BTS for generic shot trigger), extended to the right and down to a 2x2 block
     LDX.W $1C87,Y                                                        ;84D693;
     LDA.W #$8044                                                         ;84D696;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84D699;
@@ -11024,7 +13764,12 @@ Setup_UnusedLowerNorfair2x2ChozoShotBlock:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $D6CC: Setup - PLM $D70C (n00b tube) ;;;
 Setup_NoobTube:
+;; Parameters:
+;;     Y: PLM index
+
+; Make PLM block a solid block with BTS 44h (BTS for generic shot trigger)
     LDX.W $1C87,Y                                                        ;84D6CC;
     LDA.W #$8044                                                         ;84D6CF;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84D6D2;
@@ -11032,75 +13777,96 @@ Setup_NoobTube:
 
 
 PLMEntries_LowerNorfairChozoHand:
+; Lower Norfair chozo hand
     dw RTS_84D18E                                                        ;84D6D6;
     dw InstList_PLM_LowerNorfairChozoHand_0                              ;84D6D8;
 
 PLMEntries_Collision_LowerNorfairChozoHandCheck:
+; Collision reaction, special, BTS Norfair 83h. Lower Norfair chozo hand check
     dw Setup_Reaction_LowerNorfairChozoHandTrigger                       ;84D6DA;
     dw InstList_PLM_Delete                                               ;84D6DC;
 
 PLMEntries_MotherBrainsGlass:
+; Mother Brain's glass
     dw Setup_MotherBrainsGlass                                           ;84D6DE;
     dw InstList_PLM_MotherBrainsGlass_0                                  ;84D6E0;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_PLMEntries_MotherBrainsGlass_AreaBossDead_84D6E2:
+; Unused. Mother Brain's glass, area boss dead state
     dw Setup_DeactivatePLM                                               ;84D6E2;
     dw InstList_PLM_UnusedMotherBrainsGlass_AreaBossDead                 ;84D6E4;
 
 UNUSED_PLMEntries_MotherBrainsGlass_NoGlassState_84D6E6:
+; Unused. Mother Brain's glass, no glass state
     dw Setup_DeactivatePLM                                               ;84D6E6;
     dw InstList_PLM_UnusedMotherBrainsGlass_NoGlassState                 ;84D6E8;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PLMEntries_BombTorizosCrumblingChozo:
+; Bomb Torizo's crumbling chozo
     dw Setup_BombTorizosCrumblingChozo                                   ;84D6EA;
     dw InstList_PLM_BombTorizosCrumblingChozo                            ;84D6EC;
 
 PLMEntries_WreckedShipChozoHand:
+; Wrecked Ship chozo hand
     dw Setup_WreckedShipChozoHand                                        ;84D6EE;
     dw InstList_PLM_Delete                                               ;84D6F0;
 
 PLMEntries_Collision_WreckedShipChozoHandCheck:
+; Collision reaction, special, BTS Wrecked Ship 80h. Wrecked Ship chozo hand check
     dw Setup_Collision_WreckedShipChozoHandTrigger                       ;84D6F2;
     dw InstList_PLM_Delete                                               ;84D6F4;
 
+
+;;; $D6F6: RTS. Setup - PLM $D6F8 (clear slope access for Wrecked Ship chozo) ;;;
 RTS_84D6F6:
     RTS                                                                  ;84D6F6;
 
 
+;;; $D6F7: RTS. Setup - PLM $D6FC (block slope access for Wrecked Ship chozo) ;;;
 RTS_84D6F7:
     RTS                                                                  ;84D6F7;
 
 
 PLMEntries_ClearSlopeAccessForWreckedShipChozo:
+; Clear slope access for Wrecked Ship chozo
     dw RTS_84D6F6                                                        ;84D6F8;
     dw InstList_PLM_ClearSlopeAccessForWreckedShipChozo                  ;84D6FA;
 
 PLMEntries_BlockSlopeAccessForWreckedShipChozo:
+; Block slope access for Wrecked Ship chozo
     dw RTS_84D6F7                                                        ;84D6FC;
     dw InstList_PLM_BlockSlopeAccessForWreckedShipChozo                  ;84D6FE;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_PLMEntries_WreckedShip3x4ChozoShotBlock_84D700:
+; Unused. Wrecked Ship 3x4 chozo bomb block
     dw Setup_UnusedWreckedShip3x4ChozoBombBlock                          ;84D700;
     dw UNUSED_InstList_PLM_WreckedShip3x4ChozoBombBlock_84D426           ;84D702;
 
 UNUSED_PLMEntries_AltLowerNorfairChozoHand_84D704:
+; Unused. Alternate Lower Norfair chozo hand
     dw Setup_UnusedAlternateLowerNorfairChozoHand                        ;84D704;
     dw UNUSED_InstList_PLM_AlternateLowerNorfairChozoHand_84D44E         ;84D706;
 
 UNUSED_PLMEntries_LowerNorfair2x2ChozoShotBlock_84D708:
+; Unused. Lower Norfair 2x2 chozo shot block
     dw Setup_UnusedLowerNorfair2x2ChozoShotBlock                         ;84D708;
     dw InstList_PLM_UnusedLowerNorfair2x2ChozoShotBlock_84D490           ;84D70A;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PLMEntries_NoobTube:
+; n00b tube
     dw Setup_NoobTube                                                    ;84D70C;
     dw InstList_PLM_NoobTube_0                                           ;84D70E;
 
+
 if !FEATURE_KEEP_UNREFERENCED
+;;; $D710: Unused. Pre-instruction - wake PLM if Samus is within 4 blocks of PLM ;;;
 UNUSED_PreInst_PLM_WakePLMIfSamusIsWithin4Blocks_84D710:
+;; Parameter:
+;;     X: PLM index
     JSL.L Calculate_PLM_Block_Coordinates                                ;84D710;
     LDA.W $0AF6                                                          ;84D714;
     LSR A                                                                ;84D717;
@@ -11142,7 +13908,10 @@ UNUSED_PreInst_PLM_WakePLMIfSamusIsWithin4Blocks_84D710:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $D753: Pre-instruction - wake PLM if room argument door is set ;;;
 PreInstruction_PLM_WakePLMIfRoomArgDoorIsSet:
+;; Parameter:
+;;     X: PLM index
     TXY                                                                  ;84D753;
     LDA.W $1DC7,X                                                        ;84D754;
     JSL.L BitIndexToByteIndexAndBitmask                                  ;84D757;
@@ -11161,7 +13930,12 @@ PreInstruction_PLM_WakePLMIfRoomArgDoorIsSet:
     RTS                                                                  ;84D779;
 
 
+;;; $D77A: Instruction - shoot eye door projectile with enemy projectile argument [[Y]] ;;;
 Instruction_PLM_ShootEyeDoorProjectileWithEnemyProjArgY:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;84D77A;
     PHY                                                                  ;84D77D;
     LDY.W #EnemyProjectile_EyeDoorProjectile                             ;84D77E;
@@ -11174,7 +13948,12 @@ Instruction_PLM_ShootEyeDoorProjectileWithEnemyProjArgY:
     RTS                                                                  ;84D78F;
 
 
+;;; $D790: Instruction - spawn eye door sweat enemy projectile with argument [[Y]] ;;;
 Instruction_PLM_SpawnEyeDoorSweatEnemyProjectileWithArgY:
+;; Parameters:
+;;     Y: Pointer to instruction arguments
+;; Returns:
+;;     Y: Pointer to next instruction
     LDA.W $0000,Y                                                        ;84D790;
     PHY                                                                  ;84D793;
     LDY.W #EnemyProjectile_EyeDoorSweat                                  ;84D794;
@@ -11186,6 +13965,7 @@ Instruction_PLM_SpawnEyeDoorSweatEnemyProjectileWithArgY:
 
 
 Instruction_PLM_Spawn2EyeDoorSmokeEnemyProjectiles:
+;;; $D79F: Instruction - spawn two eye door smoke enemy projectiles ;;;
     PHY                                                                  ;84D79F;
     LDA.W #$030A                                                         ;84D7A0;
     LDY.W #EnemyProjectile_MiscDustPLM                                   ;84D7A3;
@@ -11197,7 +13977,13 @@ Instruction_PLM_Spawn2EyeDoorSmokeEnemyProjectiles:
     RTS                                                                  ;84D7B5;
 
 
+;;; $D7B6: Instruction - spawn eye door sweat drop projectile ;;;
 Instruction_PLM_SpawnEyeDoorSweatDropProjectile:
+; This enemy projectile is pretty pointless,
+; it's a tiny graphic that lasts 14h frames that will almost certainly be hidden by the missile explosion or other smoke enemy projectiles
+; It uses the non-random positioning argument (always spawns to the same place, the center of the door),
+; so there's no reason to call this instruction multiple times in a row
+; It's also just strange to draw a sweat drop in the center of the door as part of the fatal hit
     PHY                                                                  ;84D7B6;
     LDA.W #$000B                                                         ;84D7B7;
     LDY.W #EnemyProjectile_MiscDustPLM                                   ;84D7BA;
@@ -11206,7 +13992,10 @@ Instruction_PLM_SpawnEyeDoorSweatDropProjectile:
     RTS                                                                  ;84D7C2;
 
 
+;;; $D7C3: Instruction - move PLM up one row and make a blue door facing right ;;;
 Instruction_PLM_MovePLMUp1Row_MakeABlueDoorFacingRight:
+;; Parameters:
+;;     X: PLM index
     PHX                                                                  ;84D7C3;
     LDA.W $1C87,X                                                        ;84D7C4;
     SEC                                                                  ;84D7C7;
@@ -11219,7 +14008,10 @@ Instruction_PLM_MovePLMUp1Row_MakeABlueDoorFacingRight:
     BRA Create3BlockVerticalExtension                                    ;84D7D8;
 
 
+;;; $D7DA: Instruction - move PLM up one row and make a blue door facing left ;;;
 Instruction_PLM_MovePLMUp1Row_MakeABlueDoorFacingLeft:
+;; Parameters:
+;;     X: PLM index
     PHX                                                                  ;84D7DA;
     LDA.W $1C87,X                                                        ;84D7DB;
     SEC                                                                  ;84D7DE;
@@ -11228,9 +14020,16 @@ Instruction_PLM_MovePLMUp1Row_MakeABlueDoorFacingLeft:
     STA.W $1C87,X                                                        ;84D7E5;
     TAX                                                                  ;84D7E8;
     LDA.W #$C040                                                         ;84D7E9;
-    JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84D7EC;
+    JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84D7EC; fallthrough to Create3BlockVerticalExtension
 
+
+;;; $D7EF: Create 3 block vertical extension ;;;
 Create3BlockVerticalExtension:
+;; Parameters:
+;;     X: PLM index
+
+; Expects a pushed X
+; Used to make the rest of the blue door the eye door spawns
     TXA                                                                  ;84D7EF;
     CLC                                                                  ;84D7F0;
     ADC.W $07A5                                                          ;84D7F1;
@@ -11256,6 +14055,7 @@ Create3BlockVerticalExtension:
     RTS                                                                  ;84D81D;
 
 
+;;; $D81E: Instruction list - PLM $DB56 (eye door eye, facing left) ;;;
 InstList_PLM_EyeDoorEyeFacingLeft_0:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84D81E;
     dw InstList_PLM_EyeDoorEyeFacingLeft_8                               ;84D820;
@@ -11343,6 +14143,8 @@ InstList_PLM_EyeDoorEyeFacingLeft_8:
     dw Instruction_PLM_GotoY                                             ;84D8E5;
     dw InstList_PLM_ClosedBlueDoorFacingLeft_40                          ;84D8E7;
 
+
+;;; $D8E9: Instruction list - door $DB5A (eye door, facing left) ;;;
 InstList_PLM_EyeDoorFacingLeft_0:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84D8E9;
     dw InstList_PLM_EyeDoorFacingLeft_4                                  ;84D8EB;
@@ -11373,6 +14175,8 @@ InstList_PLM_EyeDoorFacingLeft_3:
 InstList_PLM_EyeDoorFacingLeft_4:
     dw Instruction_PLM_Delete                                            ;84D91D;
 
+
+;;; $D91F: Instruction list - PLM $DB60 (eye door bottom, facing left) ;;;
 InstList_PLM_EyeDoorBottomFacingLeft_0:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84D91F;
     dw InstList_PLM_EyeDoorBottomFacingLeft_4                            ;84D921;
@@ -11403,6 +14207,8 @@ InstList_PLM_EyeDoorBottomFacingLeft_3:
 InstList_PLM_EyeDoorBottomFacingLeft_4:
     dw Instruction_PLM_Delete                                            ;84D953;
 
+
+;;; $D955: Instruction list - PLM $DB48 (eye door eye, facing right) ;;;
 InstList_PLM_EyeDoorEyeFacingRight_0:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84D955;
     dw InstList_PLM_EyeDoorEyeFacingRight_8                              ;84D957;
@@ -11490,6 +14296,8 @@ InstList_PLM_EyeDoorEyeFacingRight_8:
     dw Instruction_PLM_GotoY                                             ;84DA1C;
     dw InstList_PLM_ClosedBlueDoorFacingLeft_41                          ;84DA1E;
 
+
+;;; $DA20: Instruction list - door $DB4C (eye door, facing right) ;;;
 InstList_PLM_EyeDoorFacingRight_0:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84DA20;
     dw InstList_PLM_EyeDoorFacingRight_4                                 ;84DA22;
@@ -11520,6 +14328,8 @@ InstList_PLM_EyeDoorFacingRight_3:
 InstList_PLM_EyeDoorFacingRight_4:
     dw Instruction_PLM_Delete                                            ;84DA54;
 
+
+;;; $DA56: Instruction list - PLM $DB52 (eye door bottom, facing right) ;;;
 InstList_PLM_EyeDoorBottomFacingRight_0:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84DA56;
     dw InstList_PLM_EyeDoorBottomFacingRight_4                           ;84DA58;
@@ -11550,7 +14360,11 @@ InstList_PLM_EyeDoorBottomFacingRight_3:
 InstList_PLM_EyeDoorBottomFacingRight_4:
     dw Instruction_PLM_Delete                                            ;84DA8A;
 
+
+;;; $DA8C: Setup - PLM $DB48/$DB56 (eye door eye) ;;;
 Setup_EyeDoorEye:
+;; Parameters:
+;;     Y: PLM index
     PHY                                                                  ;84DA8C;
     LDA.W $1DC7,Y                                                        ;84DA8D;
     JSL.L BitIndexToByteIndexAndBitmask                                  ;84DA90;
@@ -11573,7 +14387,10 @@ Setup_EyeDoorEye:
     RTS                                                                  ;84DAB8;
 
 
+;;; $DAB9: Setup - door $DB4C/$DB5A / PLM $DB52/$DB60 (eye door) ;;;
 Setup_EyeDoor:
+;; Parameters:
+;;     Y: PLM index
     PHY                                                                  ;84DAB9;
     LDA.W $1DC7,Y                                                        ;84DABA;
     JSL.L BitIndexToByteIndexAndBitmask                                  ;84DABD;
@@ -11589,42 +14406,52 @@ Setup_EyeDoor:
     RTS                                                                  ;84DAD4;
 
 
+;;; $DAD5: RTS. Pre-instruction - set Metroids cleared state when required - room argument = 0 ;;;
 RTS_84DAD5:
     RTS                                                                  ;84DAD5;
 
 
+;;; $DAD6: RTS. Pre-instruction - set Metroids cleared state when required - room argument = 2 ;;;
 RTS_84DAD6:
     RTS                                                                  ;84DAD6;
 
 
+;;; $DAD7: RTS. Pre-instruction - set Metroids cleared state when required - room argument = 4 ;;;
 RTS_84DAD7:
     RTS                                                                  ;84DAD7;
 
 
+;;; $DAD8: RTS. Pre-instruction - set Metroids cleared state when required - room argument = 6 ;;;
 RTS_84DAD8:
     RTS                                                                  ;84DAD8;
 
 
+;;; $DAD9: RTS. Pre-instruction - set Metroids cleared state when required - room argument = 8 ;;;
 RTS_84DAD9:
     RTS                                                                  ;84DAD9;
 
 
+;;; $DADA: RTS. Pre-instruction - set Metroids cleared state when required - room argument = Ah ;;;
 RTS_84DADA:
     RTS                                                                  ;84DADA;
 
 
+;;; $DADB: RTS. Pre-instruction - set Metroids cleared state when required - room argument = Ch ;;;
 RTS_84DADB:
     RTS                                                                  ;84DADB;
 
 
+;;; $DADC: RTS. Pre-instruction - set Metroids cleared state when required - room argument = Eh ;;;
 RTS_84DADC:
     RTS                                                                  ;84DADC;
 
 
+;;; $DADD: RTS. Pre-instruction - set Metroids cleared state when required - room argument = 10h ;;;
 RTS_84DADD:
     RTS                                                                  ;84DADD;
 
 
+;;; $DADE: Pre-instruction - set Metroids cleared state when required - room argument = 12h ;;;
 PreInst_PLM_SetMetroidsClearedStateWhenRequired_RoomArg12:
     LDA.W $0E50                                                          ;84DADE;
     CMP.W $0E52                                                          ;84DAE1;
@@ -11636,6 +14463,7 @@ PreInst_PLM_SetMetroidsClearedStateWhenRequired_RoomArg12:
     RTS                                                                  ;84DAED;
 
 
+;;; $DAEE: Pre-instruction - set Metroids cleared state when required - room argument = 14h ;;;
 PreInst_PLM_SetMetroidsClearedStateWhenRequired_RoomArg14:
     LDA.W $0E50                                                          ;84DAEE;
     CMP.W $0E52                                                          ;84DAF1;
@@ -11647,6 +14475,7 @@ PreInst_PLM_SetMetroidsClearedStateWhenRequired_RoomArg14:
     RTS                                                                  ;84DAFD;
 
 
+;;; $DAFE: Pre-instruction - set Metroids cleared state when required - room argument = 16h ;;;
 PreInst_PLM_SetMetroidsClearedStateWhenRequired_RoomArg16:
     LDA.W $0E50                                                          ;84DAFE;
     CMP.W $0E52                                                          ;84DB01;
@@ -11658,6 +14487,7 @@ PreInst_PLM_SetMetroidsClearedStateWhenRequired_RoomArg16:
     RTS                                                                  ;84DB0D;
 
 
+;;; $DB0E: Pre-instruction - set Metroids cleared state when required - room argument = 18h ;;;
 PreInst_PLM_SetMetroidsClearedStateWhenRequired_RoomArg18:
     LDA.W $0E50                                                          ;84DB0E;
     CMP.W $0E52                                                          ;84DB11;
@@ -11669,12 +14499,14 @@ PreInst_PLM_SetMetroidsClearedStateWhenRequired_RoomArg18:
     RTS                                                                  ;84DB1D;
 
 
+;;; $DB1E: Setup - PLM $DB44 (sets Metroids cleared states when required) ;;;
 PreInstruction_PLM_SetsMetroidsClearedStatesWhenRequired:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $1DC7,Y                                                        ;84DB1E;
     LDA.W .pointers,X                                                    ;84DB21;
     STA.W $1CD7,Y                                                        ;84DB24;
     RTS                                                                  ;84DB27;
-
 
   .pointers:
     dw RTS_84DAD5                                                        ;84DB28;
@@ -11691,40 +14523,56 @@ PreInstruction_PLM_SetsMetroidsClearedStatesWhenRequired:
     dw PreInst_PLM_SetMetroidsClearedStateWhenRequired_RoomArg16         ;84DB3E;
     dw PreInst_PLM_SetMetroidsClearedStateWhenRequired_RoomArg18         ;84DB40;
 
+
+;;; $DB42: Instruction list - PLM $DB44 (sets Metroids cleared states when required) ;;;
 InstList_PLM_SetsMetroidsClearedStatesWhenRequired:
     dw Instruction_PLM_Sleep                                             ;84DB42;
 
+
 PLMEntries_SetsMetroidsClearedStatesWhenRequired:
+; Sets Metroids cleared states when required
     dw PreInstruction_PLM_SetsMetroidsClearedStatesWhenRequired          ;84DB44;
     dw InstList_PLM_SetsMetroidsClearedStatesWhenRequired                ;84DB46;
 
 PLMEntries_EyeDoorEyeFacingRight:
+; Eye door eye, facing right
     dw Setup_EyeDoorEye                                                  ;84DB48;
     dw InstList_PLM_EyeDoorEyeFacingRight_0                              ;84DB4A;
 
-PLMEntries_EyeDoorFacingRIght:
+PLMEntries_EyeDoorFacingRight:
+; Door. Eye door, facing right
     dw Setup_EyeDoor                                                     ;84DB4C;
     dw InstList_PLM_EyeDoorFacingRight_0                                 ;84DB4E;
     dw InstList_PLM_Delete                                               ;84DB50;
 
 PLMEntries_EyeDoorBottomFacingRight:
+; Eye door bottom, facing right
     dw Setup_EyeDoor                                                     ;84DB52;
     dw InstList_PLM_EyeDoorBottomFacingRight_0                           ;84DB54;
 
 PLMEntries_EyeDoorEyeFacingLeft:
+; Eye door eye, facing left
     dw Setup_EyeDoorEye                                                  ;84DB56;
     dw InstList_PLM_EyeDoorEyeFacingLeft_0                               ;84DB58;
 
 PLMEntries_EyeDoorFacingLeft:
+; Door. Eye door, facing left
     dw Setup_EyeDoor                                                     ;84DB5A;
     dw InstList_PLM_EyeDoorFacingLeft_0                                  ;84DB5C;
     dw InstList_PLM_Delete                                               ;84DB5E;
 
 PLMEntries_EyeDoorBottomFacingLeft:
+; Eye door bottom, facing left
     dw Setup_EyeDoor                                                     ;84DB60;
     dw InstList_PLM_EyeDoorBottomFacingLeft_0                            ;84DB62;
 
+
+;;; $DB64: Pre-instruction - go to link instruction if shot with a (super) missile ;;;
 PreInst_PLM_GotoLinkInstructionIfShotWithAMissile_Draygon:
+;; Parameter:
+;;     X: PLM index
+
+; Used by Draygon cannon with shield
     LDA.W $1D77,X                                                        ;84DB64;
     AND.W #$0F00                                                         ;84DB67;
     CMP.W #$0200                                                         ;84DB6A;
@@ -11742,14 +14590,16 @@ PreInst_PLM_GotoLinkInstructionIfShotWithAMissile_Draygon:
   .return:
     RTS                                                                  ;84DB85;
 
-
   .super:
     LDA.W #$0077                                                         ;84DB86;
     STA.W $1DC7,X                                                        ;84DB89;
     BRA .missile                                                         ;84DB8C;
 
 
+;;; $DB8E: Instruction - damage Draygon turret ;;;
 Instruction_PLM_DamageDraygonTurret:
+;; Parameters:
+;;     X: PLM index
     PHX                                                                  ;84DB8E;
     LDA.W $1E17,X                                                        ;84DB8F;
     TAX                                                                  ;84DB92;
@@ -11771,7 +14621,10 @@ Instruction_PLM_DamageDraygonTurret:
     RTS                                                                  ;84DBB7;
 
 
+;;; $DBB8: Instruction - damage Draygon turret facing down-right ;;;
 Instruction_PLM_DamageDraygonTurretFacingDownRight:
+;; Parameters:
+;;     X: PLM index
     PHX                                                                  ;84DBB8;
     LDA.W $1E17,X                                                        ;84DBB9;
     TAX                                                                  ;84DBBC;
@@ -11802,7 +14655,10 @@ Instruction_PLM_DamageDraygonTurretFacingDownRight:
     RTS                                                                  ;84DBF6;
 
 
+;;; $DBF7: Instruction - damage Draygon turret facing up-right ;;;
 Instruction_PLM_DamageDraygonTurretFacingUpRight:
+;; Parameters:
+;;     X: PLM index
     PHX                                                                  ;84DBF7;
     LDA.W $1E17,X                                                        ;84DBF8;
     TAX                                                                  ;84DBFB;
@@ -11833,7 +14689,12 @@ Instruction_PLM_DamageDraygonTurretFacingUpRight:
     RTS                                                                  ;84DC35;
 
 
+;;; $DC36: Instruction - damage Draygon turret ;;;
 Instruction_PLM_DamageDraygonTurret_duplicate:
+;; Parameters:
+;;     X: PLM index
+
+; Clone of Instruction_PLM_DamageDraygonTurret
     PHX                                                                  ;84DC36;
     LDA.W $1E17,X                                                        ;84DC37;
     TAX                                                                  ;84DC3A;
@@ -11855,7 +14716,10 @@ Instruction_PLM_DamageDraygonTurret_duplicate:
     RTS                                                                  ;84DC5F;
 
 
+;;; $DC60: Instruction - damage Draygon turret facing down-left ;;;
 Instruction_PLM_DamageDraygonTurretFacingDownLeft:
+;; Parameters:
+;;     X: PLM index
     PHX                                                                  ;84DC60;
     LDA.W $1E17,X                                                        ;84DC61;
     TAX                                                                  ;84DC64;
@@ -11886,7 +14750,10 @@ Instruction_PLM_DamageDraygonTurretFacingDownLeft:
     RTS                                                                  ;84DC9E;
 
 
+;;; $DC9F: Instruction - damage Draygon turret facing up-left ;;;
 Instruction_PLM_DamageDraygonTurretFacingUpLeft:
+;; Parameters:
+;;     X: PLM index
     PHX                                                                  ;84DC9F;
     LDA.W $1E17,X                                                        ;84DCA0;
     TAX                                                                  ;84DCA3;
@@ -11917,6 +14784,7 @@ Instruction_PLM_DamageDraygonTurretFacingUpLeft:
     RTS                                                                  ;84DCDD;
 
 
+;;; $DCDE: Instruction list - PLM $DF59 (Draygon cannon, with shield, facing right) ;;;
 InstList_PLM_DraygonCannonWithShieldFacingRight_0:
     dw Instruction_PLM_LinkInstruction_Y                                 ;84DCDE;
     dw InstList_PLM_DraygonCannonWithShieldFacingRight_2                 ;84DCE0;
@@ -11941,6 +14809,8 @@ InstList_PLM_DraygonCannonWithShieldFacingRight_2:
     dw Instruction_PLM_GotoY                                             ;84DD0D;
     dw InstList_PLM_DraygonCannonWithShieldFacingRight_1                 ;84DD0F;
 
+
+;;; $DD11: Instruction list - PLM $DF65 (Draygon cannon, facing right) ;;;
 InstList_PLM_DraygonCannonFacingRight_0:
     dw Instruction_PLM_DamageDraygonTurret                               ;84DD11;
 
@@ -11952,6 +14822,8 @@ InstList_PLM_DraygonCannonFacingRight_1:
     dw Instruction_PLM_GotoY                                             ;84DD23;
     dw InstList_PLM_DraygonCannonFacingRight_1                           ;84DD25;
 
+
+;;; $DD27: Instruction list - PLM $DF5D (unused. Draygon cannon, with shield, facing down-right) ;;;
 InstList_PLM_DraygonCannonWithShieldFacingDownRight_0:
     dw Instruction_PLM_LinkInstruction_Y                                 ;84DD27;
     dw InstList_PLM_DraygonCannonWithShieldFacingDownRight_2             ;84DD29;
@@ -11976,6 +14848,8 @@ InstList_PLM_DraygonCannonWithShieldFacingDownRight_2:
     dw Instruction_PLM_GotoY                                             ;84DD56;
     dw InstList_PLM_DraygonCannonWithShieldFacingDownRight_1             ;84DD58;
 
+
+;;; $DD5A: Instruction list - PLM $DF69 (unused. Draygon cannon, facing down-right) ;;;
 UNUSED_InstList_PLM_DraygonCannonFacingDownRight_0:
     dw Instruction_PLM_DamageDraygonTurretFacingDownRight                ;84DD5A;
 
@@ -11988,6 +14862,8 @@ UNUSED_InstList_PLM_DraygonCannonFacingDownRight_1:
     dw Instruction_PLM_GotoY                                             ;84DD6C;
     dw UNUSED_InstList_PLM_DraygonCannonFacingDownRight_1                ;84DD6E;
 
+
+;;; $DD70: Instruction list - PLM $DF61 (unused. Draygon cannon, with shield, facing up-right) ;;;
 UNUSED_InstList_DraygonCannonWithShieldFacingUpRight_84DD70:
     dw Instruction_PLM_LinkInstruction_Y                                 ;84DD70;
     dw UNUSED_InstList_DraygonCannonWithShieldFacingUpRight_84DD82       ;84DD72;
@@ -12012,6 +14888,8 @@ UNUSED_InstList_DraygonCannonWithShieldFacingUpRight_84DD82:
     dw Instruction_PLM_GotoY                                             ;84DD9F;
     dw UNUSED_InstList_DraygonCannonWithShieldFacingUpRight_84DD78       ;84DDA1;
 
+
+;;; $DDA3: Instruction list - PLM $DF6D (unused. Draygon cannon, facing up-right) ;;;
 UNUSED_InstList_PLM_DraygonCannonFacingUpRight_84DDA3:
     dw Instruction_PLM_DamageDraygonTurretFacingUpRight                  ;84DDA3;
 
@@ -12024,6 +14902,8 @@ UNUSED_InstList_PLM_DraygonCannonFacingUpRight_84DDA5:
     dw UNUSED_InstList_PLM_DraygonCannonFacingUpRight_84DDA5             ;84DDB7;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $DDB9: Instruction list - PLM $DF71 (Draygon cannon, with shield, facing left) ;;;
 InstList_PLM_DraygonCannonWithShieldFacingLeft_0:
     dw Instruction_PLM_LinkInstruction_Y                                 ;84DDB9;
     dw InstList_PLM_DraygonCannonWithShieldFacingLeft_2                  ;84DDBB;
@@ -12048,6 +14928,8 @@ InstList_PLM_DraygonCannonWithShieldFacingLeft_2:
     dw Instruction_PLM_GotoY                                             ;84DDE8;
     dw InstList_PLM_DraygonCannonWithShieldFacingLeft_1                  ;84DDEA;
 
+
+;;; $DDEC: Instruction list - PLM $DF7D (Draygon cannon, facing left) ;;;
 InstList_PLM_DraygonCannonFacingLeft_0:
     dw Instruction_PLM_DamageDraygonTurret_duplicate                     ;84DDEC;
 
@@ -12059,7 +14941,9 @@ InstList_PLM_DraygonCannonFacingLeft_1:
     dw Instruction_PLM_GotoY                                             ;84DDFE;
     dw InstList_PLM_DraygonCannonFacingLeft_1                            ;84DE00;
 
+
 if !FEATURE_KEEP_UNREFERENCED
+;;; $DE02: Instruction list - PLM $DF75 (unused. Draygon cannon, with shield, facing down-left) ;;;
 UNUSED_InstList_DraygonCannonWithShieldFacingDownLeft_84DE02:
     dw Instruction_PLM_LinkInstruction_Y                                 ;84DE02;
     dw UNUSED_InstList_DraygonCannonWithShieldFacingDownLeft_84DE14      ;84DE04;
@@ -12084,6 +14968,8 @@ UNUSED_InstList_DraygonCannonWithShieldFacingDownLeft_84DE14:
     dw Instruction_PLM_GotoY                                             ;84DE31;
     dw UNUSED_InstList_DraygonCannonWithShieldFacingDownLeft_84DE0A      ;84DE33;
 
+
+;;; $DE35: Instruction list - PLM $DF81 (unused. Draygon cannon, facing down-left) ;;;
 UNUSED_InstList_PLM_DraygonCannonFacingDownLeft_84DE35:
     dw Instruction_PLM_DamageDraygonTurretFacingDownLeft                 ;84DE35;
 
@@ -12095,6 +14981,8 @@ UNUSED_InstList_PLM_DraygonCannonFacingDownLeft_84DE37:
     dw Instruction_PLM_GotoY                                             ;84DE47;
     dw UNUSED_InstList_PLM_DraygonCannonFacingDownLeft_84DE37            ;84DE49;
 
+
+;;; $DE4B: Instruction list - PLM $DF79 (unused. Draygon cannon, with shield, facing up-left) ;;;
 UNUSED_InstList_DraygonCannonWithShieldFacingUpLeft_84DE4B:
     dw Instruction_PLM_LinkInstruction_Y                                 ;84DE4B;
     dw UNUSED_InstList_DraygonCannonWithShieldFacingUpLeft_84DE5D        ;84DE4D;
@@ -12119,6 +15007,8 @@ UNUSED_InstList_DraygonCannonWithShieldFacingUpLeft_84DE5D:
     dw Instruction_PLM_GotoY                                             ;84DE7A;
     dw UNUSED_InstList_DraygonCannonWithShieldFacingUpLeft_84DE53        ;84DE7C;
 
+
+;;; $DE7E: Instruction list - PLM $DF85 (unused. Draygon cannon, facing up-left) ;;;
 UNUSED_InstList_PLM_DraygonCannonFacingUpLeft_84DE7E:
     dw Instruction_PLM_DamageDraygonTurretFacingUpLeft                   ;84DE7E;
 
@@ -12131,7 +15021,11 @@ UNUSED_InstList_PLM_DraygonCannonFacingUpLeft_84DE80:
     dw UNUSED_InstList_PLM_DraygonCannonFacingUpLeft_84DE80              ;84DE92;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $DE94: Setup - PLM $DF59 (Draygon cannon, with shield, facing right) ;;;
 Setup_DraygonCannonWithShieldFacingRight:
+;; Parameters:
+;;     Y: PLM index
     LDA.W $1DC7,Y                                                        ;84DE94;
     STA.W $1E17,Y                                                        ;84DE97;
     LDA.W #$0000                                                         ;84DE9A;
@@ -12150,7 +15044,10 @@ Setup_DraygonCannonWithShieldFacingRight:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $DEB9: Setup - PLM $DF5D/$DF61 (unused. Draygon cannon, with shield, facing down-right / up-right) ;;;
 UNUSED_Setup_DraygonCannonWithShieldFacingDownUpRight_84DEB9:
+;; Parameters:
+;;     Y: PLM index
     LDA.W $1DC7,Y                                                        ;84DEB9;
     STA.W $1E17,Y                                                        ;84DEBC;
     LDA.W #$0000                                                         ;84DEBF;
@@ -12177,7 +15074,12 @@ UNUSED_Setup_DraygonCannonWithShieldFacingDownUpRight_84DEB9:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $DEF0: Setup - PLM $DF71 (Draygon cannon, with shield, facing left) ;;;
 Setup_DraygonCannonWithShieldFacingLeft:
+;; Parameters:
+;;     Y: PLM index
+
+; Clone of Setup_DraygonCannonWithShieldFacingRight
     LDA.W $1DC7,Y                                                        ;84DEF0;
     STA.W $1E17,Y                                                        ;84DEF3;
     LDA.W #$0000                                                         ;84DEF6;
@@ -12196,7 +15098,10 @@ Setup_DraygonCannonWithShieldFacingLeft:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $DF15: Setup - PLM $DF75/$DF79 (unused. Draygon cannon, with shield, facing down-left / up-left) ;;;
 UNUSED_Setup_DraygonCannonWithShieldFacingDownUpLeft_84DF15:
+;; Parameters:
+;;     Y: PLM index
     LDA.W $1DC7,Y                                                        ;84DF15;
     STA.W $1E17,Y                                                        ;84DF18;
     LDA.W #$0000                                                         ;84DF1B;
@@ -12223,7 +15128,10 @@ UNUSED_Setup_DraygonCannonWithShieldFacingDownUpLeft_84DF15:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $DF4C: Setup - PLM $DF65/$DF69/$DF6D/$DF7D/$DF81/$DF85 (Draygon cannon) ;;;
 Setup_DraygonCannon:
+;; Parameters:
+;;     Y: PLM index
     LDA.W $1DC7,Y                                                        ;84DF4C;
     STA.W $1E17,Y                                                        ;84DF4F;
     LDA.W #$0003                                                         ;84DF52;
@@ -12232,62 +15140,78 @@ Setup_DraygonCannon:
 
 
 PLMEntries_DraygonCannonWithShieldFacingRight:
+; Draygon cannon, with shield, facing right
     dw Setup_DraygonCannonWithShieldFacingRight                          ;84DF59;
     dw InstList_PLM_DraygonCannonWithShieldFacingRight_0                 ;84DF5B;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_PLMEntries_DraygonCannonShieldFacingDownRight_84DF5D:
+; Unused. Draygon cannon, with shield, facing down-right
     dw UNUSED_Setup_DraygonCannonWithShieldFacingDownUpRight_84DEB9      ;84DF5D;
     dw InstList_PLM_DraygonCannonWithShieldFacingDownRight_0             ;84DF5F;
 
 UNUSED_PLMEntries_DraygonCannonShieldFacingUpRight_84DF61:
+; Unused. Draygon cannon, with shield, facing up-right
     dw UNUSED_Setup_DraygonCannonWithShieldFacingDownUpRight_84DEB9      ;84DF61;
     dw UNUSED_InstList_DraygonCannonWithShieldFacingUpRight_84DD70       ;84DF63;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PLMEntries_DraygonCannonFacingRight:
+; Draygon cannon, facing right
     dw Setup_DraygonCannon                                               ;84DF65;
     dw InstList_PLM_DraygonCannonFacingRight_0                           ;84DF67;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_PLMEntries_DraygonCannonFacingDownRight_84DF69:
+; Unused. Draygon cannon, facing down-right
     dw Setup_DraygonCannon                                               ;84DF69;
     dw UNUSED_InstList_PLM_DraygonCannonFacingDownRight_0                ;84DF6B;
 
 UNUSED_PLMEntries_DraygonCannonFacingUpRight_84DF6D:
+; Unused. Draygon cannon, facing up-right
     dw Setup_DraygonCannon                                               ;84DF6D;
     dw UNUSED_InstList_PLM_DraygonCannonFacingUpRight_84DDA3             ;84DF6F;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PLMEntries_DraygonCannonWithShieldFacingLeft:
+; Draygon cannon, with shield, facing left
     dw Setup_DraygonCannonWithShieldFacingLeft                           ;84DF71;
     dw InstList_PLM_DraygonCannonWithShieldFacingLeft_0                  ;84DF73;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_PLMEntries_DraygonCannonShieldFacingDownLeft_84DF75:
+; Unused. Draygon cannon, with shield, facing down-left
     dw UNUSED_Setup_DraygonCannonWithShieldFacingDownUpLeft_84DF15       ;84DF75;
     dw UNUSED_InstList_DraygonCannonWithShieldFacingDownLeft_84DE02      ;84DF77;
 
 UNUSED_PLMEntries_DraygonCannonWithShieldFacingUpLeft_84DF79:
+; Unused. Draygon cannon, with shield, facing up-left
     dw UNUSED_Setup_DraygonCannonWithShieldFacingDownUpLeft_84DF15       ;84DF79;
     dw UNUSED_InstList_DraygonCannonWithShieldFacingUpLeft_84DE4B        ;84DF7B;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PLMEntries_DraygonCannonFacingLeft:
+; Draygon cannon, facing left
     dw Setup_DraygonCannon                                               ;84DF7D;
     dw InstList_PLM_DraygonCannonFacingLeft_0                            ;84DF7F;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_PLMEntries_DraygonCannonFacingDownLeft_84DF81:
+; Unused. Draygon cannon, facing down-left
     dw Setup_DraygonCannon                                               ;84DF81;
     dw UNUSED_InstList_PLM_DraygonCannonFacingDownLeft_84DE35            ;84DF83;
 
 UNUSED_PLMEntries_DraygonCannonFacingUpLeft_84DF85:
+; Unused. Draygon cannon, facing up-left
     dw Setup_DraygonCannon                                               ;84DF85;
     dw UNUSED_InstList_PLM_DraygonCannonFacingUpLeft_84DE7E              ;84DF87;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $DF89: Pre-instruction - go to link instruction if triggered ;;;
 PreInstruction_PLM_GotoLinkInstructionIfTriggered:
+;; Parameter:
+;;     X: PLM index
     LDA.W $1D77,X                                                        ;84DF89;
     AND.W #$00FF                                                         ;84DF8C;
     CMP.W #$00FF                                                         ;84DF8F;
@@ -12303,10 +15227,13 @@ PreInstruction_PLM_GotoLinkInstructionIfTriggered:
     RTS                                                                  ;84DFA8;
 
 
+;;; $DFA9: Instruction list - empty item ;;;
 InstList_PLM_EmptyItem:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84DFA9;
     dw Instruction_PLM_Delete                                            ;84DFAD;
 
+
+;;; $DFAF: Instruction list - item orb ;;;
 InstList_PLM_ItemOrb_0:
     dw Instruction_PLM_PreInstruction_inY                                ;84DFAF;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84DFB1;
@@ -12319,6 +15246,8 @@ InstList_PLM_ItemOrb_1:
     dw Instruction_PLM_GotoY                                             ;84DFC3;
     dw InstList_PLM_ItemOrb_1                                            ;84DFC5;
 
+
+;;; $DFC7: Instruction list - callable - item orb burst ;;;
 InstList_PLM_Callable_ItemOrbBurst:
     dw Instruction_PLM_ClearPreInstruction                               ;84DFC7;
     dw $0003,DrawInst_ItemChozoOrb                                       ;84DFC9;
@@ -12326,7 +15255,10 @@ InstList_PLM_Callable_ItemOrbBurst:
     dw $0003,DrawInst_ItemChozoOrb                                       ;84DFD1;
     dw Instruction_PLM_Return                                            ;84DFD5;
 
+
+;;; $DFD7: Unused. Instruction list - callable - empty item orb ;;;
 InstList_PLM_Callable_EmptyItemOrb_0:
+; Coded like an incomplete reconcealing orb
     dw Instruction_PLM_ClearPreInstruction                               ;84DFD7;
     dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84DFD9;
 
@@ -12336,7 +15268,11 @@ InstList_PLM_Callable_EmptyItemOrb_1:
     dw InstList_PLM_Callable_EmptyItemOrb_1                              ;84DFE2;
     dw Instruction_PLM_Return                                            ;84DFE4;
 
+
+;;; $DFE6: Pre-instruction - wake PLM if triggered ;;;
 PreInstruction_PLM_WakePLMIfTriggered_WithDeadCodePBCheck:
+;; Parameter:
+;;     X: PLM index
     LDA.W $1D77,X                                                        ;84DFE6;
     CMP.W #$0300                                                         ;84DFE9;
     BEQ .return                                                          ;84DFEC;
@@ -12353,6 +15289,7 @@ PreInstruction_PLM_WakePLMIfTriggered_WithDeadCodePBCheck:
     RTS                                                                  ;84E006;
 
 
+;;; $E007: Instruction list - callable - item shot block ;;;
 InstList_PLM_Callable_ItemShotBlock:
     dw Instruction_PLM_PreInstruction_inY                                ;84E007;
     dw PreInstruction_PLM_WakePLMIfTriggered_WithDeadCodePBCheck         ;84E009;
@@ -12364,6 +15301,8 @@ InstList_PLM_Callable_ItemShotBlock:
     dw $0004,DrawInst_ItemShotBlock_2                                    ;84E01A;
     dw Instruction_PLM_Return                                            ;84E01E;
 
+
+;;; $E020: Instruction list - callable - item shot block reconcealing ;;;
 InstList_PLM_Callable_ItemShotBlockReconcealing:
     dw Instruction_PLM_ClearPreInstruction                               ;84E020;
     dw $0004,DrawInst_ItemShotBlock_2                                    ;84E022;
@@ -12372,6 +15311,8 @@ InstList_PLM_Callable_ItemShotBlockReconcealing:
     dw Instruction_PLM_DrawPLMBlock_Clone                                ;84E02E;
     dw Instruction_PLM_Return                                            ;84E030;
 
+
+;;; $E032: Instruction list - callable - empty item shot block reconcealing ;;;
 InstList_PLM_Callable_EmptyItemShotBlockReconcealing_0:
     dw Instruction_PLM_ClearPreInstruction                               ;84E032;
     dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E034;
@@ -12386,7 +15327,12 @@ InstList_PLM_Callable_EmptyItemShotBlockReconcealing_1:
     dw Instruction_PLM_DrawPLMBlock_Clone                                ;84E04B;
     dw Instruction_PLM_Return                                            ;84E04D;
 
+
+;;; $E04F: Instruction - draw item frame 0 ;;;
 Instruction_PLM_DrawItemFrame0:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to after this instruction
     PHY                                                                  ;84E04F;
     LDA.L $7EDF0C,X                                                      ;84E050;
     TAY                                                                  ;84E054;
@@ -12395,14 +15341,18 @@ Instruction_PLM_DrawItemFrame0:
     PLY                                                                  ;84E05C;
     BRA DrawPLM_Wait4Frames                                              ;84E05D;
 
-
   .drawInsts:
     dw DrawInst_DrawItemFrame0_0                                         ;84E05F;
     dw DrawInst_DrawItemFrame0_1                                         ;84E061;
     dw DrawInst_DrawItemFrame0_2                                         ;84E063;
     dw DrawInst_DrawItemFrame0_3                                         ;84E065;
 
+
+;;; $E067: Instruction - draw item frame 1 ;;;
 Instruction_PLM_DrawItemFrame1:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to after this instruction
     PHY                                                                  ;84E067;
     LDA.L $7EDF0C,X                                                      ;84E068;
     TAY                                                                  ;84E06C;
@@ -12411,14 +15361,18 @@ Instruction_PLM_DrawItemFrame1:
     PLY                                                                  ;84E074;
     BRA DrawPLM_Wait4Frames                                              ;84E075;
 
-
   .drawInsts:
     dw DrawInst_DrawItemFrame1_0                                         ;84E077;
     dw DrawInst_DrawItemFrame1_1                                         ;84E079;
     dw DrawInst_DrawItemFrame1_2                                         ;84E07B;
     dw DrawInst_DrawItemFrame1_3                                         ;84E07D;
 
+
+;;; $E07F: Draw PLM and wait 4 frames ;;;
 DrawPLM_Wait4Frames:
+;; Parameters:
+;;     X: PLM index
+;;     Y: Pointer to next instruction
     LDA.W #$0004                                                         ;84E07F;
     STA.L $7EDE1C,X                                                      ;84E082;
     TYA                                                                  ;84E086;
@@ -12431,6 +15385,7 @@ DrawPLM_Wait4Frames:
     RTS                                                                  ;84E098;
 
 
+;;; $E099: Instruction list - PLM $EED7 (energy tank) ;;;
 InstList_PLM_EnergyTank_0:
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E099;
     dw InstList_PLM_EnergyTank_3                                         ;84E09B;
@@ -12454,6 +15409,8 @@ InstList_PLM_EnergyTank_3:
     dw Instruction_PLM_GotoY                                             ;84E0BA;
     dw InstList_PLM_EmptyItem                                            ;84E0BC;
 
+
+;;; $E0BE: Instruction list - PLM $EEDB (missile tank) ;;;
 InstList_PLM_MissileTank_0:
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E0BE;
     dw InstList_PLM_MissileTank_3                                        ;84E0C0;
@@ -12477,6 +15434,8 @@ InstList_PLM_MissileTank_3:
     dw Instruction_PLM_GotoY                                             ;84E0DF;
     dw InstList_PLM_EmptyItem                                            ;84E0E1;
 
+
+;;; $E0E3: Instruction list - PLM $EEDF (super missile tank) ;;;
 InstList_PLM_SuperMissileTank_0:
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E0E3;
     dw InstList_PLM_SuperMissileTank_3                                   ;84E0E5;
@@ -12500,6 +15459,8 @@ InstList_PLM_SuperMissileTank_3:
     dw Instruction_PLM_GotoY                                             ;84E104;
     dw InstList_PLM_EmptyItem                                            ;84E106;
 
+
+;;; $E108: Instruction list - PLM $EEE3 (power bomb tank) ;;;
 InstList_PLM_PowerBombTank_0:
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E108;
     dw InstList_PLM_PowerBombTank_3                                      ;84E10A;
@@ -12523,6 +15484,8 @@ InstList_PLM_PowerBombTank_3:
     dw Instruction_PLM_GotoY                                             ;84E129;
     dw InstList_PLM_EmptyItem                                            ;84E12B;
 
+
+;;; $E12D: Instruction list - PLM $EEE7 (bombs) ;;;
 InstList_PLM_Bombs_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E12D;
     dw ItemPLMGFX_Bombs : db $00,$00,$00,$00,$00,$00,$00,$00             ;84E12F;
@@ -12548,6 +15511,8 @@ InstList_PLM_Bombs_3:
     dw Instruction_PLM_GotoY                                             ;84E157;
     dw InstList_PLM_EmptyItem                                            ;84E159;
 
+
+;;; $E15B: Instruction list - PLM $EEEB (charge beam) ;;;
 InstList_PLM_ChargeBeam_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E15B;
     dw ItemPLMGFX_ChargeBeam : db $00,$00,$00,$00,$00,$00,$00,$00        ;84E15D;
@@ -12573,6 +15538,8 @@ InstList_PLM_ChargeBeam_3:
     dw Instruction_PLM_GotoY                                             ;84E185;
     dw InstList_PLM_EmptyItem                                            ;84E187;
 
+
+;;; $E189: Instruction list - PLM $EEEF (ice beam) ;;;
 InstList_PLM_IceBeam_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E189;
     dw ItemPLMGFX_IceBeam : db $00,$03,$00,$00,$00,$03,$00,$00           ;84E18B;
@@ -12598,6 +15565,8 @@ InstList_PLM_IceBeam_3:
     dw Instruction_PLM_GotoY                                             ;84E1B3;
     dw InstList_PLM_EmptyItem                                            ;84E1B5;
 
+
+;;; $E1B7: Instruction list - PLM $EEF3 (hi-jump) ;;;
 InstList_PLM_HiJumpBoots_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E1B7;
     dw ItemPLMGFX_HiJumpBoots : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E1B9;
@@ -12623,6 +15592,8 @@ InstList_PLM_HiJumpBoots_3:
     dw Instruction_PLM_GotoY                                             ;84E1E1;
     dw InstList_PLM_EmptyItem                                            ;84E1E3;
 
+
+;;; $E1E5: Instruction list - PLM $EEF7 (speed booster) ;;;
 InstList_PLM_SpeedBooster_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E1E5;
     dw ItemPLMGFX_SpeedBooster : db $00,$00,$00,$00,$00,$00,$00,$00      ;84E1E7;
@@ -12648,6 +15619,8 @@ InstList_PLM_SpeedBooster_3:
     dw Instruction_PLM_GotoY                                             ;84E20F;
     dw InstList_PLM_EmptyItem                                            ;84E211;
 
+
+;;; $E213: Instruction list - PLM $EEFB (wave beam) ;;;
 InstList_PLM_WaveBeam_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E213;
     dw ItemPLMGFX_WaveBeam : db $00,$02,$00,$00,$00,$02,$00,$00          ;84E215;
@@ -12673,6 +15646,8 @@ InstList_PLM_WaveBeam_3:
     dw Instruction_PLM_GotoY                                             ;84E23D;
     dw InstList_PLM_EmptyItem                                            ;84E23F;
 
+
+;;; $E241: Instruction list - PLM $EEFF (spazer beam) ;;;
 InstList_PLM_Spazer_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E241;
     dw ItemPLMGFX_Spazer : db $00,$00,$00,$00,$00,$00,$00,$00            ;84E243;
@@ -12698,6 +15673,8 @@ InstList_PLM_Spazer_3:
     dw Instruction_PLM_GotoY                                             ;84E26B;
     dw InstList_PLM_EmptyItem                                            ;84E26D;
 
+
+;;; $E26F: Instruction list - PLM $EF03 (spring ball) ;;;
 InstList_PLM_SpringBall_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E26F;
     dw ItemPLMGFX_SpringBall : db $00,$00,$00,$00,$00,$00,$00,$00        ;84E271;
@@ -12723,11 +15700,14 @@ InstList_PLM_SpringBall_3:
     dw Instruction_PLM_GotoY                                             ;84E299;
     dw InstList_PLM_EmptyItem                                            ;84E29B;
 
+
+;;; $E29D: Instruction - clear charge beam counter ;;;
 Instruction_PLM_ClearChargeBeamCounter:
     STZ.W $0CD0                                                          ;84E29D;
     RTS                                                                  ;84E2A0;
 
 
+;;; $E2A1: Instruction list - PLM $EF07 (varia suit) ;;;
 InstList_PLM_VariaSuit_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E2A1;
     dw ItemPLMGFX_VariaSuit : db $00,$00,$00,$00,$00,$00,$00,$00         ;84E2A3;
@@ -12756,6 +15736,8 @@ InstList_PLM_VariaSuit_3:
     dw Instruction_PLM_GotoY                                             ;84E2D2;
     dw InstList_PLM_EmptyItem                                            ;84E2D4;
 
+
+;;; $E2D6: Instruction list - PLM $EF0B (gravity suit) ;;;
 InstList_PLM_GravitySuit_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E2D6;
     dw ItemPLMGFX_GravitySuit : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E2D8;
@@ -12784,6 +15766,8 @@ InstList_PLM_GravitySuit_3:
     dw Instruction_PLM_GotoY                                             ;84E307;
     dw InstList_PLM_EmptyItem                                            ;84E309;
 
+
+;;; $E30B: Instruction list - PLM $EF0F (x-ray scope) ;;;
 InstList_PLM_XrayScope_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E30B;
     dw ItemPLMGFX_XrayScope : db $01,$01,$00,$00,$03,$03,$00,$00         ;84E30D;
@@ -12809,6 +15793,8 @@ InstList_PLM_XrayScope_3:
     dw Instruction_PLM_GotoY                                             ;84E334;
     dw InstList_PLM_EmptyItem                                            ;84E336;
 
+
+;;; $E338: Instruction list - PLM $EF13 (plasma beam) ;;;
 InstList_PLM_PlasmaBeam_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E338;
     dw ItemPLMGFX_PlasmaBeam : db $00,$01,$00,$00,$00,$01,$00,$00        ;84E33A;
@@ -12834,6 +15820,8 @@ InstList_PLM_PlasmaBeam_3:
     dw Instruction_PLM_GotoY                                             ;84E362;
     dw InstList_PLM_EmptyItem                                            ;84E364;
 
+
+;;; $E366: Instruction list - PLM $EF17 (grapple beam) ;;;
 InstList_PLM_GrappleBeam_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E366;
     dw ItemPLMGFX_GrappleBeam : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E368;
@@ -12859,6 +15847,8 @@ InstList_PLM_GrappleBeam_3:
     dw Instruction_PLM_GotoY                                             ;84E38F;
     dw InstList_PLM_EmptyItem                                            ;84E391;
 
+
+;;; $E393: Instruction list - PLM $EF1B (space jump) ;;;
 InstList_PLM_SpaceJump_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E393;
     dw ItemPLMGFX_SpaceJump : db $00,$00,$00,$00,$00,$00,$00,$00         ;84E395;
@@ -12884,6 +15874,8 @@ InstList_PLM_SpaceJump_3:
     dw Instruction_PLM_GotoY                                             ;84E3BD;
     dw InstList_PLM_EmptyItem                                            ;84E3BF;
 
+
+;;; $E3C1: Instruction list - PLM $EF1F (screw attack) ;;;
 InstList_PLM_ScrewAttack_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E3C1;
     dw ItemPLMGFX_ScrewAttack : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E3C3;
@@ -12909,6 +15901,8 @@ InstList_PLM_ScrewAttack_3:
     dw Instruction_PLM_GotoY                                             ;84E3EB;
     dw InstList_PLM_EmptyItem                                            ;84E3ED;
 
+
+;;; $E3EF: Instruction list - PLM $EF23 (morph ball) ;;;
 InstList_PLM_MorphBall_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E3EF;
     dw ItemPLMGFX_MorphBall : db $00,$00,$00,$00,$00,$00,$00,$00         ;84E3F1;
@@ -12934,6 +15928,8 @@ InstList_PLM_MorphBall_3:
     dw Instruction_PLM_GotoY                                             ;84E419;
     dw InstList_PLM_EmptyItem                                            ;84E41B;
 
+
+;;; $E41D: Instruction list - PLM $EF27 (reserve tank) ;;;
 InstList_PLM_ReserveTank_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E41D;
     dw ItemPLMGFX_ReserveTank : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E41F;
@@ -12959,6 +15955,8 @@ InstList_PLM_ReserveTank_3:
     dw Instruction_PLM_GotoY                                             ;84E446;
     dw InstList_PLM_EmptyItem                                            ;84E448;
 
+
+;;; $E44A: Instruction list - PLM $EF2B (energy tank, chozo orb) ;;;
 InstList_PLM_EnergyTankChozoOrb_0:
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E44A;
     dw InstList_PLM_EnergyTankChozoOrb_3                                 ;84E44C;
@@ -12987,6 +15985,8 @@ InstList_PLM_EnergyTankChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E476;
     dw Instruction_PLM_Delete                                            ;84E47A;
 
+
+;;; $E47C: Instruction list - PLM $EF2F (missile tank, chozo orb) ;;;
 InstList_PLM_MissileTankChozoOrb_0:
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E47C;
     dw InstList_PLM_MissileTankChozoOrb_3                                ;84E47E;
@@ -13015,6 +16015,8 @@ InstList_PLM_MissileTankChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E4A8;
     dw Instruction_PLM_Delete                                            ;84E4AC;
 
+
+;;; $E4AE: Instruction list - PLM $EF33 (super missile tank, chozo orb) ;;;
 InstList_PLM_SuperMissileTankChozoOrb_0:
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E4AE;
     dw InstList_PLM_SuperMissileTankChozoOrb_3                           ;84E4B0;
@@ -13043,6 +16045,8 @@ InstList_PLM_SuperMissileTankChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E4DA;
     dw Instruction_PLM_Delete                                            ;84E4DE;
 
+
+;;; $E4E0: Instruction list - PLM $EF37 (power bomb tank, chozo orb) ;;;
 InstList_PLM_PowerBombTankChozoOrb_0:
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E4E0;
     dw InstList_PLM_PowerBombTankChozoOrb_3                              ;84E4E2;
@@ -13071,6 +16075,8 @@ InstList_PLM_PowerBombTankChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E50C;
     dw Instruction_PLM_Delete                                            ;84E510;
 
+
+;;; $E512: Instruction list - PLM $EF3B (bombs, chozo orb) ;;;
 InstList_PLM_BombsChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E512;
     dw ItemPLMGFX_Bombs : db $00,$00,$00,$00,$00,$00,$00,$00             ;84E514;
@@ -13101,6 +16107,8 @@ InstList_PLM_BombsChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E547;
     dw Instruction_PLM_Delete                                            ;84E54B;
 
+
+;;; $E54D: Instruction list - PLM $EF3F (charge beam, chozo orb) ;;;
 InstList_PLM_ChargeBeamChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E54D;
     dw ItemPLMGFX_ChargeBeam : db $00,$00,$00,$00,$00,$00,$00,$00        ;84E54F;
@@ -13131,6 +16139,8 @@ InstList_PLM_ChargeBeamChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E582;
     dw Instruction_PLM_Delete                                            ;84E586;
 
+
+;;; $E588: Instruction list - PLM $EF43 (ice beam, chozo orb) ;;;
 InstList_PLM_IceBeamChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E588;
     dw ItemPLMGFX_IceBeam : db $00,$03,$00,$00,$00,$03,$00,$00           ;84E58A;
@@ -13161,6 +16171,8 @@ InstList_PLM_IceBeamChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E5BD;
     dw Instruction_PLM_Delete                                            ;84E5C1;
 
+
+;;; $E5C3: Instruction list - PLM $EF47 (hi-jump, chozo orb) ;;;
 InstList_PLM_HiJumpBootsChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E5C3;
     dw ItemPLMGFX_HiJumpBoots : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E5C5;
@@ -13191,6 +16203,8 @@ InstList_PLM_HiJumpBootsChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E5F8;
     dw Instruction_PLM_Delete                                            ;84E5FC;
 
+
+;;; $E5FE: Instruction list - PLM $EF4B (speed booster, chozo orb) ;;;
 InstList_PLM_SpeedBoosterChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E5FE;
     dw ItemPLMGFX_SpeedBooster : db $00,$00,$00,$00,$00,$00,$00,$00      ;84E600;
@@ -13224,12 +16238,15 @@ InstList_PLM_SpeedBoosterChozoOrb_4:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E635;
     dw Instruction_PLM_Delete                                            ;84E639;
 
+
+;;; $E63B: Instruction - FX Y velocity = FFE0h ;;;
 Instruction_PLM_FXYVelocity_FFE0:
     LDA.W #$FFE0                                                         ;84E63B;
     STA.W $197C                                                          ;84E63E;
     RTS                                                                  ;84E641;
 
 
+;;; $E642: Instruction list - PLM $EF4F (wave beam, chozo orb) ;;;
 InstList_PLM_WaveBeamChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E642;
     dw ItemPLMGFX_WaveBeam : db $00,$02,$00,$00,$00,$02,$00,$00          ;84E644;
@@ -13260,6 +16277,8 @@ InstList_PLM_WaveBeamChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E677;
     dw Instruction_PLM_Delete                                            ;84E67B;
 
+
+;;; $E67D: Instruction list - PLM $EF53 (spazer beam, chozo orb) ;;;
 InstList_PLM_SpazerChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E67D;
     dw ItemPLMGFX_Spazer : db $00,$00,$00,$00,$00,$00,$00,$00            ;84E67F;
@@ -13290,6 +16309,8 @@ InstList_PLM_SpazerChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E6B2;
     dw Instruction_PLM_Delete                                            ;84E6B6;
 
+
+;;; $E6B8: Instruction list - PLM $EF57 (spring ball, chozo orb) ;;;
 InstList_PLM_SpringBallChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E6B8;
     dw ItemPLMGFX_SpringBall : db $00,$00,$00,$00,$00,$00,$00,$00        ;84E6BA;
@@ -13320,6 +16341,8 @@ InstList_PLM_SpringBallChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E6ED;
     dw Instruction_PLM_Delete                                            ;84E6F1;
 
+
+;;; $E6F3: Instruction list - PLM $EF5B (varia suit, chozo orb) ;;;
 InstList_PLM_VariaSuitChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E6F3;
     dw ItemPLMGFX_VariaSuit : db $00,$00,$00,$00,$00,$00,$00,$00         ;84E6F5;
@@ -13353,6 +16376,8 @@ InstList_PLM_VariaSuitChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E72F;
     dw Instruction_PLM_Delete                                            ;84E733;
 
+
+;;; $E735: Instruction list - PLM $EF5F (gravity suit, chozo orb) ;;;
 InstList_PLM_GravitySuitChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E735;
     dw ItemPLMGFX_GravitySuit : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E737;
@@ -13386,6 +16411,8 @@ InstList_PLM_GravitySuitChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E771;
     dw Instruction_PLM_Delete                                            ;84E775;
 
+
+;;; $E777: Instruction list - PLM $EF63 (x-ray scope, chozo orb) ;;;
 InstList_PLM_XrayScopeChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E777;
     dw ItemPLMGFX_XrayScope : db $01,$01,$00,$00,$03,$03,$00,$00         ;84E779;
@@ -13416,6 +16443,8 @@ InstList_PLM_XrayScopeChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E7AB;
     dw Instruction_PLM_Delete                                            ;84E7AF;
 
+
+;;; $E7B1: Instruction list - PLM $EF67 (plasma beam, chozo orb) ;;;
 InstList_PLM_PlasmaBeamChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E7B1;
     dw ItemPLMGFX_PlasmaBeam : db $00,$01,$00,$00,$00,$01,$00,$00        ;84E7B3;
@@ -13446,6 +16475,8 @@ InstList_PLM_PlasmaBeamChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E7E6;
     dw Instruction_PLM_Delete                                            ;84E7EA;
 
+
+;;; $E7EC: Instruction list - PLM $EF6B (grapple beam, chozo orb) ;;;
 InstList_PLM_GrappleBeamChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E7EC;
     dw ItemPLMGFX_GrappleBeam : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E7EE;
@@ -13476,6 +16507,8 @@ InstList_PLM_GrappleBeamChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E820;
     dw Instruction_PLM_Delete                                            ;84E824;
 
+
+;;; $E826: Instruction list - PLM $EF6F (space jump, chozo orb) ;;;
 InstList_PLM_SpaceJumpChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E826;
     dw ItemPLMGFX_SpaceJump : db $00,$00,$00,$00,$00,$00,$00,$00         ;84E828;
@@ -13506,6 +16539,8 @@ InstList_PLM_SpaceJumpChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E85B;
     dw Instruction_PLM_Delete                                            ;84E85F;
 
+
+;;; $E861: Instruction list - PLM $EF73 (screw attack, chozo orb) ;;;
 InstList_PLM_ScrewAttackChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E861;
     dw ItemPLMGFX_ScrewAttack : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E863;
@@ -13536,6 +16571,8 @@ InstList_PLM_ScrewAttackChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E896;
     dw Instruction_PLM_Delete                                            ;84E89A;
 
+
+;;; $E89C: Instruction list - PLM $EF77 (morph ball, chozo orb) ;;;
 InstList_PLM_MorphBallChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E89C;
     dw ItemPLMGFX_MorphBall : db $00,$00,$00,$00,$00,$00,$00,$00         ;84E89E;
@@ -13566,6 +16603,8 @@ InstList_PLM_MorphBallChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E8D1;
     dw Instruction_PLM_Delete                                            ;84E8D5;
 
+
+;;; $E8D7: Instruction list - PLM $EF7B (reserve tank, chozo orb) ;;;
 InstList_PLM_ReserveTankChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E8D7;
     dw ItemPLMGFX_ReserveTank : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E8D9;
@@ -13596,6 +16635,8 @@ InstList_PLM_ReserveTankChozoOrb_3:
     dw $0001,DrawInst_ItemChozoOrb                                       ;84E90B;
     dw Instruction_PLM_Delete                                            ;84E90F;
 
+
+;;; $E911: Instruction list - PLM $EF7F (energy tank, shot block) ;;;
 InstList_PLM_EnergyTankShotBlock_0:
     dw Instruction_PLM_Call_Y                                            ;84E911;
     dw InstList_PLM_Callable_ItemShotBlock                               ;84E913;
@@ -13628,6 +16669,8 @@ InstList_PLM_EnergyTankShotBlock_3:
     dw Instruction_PLM_GotoY                                             ;84E945;
     dw InstList_PLM_EnergyTankShotBlock_0                                ;84E947;
 
+
+;;; $E949: Instruction list - PLM $EF83 (missile tank, shot block) ;;;
 InstList_PLM_MissileTankShotBlock_0:
     dw Instruction_PLM_Call_Y                                            ;84E949;
     dw InstList_PLM_Callable_ItemShotBlock                               ;84E94B;
@@ -13660,6 +16703,8 @@ InstList_PLM_MissileTankShotBlock_3:
     dw Instruction_PLM_GotoY                                             ;84E97D;
     dw InstList_PLM_MissileTankShotBlock_0                               ;84E97F;
 
+
+;;; $E981: Instruction list - PLM $EF87 (super missile tank, shot block) ;;;
 InstList_PLM_SuperMissileTankShotBlock_0:
     dw Instruction_PLM_Call_Y                                            ;84E981;
     dw InstList_PLM_Callable_ItemShotBlock                               ;84E983;
@@ -13692,6 +16737,8 @@ InstList_PLM_SuperMissileTankShotBlock_3:
     dw Instruction_PLM_GotoY                                             ;84E9B5;
     dw InstList_PLM_SuperMissileTankShotBlock_0                          ;84E9B7;
 
+
+;;; $E9B9: Instruction list - PLM $EF8B (power bomb tank, shot block) ;;;
 InstList_PLM_PowerBombTankShotBlock_0:
     dw Instruction_PLM_Call_Y                                            ;84E9B9;
     dw InstList_PLM_Callable_ItemShotBlock                               ;84E9BB;
@@ -13724,6 +16771,8 @@ InstList_PLM_PowerBombTankShotBlock_3:
     dw Instruction_PLM_GotoY                                             ;84E9ED;
     dw InstList_PLM_PowerBombTankShotBlock_0                             ;84E9EF;
 
+
+;;; $E9F1: Instruction list - PLM $EF8F (bombs, shot block) ;;;
 InstList_PLM_BombsShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E9F1;
     dw ItemPLMGFX_Bombs : db $00,$00,$00,$00,$00,$00,$00,$00             ;84E9F3;
@@ -13760,6 +16809,8 @@ InstList_PLM_BombsShotBlock_4:
     dw Instruction_PLM_GotoY                                             ;84EA2E;
     dw InstList_PLM_BombsShotBlock_1                                     ;84EA30;
 
+
+;;; $EA32: Instruction list - PLM $EF93 (charge beam, shot block) ;;;
 InstList_PLM_ChargeBeamShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EA32;
     dw ItemPLMGFX_ChargeBeam : db $00,$00,$00,$00,$00,$00,$00,$00        ;84EA34;
@@ -13796,6 +16847,8 @@ InstList_PLM_ChargeBeamShotBlock_4:
     dw Instruction_PLM_GotoY                                             ;84EA6F;
     dw InstList_PLM_ChargeBeamShotBlock_1                                ;84EA71;
 
+
+;;; $EA73: Instruction list - PLM $EF97 (ice beam, shot block) ;;;
 InstList_PLM_IceBeamShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EA73;
     dw ItemPLMGFX_IceBeam : db $00,$03,$00,$00,$00,$03,$00,$00           ;84EA75;
@@ -13832,6 +16885,8 @@ InstList_PLM_IceBeamShotBlock_4:
     dw Instruction_PLM_GotoY                                             ;84EAB0;
     dw InstList_PLM_IceBeamShotBlock_1                                   ;84EAB2;
 
+
+;;; $EAB4: Instruction list - PLM $EF9B (hi-jump, shot block) ;;;
 InstList_PLM_HiJumpBootsShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EAB4;
     dw ItemPLMGFX_HiJumpBoots : db $00,$00,$00,$00,$00,$00,$00,$00       ;84EAB6;
@@ -13868,6 +16923,8 @@ InstList_PLM_HiJumpBootsShotBlock_4:
     dw Instruction_PLM_GotoY                                             ;84EAF1;
     dw InstList_PLM_HiJumpBootsShotBlock_1                               ;84EAF3;
 
+
+;;; $EAF5: Instruction list - PLM $EF9F (speed booster, shot block) ;;;
 InstList_PLM_SpeedBoosterShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EAF5;
     dw ItemPLMGFX_SpeedBooster : db $00,$00,$00,$00,$00,$00,$00,$00      ;84EAF7;
@@ -13904,6 +16961,8 @@ InstList_PLM_SpeedBoosterShotBlock_4:
     dw Instruction_PLM_GotoY                                             ;84EB32;
     dw InstList_PLM_SpeedBoosterShotBlock_1                              ;84EB34;
 
+
+;;; $EB36: Instruction list - PLM $EFA3 (wave beam, shot block) ;;;
 InstList_PLM_WaveBeamShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EB36;
     dw ItemPLMGFX_WaveBeam : db $00,$02,$00,$00,$00,$02,$00,$00          ;84EB38;
@@ -13940,6 +16999,8 @@ InstList_PLM_WaveBeamShotBlock_4:
     dw Instruction_PLM_GotoY                                             ;84EB73;
     dw InstList_PLM_WaveBeamShotBlock_1                                  ;84EB75;
 
+
+;;; $EB77: Instruction list - PLM $EFA7 (spazer beam, shot block) ;;;
 InstList_PLM_SpazerShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EB77;
     dw ItemPLMGFX_Spazer : db $00,$00,$00,$00,$00,$00,$00,$00            ;84EB79;
@@ -13976,6 +17037,8 @@ InstList_PLM_SpazerShotBlock_4:
     dw Instruction_PLM_GotoY                                             ;84EBB4;
     dw InstList_PLM_SpazerShotBlock_1                                    ;84EBB6;
 
+
+;;; $EBB8: Instruction list - PLM $EFAB (spring ball, shot block) ;;;
 InstList_PLM_SpringBallShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EBB8;
     dw ItemPLMGFX_SpringBall : db $00,$00,$00,$00,$00,$00,$00,$00        ;84EBBA;
@@ -14012,6 +17075,8 @@ InstList_PLM_SpringBallShotBlock_4:
     dw Instruction_PLM_GotoY                                             ;84EBF5;
     dw InstList_PLM_SpringBallShotBlock_1                                ;84EBF7;
 
+
+;;; $EBF9: Instruction list - PLM $EFAF (varia suit, shot block) ;;;
 InstList_PLM_VariaSuitShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EBF9;
     dw ItemPLMGFX_VariaSuit : db $00,$00,$00,$00,$00,$00,$00,$00         ;84EBFB;
@@ -14051,6 +17116,8 @@ InstList_PLM_VariaSuitShotBlock_4:
     dw Instruction_PLM_GotoY                                             ;84EC3D;
     dw InstList_PLM_VariaSuitShotBlock_1                                 ;84EC3F;
 
+
+;;; $EC41: Instruction list - PLM $EFB3 (gravity suit, shot block) ;;;
 InstList_PLM_GravitySuitShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EC41;
     dw ItemPLMGFX_GravitySuit : db $00,$00,$00,$00,$00,$00,$00,$00       ;84EC43;
@@ -14090,6 +17157,8 @@ InstList_PLM_GravitySuitShotBlock_4:
     dw Instruction_PLM_GotoY                                             ;84EC85;
     dw InstList_PLM_GravitySuitShotBlock_1                               ;84EC87;
 
+
+;;; $EC89: Instruction list - PLM $EFB7 (x-ray scope, shot block) ;;;
 InstList_PLM_XrayScopeShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EC89;
     dw ItemPLMGFX_XrayScope : db $01,$01,$00,$00,$03,$03,$00,$00         ;84EC8B;
@@ -14126,6 +17195,8 @@ InstList_PLM_XrayScopeShotBlock_4:
     dw Instruction_PLM_GotoY                                             ;84ECC5;
     dw InstList_PLM_XrayScopeShotBlock_1                                 ;84ECC7;
 
+
+;;; $ECC9: Instruction list - PLM $EFBB (plasma beam, shot block) ;;;
 InstList_PLM_PlasmaBeamShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84ECC9;
     dw ItemPLMGFX_PlasmaBeam : db $00,$01,$00,$00,$00,$01,$00,$00        ;84ECCB;
@@ -14162,6 +17233,8 @@ InstList_PLM_PlasmaBeamShotBlock_4:
     dw Instruction_PLM_GotoY                                             ;84ED06;
     dw InstList_PLM_PlasmaBeamShotBlock_1                                ;84ED08;
 
+
+;;; $ED0A: Instruction list - PLM $EFBF (grapple beam, shot block) ;;;
 InstList_PLM_GrappleBeamShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84ED0A;
     dw ItemPLMGFX_GrappleBeam : db $00,$00,$00,$00,$00,$00,$00,$00       ;84ED0C;
@@ -14198,6 +17271,8 @@ InstList_PLM_GrappleBeamShotBlock_4:
     dw Instruction_PLM_GotoY                                             ;84ED46;
     dw InstList_PLM_GrappleBeamShotBlock_1                               ;84ED48;
 
+
+;;; $ED4A: Instruction list - PLM $EFC3 (space jump, shot block) ;;;
 InstList_PLM_SpaceJumpShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84ED4A;
     dw ItemPLMGFX_SpaceJump : db $00,$00,$00,$00,$00,$00,$00,$00         ;84ED4C;
@@ -14234,6 +17309,8 @@ InstList_PLM_SpaceJumpShotBlock_4:
     dw Instruction_PLM_GotoY                                             ;84ED87;
     dw InstList_PLM_SpaceJumpShotBlock_1                                 ;84ED89;
 
+
+;;; $ED8B: Instruction list - PLM $EFC7 (screw attack, shot block) ;;;
 InstList_PLM_ScrewAttackShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84ED8B;
     dw ItemPLMGFX_ScrewAttack : db $00,$00,$00,$00,$00,$00,$00,$00       ;84ED8D;
@@ -14270,6 +17347,8 @@ InstList_PLM_ScrewAttackShotBlock_4:
     dw Instruction_PLM_GotoY                                             ;84EDC8;
     dw InstList_PLM_ScrewAttackShotBlock_1                               ;84EDCA;
 
+
+;;; $EDCC: Instruction list - PLM $EFCB (morph ball, shot block) ;;;
 InstList_PLM_MorphBallShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EDCC;
     dw ItemPLMGFX_MorphBall : db $00,$00,$00,$00,$00,$00,$00,$00         ;84EDCE;
@@ -14306,6 +17385,8 @@ InstList_PLM_MorphBallShotBlock_4:
     dw Instruction_PLM_GotoY                                             ;84EE09;
     dw InstList_PLM_MorphBallShotBlock_1                                 ;84EE0B;
 
+
+;;; $EE0D: Instruction list - PLM $EFCF (reserve tank, shot block) ;;;
 InstList_PLM_ReserveTankShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EE0D;
     dw ItemPLMGFX_ReserveTank : db $00,$00,$00,$00,$00,$00,$00,$00       ;84EE0F;
@@ -14342,29 +17423,51 @@ InstList_PLM_ReserveTankShotBlock_4:
     dw Instruction_PLM_GotoY                                             ;84EE49;
     dw InstList_PLM_ReserveTankShotBlock_1                               ;84EE4B;
 
+
+;;; $EE4D: Setup - PLM $EED7/$EF2B (energy tank) ;;;
 Setup_EnergyTank:
+;; Parameters:
+;;     Y: PLM index
     LDA.W #$0008                                                         ;84EE4D;
     BRA SetPLMItemGFXIndex_DoAbilitySetup                                ;84EE50;
 
 
+;;; $EE52: Setup - PLM $EEDB/$EF2F (missile tank) ;;;
 Setup_MissileTank:
+;; Parameters:
+;;     Y: PLM index
     LDA.W #$000A                                                         ;84EE52;
     BRA SetPLMItemGFXIndex_DoAbilitySetup                                ;84EE55;
 
 
+;;; $EE57: Setup - PLM $EEDF/$EF33 (super missile tank) ;;;
 Setup_SuperMissileTank:
+;; Parameters:
+;;     Y: PLM index
     LDA.W #$000C                                                         ;84EE57;
     BRA SetPLMItemGFXIndex_DoAbilitySetup                                ;84EE5A;
 
 
+;;; $EE5C: Setup - PLM $EEE3/$EF37 (power bomb tank) ;;;
 Setup_PowerBombTank:
-    LDA.W #$000E                                                         ;84EE5C;
+;; Parameters:
+;;     Y: PLM index
+    LDA.W #$000E                                                         ;84EE5C; fallthrough to SetPLMItemGFXIndex_DoAbilitySetup
 
+
+;;; $EE5F: Set PLM item GFX index and do ability setup ;;;
 SetPLMItemGFXIndex_DoAbilitySetup:
+;; Parameters:
+;;     A: Item GFX index
+;;     Y: PLM index
     TYX                                                                  ;84EE5F;
-    STA.L $7EDF0C,X                                                      ;84EE60;
+    STA.L $7EDF0C,X                                                      ;84EE60; fallthrough to Setup_Ability
 
+
+;;; $EE64: Setup - PLM $EEE7/$EEEB/$EEEF/$EF03/$EF07/$EF0B/$EF0F/$EF13/$EF17/$EF1B/$EF1F/$EF23/$EF27/$EF2B/$EF2F/$EF33/$EF37/$EF3B/$EF3F/$EF43/$EF47/$EF4B/$EF4F/$EF53/$EF57/$EF5B/$EF5F/$EF63/$EF67/$EF6B/$EF6F/$EF73/$EF77/$EF7B (ability) ;;;
 Setup_Ability:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $1C87,Y                                                        ;84EE64;
     LDA.W #$0045                                                         ;84EE67;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84EE6A;
@@ -14374,29 +17477,50 @@ Setup_Ability:
     RTS                                                                  ;84EE76;
 
 
+;;; $EE77: Setup - PLM $EF7F (energy tank shot block) ;;;
 Setup_EnergyTankShotBlock:
+;; Parameters:
+;;     Y: PLM index
     LDA.W #$0008                                                         ;84EE77;
     BRA SetPLMItemGFXINdex_DoAbilityShotBlockSetup                       ;84EE7A;
 
 
+;;; $EE7C: Setup - PLM $EF83 (missile tank shot block) ;;;
 SetupMissileTankShotBlock:
+;; Parameters:
+;;     Y: PLM index
     LDA.W #$000A                                                         ;84EE7C;
     BRA SetPLMItemGFXINdex_DoAbilityShotBlockSetup                       ;84EE7F;
 
 
+;;; $EE81: Setup - PLM $EF87 (super missile tank shot block) ;;;
 Setup_SuperMissileTankShotBlock:
+;; Parameters:
+;;     Y: PLM index
     LDA.W #$000C                                                         ;84EE81;
     BRA SetPLMItemGFXINdex_DoAbilityShotBlockSetup                       ;84EE84;
 
 
+;;; $EE86: Setup - PLM $EF8B (power bomb tank shot block) ;;;
 Setup_PowerBombTankShotBlock:
-    LDA.W #$000E                                                         ;84EE86;
+;; Parameters:
+;;     Y: PLM index
+    LDA.W #$000E                                                         ;84EE86; fallthrough to SetPLMItemGFXINdex_DoAbilityShotBlockSetup
 
+
+;;; $EE89: Set PLM item GFX index and do ability shot block setup ;;;
 SetPLMItemGFXINdex_DoAbilityShotBlockSetup:
+;; Parameters:
+;;     A: Item GFX index
+;;     Y: PLM index
     TYX                                                                  ;84EE89;
-    STA.L $7EDF0C,X                                                      ;84EE8A;
+    STA.L $7EDF0C,X                                                      ;84EE8A; fallthrough to Setup_AbilityShotBlock
 
+
+;;; $EE8E: Setup - PLM $EF8F/$EF93/$EF97/$EF9B/$EF9F/$EFA3/$EFA7/$EFAB/$EFAF/$EFB3/$EFB7/$EFBB/$EFBF/$EFC3/$EFC7/$EFCB/$EFCF (ability shot block) ;;;
 Setup_AbilityShotBlock:
+;; Parameters:
+;;     Y: PLM index
     LDX.W $1C87,Y                                                        ;84EE8E;
     LDA.W #$C045                                                         ;84EE91;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84EE94;
@@ -14409,7 +17533,12 @@ Setup_AbilityShotBlock:
     RTS                                                                  ;84EEAA;
 
 
+;;; $EEAB: Setup - PLM $EED3 (shot/bombed/grappled reaction, shootable, BTS 45h / collision reaction, special, BTS 45h. Item collision detection) ;;;
 Setup_ItemCollisionDetection:
+;; Parameters:
+;;     Y: PLM index
+;; Returns:
+;;     Carry: Clear (no collision) if time is not frozen, unchanged otherwise
     LDA.W $0A78                                                          ;84EEAB;
     BNE .delete                                                          ;84EEAE;
     TYX                                                                  ;84EEB0;
@@ -14431,7 +17560,6 @@ Setup_ItemCollisionDetection:
     CLC                                                                  ;84EECA;
     RTS                                                                  ;84EECB;
 
-
   .delete:
     LDA.W #$0000                                                         ;84EECC;
     STA.W $1C37,Y                                                        ;84EECF;
@@ -14439,260 +17567,325 @@ Setup_ItemCollisionDetection:
 
 
 PLMEntries_ItemCollisionDetection:
+; Shot/bombed/grappled reaction, shootable, BTS 45h / collision reaction, special, BTS 45h. Item collision detection
     dw Setup_ItemCollisionDetection                                      ;84EED3;
     dw InstList_PLM_Delete                                               ;84EED5;
 
 PLMEntries_EnergyTank:
+; Energy tank
     dw Setup_EnergyTank                                                  ;84EED7;
     dw InstList_PLM_EnergyTank_0                                         ;84EED9;
 
 PLMEntries_MissileTank:
+; Missile tank
     dw Setup_MissileTank                                                 ;84EEDB;
     dw InstList_PLM_MissileTank_0                                        ;84EEDD;
 
 PLMEntries_SuperMissileTank:
+; Super missile tank
     dw Setup_SuperMissileTank                                            ;84EEDF;
     dw InstList_PLM_SuperMissileTank_0                                   ;84EEE1;
 
 PLMEntries_PowerBombTank:
+; Power bomb tank
     dw Setup_PowerBombTank                                               ;84EEE3;
     dw InstList_PLM_PowerBombTank_0                                      ;84EEE5;
 
 PLMEntries_Bombs:
+; Bombs
     dw Setup_Ability                                                     ;84EEE7;
     dw InstList_PLM_Bombs_0                                              ;84EEE9;
 
 PLMEntries_ChargeBeam:
+; Charge beam
     dw Setup_Ability                                                     ;84EEEB;
     dw InstList_PLM_ChargeBeam_0                                         ;84EEED;
 
 PLMEntries_IceBeam:
+; Ice beam
     dw Setup_Ability                                                     ;84EEEF;
     dw InstList_PLM_IceBeam_0                                            ;84EEF1;
 
 PLMEntries_HiJumpBoots:
+; Hi-jump
     dw Setup_Ability                                                     ;84EEF3;
     dw InstList_PLM_HiJumpBoots_0                                        ;84EEF5;
 
 PLMEntries_SpeedBooster:
+; Speed booster
     dw Setup_Ability                                                     ;84EEF7;
     dw InstList_PLM_SpeedBooster_0                                       ;84EEF9;
 
 PLMEntries_WaveBeam:
+; Wave beam
     dw Setup_Ability                                                     ;84EEFB;
     dw InstList_PLM_WaveBeam_0                                           ;84EEFD;
 
 PLMEntries_Spazer:
+; Spazer beam
     dw Setup_Ability                                                     ;84EEFF;
     dw InstList_PLM_Spazer_0                                             ;84EF01;
 
 PLMEntries_SpringBall:
+; Spring ball
     dw Setup_Ability                                                     ;84EF03;
     dw InstList_PLM_SpringBall_0                                         ;84EF05;
 
 PLMEntries_VariaSuit:
+; Varia suit
     dw Setup_Ability                                                     ;84EF07;
     dw InstList_PLM_VariaSuit_0                                          ;84EF09;
 
 PLMEntries_GravitySuit:
+; Gravity suit
     dw Setup_Ability                                                     ;84EF0B;
     dw InstList_PLM_GravitySuit_0                                        ;84EF0D;
 
 PLMEntries_XrayScope:
+; X-ray scope
     dw Setup_Ability                                                     ;84EF0F;
     dw InstList_PLM_XrayScope_0                                          ;84EF11;
 
 PLMEntries_PlasmaBeam:
+; Plasma beam
     dw Setup_Ability                                                     ;84EF13;
     dw InstList_PLM_PlasmaBeam_0                                         ;84EF15;
 
 PLMEntries_GrappleBeam:
+; Grapple beam
     dw Setup_Ability                                                     ;84EF17;
     dw InstList_PLM_GrappleBeam_0                                        ;84EF19;
 
 PLMEntries_SpaceJump:
+; Space jump
     dw Setup_Ability                                                     ;84EF1B;
     dw InstList_PLM_SpaceJump_0                                          ;84EF1D;
 
 PLMEntries_ScrewAttack:
+; Screw attack
     dw Setup_Ability                                                     ;84EF1F;
     dw InstList_PLM_ScrewAttack_0                                        ;84EF21;
 
 PLMEntries_MorphBall:
+; Morph ball
     dw Setup_Ability                                                     ;84EF23;
     dw InstList_PLM_MorphBall_0                                          ;84EF25;
 
 PLMEntries_ReserveTank:
+; Reserve tank
     dw Setup_Ability                                                     ;84EF27;
     dw InstList_PLM_ReserveTank_0                                        ;84EF29;
 
 PLMEntries_EnergyTankChozoOrb:
+; Energy tank, chozo orb
     dw Setup_EnergyTank                                                  ;84EF2B;
     dw InstList_PLM_EnergyTankChozoOrb_0                                 ;84EF2D;
 
 PLMEntries_MissileTankChozoOrb:
+; Missile tank, chozo orb
     dw Setup_MissileTank                                                 ;84EF2F;
     dw InstList_PLM_MissileTankChozoOrb_0                                ;84EF31;
 
 PLMEntries_SuperMissileTankChozoOrb:
+; Super missile tank, chozo orb
     dw Setup_SuperMissileTank                                            ;84EF33;
     dw InstList_PLM_SuperMissileTankChozoOrb_0                           ;84EF35;
 
 PLMEntries_PowerBombTankChozoOrb:
+; Power bomb tank, chozo orb
     dw Setup_PowerBombTank                                               ;84EF37;
     dw InstList_PLM_PowerBombTankChozoOrb_0                              ;84EF39;
 
 PLMEntries_BombsChozoOrb:
+; Bombs, chozo orb
     dw Setup_Ability                                                     ;84EF3B;
     dw InstList_PLM_BombsChozoOrb_0                                      ;84EF3D;
 
 PLMEntries_ChargeBeamChozoOrb:
+; Charge beam, chozo orb
     dw Setup_Ability                                                     ;84EF3F;
     dw InstList_PLM_ChargeBeamChozoOrb_0                                 ;84EF41;
 
 PLMEntries_IceBeamChozoOrb:
+; Ice beam, chozo orb
     dw Setup_Ability                                                     ;84EF43;
     dw InstList_PLM_IceBeamChozoOrb_0                                    ;84EF45;
 
 PLMEntries_HiJumpBootsChozoOrb:
+; Hi-jump, chozo orb
     dw Setup_Ability                                                     ;84EF47;
     dw InstList_PLM_HiJumpBootsChozoOrb_0                                ;84EF49;
 
 PLMEntries_SpeedBoosterChozoOrb:
+; Speed booster, chozo orb
     dw Setup_Ability                                                     ;84EF4B;
     dw InstList_PLM_SpeedBoosterChozoOrb_0                               ;84EF4D;
 
 PLMEntries_WaveBeamChozoOrb:
+; Wave beam, chozo orb
     dw Setup_Ability                                                     ;84EF4F;
     dw InstList_PLM_WaveBeamChozoOrb_0                                   ;84EF51;
 
 PLMEntries_SpazerChozoOrb:
+; Spazer beam, chozo orb
     dw Setup_Ability                                                     ;84EF53;
     dw InstList_PLM_SpazerChozoOrb_0                                     ;84EF55;
 
 PLMEntries_SpringBallChozoOrb:
+; Spring ball, chozo orb
     dw Setup_Ability                                                     ;84EF57;
     dw InstList_PLM_SpringBallChozoOrb_0                                 ;84EF59;
 
 PLMEntries_VariaSuitChozoOrb:
+; Varia suit, chozo orb
     dw Setup_Ability                                                     ;84EF5B;
     dw InstList_PLM_VariaSuitChozoOrb_0                                  ;84EF5D;
 
 PLMEntries_GravitySuitChozoOrb:
+; Gravity suit, chozo orb
     dw Setup_Ability                                                     ;84EF5F;
     dw InstList_PLM_GravitySuitChozoOrb_0                                ;84EF61;
 
 PLMEntries_XrayScopeChozoOrb:
+; X-ray scope, chozo orb
     dw Setup_Ability                                                     ;84EF63;
     dw InstList_PLM_XrayScopeChozoOrb_0                                  ;84EF65;
 
 PLMEntries_PlasmaBeamChozoOrb:
+; Plasma beam, chozo orb
     dw Setup_Ability                                                     ;84EF67;
     dw InstList_PLM_PlasmaBeamChozoOrb_0                                 ;84EF69;
 
 PLMEntries_GrappleBeamChozoOrb:
+; Grapple beam, chozo orb
     dw Setup_Ability                                                     ;84EF6B;
     dw InstList_PLM_GrappleBeamChozoOrb_0                                ;84EF6D;
 
 PLMEntries_SpaceJumpChozoOrb:
+; Space jump, chozo orb
     dw Setup_Ability                                                     ;84EF6F;
     dw InstList_PLM_SpaceJumpChozoOrb_0                                  ;84EF71;
 
 PLMEntries_ScrewAttackChozoOrb:
+; Screw attack, chozo orb
     dw Setup_Ability                                                     ;84EF73;
     dw InstList_PLM_ScrewAttackChozoOrb_0                                ;84EF75;
 
 PLMEntries_MorphBallChozoOrb:
+; Morph ball, chozo orb
     dw Setup_Ability                                                     ;84EF77;
     dw InstList_PLM_MorphBallChozoOrb_0                                  ;84EF79;
 
 PLMEntries_ReserveTankChozoOrb:
+; Reserve tank, chozo orb
     dw Setup_Ability                                                     ;84EF7B;
     dw InstList_PLM_ReserveTankChozoOrb_0                                ;84EF7D;
 
 PLMEntries_EnergyTankShotBlock:
+; Energy tank, shot block
     dw Setup_EnergyTankShotBlock                                         ;84EF7F;
     dw InstList_PLM_EnergyTankShotBlock_0                                ;84EF81;
 
 PLMEntries_MissileTankShotBlock:
+; Missile tank, shot block
     dw SetupMissileTankShotBlock                                         ;84EF83;
     dw InstList_PLM_MissileTankShotBlock_0                               ;84EF85;
 
 PLMEntries_SuperMissileTankShotBlock:
+; Super missile tank, shot block
     dw Setup_SuperMissileTankShotBlock                                   ;84EF87;
     dw InstList_PLM_SuperMissileTankShotBlock_0                          ;84EF89;
 
 PLMEntries_PowerBombTankShotBlock:
+; Power bomb tank, shot block
     dw Setup_PowerBombTankShotBlock                                      ;84EF8B;
     dw InstList_PLM_PowerBombTankShotBlock_0                             ;84EF8D;
 
 PLMEntries_BombsShotBlock:
+; Bombs, shot block
     dw Setup_AbilityShotBlock                                            ;84EF8F;
     dw InstList_PLM_BombsShotBlock_0                                     ;84EF91;
 
 PLMEntries_ChargeBeamShotBlock:
+; Charge beam, shot block
     dw Setup_AbilityShotBlock                                            ;84EF93;
     dw InstList_PLM_ChargeBeamShotBlock_0                                ;84EF95;
 
 PLMEntries_IceBeamShotBlock:
+; Ice beam, shot block
     dw Setup_AbilityShotBlock                                            ;84EF97;
     dw InstList_PLM_IceBeamShotBlock_0                                   ;84EF99;
 
 PLMEntries_HiJumpBootsShotBlock:
+; Hi-jump, shot block
     dw Setup_AbilityShotBlock                                            ;84EF9B;
     dw InstList_PLM_HiJumpBootsShotBlock_0                               ;84EF9D;
 
 PLMEntries_SpeedBoosterShotBlock:
+; Speed booster, shot block
     dw Setup_AbilityShotBlock                                            ;84EF9F;
     dw InstList_PLM_SpeedBoosterShotBlock_0                              ;84EFA1;
 
 PLMEntries_WaveBeamShotBlock:
+; Wave beam, shot block
     dw Setup_AbilityShotBlock                                            ;84EFA3;
     dw InstList_PLM_WaveBeamShotBlock_0                                  ;84EFA5;
 
 PLMEntries_SpazerShotBlock:
+; Spazer beam, shot block
     dw Setup_AbilityShotBlock                                            ;84EFA7;
     dw InstList_PLM_SpazerShotBlock_0                                    ;84EFA9;
 
 PLMEntries_SpringBallShotBlock:
+; Spring ball, shot block
     dw Setup_AbilityShotBlock                                            ;84EFAB;
     dw InstList_PLM_SpringBallShotBlock_0                                ;84EFAD;
 
 PLMEntries_VariaSuitShotBlock:
+; Varia suit, shot block
     dw Setup_AbilityShotBlock                                            ;84EFAF;
     dw InstList_PLM_VariaSuitShotBlock_0                                 ;84EFB1;
 
 PLMEntries_GravitySuitShotBlock:
+; Gravity suit, shot block
     dw Setup_AbilityShotBlock                                            ;84EFB3;
     dw InstList_PLM_GravitySuitShotBlock_0                               ;84EFB5;
 
 PLMEntries_XrayScopeShotBlock:
+; X-ray scope, shot block
     dw Setup_AbilityShotBlock                                            ;84EFB7;
     dw InstList_PLM_XrayScopeShotBlock_0                                 ;84EFB9;
 
 PLMEntries_PlasmaBeamShotBlock:
+; Plasma beam, shot block
     dw Setup_AbilityShotBlock                                            ;84EFBB;
     dw InstList_PLM_PlasmaBeamShotBlock_0                                ;84EFBD;
 
 PLMEntries_GrappleBeamShotBlock:
+; Grapple beam, shot block
     dw Setup_AbilityShotBlock                                            ;84EFBF;
     dw InstList_PLM_GrappleBeamShotBlock_0                               ;84EFC1;
 
 PLMEntries_SpaceJumpShotBlock:
+; Space jump, shot block
     dw Setup_AbilityShotBlock                                            ;84EFC3;
     dw InstList_PLM_SpaceJumpShotBlock_0                                 ;84EFC5;
 
 PLMEntries_ScrewAttackShotBlock:
+; Screw attack, shot block
     dw Setup_AbilityShotBlock                                            ;84EFC7;
     dw InstList_PLM_ScrewAttackShotBlock_0                               ;84EFC9;
 
 PLMEntries_MorphBallShotBlock:
+; Morph ball, shot block
     dw Setup_AbilityShotBlock                                            ;84EFCB;
     dw InstList_PLM_MorphBallShotBlock_0                                 ;84EFCD;
 
 PLMEntries_ReserveTankShotBlock:
+; Reserve tank, shot block
     dw Setup_AbilityShotBlock                                            ;84EFCF;
     dw InstList_PLM_ReserveTankShotBlock_0                               ;84EFD1;
+
 
 Freespace_Bank84_EFD3:                                                   ;84EFD3;
 ; $102D bytes

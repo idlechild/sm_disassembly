@@ -3111,7 +3111,7 @@ PowerBomb_ShapeDefinitionTiles_Optimization_A226:
 
 PowerBombExplosion_ShapeDefinitionTable_Unscaled_width:
 ; This table gives the shape of (the bottom) half of a power bomb explosion with X radius = 100h (Y radius C0h),
-; starting from the bottom and ending at the centre
+; starting from the bottom and ending at the center
 ; Width
     db $00,$0C,$19,$25,$31,$3E,$4A,$56,$61,$6D,$78,$83,$8E,$98,$A2,$AB   ;88A266;
     db $B5,$BD,$C5,$CD,$D4,$DB,$E1,$E7,$EC,$F1,$F4,$F8,$FB,$FD,$FE,$FF   ;88A276;

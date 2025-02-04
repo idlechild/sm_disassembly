@@ -556,7 +556,7 @@ PLMPopulation_RedTower:
     %PLMPopEntry(PLMEntries_ScrollPLM, $09, $6A, RoomPLM_RedTower_0)
     %PLMPopEntry(PLMEntries_rightwardsExtension, $0A, $6A, $8000)
     %PLMPopEntry(PLMEntries_greenDoorFacingRight, $01, $96, $0038)
-    %PLMPopEntry(PLMEntries_yellowDoorFacingRIght, $01, $66, $0039)
+    %PLMPopEntry(PLMEntries_yellowDoorFacingRight, $01, $66, $0039)
     dw $0000
 
 PLMPopulation_RedBrinstarFirefleas:
@@ -579,7 +579,7 @@ PLMPopulation_Caterpillar:
     %PLMPopEntry(PLMEntries_downwardsClosedGate, $26, $35, $8000)
     %PLMPopEntry(PLMEntries_downwardsGateShotblock, $26, $35, $000A)
     %PLMPopEntry(PLMEntries_greenDoorFacingRight, $01, $36, $003B)
-    %PLMPopEntry(PLMEntries_yellowDoorFacingRIght, $01, $56, $003C)
+    %PLMPopEntry(PLMEntries_yellowDoorFacingRight, $01, $56, $003C)
     %PLMPopEntry(PLMEntries_greenDoorFacingRight, $01, $76, $003D)
     dw $0000
 
@@ -740,7 +740,7 @@ PLMPopulation_CathedralEntrance:                                         ;8F8AF2
 PLMPopulation_BusinessCenter:                                            ;8F8AFA;
     %PLMPopEntry(PLMEntries_elevatorPlatform, $06, $2C, $8000)
     %PLMPopEntry(PLMEntries_greenDoorFacingRight, $01, $36, $004B)
-    %PLMPopEntry(PLMEntries_yellowDoorFacingRIght, $01, $46, $004C)
+    %PLMPopEntry(PLMEntries_yellowDoorFacingRight, $01, $46, $004C)
     %PLMPopEntry(PLMEntries_redDoorFacingRight, $01, $56, $004D)
     dw $0000
 
@@ -920,7 +920,7 @@ PLMPopulation_KronicBoost:                                               ;8F8D1E
     %PLMPopEntry(PLMEntries_ScrollPLM, $08, $18, RoomPLM_KronicBoost_5)
     %PLMPopEntry(PLMEntries_downwardsClosedGate, $07, $14, $8000)
     %PLMPopEntry(PLMEntries_downwardsGateShotblock, $07, $14, $0000)
-    %PLMPopEntry(PLMEntries_yellowDoorFacingRIght, $11, $26, $0058)
+    %PLMPopEntry(PLMEntries_yellowDoorFacingRight, $11, $26, $0058)
     dw $0000
 
 PLMPopulation_MagdolliteTunnel:
@@ -1044,7 +1044,7 @@ PLMPopulation_Ridley_State0_1:                                           ;8F8E98
     dw $0000
 
 PLMPopulation_LNFarming:                                                 ;8F8EA6;
-    %PLMPopEntry(PLMEntries_EyeDoorFacingRIght, $01, $06, $005C)
+    %PLMPopEntry(PLMEntries_EyeDoorFacingRight, $01, $06, $005C)
     %PLMPopEntry(PLMEntries_EyeDoorBottomFacingRight, $01, $09, $005C)
     %PLMPopEntry(PLMEntries_EyeDoorEyeFacingRight, $01, $07, $005C)
     dw $0000
@@ -7884,7 +7884,7 @@ PLMPopulation_ThePrecious_State0_1:                                      ;8FC70B
     %PLMPopEntry(PLMEntries_rightwardsExtension, $09, $0E, $8000)
     %PLMPopEntry(PLMEntries_rightwardsExtension, $0A, $0E, $8000)
     %PLMPopEntry(PLMEntries_rightwardsExtension, $0B, $0E, $8000)
-    %PLMPopEntry(PLMEntries_EyeDoorFacingRIght, $01, $26, $009B)
+    %PLMPopEntry(PLMEntries_EyeDoorFacingRight, $01, $26, $009B)
     %PLMPopEntry(PLMEntries_EyeDoorBottomFacingRight, $01, $29, $009B)
     %PLMPopEntry(PLMEntries_EyeDoorEyeFacingRight, $01, $27, $009B)
     %PLMPopEntry(PLMEntries_MissileTankShotBlock, $1C, $06, $0097)
