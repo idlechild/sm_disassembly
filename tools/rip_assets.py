@@ -27,15 +27,15 @@ import sys
 import zlib
 
 
-SM_NTSC_CRC32 = 0xD63ED5F8
-SM_NTSC_SHA256 = "12b77c4bc9c1832cee8881244659065ee1d84c70c3d29e6eaf92e6798cc2ca72"
+SM_VC_US_CRC32 = 0xBA3EF6E0
+SM_VC_US_SHA256 = "3f93bba9cc3a78d5beadbd7ee996570e320bd0a54930b44417705a9e100710ab"
 
 
 def make_argument_parser():
     parser = argparse.ArgumentParser(
             description="Splits out data from an SM rom into separate data files for use with the disassembly.")
     parser.add_argument('rom_file', type=argparse.FileType('rb'),
-            help="Path to input ROM file. Must be an unheadered SM NTSC ROM.")
+            help="Path to input ROM file. Must be an unheadered SM Virtual Console US ROM.")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument('--output', '-o', type=Path,
             help="Directory to output split files to. Will be created if it doesn't exist.")
@@ -60,11 +60,11 @@ def rom_valid(rom_data):
         print("Unexpected size: " + str(len(rom_data)))
         return False
 
-    if zlib.crc32(rom_data) != SM_NTSC_CRC32:
+    if zlib.crc32(rom_data) != SM_VC_US_CRC32:
         print("Unexpected CRC32: " + hex(zlib.crc32(rom_data))[2:].upper())
         return False
 
-    if hashlib.sha256(rom_data).hexdigest() != SM_NTSC_SHA256:
+    if hashlib.sha256(rom_data).hexdigest() != SM_VC_US_SHA256:
         print("Unexpected SHA256: " + hashlib.sha256(rom_data).hexdigest())
         return False
 
@@ -1385,10 +1385,10 @@ def main():
         rom_data = inf.read()
 
     if not rom_valid(rom_data):
-        print("Invalid ROM. Ensure it's unheadered and the NTSC version:\n"
+        print("Invalid ROM. Ensure it's unheadered and the Virtual Console US version:\n"
               "Expected size: 3145728 (3 MB)\n"
-              "Expected CRC32:", hex(SM_NTSC_CRC32)[2:].upper(), "\n"
-              "Expected SHA256:", SM_NTSC_SHA256,
+              "Expected CRC32:", hex(SM_VC_US_CRC32)[2:].upper(), "\n"
+              "Expected SHA256:", SM_VC_US_SHA256,
               file=sys.stderr)
         sys.exit(1)
 

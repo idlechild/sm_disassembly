@@ -1,9 +1,14 @@
 # sm_disassembly
- A relocatable disassembly of Super Metroid (SNES) based on P.JBoy's bank logs.
+ The Virtual Console US version of the relocatable disassembly of Super Metroid (SNES) based on P.JBoy's bank logs.
 
  Assembles with asar v1.81: https://github.com/RPGHacker/asar/releases/tag/v1.81
 
  This project was released when it was considered "usable" but more work is planned.
+
+
+# REBASE WARNING
+ This branch is intended to be a single commit or changeset off of the main NTSC branch.
+ Therefore expect this branch to be rebased in the future, which means any commits in this branch may be replaced with a newer different commit.
 
 
 ## Getting Started

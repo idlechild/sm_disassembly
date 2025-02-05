@@ -9201,11 +9201,11 @@ ROM_HEADER:
 
   .complement:
 ; Checksum complement
-    dw $0720                                                             ;80FFDC;
+    dw $151A                                                             ;80FFDC;
 
   .checksum:
 ; Checksum
-    dw $F8DF                                                             ;80FFDE;
+    dw $EAE5                                                             ;80FFDE;
 
 ; Native interrupt vectors
     dw Crash_Handler                                                     ;80FFE0;
