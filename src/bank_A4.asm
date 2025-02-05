@@ -3947,8 +3947,8 @@ Palette_Crocomire_Sprite1:
 Palette_Crocomire_Sprite3:
 ; Breakable wall spikes
 ; Sprite palette 3
-    dw $3800,$02DF,$01D7,$00AC,$5A73,$41AD,$2D08,$1863                   ;A4B91D;
-    dw $0BB1,$48FB,$7FFF,$0000,$7FFF,$44E5,$7FFF,$0000                   ;A4B92D;
+    dw $3800,$02DF,$01D7,$00AC,$5231,$396B,$2D08,$1863                   ;A4B91D;
+    dw $0BB1,$48FB,$7FFF,$0000,$6B5A,$44E5,$7FFF,$0000                   ;A4B92D;
 
 EnemyTouch_Crocomire_Claws:
     JSL.L NormalEnemyTouchAI                                             ;A4B93D;
